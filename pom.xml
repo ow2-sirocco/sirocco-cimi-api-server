@@ -2,7 +2,7 @@
 <!-- 
 
    SIROCCO
-   Copyright (C) 2010 France Telecom
+   Copyright (C) 2012 France Telecom
    Contact: sirocco@ow2.org
 
    This library is free software; you can redistribute it and/or
@@ -20,25 +20,38 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
    USA
 
-   $Id$
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
+	
 	<parent>
-		<groupId>org.ow2.sirocco.cloudmanager</groupId>
-		<artifactId>sirocco-cloudmanager-apis</artifactId>
-		<version>0.5.3-SNAPSHOT</version>
-	</parent>
+                <groupId>org.ow2</groupId>
+                <artifactId>ow2</artifactId>
+                <version>1.3</version>
+        </parent>
+        <groupId>org.ow2.sirocco.cimi</groupId>
+        <artifactId>sirocco-cimi-api-server</artifactId>
+        <version>0.6.0-SNAPSHOT</version>
+        <packaging>pom</packaging>
+        <name>SIROCCO :: CIMI  ::  Server</name>
 
-	<groupId>org.ow2.sirocco.apis</groupId>
-	<artifactId>sirocco-rest-cimi</artifactId>
-	<packaging>pom</packaging>
-	<name>SIROCCO :: APIS :: REST :: CIMI</name>
+        <licenses>
+                <license>
+                        <name>GNU LESSER GENERAL PUBLIC LICENSE Version 2.1</name>
+                        <url>http://www.gnu.org/copyleft/lesser.html</url>
+                </license>
+        </licenses>
 
-	<modules>
-		<module>sirocco-rest-cimi-apis</module>
-		<module>sirocco-rest-cimi-webapp</module>
-	</modules>
+        <modules>
+                <module>sirocco-cimi-api-server-impl</module>
+                <module>sirocco-cimi-api-server-webapp</module>
+        </modules>
+
+	 <scm>
+		<connection>scm:git:git://gitorious.ow2.org/ow2-sirocco/sirocco-cimi-api-server.git</connection>
+                <developerConnection>scm:git:dangtran@gitorious.ow2.org:ow2-sirocco/sirocco-cimi-api-server.git</developerConnection>
+                <url>http://gitorious.ow2.org/ow2-sirocco/sirocco-cimi-api-server/trees</url>
+        </scm>
+
 </project>

@@ -2,7 +2,7 @@
 <!-- 
 
    SIROCCO
-   Copyright (C) 2010 France Telecom
+   Copyright (C) 2012 France Telecom
    Contact: sirocco@ow2.org
 
    This library is free software; you can redistribute it and/or
@@ -27,21 +27,21 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.ow2.sirocco.apis</groupId>
-		<artifactId>sirocco-rest-cimi</artifactId>
-		<version>0.5.3-SNAPSHOT</version>
+		<groupId>org.ow2.sirocco.cimi</groupId>
+	        <artifactId>sirocco-cimi-api-server</artifactId>
+       		 <version>0.6.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.ow2.sirocco.apis</groupId>
-	<artifactId>sirocco-rest-cimi-webapp</artifactId>
+	<groupId>org.ow2.sirocco.cimi</groupId>
+	<artifactId>sirocco-cimi-api-server-webapp</artifactId>
 	<packaging>war</packaging>
-	<name>SIROCCO :: APIS :: REST :: CIMI :: WEBAPP</name>
+	<name>SIROCCO :: CIMI :: API :: Server :: Webapp</name>
 
 
 	<dependencies>
 		<dependency>
-			<groupId>org.ow2.sirocco.apis</groupId>
-			<artifactId>sirocco-rest-cimi-apis</artifactId>
+			<groupId>org.ow2.sirocco.cimi</groupId>
+			<artifactId>sirocco-cimi-api-server-impl</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>
 		</dependency>
