@@ -20,7 +20,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
    USA
 
-   $Id$
+   $Id: web.xml 1829 2012-11-07 17:05:37Z dangtran $
 
 -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -61,13 +61,13 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SiroccoRestCimiServlet</servlet-name>
-		<url-pattern>/cimi/*</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Secure CIMI Content</web-resource-name>
-			<url-pattern>/cimi/*</url-pattern>
+			<url-pattern>/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>sirocco-user</role-name>
