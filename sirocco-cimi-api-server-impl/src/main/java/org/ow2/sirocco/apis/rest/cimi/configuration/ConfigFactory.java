@@ -761,6 +761,9 @@ public class ConfigFactory {
         case MachineNetworkInterfaceAddress:
             item = new ItemConfig(CimiMachineNetworkInterfaceAddress.class, ExchangeType.MachineNetworkInterfaceAddress);
             item.putData(ConfigFactory.CONVERTER, new MachineNetworkInterfaceAddressConverter());
+            referenceNames = new HashMap<ExchangeType, String>();
+            item.putData(ConfigFactory.NAMES, referenceNames);
+            referenceNames.put(ExchangeType.Address, "address");
             break;
 
         case MachineNetworkInterfaceAddressCollection:
