@@ -117,7 +117,8 @@ public class ConverterHelper {
     public static String toString(final MachineNetworkInterface.InterfaceState value) {
         String converted = null;
         if (null != value) {
-            converted = value.toString();
+            converted = value.toString().toLowerCase();
+            converted = Character.toUpperCase(converted.charAt(0)) + converted.substring(1);
         }
         return converted;
     }
