@@ -36,6 +36,7 @@ import org.ow2.sirocco.apis.rest.cimi.configuration.ConfigurationException;
 import org.ow2.sirocco.apis.rest.cimi.configuration.ItemConfig;
 import org.ow2.sirocco.apis.rest.cimi.converter.CimiConverter;
 import org.ow2.sirocco.apis.rest.cimi.domain.CimiExchange;
+import org.ow2.sirocco.apis.rest.cimi.domain.CimiMachineNetworkInterfaceAddress;
 import org.ow2.sirocco.apis.rest.cimi.domain.CimiResource;
 import org.ow2.sirocco.apis.rest.cimi.domain.ExchangeType;
 import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiMachineNetworkInterfaceAddressCollection;
@@ -426,10 +427,20 @@ public class CimiContextImpl implements CimiContext {
             // Adds all IDs parent of the request if exists
             if (true == this.getRequest().hasParentIds()) {
                 // FIXME
-                if (classToUse == CimiMachineNetworkInterfaceAddressCollection.class && this.stackConvertedIdService.size() > 1) {
-                    id = this.stackConvertedIdService.get(1).toString();
+                int idStackSize = this.stackConvertedIdService.size();
+                int idRequestSize = this.getRequest().getIds().getIdList().size();
+                if (classToUse == CimiMachineNetworkInterfaceAddress.class && idStackSize == 4) {
+                    String machineId = this.getRequest().getIds().getIdList().get(idRequestSize - 1);
+                    String nicId = this.stackConvertedIdService.get(2).toString();
+                    href = type.makeHref(this.getRequest().getBaseUri(), machineId, nicId, id);
+                } else {
+                    if (classToUse == CimiMachineNetworkInterfaceAddressCollection.class
+                        && this.stackConvertedIdService.size() > 1) {
+                        id = this.stackConvertedIdService.get(1).toString();
+                    }
+                    href = type.makeHref(this.getRequest().getBaseUri(), this.getRequest().getIds().makeArrayWithParents(id));
                 }
-                href = type.makeHref(this.getRequest().getBaseUri(), this.getRequest().getIds().makeArrayWithParents(id));
+
             } else {
                 // Adds all IDs parent of the service if exists
                 List<Integer> idsParent = this.findAllServiceIdParent();
