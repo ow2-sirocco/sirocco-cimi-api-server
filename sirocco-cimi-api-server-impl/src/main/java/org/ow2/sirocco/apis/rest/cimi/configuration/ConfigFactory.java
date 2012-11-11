@@ -745,7 +745,9 @@ public class ConfigFactory {
             item.putData(ConfigFactory.CONVERTER, new MachineNetworkInterfaceConverter());
             referenceNames = new HashMap<ExchangeType, String>();
             item.putData(ConfigFactory.NAMES, referenceNames);
-            referenceNames.put(ExchangeType.MachineNetworkInterface, "networkInterfaces");
+            referenceNames.put(ExchangeType.MachineNetworkInterfaceAddressCollection, "addresses");
+            referenceNames.put(ExchangeType.Network, "network");
+            referenceNames.put(ExchangeType.NetworkPort, "networkPort");
             break;
 
         case MachineNetworkInterfaceCollection:
@@ -753,9 +755,7 @@ public class ConfigFactory {
             item.putData(ConfigFactory.CONVERTER, new MachineNetworkInterfaceCollectionConverter());
             referenceNames = new HashMap<ExchangeType, String>();
             item.putData(ConfigFactory.NAMES, referenceNames);
-            referenceNames.put(ExchangeType.MachineNetworkInterfaceAddressCollection, "addresses");
-            referenceNames.put(ExchangeType.Network, "network");
-            referenceNames.put(ExchangeType.NetworkPort, "networkPort");
+            referenceNames.put(ExchangeType.MachineNetworkInterface, "machineNetworkInterfaces");
             break;
 
         case MachineNetworkInterfaceAddress:
