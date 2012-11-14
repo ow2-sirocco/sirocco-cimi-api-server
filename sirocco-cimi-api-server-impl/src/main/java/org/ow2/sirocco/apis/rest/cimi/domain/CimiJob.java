@@ -44,11 +44,11 @@ import org.ow2.sirocco.apis.rest.cimi.utils.CimiDateAdapter;
  */
 @XmlRootElement(name = "Job")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "status", "targetResource",
-    "affectedResources", "action", "returnCode", "progress", "statusMessage", "timeOfStatusChange", "isCancellable",
-    "parentJob", "nestedJobs", "operations"})
+    "affectedResources", "action", "returnCode", "progress", "statusMessage", "timeOfStatusChange", "parentJob", "nestedJobs",
+    "operations"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "status", "targetResource",
-    "affectedResources", "action", "returnCode", "progress", "statusMessage", "timeOfStatusChange", "isCancellable",
-    "parentJob", "nestedJobs", "operations"})
+    "affectedResources", "action", "returnCode", "progress", "statusMessage", "timeOfStatusChange", "parentJob", "nestedJobs",
+    "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiJob extends CimiObjectCommonAbstract {
 
@@ -94,11 +94,6 @@ public class CimiJob extends CimiObjectCommonAbstract {
      * Field "timeOfStatusChange". DateTimeUTC Format ISO 8601 ?
      */
     private Date timeOfStatusChange;
-
-    /**
-     * Field "isCancellable".
-     */
-    private Boolean isCancellable;
 
     /**
      * Field "parentJob".
@@ -273,24 +268,6 @@ public class CimiJob extends CimiObjectCommonAbstract {
      */
     public void setTimeOfStatusChange(final Date timeOfStatusChange) {
         this.timeOfStatusChange = timeOfStatusChange;
-    }
-
-    /**
-     * Return the value of field "isCancellable".
-     * 
-     * @return The value
-     */
-    public Boolean getIsCancellable() {
-        return this.isCancellable;
-    }
-
-    /**
-     * Set the value of field "isCancellable".
-     * 
-     * @param isCancellable The value
-     */
-    public void setIsCancellable(final Boolean isCancellable) {
-        this.isCancellable = isCancellable;
     }
 
     /**

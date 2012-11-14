@@ -336,7 +336,6 @@ public class CimiResourceBuilderHelper {
         CimiResourceBuilderHelper.fillCimiObjectCommon(cimi, id, index, expand);
         if ((null != expand) && (true == expand)) {
             cimi.setAction("actionValue" + postfix);
-            cimi.setIsCancellable(CimiResourceBuilderHelper.buildBoolean(id));
             cimi.setProgress(id);
             cimi.setReturnCode(id);
             cimi.setStatus("statusValue" + postfix);

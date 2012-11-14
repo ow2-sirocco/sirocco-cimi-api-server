@@ -30,7 +30,6 @@
 	"progress":1,
 	"statusMessage":"statusMessageValue_1",
 	"timeOfStatusChange":"2001-02-02T01:01:01.001Z",
-	"isCancellable":false,
 	"parentJob":{
 		"href":"hrefParentValue_1"
 	},

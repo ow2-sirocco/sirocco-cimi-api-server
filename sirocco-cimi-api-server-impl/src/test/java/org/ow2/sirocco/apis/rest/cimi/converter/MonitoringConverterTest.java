@@ -103,7 +103,6 @@ public class MonitoringConverterTest {
         cimi = (CimiJob) this.context.convertToCimi(new Job(), CimiJob.class);
         Assert.assertNull(cimi.getAction());
         Assert.assertNull(cimi.getAffectedResources());
-        Assert.assertNull(cimi.getIsCancellable());
         Assert.assertNull(cimi.getNestedJobs());
         Assert.assertNull(cimi.getParentJob());
         Assert.assertNull(cimi.getProgress());
@@ -126,14 +125,13 @@ public class MonitoringConverterTest {
         service.setParentJob(parentJob);
         service.setProgress(13);
         service.setReturnCode(11);
-        service.setStatus(Job.Status.RUNNING);
+        service.setState(Job.Status.RUNNING);
         service.setStatusMessage("statusMessage");
-        service.setTargetEntity(targetResource);
+        service.setTargetResource(targetResource);
         service.setTimeOfStatusChange(timeOfStatusChange);
 
         cimi = (CimiJob) this.context.convertToCimi(service, CimiJob.class);
         Assert.assertEquals("action", cimi.getAction());
-        Assert.assertEquals(Boolean.TRUE, cimi.getIsCancellable());
         Assert.assertEquals(this.request.getBaseUri() + ExchangeType.Job.getPathname() + "/789", cimi.getParentJob().getHref());
         Assert.assertEquals(13, cimi.getProgress().intValue());
         Assert.assertEquals(11, cimi.getReturnCode().intValue());
@@ -169,7 +167,7 @@ public class MonitoringConverterTest {
         }
         // Full Service -> Cimi : AffectedResources empty
         service = new Job();
-        service.setAffectedEntities(new ArrayList<CloudResource>());
+        service.setAffectedResources(new ArrayList<CloudResource>());
 
         cimi = (CimiJob) this.context.convertToCimi(service, CimiJob.class);
         Assert.assertNull(cimi.getAffectedResources());
@@ -184,7 +182,7 @@ public class MonitoringConverterTest {
         listResource.add(targetResource);
 
         service = new Job();
-        service.setAffectedEntities(listResource);
+        service.setAffectedResources(listResource);
 
         cimi = (CimiJob) this.context.convertToCimi(service, CimiJob.class);
         Assert.assertNotNull(cimi.getAffectedResources());

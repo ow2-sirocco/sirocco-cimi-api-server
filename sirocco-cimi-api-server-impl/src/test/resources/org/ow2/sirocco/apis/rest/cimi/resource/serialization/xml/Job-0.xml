@@ -12,5 +12,4 @@
 	<progress>0</progress>
 	<statusMessage>statusMessageValue_0</statusMessage>
 	<timeOfStatusChange>2000-01-01T00:00:00.000Z</timeOfStatusChange>
-	<isCancellable>true</isCancellable>
 </Job>

@@ -14,6 +14,5 @@
 	"returnCode":0,
 	"progress":0,
 	"statusMessage":"statusMessageValue_0",
-	"timeOfStatusChange":"2000-01-01T00:00:00.000Z",
-	"isCancellable":true
+	"timeOfStatusChange":"2000-01-01T00:00:00.000Z"
 }

@@ -14,7 +14,6 @@
 	<progress>1</progress>
 	<statusMessage>statusMessageValue_1</statusMessage>
 	<timeOfStatusChange>2001-02-02T01:01:01.001Z</timeOfStatusChange>
-	<isCancellable>false</isCancellable>
 	<parentJob href="hrefParentValue_1" />
 	<nestedJob href="hrefNestedValue_1_1_0" />
 	<operation href="hrefValue_1_0" rel="relValue_1_0" />

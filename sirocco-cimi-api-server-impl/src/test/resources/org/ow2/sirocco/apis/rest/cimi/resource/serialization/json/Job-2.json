@@ -39,7 +39,6 @@
 	"progress":2,
 	"statusMessage":"statusMessageValue_2",
 	"timeOfStatusChange":"2002-03-03T02:02:02.002Z",
-	"isCancellable":true,
 	"parentJob":{
 		"href":"hrefParentValue_2"
 	},
