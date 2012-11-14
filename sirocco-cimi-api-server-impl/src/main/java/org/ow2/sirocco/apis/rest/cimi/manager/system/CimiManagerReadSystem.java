@@ -56,8 +56,7 @@ public class CimiManagerReadSystem extends CimiManagerReadAbstract {
         if (false == context.hasParamSelect()) {
             out = this.manager.getSystemById(context.getRequest().getId());
         } else {
-            // XXX UnsupportedOperation
-            throw new UnsupportedOperationException();
+            out = this.manager.getSystemAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }
         return out;
     }

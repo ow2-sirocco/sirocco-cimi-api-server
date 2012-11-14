@@ -57,8 +57,7 @@ public class CimiManagerReadMachineConfiguration extends CimiManagerReadAbstract
         if (false == context.hasParamSelect()) {
             out = this.manager.getMachineConfigurationById(context.getRequest().getId());
         } else {
-            // XXX UnsupportedOperation
-            throw new UnsupportedOperationException();
+            out = this.manager.getMachineConfigurationAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }
         return out;
     }

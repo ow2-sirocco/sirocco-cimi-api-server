@@ -57,8 +57,7 @@ public class CimiManagerReadCredentialTemplate extends CimiManagerReadAbstract {
         if (false == context.hasParamSelect()) {
             out = this.manager.getCredentialsTemplateById(context.getRequest().getId());
         } else {
-            // XXX UnsupportedOperation
-            throw new UnsupportedOperationException();
+            out = this.manager.getCredentialsTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }
         return out;
     }

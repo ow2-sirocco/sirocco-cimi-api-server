@@ -57,8 +57,7 @@ public class CimiManagerReadSystemTemplate extends CimiManagerReadAbstract {
         if (false == context.hasParamSelect()) {
             out = this.manager.getSystemTemplateById(context.getRequest().getId());
         } else {
-            // XXX UnsupportedOperation
-            throw new UnsupportedOperationException();
+            out = this.manager.getSystemTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }
         return out;
     }
