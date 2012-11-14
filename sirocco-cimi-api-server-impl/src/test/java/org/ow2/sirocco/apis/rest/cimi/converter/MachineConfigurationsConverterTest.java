@@ -87,7 +87,7 @@ public class MachineConfigurationsConverterTest {
         // Empty Cimi -> Service
         service = (MachineConfiguration) this.context.convertToService(new CimiMachineConfiguration());
         Assert.assertNull(service.getCpu());
-        Assert.assertNull(service.getDiskTemplates());
+        Assert.assertNull(service.getDisks());
         Assert.assertNull(service.getMemory());
 
         // Empty Service -> Cimi
@@ -105,21 +105,21 @@ public class MachineConfigurationsConverterTest {
         service = (MachineConfiguration) this.context.convertToService(cimi);
         Assert.assertEquals(3, service.getCpu().intValue());
         Assert.assertEquals(1024, service.getMemory().intValue());
-        Assert.assertNull(service.getDiskTemplates());
+        Assert.assertNull(service.getDisks());
 
         // Full Cimi -> Service
         cimi = new CimiMachineConfiguration();
         cimi.setDisks(new CimiDiskConfiguration[] {});
 
         service = (MachineConfiguration) this.context.convertToService(cimi);
-        Assert.assertNull(service.getDiskTemplates());
+        Assert.assertNull(service.getDisks());
 
         // Full Cimi -> Service
         cimi = new CimiMachineConfiguration();
         cimi.setDisks(new CimiDiskConfiguration[] {new CimiDiskConfiguration(), new CimiDiskConfiguration()});
 
         service = (MachineConfiguration) this.context.convertToService(cimi);
-        Assert.assertEquals(2, service.getDiskTemplates().size());
+        Assert.assertEquals(2, service.getDisks().size());
 
         // Full Service -> Cimi
         service = new MachineConfiguration();
@@ -133,15 +133,15 @@ public class MachineConfigurationsConverterTest {
 
         // Full Service -> Cimi
         service = new MachineConfiguration();
-        service.setDiskTemplates(new ArrayList<DiskTemplate>());
+        service.setDisks(new ArrayList<DiskTemplate>());
 
         cimi = (CimiMachineConfiguration) this.context.convertToCimi(service, CimiMachineConfiguration.class);
         Assert.assertNull(cimi.getDisks());
 
         // Full Service -> Cimi
         service = new MachineConfiguration();
-        service.setDiskTemplates(new ArrayList<DiskTemplate>(Arrays.asList(new DiskTemplate[] {new DiskTemplate(),
-            new DiskTemplate(), new DiskTemplate()})));
+        service.setDisks(new ArrayList<DiskTemplate>(Arrays.asList(new DiskTemplate[] {new DiskTemplate(), new DiskTemplate(),
+            new DiskTemplate()})));
 
         cimi = (CimiMachineConfiguration) this.context.convertToCimi(service, CimiMachineConfiguration.class);
         Assert.assertEquals(3, cimi.getDisks().length);

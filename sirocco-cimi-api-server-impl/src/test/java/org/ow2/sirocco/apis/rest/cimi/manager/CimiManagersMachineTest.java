@@ -149,7 +149,7 @@ public class CimiManagersMachineTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
 
         EasyMock.expect(this.service.startMachine("1", null)).andReturn(job);
         EasyMock.replay(this.service);
@@ -175,7 +175,7 @@ public class CimiManagersMachineTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
 
         EasyMock.expect(this.service.stopMachine("1", true, null)).andReturn(job);
         EasyMock.replay(this.service);
@@ -202,7 +202,7 @@ public class CimiManagersMachineTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
 
         EasyMock.expect(this.service.createMachine(EasyMock.anyObject(MachineCreate.class))).andReturn(job);
         EasyMock.replay(this.service);
@@ -235,7 +235,7 @@ public class CimiManagersMachineTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
 
         EasyMock.expect(this.service.getMachineTemplateById("13")).andReturn(reference);
         EasyMock.expect(this.service.createMachine(EasyMock.anyObject(MachineCreate.class))).andReturn(job);
@@ -274,7 +274,7 @@ public class CimiManagersMachineTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
 
         EasyMock.expect(this.serviceCredentials.getCredentialsById("345")).andReturn(refCredentials);
         EasyMock.replay(this.serviceCredentials);
@@ -348,7 +348,7 @@ public class CimiManagersMachineTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
 
         EasyMock.expect(this.service.deleteMachine("1")).andReturn(job);
         EasyMock.replay(this.service);
@@ -371,7 +371,7 @@ public class CimiManagersMachineTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
 
         EasyMock.expect(this.service.updateMachine(EasyMock.anyObject(Machine.class))).andReturn(job);
         EasyMock.replay(this.service);
@@ -402,7 +402,7 @@ public class CimiManagersMachineTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
 
         EasyMock.expect(this.service.updateMachineAttributes(EasyMock.eq("1"), EasyMock.eq(map))).andReturn(job);
         EasyMock.replay(this.service);

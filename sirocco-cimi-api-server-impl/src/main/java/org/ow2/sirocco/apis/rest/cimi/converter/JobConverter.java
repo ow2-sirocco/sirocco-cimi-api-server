@@ -106,17 +106,16 @@ public class JobConverter extends ObjectCommonConverter {
         this.fill(context, dataService, dataCimi);
         if (true == context.mustBeExpanded(dataCimi)) {
             dataCimi.setAction(dataService.getAction());
-            dataCimi.setIsCancellable(dataService.getIsCancellable());
             dataCimi.setProgress(dataService.getProgress());
             dataCimi.setReturnCode(dataService.getReturnCode());
-            dataCimi.setStatus(ConverterHelper.toString(dataService.getStatus()));
+            dataCimi.setStatus(ConverterHelper.toString(dataService.getState()));
             dataCimi.setStatusMessage(dataService.getStatusMessage());
             dataCimi.setTimeOfStatusChange(dataService.getTimeOfStatusChange());
-            dataCimi.setTargetResource(ConverterHelper.buildTargetResource(context, dataService.getTargetEntity()));
-            if ((null != dataService.getAffectedEntities()) && (dataService.getAffectedEntities().size() > 0)) {
+            dataCimi.setTargetResource(ConverterHelper.buildTargetResource(context, dataService.getTargetResource()));
+            if ((null != dataService.getAffectedResources()) && (dataService.getAffectedResources().size() > 0)) {
                 TargetResource target;
                 List<TargetResource> list = new ArrayList<TargetResource>();
-                for (CloudResource resource : dataService.getAffectedEntities()) {
+                for (CloudResource resource : dataService.getAffectedResources()) {
                     target = ConverterHelper.buildTargetResource(context, resource);
                     if (null != target) {
                         list.add(target);

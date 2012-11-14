@@ -361,8 +361,8 @@ public class MergeReferenceHelperTest {
         referenceConfiguration.setName("refNameConfiguration");
         referenceConfiguration.setDescription("refDescriptionConfiguration");
 
-        reference.setCredentials(referenceCredentials);
-        reference.setMachineConfiguration(referenceConfiguration);
+        reference.setCredential(referenceCredentials);
+        reference.setMachineConfig(referenceConfiguration);
         reference.setMachineImage(referenceImage);
 
         // ---------------------------------------------------

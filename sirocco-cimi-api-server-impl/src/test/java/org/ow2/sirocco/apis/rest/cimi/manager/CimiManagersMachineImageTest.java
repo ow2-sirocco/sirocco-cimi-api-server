@@ -119,7 +119,7 @@ public class CimiManagersMachineImageTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
         EasyMock.expect(this.service.createMachineImage(EasyMock.anyObject(MachineImage.class))).andReturn(job);
         EasyMock.replay(this.service);
 
@@ -149,7 +149,7 @@ public class CimiManagersMachineImageTest {
 
         Job job = new Job();
         job.setId(123);
-        job.setTargetEntity(target);
+        job.setTargetResource(target);
 
         EasyMock.expect(this.service.getMachineImageById("13")).andReturn(reference);
         EasyMock.expect(this.service.createMachineImage(EasyMock.anyObject(MachineImage.class))).andReturn(job);

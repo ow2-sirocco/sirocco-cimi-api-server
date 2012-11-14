@@ -107,10 +107,10 @@ public class MachineConfigurationConverter extends ObjectCommonConverter {
             dataCimi.setCpu(dataService.getCpu());
             dataCimi.setMemory(dataService.getMemory());
 
-            if ((null != dataService.getDiskTemplates()) && (dataService.getDiskTemplates().size() > 0)) {
+            if ((null != dataService.getDisks()) && (dataService.getDisks().size() > 0)) {
                 List<CimiDiskConfiguration> listCimis = new ArrayList<CimiDiskConfiguration>();
 
-                for (DiskTemplate serviceItem : dataService.getDiskTemplates()) {
+                for (DiskTemplate serviceItem : dataService.getDisks()) {
                     listCimis.add((CimiDiskConfiguration) context.convertNextCimi(serviceItem, CimiDiskConfiguration.class));
                 }
                 dataCimi.setDisks(listCimis.toArray(new CimiDiskConfiguration[listCimis.size()]));
@@ -136,7 +136,7 @@ public class MachineConfigurationConverter extends ObjectCommonConverter {
             for (CimiDiskConfiguration cimiItem : dataCimi.getDisks()) {
                 listServices.add((DiskTemplate) context.convertNextService(cimiItem));
             }
-            dataService.setDiskTemplates(listServices);
+            dataService.setDisks(listServices);
         }
     }
 

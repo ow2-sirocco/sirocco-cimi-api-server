@@ -117,11 +117,11 @@ public class MachineTemplateConverter extends ObjectCommonConverter {
         this.fill(context, dataService, dataCimi);
         if (true == context.mustBeExpanded(dataCimi)) {
             dataCimi
-                .setCredential((CimiCredential) context.convertNextCimi(dataService.getCredentials(), CimiCredential.class));
+                .setCredential((CimiCredential) context.convertNextCimi(dataService.getCredential(), CimiCredential.class));
             dataCimi.setInitialState(ConverterHelper.toString(dataService.getInitialState()));
             dataCimi.setEventLogTemplate((CimiEventLogTemplate) context.convertNextCimi(dataService.getEventLogTemplate(),
                 CimiEventLogTemplate.class));
-            dataCimi.setMachineConfig((CimiMachineConfiguration) context.convertNextCimi(dataService.getMachineConfiguration(),
+            dataCimi.setMachineConfig((CimiMachineConfiguration) context.convertNextCimi(dataService.getMachineConfig(),
                 CimiMachineConfiguration.class));
             dataCimi.setMachineImage((CimiMachineImage) context.convertNextCimi(dataService.getMachineImage(),
                 CimiMachineImage.class));
@@ -166,11 +166,11 @@ public class MachineTemplateConverter extends ObjectCommonConverter {
     protected void doCopyToService(final CimiContext context, final CimiMachineTemplate dataCimi,
         final MachineTemplate dataService) {
         this.fill(context, dataCimi, dataService);
-        dataService.setCredentials((Credentials) context.convertNextService(dataCimi.getCredential()));
+        dataService.setCredential((Credentials) context.convertNextService(dataCimi.getCredential()));
         dataService.setEventLogTemplate((EventLogTemplate) context.convertNextService(dataCimi.getEventLogTemplate()));
         dataService.setInitialState(ConverterHelper.toMachineState(dataCimi.getInitialState()));
         dataService.setMachineImage((MachineImage) context.convertNextService(dataCimi.getMachineImage()));
-        dataService.setMachineConfiguration((MachineConfiguration) context.convertNextService(dataCimi.getMachineConfig()));
+        dataService.setMachineConfig((MachineConfiguration) context.convertNextService(dataCimi.getMachineConfig()));
         // NetworkInterface
         if ((null != dataCimi.getListNetworkInterfaces()) && (false == dataCimi.getListNetworkInterfaces().isEmpty())) {
             List<MachineTemplateNetworkInterface> listServices = new ArrayList<MachineTemplateNetworkInterface>();

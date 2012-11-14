@@ -95,8 +95,8 @@ public class MachineTemplatesConverterTest {
 
         // Empty Cimi -> Service
         service = (MachineTemplate) this.context.convertToService(new CimiMachineTemplate());
-        Assert.assertNull(service.getCredentials());
-        Assert.assertNull(service.getMachineConfiguration());
+        Assert.assertNull(service.getCredential());
+        Assert.assertNull(service.getMachineConfig());
         Assert.assertNull(service.getMachineImage());
 
         // Empty Service -> Cimi
@@ -112,16 +112,16 @@ public class MachineTemplatesConverterTest {
         cimi.setMachineImage(new CimiMachineImage());
 
         service = (MachineTemplate) this.context.convertToService(cimi);
-        Assert.assertEquals(Credentials.class, service.getCredentials().getClass());
-        Assert.assertEquals(MachineConfiguration.class, service.getMachineConfiguration().getClass());
+        Assert.assertEquals(Credentials.class, service.getCredential().getClass());
+        Assert.assertEquals(MachineConfiguration.class, service.getMachineConfig().getClass());
         Assert.assertEquals(MachineImage.class, service.getMachineImage().getClass());
 
         // Full Service -> Cimi : without arrays
         service = new MachineTemplate();
-        service.setCredentials(new Credentials());
-        service.getCredentials().setId(10);
-        service.setMachineConfiguration(new MachineConfiguration());
-        service.getMachineConfiguration().setId(11);
+        service.setCredential(new Credentials());
+        service.getCredential().setId(10);
+        service.setMachineConfig(new MachineConfiguration());
+        service.getMachineConfig().setId(11);
         service.setMachineImage(new MachineImage());
         service.getMachineImage().setId(12);
 
@@ -240,15 +240,15 @@ public class MachineTemplatesConverterTest {
         service = new MachineTemplate();
         service.setId(10);
 
-        service.setCredentials(new Credentials());
-        service.getCredentials().setId(100);
-        service.getCredentials().setName("Credential_Name_100");
-        service.getCredentials().setUserName("Credential_UserName_100");
+        service.setCredential(new Credentials());
+        service.getCredential().setId(100);
+        service.getCredential().setName("Credential_Name_100");
+        service.getCredential().setUserName("Credential_UserName_100");
 
-        service.setMachineConfiguration(new MachineConfiguration());
-        service.getMachineConfiguration().setId(101);
-        service.getMachineConfiguration().setName("MachineConfiguration_Name_101");
-        service.getMachineConfiguration().setCpu(101);
+        service.setMachineConfig(new MachineConfiguration());
+        service.getMachineConfig().setId(101);
+        service.getMachineConfig().setName("MachineConfiguration_Name_101");
+        service.getMachineConfig().setCpu(101);
 
         service.setMachineImage(new MachineImage());
         service.getMachineImage().setId(102);
