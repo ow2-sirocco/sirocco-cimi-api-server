@@ -60,17 +60,6 @@ public class CimiCredentialTemplate extends CimiCredential {
     }
 
     /**
-     * Parameterized constructor.
-     * 
-     * @param userName The login
-     * @param password The password
-     * @param key The public key
-     */
-    public CimiCredentialTemplate(final String userName, final String password, final byte[] key) {
-        super(userName, password, key);
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.apis.rest.cimi.domain.CimiCredential#getExchangeType()

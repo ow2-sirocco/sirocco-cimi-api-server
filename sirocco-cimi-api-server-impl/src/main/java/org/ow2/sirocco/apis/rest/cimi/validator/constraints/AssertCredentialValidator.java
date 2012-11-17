@@ -54,9 +54,9 @@ public class AssertCredentialValidator extends CimiContextValidatorAbstract<Asse
         if (value != null) {
             CimiCredential resource = (CimiCredential) value;
 
-            String login = resource.getUserName();
-            String pass = resource.getPassword();
-            byte[] key = resource.getKey();
+            String login = (String) resource.getExtensionAttribute("userName");
+            String pass = (String) resource.getExtensionAttribute("password");
+            String key = (String) resource.getExtensionAttribute("key");
 
             if ((null != login) && (null != pass)) {
                 valid = true;

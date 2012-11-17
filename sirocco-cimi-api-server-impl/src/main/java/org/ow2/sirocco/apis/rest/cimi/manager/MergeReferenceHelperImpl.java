@@ -1278,14 +1278,14 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     protected void merge(final CimiCredential cimiRef, final CimiCredential cimi) {
         if (null != cimiRef) {
             this.mergeObjectCommon(cimiRef, cimi);
-            if (null == cimi.getKey()) {
-                cimi.setKey(cimiRef.getKey());
+            if (null == cimi.getExtensionAttribute("key")) {
+                cimi.addExtensionAttribute("key", cimiRef.getExtensionAttribute("key"));
             }
-            if (null == cimi.getPassword()) {
-                cimi.setPassword(cimiRef.getPassword());
+            if (null == cimi.getExtensionAttribute("password")) {
+                cimi.addExtensionAttribute("password", cimiRef.getExtensionAttribute("password"));
             }
-            if (null == cimi.getUserName()) {
-                cimi.setUserName(cimiRef.getUserName());
+            if (null == cimi.getExtensionAttribute("userName")) {
+                cimi.addExtensionAttribute("userName", cimiRef.getExtensionAttribute("userName"));
             }
         }
     }

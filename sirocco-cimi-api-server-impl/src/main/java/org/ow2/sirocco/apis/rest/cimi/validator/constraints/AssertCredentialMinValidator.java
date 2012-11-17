@@ -52,8 +52,8 @@ public class AssertCredentialMinValidator extends CimiContextValidatorAbstract<A
         if (value != null) {
             CimiCredential resource = (CimiCredential) value;
 
-            String login = resource.getUserName();
-            String pass = resource.getPassword();
+            String login = (String) resource.getExtensionAttributes().get("userName");
+            String pass = (String) resource.getExtensionAttributes().get("password");
 
             if ((null != login) || (null != pass)) {
                 valid = false;

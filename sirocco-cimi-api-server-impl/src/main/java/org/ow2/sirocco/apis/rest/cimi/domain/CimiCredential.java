@@ -24,7 +24,6 @@
  */
 package org.ow2.sirocco.apis.rest.cimi.domain;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
@@ -34,36 +33,22 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.ow2.sirocco.apis.rest.cimi.validator.GroupCreateByValue;
-import org.ow2.sirocco.apis.rest.cimi.validator.GroupWrite;
 import org.ow2.sirocco.apis.rest.cimi.validator.constraints.AssertCredential;
-import org.ow2.sirocco.apis.rest.cimi.validator.constraints.AssertCredentialMin;
-import org.ow2.sirocco.apis.rest.cimi.validator.constraints.NotEmptyIfNotNull;
 
 /**
  * Class Credential.
  */
 @XmlRootElement(name = "Credential")
-@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "operations", "userName", "key",
-    "password"})
-@JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "operations", "userName",
-    "key", "password"})
+@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "operations",
+    "xmlExtensionAttributes"})
+@JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 @AssertCredential(groups = GroupCreateByValue.class)
-@AssertCredentialMin(groups = GroupWrite.class)
+// @AssertCredentialMin(groups = GroupWrite.class)
 public class CimiCredential extends CimiObjectCommonAbstract {
 
     /** Serial number */
     private static final long serialVersionUID = 1L;
-
-    /** The initial superuser's user name. */
-    private String userName;
-
-    /** Initial superuser's password. */
-    private String password;
-
-    /** The digit of the public key for the initial superuser. */
-    @NotEmptyIfNotNull(groups = GroupWrite.class)
-    private byte[] key;
 
     /**
      * Default constructor.
@@ -79,81 +64,6 @@ public class CimiCredential extends CimiObjectCommonAbstract {
      */
     public CimiCredential(final String href) {
         super(href);
-    }
-
-    /**
-     * Parameterized constructor.
-     * 
-     * @param userName The login
-     * @param password The password
-     * @param key The public key
-     */
-    public CimiCredential(final String userName, final String password, final byte[] key) {
-        super();
-        this.userName = userName;
-        this.password = password;
-        this.key = key;
-    }
-
-    /**
-     * @return the userName
-     */
-    public String getUserName() {
-        return this.userName;
-    }
-
-    /**
-     * @param userName the userName to set
-     */
-    public void setUserName(final String userName) {
-        this.userName = userName;
-    }
-
-    /**
-     * @return the password
-     */
-    public String getPassword() {
-        return this.password;
-    }
-
-    /**
-     * @param password the password to set
-     */
-    public void setPassword(final String password) {
-        this.password = password;
-    }
-
-    /**
-     * Return the value of field "key".
-     * 
-     * @return The value
-     */
-    @XmlElement
-    public byte[] getKey() {
-        return this.key;
-    }
-
-    /**
-     * Set the value of field "key".
-     * 
-     * @param key The value
-     */
-    public void setKey(final byte[] key) {
-        this.key = key;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.ow2.sirocco.apis.rest.cimi.domain.CimiObjectCommonAbstract#hasValues()
-     */
-    @Override
-    public boolean hasValues() {
-        boolean has = super.hasValues();
-        has = has || (null != this.getKey());
-        has = has || (null != this.getPassword());
-        has = has || (null != this.getUserName());
-        return has;
     }
 
     /**

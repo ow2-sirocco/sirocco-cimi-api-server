@@ -99,11 +99,15 @@ public class CredentialConverter extends ObjectCommonConverter {
     protected void doCopyToCimi(final CimiContext context, final Credentials dataService, final CimiCredential dataCimi) {
         this.fill(context, dataService, dataCimi);
         if (true == context.mustBeExpanded(dataCimi)) {
-            dataCimi.setUserName(dataService.getUserName());
-            dataCimi.setKey(dataService.getPublicKey());
+            if (dataService.getUserName() != null) {
+                dataCimi.addExtensionAttribute("userName", dataService.getUserName());
+            }
+            if (dataService.getPublicKey() != null) {
+                dataCimi.addExtensionAttribute("key", new String(dataService.getPublicKey()));
+            }
             // Next write only
             if (true == context.isConvertedWriteOnly()) {
-                dataCimi.setPassword(dataService.getPassword());
+                dataCimi.addExtensionAttribute("password", dataService.getPassword());
             }
         }
     }
@@ -117,8 +121,8 @@ public class CredentialConverter extends ObjectCommonConverter {
      */
     protected void doCopyToService(final CimiContext context, final CimiCredential dataCimi, final Credentials dataService) {
         this.fill(context, dataCimi, dataService);
-        dataService.setPublicKey(dataCimi.getKey());
-        dataService.setPassword(dataCimi.getPassword());
-        dataService.setUserName(dataCimi.getUserName());
+        dataService.setPublicKey((String) dataCimi.getExtensionAttribute("key"));
+        dataService.setPassword((String) dataCimi.getExtensionAttribute("password"));
+        dataService.setUserName((String) dataCimi.getExtensionAttribute("userName"));
     }
 }
