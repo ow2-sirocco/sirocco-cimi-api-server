@@ -117,7 +117,10 @@ public class CimiManagersCredentialTemplateTest {
             .andReturn(create);
         EasyMock.replay(this.service);
 
-        CimiCredentialTemplate cimi = new CimiCredentialTemplate("user", "pass", new byte[1]);
+        CimiCredentialTemplate cimi = new CimiCredentialTemplate();
+        cimi.addExtensionAttribute("userName", "user");
+        cimi.addExtensionAttribute("password", "pass");
+        cimi.addExtensionAttribute("key", new String(new byte[1]));
         this.request.setCimiData(cimi);
         this.managerCreate.execute(this.context);
 

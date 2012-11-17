@@ -83,38 +83,38 @@ public class CredentialsConverterTest {
 
         // Empty Service -> Cimi
         cimi = (CimiCredential) this.context.convertToCimi(new Credentials(), CimiCredential.class);
-        Assert.assertNull(cimi.getPassword());
-        Assert.assertNull(cimi.getUserName());
-        Assert.assertNull(cimi.getKey());
+        Assert.assertNull(cimi.getExtensionAttribute("password"));
+        Assert.assertNull(cimi.getExtensionAttribute("userName"));
+        Assert.assertNull(cimi.getExtensionAttribute("key"));
 
         // Full Cimi -> Service
         cimi = new CimiCredential();
-        cimi.setPassword("password");
-        cimi.setUserName("userName");
-        cimi.setKey(new byte[] {1, 2, 3, 4, 5});
+        cimi.addExtensionAttribute("password", "password");
+        cimi.addExtensionAttribute("userName", "userName");
+        cimi.addExtensionAttribute("key", "12345");
 
         service = (Credentials) this.context.convertToService(cimi);
         Assert.assertEquals("password", service.getPassword());
         Assert.assertEquals("userName", service.getUserName());
-        Assert.assertArrayEquals(cimi.getKey(), service.getPublicKey());
+        Assert.assertEquals(cimi.getExtensionAttributes().get("key"), service.getPublicKey());
 
         // Full Service -> Cimi
         service = new Credentials();
         service.setPassword("password");
         service.setUserName("userName");
-        service.setPublicKey(new byte[] {6, 7, 8, 9, 10, 11});
+        service.setPublicKey("67891011");
 
         cimi = (CimiCredential) this.context.convertToCimi(service, CimiCredential.class);
-        Assert.assertNull(cimi.getPassword());
-        Assert.assertEquals("userName", cimi.getUserName());
-        Assert.assertArrayEquals(service.getPublicKey(), cimi.getKey());
+        Assert.assertNull(cimi.getExtensionAttributes().get("password"));
+        Assert.assertEquals("userName", cimi.getExtensionAttributes().get("userName"));
+        Assert.assertEquals(service.getPublicKey(), cimi.getExtensionAttribute("key"));
 
         // Full Service -> Cimi with "write only" data
         this.context.setConvertedWriteOnly(true);
         cimi = (CimiCredential) this.context.convertToCimi(service, CimiCredential.class);
-        Assert.assertEquals("password", cimi.getPassword());
-        Assert.assertEquals("userName", cimi.getUserName());
-        Assert.assertArrayEquals(service.getPublicKey(), cimi.getKey());
+        Assert.assertEquals("password", cimi.getExtensionAttributes().get("password"));
+        Assert.assertEquals("userName", cimi.getExtensionAttributes().get("userName"));
+        Assert.assertEquals(service.getPublicKey(), cimi.getExtensionAttribute("key"));
     }
 
     @Test
@@ -196,26 +196,26 @@ public class CredentialsConverterTest {
 
         // Empty Service -> Cimi
         cimi = (CimiCredentialTemplate) this.context.convertToCimi(new CredentialsTemplate(), CimiCredentialTemplate.class);
-        Assert.assertNull(cimi.getPassword());
-        Assert.assertNull(cimi.getUserName());
-        Assert.assertNull(cimi.getKey());
+        Assert.assertNull(cimi.getExtensionAttribute("password"));
+        Assert.assertNull(cimi.getExtensionAttribute("userName"));
+        Assert.assertNull(cimi.getExtensionAttribute("key"));
 
         // Full Cimi -> Service
         cimi = new CimiCredentialTemplate();
-        cimi.setPassword("password");
-        cimi.setUserName("userName");
-        cimi.setKey(new byte[] {1, 2, 3, 4, 5});
+        cimi.addExtensionAttribute("password", "password");
+        cimi.addExtensionAttribute("userName", "userName");
+        cimi.addExtensionAttribute("key", new byte[] {1, 2, 3, 4, 5}.toString());
 
         service = (CredentialsTemplate) this.context.convertToService(cimi);
         Assert.assertEquals("password", service.getPassword());
         Assert.assertEquals("userName", service.getUserName());
-        Assert.assertArrayEquals(cimi.getKey(), service.getPublicKey());
+        Assert.assertEquals(cimi.getExtensionAttribute("key"), service.getPublicKey());
 
         // Full Service -> Cimi
         service = new CredentialsTemplate();
         service.setPassword("password");
         service.setUserName("userName");
-        service.setPublicKey(new byte[] {6, 7, 8, 9, 10, 11});
+        service.setPublicKey("67891011");
     }
 
     @Test

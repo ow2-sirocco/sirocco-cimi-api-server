@@ -85,6 +85,7 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
         CredentialsResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
 
         Assert.assertEquals(200, statusResponse);
+        System.out.println("AA=" + entityResponse);
         JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class, "Credentials-1.json"),
             new StringReader(entityResponse));
 

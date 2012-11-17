@@ -13,6 +13,7 @@
 		<updated>2000-01-01T00:00:00.000Z</updated>
 		<userName>userNameValue_0</userName>
 		<password>passwordValue_0</password>
+		<key>0</key>
 	</credential>
 	<machineConfig href="hrefValue_0">
 		<id>idValue_0</id>

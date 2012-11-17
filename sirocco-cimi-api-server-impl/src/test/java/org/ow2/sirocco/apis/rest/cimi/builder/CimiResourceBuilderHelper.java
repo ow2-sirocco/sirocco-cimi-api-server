@@ -100,17 +100,6 @@ public class CimiResourceBuilderHelper {
         return ret;
     }
 
-    public static byte[] buildBytes(final Integer id) {
-        byte[] ret = null;
-        if ((null != id) && (id > 0)) {
-            ret = new byte[13 + id * 13];
-            for (int i = 0; i < ret.length; i++) {
-                ret[i] = (byte) i;
-            }
-        }
-        return ret;
-    }
-
     public static Map<String, String> buildProperties(final Integer id) {
         Map<String, String> properties = null;
         if ((null != id) && (id > 0)) {
@@ -205,9 +194,9 @@ public class CimiResourceBuilderHelper {
         CimiCredential cimi = new CimiCredential();
         CimiResourceBuilderHelper.fillCimiObjectCommon(cimi, id, index, expand);
         if ((null != expand) && (true == expand)) {
-            cimi.setKey(CimiResourceBuilderHelper.buildBytes(id));
-            cimi.setPassword("passwordValue" + postfix);
-            cimi.setUserName("userNameValue" + postfix);
+            cimi.addExtensionAttribute("key", id.toString());
+            cimi.addExtensionAttribute("password", "passwordValue" + postfix);
+            cimi.addExtensionAttribute("userName", "userNameValue" + postfix);
         }
         return cimi;
     }
@@ -252,9 +241,9 @@ public class CimiResourceBuilderHelper {
         CimiCredentialTemplate cimi = new CimiCredentialTemplate();
         CimiResourceBuilderHelper.fillCimiObjectCommon(cimi, id, index, expand);
         if ((null != expand) && (true == expand)) {
-            cimi.setKey(CimiResourceBuilderHelper.buildBytes(id));
-            cimi.setPassword("passwordValue" + postfix);
-            cimi.setUserName("userNameValue" + postfix);
+            cimi.addExtensionAttribute("key", id.toString());
+            cimi.addExtensionAttribute("password", "passwordValue" + postfix);
+            cimi.addExtensionAttribute("userName", "userNameValue" + postfix);
         }
         return cimi;
     }

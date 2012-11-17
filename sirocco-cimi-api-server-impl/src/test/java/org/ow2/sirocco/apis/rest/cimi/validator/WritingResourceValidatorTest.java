@@ -553,64 +553,72 @@ public class WritingResourceValidatorTest {
         Assert.assertFalse(CimiValidatorHelper.getInstance().validateToWrite(this.context, cimi));
     }
 
-    @Test
-    public void testCimiCredential() throws Exception {
+    // @Test
+    // public void testCimiCredential() throws Exception {
+    //
+    // CimiCredential cimi;
+    // byte[] filledKeySize3 = new byte[3];
+    // for (int i = 0; i < filledKeySize3.length; i++) {
+    // filledKeySize3[i] = (byte) (i + 2);
+    // }
+    //
+    // // --------------- OK
+    //
+    // cimi = new CimiCredential();
+    // Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context,
+    // cimi));
+    //
+    // cimi = new CimiCredential();
+    // cimi.setKey(filledKeySize3);
+    // Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context,
+    // cimi));
+    //
+    // cimi = new CimiCredential();
+    // cimi.setKey(new byte[1]);
+    // Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context,
+    // cimi));
+    //
+    // // --------------- KO
+    //
+    // cimi = new CimiCredential();
+    // cimi.setKey(new byte[0]);
+    // Assert.assertFalse(CimiValidatorHelper.getInstance().validateToWrite(this.context,
+    // cimi));
+    //
+    // }
 
-        CimiCredential cimi;
-        byte[] filledKeySize3 = new byte[3];
-        for (int i = 0; i < filledKeySize3.length; i++) {
-            filledKeySize3[i] = (byte) (i + 2);
-        }
-
-        // --------------- OK
-
-        cimi = new CimiCredential();
-        Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context, cimi));
-
-        cimi = new CimiCredential();
-        cimi.setKey(filledKeySize3);
-        Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context, cimi));
-
-        cimi = new CimiCredential();
-        cimi.setKey(new byte[1]);
-        Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context, cimi));
-
-        // --------------- KO
-
-        cimi = new CimiCredential();
-        cimi.setKey(new byte[0]);
-        Assert.assertFalse(CimiValidatorHelper.getInstance().validateToWrite(this.context, cimi));
-
-    }
-
-    @Test
-    public void testCimiCredentialTemplate() throws Exception {
-
-        CimiCredentialTemplate cimi;
-        byte[] filledKeySize3 = new byte[3];
-        for (int i = 0; i < filledKeySize3.length; i++) {
-            filledKeySize3[i] = (byte) (i + 2);
-        }
-
-        // --------------- OK
-
-        cimi = new CimiCredentialTemplate();
-        Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context, cimi));
-
-        cimi = new CimiCredentialTemplate();
-        cimi.setKey(filledKeySize3);
-        Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context, cimi));
-
-        cimi = new CimiCredentialTemplate();
-        cimi.setKey(new byte[1]);
-        Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context, cimi));
-
-        // --------------- KO
-
-        cimi = new CimiCredentialTemplate();
-        cimi.setKey(new byte[0]);
-        Assert.assertFalse(CimiValidatorHelper.getInstance().validateToWrite(this.context, cimi));
-    }
+    // @Test
+    // public void testCimiCredentialTemplate() throws Exception {
+    //
+    // CimiCredentialTemplate cimi;
+    // byte[] filledKeySize3 = new byte[3];
+    // for (int i = 0; i < filledKeySize3.length; i++) {
+    // filledKeySize3[i] = (byte) (i + 2);
+    // }
+    //
+    // // --------------- OK
+    //
+    // cimi = new CimiCredentialTemplate();
+    // Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context,
+    // cimi));
+    //
+    // cimi = new CimiCredentialTemplate();
+    // cimi.setKey(filledKeySize3);
+    // Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context,
+    // cimi));
+    //
+    // cimi = new CimiCredentialTemplate();
+    // cimi.setKey(new byte[1]);
+    // Assert.assertTrue(CimiValidatorHelper.getInstance().validateToWrite(this.context,
+    // cimi));
+    //
+    // // --------------- KO
+    //
+    // cimi = new CimiCredentialTemplate();
+    // cimi.setKey(new byte[0]);
+    // Assert.assertFalse(CimiValidatorHelper.getInstance().validateToWrite(this.context,
+    // cimi));
+    // }
 
     @Test
     public void testCimiMachine() throws Exception {

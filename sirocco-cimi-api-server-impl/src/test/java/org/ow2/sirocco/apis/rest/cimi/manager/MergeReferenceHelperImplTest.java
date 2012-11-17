@@ -202,9 +202,9 @@ public class MergeReferenceHelperImplTest {
         byte[] refKey = new byte[10];
         cimiRef = new CimiCredential();
         cimiRef.setId("refId");
-        cimiRef.setKey(refKey);
-        cimiRef.setPassword("refPassword");
-        cimiRef.setUserName("refUserName");
+        cimiRef.addExtensionAttribute("key", new String(refKey));
+        cimiRef.addExtensionAttribute("password", "refPassword");
+        cimiRef.addExtensionAttribute("userName", "refUserName");
 
         // Source null
         cimi = new CimiCredential();
@@ -215,21 +215,21 @@ public class MergeReferenceHelperImplTest {
         merger.merge(cimiRef, cimi);
 
         Assert.assertEquals("refId", cimi.getId());
-        Assert.assertSame(refKey, cimi.getKey());
-        Assert.assertEquals("refPassword", cimi.getPassword());
-        Assert.assertEquals("refUserName", cimi.getUserName());
+        Assert.assertEquals(new String(refKey), cimi.getExtensionAttribute("key"));
+        Assert.assertEquals("refPassword", cimi.getExtensionAttribute("password"));
+        Assert.assertEquals("refUserName", cimi.getExtensionAttribute("userName"));
 
         // Destination with values
         byte[] cimiKey = new byte[7];
         cimi = new CimiCredential();
-        cimi.setKey(cimiKey);
-        cimi.setPassword("password");
-        cimi.setUserName("userName");
+        cimi.addExtensionAttribute("key", new String(cimiKey));
+        cimi.addExtensionAttribute("password", "password");
+        cimi.addExtensionAttribute("userName", "userName");
         merger.merge(cimiRef, cimi);
 
-        Assert.assertSame(cimiKey, cimi.getKey());
-        Assert.assertEquals("password", cimi.getPassword());
-        Assert.assertEquals("userName", cimi.getUserName());
+        Assert.assertEquals(new String(cimiKey), cimi.getExtensionAttribute("key"));
+        Assert.assertEquals("password", cimi.getExtensionAttribute("password"));
+        Assert.assertEquals("userName", cimi.getExtensionAttribute("userName"));
     }
 
     /**
