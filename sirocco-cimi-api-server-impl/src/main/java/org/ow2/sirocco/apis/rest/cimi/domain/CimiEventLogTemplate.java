@@ -38,7 +38,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  */
 @XmlRootElement(name = "EventLogTemplate")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "targetResource", "persistence",
-    "operations"})
+    "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "targetResource",
     "persistence", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

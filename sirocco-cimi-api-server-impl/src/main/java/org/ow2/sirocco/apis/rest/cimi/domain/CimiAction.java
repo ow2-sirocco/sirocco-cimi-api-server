@@ -40,7 +40,8 @@ import org.ow2.sirocco.apis.rest.cimi.validator.constraints.AssertActionPath;
  */
 @XmlRootElement(name = "Action")
 // XXX name and description not in Action
-@XmlType(propOrder = {"name", "description", "action", "force", "format", "destination", "image", "propertyArray"})
+@XmlType(propOrder = {"name", "description", "action", "force", "format", "destination", "image", "propertyArray",
+    "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "action", "force", "format", "destination", "image", "properties"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiAction extends CimiCommonResourceUriAbstract {

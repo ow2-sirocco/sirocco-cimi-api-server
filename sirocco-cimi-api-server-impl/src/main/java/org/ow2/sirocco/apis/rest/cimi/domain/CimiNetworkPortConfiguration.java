@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.GroupCreateByValue;
  */
 @XmlRootElement(name = "NetworkPortConfiguration")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "portType", "classOfService",
-    "operations"})
+    "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "portType",
     "classOfService", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

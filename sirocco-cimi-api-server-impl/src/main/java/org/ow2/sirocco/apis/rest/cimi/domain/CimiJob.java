@@ -45,7 +45,7 @@ import org.ow2.sirocco.apis.rest.cimi.utils.CimiDateAdapter;
 @XmlRootElement(name = "Job")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "status", "targetResource",
     "affectedResources", "action", "returnCode", "progress", "statusMessage", "timeOfStatusChange", "parentJob", "nestedJobs",
-    "operations"})
+    "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "status", "targetResource",
     "affectedResources", "action", "returnCode", "progress", "statusMessage", "timeOfStatusChange", "parentJob", "nestedJobs",
     "operations"})

@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.GroupCreateByValue;
  */
 @XmlRootElement(name = "VolumeConfiguration")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "type", "format", "capacity",
-    "operations"})
+    "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "type", "format",
     "capacity", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

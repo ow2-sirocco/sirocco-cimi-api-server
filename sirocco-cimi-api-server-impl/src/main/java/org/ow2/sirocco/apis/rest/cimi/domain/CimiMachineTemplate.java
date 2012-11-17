@@ -46,7 +46,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.constraints.NotEmptyIfNotNull;
 @XmlRootElement(name = "MachineTemplate")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "initialState", "machineConfig",
     "machineImage", "credential", "volumes", "volumeTemplates", "networkInterfaces", "eventLogTemplate", "userData",
-    "operations"})
+    "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "initialState",
     "machineConfig", "machineImage", "credential", "volumes", "volumeTemplates", "networkInterfaces", "eventLogTemplate",
     "userData", "operations"})

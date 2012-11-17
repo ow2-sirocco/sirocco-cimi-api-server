@@ -37,7 +37,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * Class SystemMachine.
  */
 @XmlRootElement(name = "SystemMachine")
-@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "machine", "operations"})
+@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "machine", "operations",
+    "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "machine", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiSystemMachine extends CimiObjectCommonAbstract {

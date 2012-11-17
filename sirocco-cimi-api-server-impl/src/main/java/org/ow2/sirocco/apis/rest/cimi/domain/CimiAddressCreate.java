@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  * Class Address Create.
  */
 @XmlRootElement(name = "AddressCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "addressTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "addressTemplate", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "name", "description", "properties", "addressTemplate"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiAddressCreate extends CimiCommonResourceUriAbstract {

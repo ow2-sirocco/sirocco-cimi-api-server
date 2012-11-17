@@ -38,7 +38,8 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  * Class MachineNetworkInterfaceAddress.
  */
 @XmlRootElement(name = "MachineNetworkInterfaceAddress")
-@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "address", "operations"})
+@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "address", "operations",
+    "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "address", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiMachineNetworkInterfaceAddress extends CimiObjectCommonAbstract {

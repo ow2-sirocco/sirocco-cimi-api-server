@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  * Class ForwardingGroup Create.
  */
 @XmlRootElement(name = "ForwardingGroupCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "forwardingGroupTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "forwardingGroupTemplate", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "name", "description", "properties", "forwardingGroupTemplate"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiForwardingGroupCreate extends CimiCommonResourceUriAbstract {

@@ -68,7 +68,8 @@ import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiVolumeTemplateCollec
     "systems", "systemTemplates", "machines", "machineTemplates", "machineConfigs", "machineImages", "credentials",
     "credentialTemplates", "volumes", "volumeTemplates", "volumeConfigs", "volumeImages", "networks", "networkTemplates",
     "networkConfigs", "networkPorts", "networkPortTemplates", "networkPortConfigs", "addresses", "addressTemplates",
-    "forwardingGroups", "forwardingGroupTemplates", "jobs", "eventLogs", "eventLogTemplates", "operations"})
+    "forwardingGroups", "forwardingGroupTemplates", "jobs", "eventLogs", "eventLogTemplates", "operations",
+    "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "baseURI",
     "resourceMetadata", "systems", "systemTemplates", "machines", "machineTemplates", "machineConfigs", "machineImages",
     "credentials", "credentialTemplates", "volumes", "volumeTemplates", "volumeConfigs", "volumeImages", "networks",

@@ -39,7 +39,7 @@ import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiNetworkNetworkPortCo
  */
 @XmlRootElement(name = "Network")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "networkType", "mtu",
-    "classOfService", "networkPorts", "forwardingGroup", "eventLog", "operations"})
+    "classOfService", "networkPorts", "forwardingGroup", "eventLog", "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "networkType",
     "mtu", "classOfService", "networkPorts", "forwardingGroup", "eventLog", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

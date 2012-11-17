@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  * Class EventLog Create.
  */
 @XmlRootElement(name = "EventLogCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "eventLogTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "eventLogTemplate", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "name", "description", "properties", "eventLogTemplate"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiEventLogCreate extends CimiCommonResourceUriAbstract {

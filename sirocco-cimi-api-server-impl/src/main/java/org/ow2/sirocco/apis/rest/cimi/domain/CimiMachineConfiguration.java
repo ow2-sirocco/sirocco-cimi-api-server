@@ -45,7 +45,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.constraints.NotEmptyIfNotNull;
  */
 @XmlRootElement(name = "MachineConfiguration")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "cpu", "memory", "disks", "cpuArch",
-    "operations"})
+    "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"href", "resourceURI", "id", "name", "description", "created", "updated", "properties", "cpu", "memory",
     "disks", "cpuArch", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

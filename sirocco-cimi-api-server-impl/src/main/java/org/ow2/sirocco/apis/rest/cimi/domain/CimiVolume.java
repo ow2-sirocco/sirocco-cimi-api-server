@@ -39,7 +39,7 @@ import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiVolumeVolumeImageCol
  */
 @XmlRootElement(name = "Volume")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "type", "capacity",
-    "bootable", "images", "eventLog", "operations"})
+    "bootable", "images", "eventLog", "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "type",
     "capacity", "bootable", "images", "eventLog", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

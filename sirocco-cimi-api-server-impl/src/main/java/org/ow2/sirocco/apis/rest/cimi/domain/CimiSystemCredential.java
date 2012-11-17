@@ -37,7 +37,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * Class SystemCredential.
  */
 @XmlRootElement(name = "SystemCredential")
-@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "credential", "operations"})
+@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "credential", "operations",
+    "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "credential", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiSystemCredential extends CimiObjectCommonAbstract {

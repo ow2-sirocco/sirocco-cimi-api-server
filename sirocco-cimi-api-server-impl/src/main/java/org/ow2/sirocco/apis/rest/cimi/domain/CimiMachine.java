@@ -41,7 +41,7 @@ import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiMachineVolumeCollect
  */
 @XmlRootElement(name = "Machine")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "cpu", "memory", "disks",
-    "cpuArch", "volumes", "networkInterfaces", "eventLog", "operations"})
+    "cpuArch", "volumes", "networkInterfaces", "eventLog", "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "cpu", "memory",
     "disks", "cpuArch", "volumes", "networkInterfaces", "eventLog", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

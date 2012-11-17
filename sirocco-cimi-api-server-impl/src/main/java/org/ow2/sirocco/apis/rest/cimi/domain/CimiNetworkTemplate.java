@@ -38,7 +38,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  */
 @XmlRootElement(name = "NetworkTemplate")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "networkConfig", "forwardingGroup",
-    "eventLogTemplate", "operations"})
+    "eventLogTemplate", "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "networkConfig",
     "forwardingGroup", "eventLogTemplate", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

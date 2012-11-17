@@ -42,7 +42,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  * </p>
  */
 @XmlRootElement(name = "MachineCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "machineTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "machineTemplate", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "name", "description", "properties", "machineTemplate"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiMachineCreate extends CimiCommonResourceUriAbstract {

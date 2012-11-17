@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  * Class NetworkPort Create.
  */
 @XmlRootElement(name = "NetworkPortCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "networkPortTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "networkPortTemplate", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "name", "description", "propertyArray", "networkPortTemplate"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiNetworkPortCreate extends CimiCommonResourceUriAbstract {

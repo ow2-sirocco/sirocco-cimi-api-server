@@ -42,7 +42,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.GroupCreateByValue;
  */
 @XmlRootElement(name = "MachineImage")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "type", "imageLocation",
-    "relatedImage", "operations"})
+    "relatedImage", "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "type",
     "imageLocation", "relatedImage", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

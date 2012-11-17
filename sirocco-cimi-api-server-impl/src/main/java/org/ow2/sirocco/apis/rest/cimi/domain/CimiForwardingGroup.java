@@ -38,7 +38,8 @@ import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiForwardingGroupNetwo
  * Class ForwardingGroup.
  */
 @XmlRootElement(name = "ForwardingGroup")
-@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "networks", "operations"})
+@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "networks", "operations",
+    "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "networks", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiForwardingGroup extends CimiObjectCommonAbstract {

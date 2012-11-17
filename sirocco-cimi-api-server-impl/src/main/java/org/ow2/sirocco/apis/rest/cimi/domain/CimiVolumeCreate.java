@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  * Class Volume Create.
  */
 @XmlRootElement(name = "VolumeCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "volumeTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "volumeTemplate", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "name", "description", "propertyArray", "volumeTemplate"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiVolumeCreate extends CimiCommonResourceUriAbstract {

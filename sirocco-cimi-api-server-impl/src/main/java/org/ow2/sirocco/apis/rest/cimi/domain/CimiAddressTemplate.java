@@ -41,7 +41,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  */
 @XmlRootElement(name = "AddressTemplate")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "ip", "hostname", "allocation",
-    "defaultGateway", "dns", "protocol", "mask", "network", "operations"})
+    "defaultGateway", "dns", "protocol", "mask", "network", "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"href", "resourceURI", "id", "name", "description", "created", "updated", "propertyArray", "ip",
     "hostname", "allocation", "defaultGateway", "dns", "protocol", "mask", "network", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

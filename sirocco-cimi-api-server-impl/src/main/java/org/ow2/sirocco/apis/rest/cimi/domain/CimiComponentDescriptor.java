@@ -42,7 +42,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
 @XmlRootElement(name = "ComponentDescriptor")
 @XmlType(propOrder = {"name", "description", "propertyArray", "type", "machineTemplate", "credentialTemplate",
     "volumeTemplate", "systemTemplate", "networkTemplate", "networkPortTemplate", "addressTemplate", "forwardingGroupTemplate",
-    "quantity"})
+    "quantity", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"name", "description", "properties", "type", "machineTemplate", "credentialTemplate", "volumeTemplate",
     "systemTemplate", "networkTemplate", "networkPortTemplate", "addressTemplate", "forwardingGroupTemplate", "quantity"})
 @JsonSerialize(include = Inclusion.NON_NULL)

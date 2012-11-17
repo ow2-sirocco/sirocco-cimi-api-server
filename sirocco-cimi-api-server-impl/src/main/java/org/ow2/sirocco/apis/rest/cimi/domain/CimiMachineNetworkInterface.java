@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  */
 @XmlRootElement(name = "MachineNetworkInterface")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "addresses", "network",
-    "networkPort", "state", "macAddress", "mtu", "operations", "networkType"})
+    "networkPort", "state", "macAddress", "mtu", "operations", "networkType", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "addresses", "network",
     "networkPort", "state", "macAddress", "mtu", "operations", "networkType"})
 @JsonSerialize(include = Inclusion.NON_NULL)

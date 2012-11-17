@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  * Class Credentials Create.
  */
 @XmlRootElement(name = "CredentialCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "credentialTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "credentialTemplate", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "name", "description", "properties", "credentialTemplate"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiCredentialCreate extends CimiCommonResourceUriAbstract {

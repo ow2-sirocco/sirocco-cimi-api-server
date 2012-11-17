@@ -42,7 +42,7 @@ import org.ow2.sirocco.apis.rest.cimi.utils.CimiDateAdapter;
  */
 @XmlRootElement(name = "Event")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "timestamp", "type", "content",
-    "outcome", "severity", "contact", "operations"})
+    "outcome", "severity", "contact", "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "timestamp", "type",
     "content", "outcome", "severity", "contact", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

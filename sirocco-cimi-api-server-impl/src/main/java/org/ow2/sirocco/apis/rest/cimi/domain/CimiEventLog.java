@@ -39,7 +39,7 @@ import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiEventCollection;
  */
 @XmlRootElement(name = "EventLog")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "targetResource", "events",
-    "persistence", "summary", "operations"})
+    "persistence", "summary", "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "targetResource", "events",
     "persistence", "summary", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

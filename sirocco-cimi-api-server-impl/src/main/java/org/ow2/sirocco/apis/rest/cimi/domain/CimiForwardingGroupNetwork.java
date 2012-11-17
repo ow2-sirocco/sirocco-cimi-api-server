@@ -37,7 +37,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * Class ForwardingGroupNetwork.
  */
 @XmlRootElement(name = "ForwardingGroupNetwork")
-@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "network", "operations"})
+@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "network", "operations",
+    "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "network", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiForwardingGroupNetwork extends CimiObjectCommonAbstract {

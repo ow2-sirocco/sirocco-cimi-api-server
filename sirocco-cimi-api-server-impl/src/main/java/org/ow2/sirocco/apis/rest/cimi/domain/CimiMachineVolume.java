@@ -39,7 +39,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  */
 @XmlRootElement(name = "MachineVolume")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "initialLocation", "volume",
-    "operations"})
+    "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "initialLocation",
     "volume", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

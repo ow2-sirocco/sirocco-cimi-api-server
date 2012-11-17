@@ -39,7 +39,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  */
 @XmlRootElement(name = "Disk")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "capacity", "initialLocation",
-    "operations"})
+    "operations", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "capacity",
     "initialLocation", "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)

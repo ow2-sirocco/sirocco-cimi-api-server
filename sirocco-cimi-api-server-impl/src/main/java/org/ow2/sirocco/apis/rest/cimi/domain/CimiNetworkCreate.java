@@ -40,7 +40,7 @@ import org.ow2.sirocco.apis.rest.cimi.validator.ValidChild;
  * Class Network Create.
  */
 @XmlRootElement(name = "NetworkCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "networkTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "networkTemplate", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "name", "description", "propertyArray", "networkTemplate"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiNetworkCreate extends CimiCommonResourceUriAbstract {

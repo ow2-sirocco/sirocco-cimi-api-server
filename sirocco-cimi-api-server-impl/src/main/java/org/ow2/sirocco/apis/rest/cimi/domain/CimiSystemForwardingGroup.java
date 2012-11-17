@@ -37,7 +37,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * Class SystemForwardingGroup.
  */
 @XmlRootElement(name = "SystemForwardingGroup")
-@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "forwardingGroup", "operations"})
+@XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "forwardingGroup", "operations",
+    "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "forwardingGroup",
     "operations"})
 @JsonSerialize(include = Inclusion.NON_NULL)
