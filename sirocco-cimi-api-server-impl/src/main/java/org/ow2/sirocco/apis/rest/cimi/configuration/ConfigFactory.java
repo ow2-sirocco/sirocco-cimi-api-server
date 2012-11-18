@@ -1212,7 +1212,7 @@ public class ConfigFactory {
             item.putData(ConfigFactory.CONVERTER, new ResourceMetadataCollectionConverter());
             referenceNames = new HashMap<ExchangeType, String>();
             item.putData(ConfigFactory.NAMES, referenceNames);
-            referenceNames.put(ExchangeType.Credential, "resourceMetadatas");
+            referenceNames.put(ExchangeType.ResourceMetadata, "resourceMetadatas");
             break;
 
         default:

@@ -38,6 +38,7 @@ import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiMachineConfiguration
 import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiMachineImageCollection;
 import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiMachineTemplateCollection;
 import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiNetworkCollection;
+import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiResourceMetadataCollection;
 import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiSystemCollection;
 import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiSystemTemplateCollection;
 import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiVolumeCollection;
@@ -156,6 +157,9 @@ public class CloudEntryPointConverter extends ObjectCommonConverter {
 
             dataCimi.setNetworks((CimiNetworkCollection) context.convertNextCimi(dataService.getNetworks(),
                 CimiNetworkCollection.class));
+
+            dataCimi.setResourceMetadata((CimiResourceMetadataCollection) context.convertNextCimi(
+                dataService.getResourceMetadata(), CimiResourceMetadataCollection.class));
 
         }
     }

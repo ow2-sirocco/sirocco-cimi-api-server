@@ -54,7 +54,7 @@ import org.ow2.sirocco.cloudmanager.model.cimi.system.System;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemTemplate;
 
 /**
- * Aggregation of CloudEntryPoint to add all items necesary for CIMI.
+ * Aggregation of CloudEntryPoint to add all items necessary for CIMI.
  */
 public class CloudEntryPointAggregate extends CloudEntryPoint {
 
@@ -185,6 +185,8 @@ public class CloudEntryPointAggregate extends CloudEntryPoint {
      * Field "eventLogTemplates".
      */
     private List<EventLogTemplate> eventLogTemplates;
+
+    private List<CimiResourceMetadata> resourceMetadata;
 
     /**
      * Parameterized constructor.
@@ -652,4 +654,13 @@ public class CloudEntryPointAggregate extends CloudEntryPoint {
     public void setEventLogTemplates(final List<EventLogTemplate> eventLogTemplates) {
         this.eventLogTemplates = eventLogTemplates;
     }
+
+    public List<CimiResourceMetadata> getResourceMetadata() {
+        return this.resourceMetadata;
+    }
+
+    public void setResourceMetadata(final List<CimiResourceMetadata> resourceMetadata) {
+        this.resourceMetadata = resourceMetadata;
+    }
+
 }

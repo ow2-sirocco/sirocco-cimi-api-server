@@ -24,6 +24,10 @@
  */
 package org.ow2.sirocco.apis.rest.cimi.converter.collection;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.ow2.sirocco.apis.rest.cimi.domain.CimiResourceMetadata;
 import org.ow2.sirocco.apis.rest.cimi.domain.collection.CimiResourceMetadataCollection;
 import org.ow2.sirocco.apis.rest.cimi.request.CimiContext;
 
@@ -42,26 +46,47 @@ public class ResourceMetadataCollectionConverter extends CollectionConverterAbst
 
     @Override
     public Object toCimi(final CimiContext context, final Object dataService) {
-        // TODO Auto-generated method stub
-        return null;
+        CimiResourceMetadataCollection cimi = new CimiResourceMetadataCollection();
+        this.copyToCimi(context, dataService, cimi);
+        return cimi;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.ow2.sirocco.apis.rest.cimi.converter.CimiConverter#copyToCimi(org.ow2.sirocco.apis.rest.cimi.utils.CimiContextImpl,
+     *      java.lang.Object, java.lang.Object)
+     */
+    @SuppressWarnings("unchecked")
     @Override
     public void copyToCimi(final CimiContext context, final Object dataService, final Object dataCimi) {
-        // TODO Auto-generated method stub
-
+        this.doCopyToCimi(context, (List<Object>) dataService, (CimiResourceMetadataCollection) dataCimi);
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.ow2.sirocco.apis.rest.cimi.converter.CimiConverter#toService(org.ow2.sirocco.apis.rest.cimi.utils.CimiContextImpl,
+     *      java.lang.Object)
+     */
     @Override
     public Object toService(final CimiContext context, final Object dataCimi) {
-        // TODO Auto-generated method stub
-        return null;
+        List<CimiResourceMetadata> service = new ArrayList<CimiResourceMetadata>();
+        this.copyToService(context, dataCimi, service);
+        return service;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.ow2.sirocco.apis.rest.cimi.converter.CimiConverter#copyToService
+     *      (org.ow2.sirocco.apis.rest.cimi.utils.CimiContextImpl,
+     *      java.lang.Object, java.lang.Object)
+     */
+    @SuppressWarnings("unchecked")
     @Override
     public void copyToService(final CimiContext context, final Object dataCimi, final Object dataService) {
-        // TODO Auto-generated method stub
-
+        this.doCopyToService(context, (CimiResourceMetadataCollection) dataCimi, (List<Object>) dataService);
     }
 
 }

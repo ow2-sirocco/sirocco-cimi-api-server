@@ -29,6 +29,7 @@ import javax.ws.rs.core.Response;
 import org.ow2.sirocco.apis.rest.cimi.domain.CimiCloudEntryPoint;
 import org.ow2.sirocco.apis.rest.cimi.domain.CloudEntryPointAggregate;
 import org.ow2.sirocco.apis.rest.cimi.manager.CimiManagerReadAbstract;
+import org.ow2.sirocco.apis.rest.cimi.manager.resourcemetadata.IResourceMetadataManager;
 import org.ow2.sirocco.apis.rest.cimi.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;
 import org.ow2.sirocco.cloudmanager.core.api.IEventManager;
@@ -80,6 +81,10 @@ public class CimiManagerReadCloudEntryPoint extends CimiManagerReadAbstract {
     @Qualifier("IEventManager")
     private IEventManager eventManager;
 
+    @Autowired
+    @Qualifier("IResourceMetadataManager")
+    private IResourceMetadataManager resourceMetadataManager;
+
     /**
      * {@inheritDoc}
      * 
@@ -125,8 +130,9 @@ public class CimiManagerReadCloudEntryPoint extends CimiManagerReadAbstract {
         out.setEventLogs(this.eventManager.getEventLog());
         out.setEventLogTemplates(this.eventManager.getEventLogTemplates());
 
+        out.setResourceMetadata(this.resourceMetadataManager.getResourceMetadata());
+
         // Unsupported resources :
-        // resourceMetadata
         // meters
         // meterTemplates
         // meterConfigs

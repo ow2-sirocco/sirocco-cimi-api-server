@@ -38,7 +38,7 @@ import org.ow2.sirocco.apis.rest.cimi.request.CimiContext;
  * </ul>
  * </p>
  */
-public class ResourceMetadataCollectionRootConverter extends CredentialCollectionConverter {
+public class ResourceMetadataCollectionRootConverter extends ResourceMetadataCollectionConverter {
 
     /**
      * {@inheritDoc}

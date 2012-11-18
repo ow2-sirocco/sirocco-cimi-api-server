@@ -41,26 +41,48 @@ public class ResourceMetadataConverter extends ObjectCommonConverter {
 
     @Override
     public Object toCimi(final CimiContext context, final Object dataService) {
-        // TODO Auto-generated method stub
-        return null;
+        CimiResourceMetadata cimi = new CimiResourceMetadata();
+        this.copyToCimi(context, dataService, cimi);
+        return cimi;
     }
 
     @Override
     public void copyToCimi(final CimiContext context, final Object dataService, final Object dataCimi) {
-        // TODO Auto-generated method stub
-
+        this.doCopyToCimi(context, (CimiResourceMetadata) dataService, (CimiResourceMetadata) dataCimi);
     }
 
     @Override
     public Object toService(final CimiContext context, final Object dataCimi) {
-        // TODO Auto-generated method stub
-        return null;
+        CimiResourceMetadata service = new CimiResourceMetadata();
+        this.copyToService(context, dataCimi, service);
+        return service;
     }
 
     @Override
     public void copyToService(final CimiContext context, final Object dataCimi, final Object dataService) {
-        // TODO Auto-generated method stub
+        this.doCopyToService(context, (CimiResourceMetadata) dataCimi, (CimiResourceMetadata) dataService);
+    }
 
+    protected void doCopyToCimi(final CimiContext context, final CimiResourceMetadata dataService,
+        final CimiResourceMetadata dataCimi) {
+        if (true == context.mustBeExpanded(dataCimi)) {
+            dataCimi.setResourceURI(dataCimi.getExchangeType().getResourceURI());
+            if (null != dataService.getId()) {
+                dataCimi.setId(context.makeHref(dataCimi, dataService.getId().toString()));
+            }
+        }
+        if (true == context.mustBeReferenced(dataCimi)) {
+            dataCimi.setHref(context.makeHref(dataCimi, dataService.getId().toString()));
+        }
+        if (true == context.mustBeExpanded(dataCimi)) {
+            dataCimi.setName(dataService.getName());
+            dataCimi.setTypeURI(dataService.getTypeURI());
+            dataCimi.setAttributes(dataService.getAttributes());
+        }
+    }
+
+    protected void doCopyToService(final CimiContext context, final CimiResourceMetadata dataCimi,
+        final CimiResourceMetadata dataService) {
     }
 
 }
