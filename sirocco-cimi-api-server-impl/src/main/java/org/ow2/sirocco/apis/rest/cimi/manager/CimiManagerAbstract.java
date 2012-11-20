@@ -186,10 +186,14 @@ public abstract class CimiManagerAbstract implements CimiManager {
         if (null == context.getResponse().getCimiData()) {
             // Job
             if (dataService instanceof Job) {
-                CimiJob cimi = (CimiJob) context.convertToCimi(dataService, CimiJob.class);
-                context.getResponse().setCimiData(cimi);
-                context.getResponse().putHeader(Constants.HEADER_CIMI_JOB_URI, cimi.getId());
-                context.getResponse().putHeader(Constants.HEADER_LOCATION, cimi.getTargetResource().getHref());
+                CimiJob job = (CimiJob) context.convertToCimi(dataService, CimiJob.class);
+                context.getResponse().setCimiData(null);
+                context.getResponse().putHeader(Constants.HEADER_CIMI_JOB_URI, job.getId());
+                if (job.getAffectedResources() == null || job.getAffectedResources().length == 0) {
+                    CimiManagerAbstract.LOGGER.error("Illegal Resource creation Job: no affected resource: " + job.getId());
+                } else {
+                    context.getResponse().putHeader(Constants.HEADER_LOCATION, job.getAffectedResources()[0].getHref());
+                }
                 context.getResponse().setStatus(Response.Status.ACCEPTED);
             }
         }
