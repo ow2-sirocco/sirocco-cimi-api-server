@@ -46,7 +46,10 @@ public abstract class CimiManagerUpdateAbstract extends CimiManagerAbstract {
             if (null == context.getRequest().getCimiData()) {
                 valid = false;
             } else {
-                valid = CimiValidatorHelper.getInstance().validateToWrite(context, context.getRequest().getCimiData());
+                // XXX if the update is partial we do not validate the object
+                if (!context.getRequest().getParams().getCimiSelect().isProvided()) {
+                    valid = CimiValidatorHelper.getInstance().validateToWrite(context, context.getRequest().getCimiData());
+                }
             }
         }
         return valid;
