@@ -51,5 +51,5 @@
 
 
 	<context:annotation-config />
-	<context:component-scan base-package="org.ow2.sirocco.apis.rest.cimi" />
+	<context:component-scan base-package="org.ow2.sirocco.cimi.server" />
 </beans>
