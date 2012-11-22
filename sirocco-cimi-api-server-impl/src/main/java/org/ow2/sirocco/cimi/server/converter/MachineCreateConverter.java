@@ -27,7 +27,7 @@ package org.ow2.sirocco.cimi.server.converter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ow2.sirocco.cimi.server.domain.CimiMachineCreate;
+import org.ow2.sirocco.cimi.domain.CimiMachineCreate;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineCreate;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineTemplate;

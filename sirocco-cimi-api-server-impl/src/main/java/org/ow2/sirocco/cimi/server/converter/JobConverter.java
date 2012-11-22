@@ -27,10 +27,10 @@ package org.ow2.sirocco.cimi.server.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.CimiJob;
-import org.ow2.sirocco.cimi.server.domain.NestedJob;
-import org.ow2.sirocco.cimi.server.domain.ParentJob;
-import org.ow2.sirocco.cimi.server.domain.TargetResource;
+import org.ow2.sirocco.cimi.domain.CimiJob;
+import org.ow2.sirocco.cimi.domain.NestedJob;
+import org.ow2.sirocco.cimi.domain.ParentJob;
+import org.ow2.sirocco.cimi.domain.TargetResource;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.CloudResource;
 import org.ow2.sirocco.cloudmanager.model.cimi.Job;

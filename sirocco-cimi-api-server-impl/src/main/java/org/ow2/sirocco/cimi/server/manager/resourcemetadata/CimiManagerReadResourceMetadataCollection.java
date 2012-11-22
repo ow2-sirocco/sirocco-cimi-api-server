@@ -24,7 +24,7 @@ package org.ow2.sirocco.cimi.server.manager.resourcemetadata;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.collection.CimiResourceMetadataCollectionRoot;
+import org.ow2.sirocco.cimi.domain.collection.CimiResourceMetadataCollectionRoot;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;

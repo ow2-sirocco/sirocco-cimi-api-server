@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiForwardingGroup;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemForwardingGroup;
+import org.ow2.sirocco.cimi.domain.CimiForwardingGroup;
+import org.ow2.sirocco.cimi.domain.CimiSystemForwardingGroup;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.CloudResource;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemForwardingGroup;

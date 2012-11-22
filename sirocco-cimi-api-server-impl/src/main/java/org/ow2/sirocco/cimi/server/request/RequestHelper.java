@@ -29,7 +29,7 @@ import java.util.List;
 
 import javax.ws.rs.core.MultivaluedMap;
 
-import org.ow2.sirocco.cimi.server.domain.CimiData;
+import org.ow2.sirocco.cimi.domain.CimiData;
 import org.ow2.sirocco.cimi.server.resource.RestResourceAbstract;
 import org.ow2.sirocco.cimi.server.utils.Constants;
 

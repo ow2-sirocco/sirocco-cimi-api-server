@@ -24,9 +24,9 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiMachineImage;
-import org.ow2.sirocco.cimi.server.domain.ImageLocation;
-import org.ow2.sirocco.cimi.server.domain.RelatedMachineImage;
+import org.ow2.sirocco.cimi.domain.CimiMachineImage;
+import org.ow2.sirocco.cimi.domain.ImageLocation;
+import org.ow2.sirocco.cimi.domain.RelatedMachineImage;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineImage;
 

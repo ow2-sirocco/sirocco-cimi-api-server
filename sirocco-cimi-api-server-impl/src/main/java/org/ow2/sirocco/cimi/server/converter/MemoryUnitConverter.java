@@ -24,7 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.MemoryUnit;
+import org.ow2.sirocco.cimi.domain.MemoryUnit;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 
 /**

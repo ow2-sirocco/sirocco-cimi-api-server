@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.address.template;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiAddressTemplate;
+import org.ow2.sirocco.cimi.domain.CimiAddressTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;

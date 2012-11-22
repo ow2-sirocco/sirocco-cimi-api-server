@@ -24,10 +24,10 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiEventLogTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeImage;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeTemplate;
+import org.ow2.sirocco.cimi.domain.CimiEventLogTemplate;
+import org.ow2.sirocco.cimi.domain.CimiVolumeConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiVolumeImage;
+import org.ow2.sirocco.cimi.domain.CimiVolumeTemplate;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeConfiguration;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeImage;

@@ -27,10 +27,10 @@ package org.ow2.sirocco.cimi.server.resource.serialization.mock;
 import javax.ws.rs.core.Response.Status;
 
 import org.junit.ComparisonFailure;
+import org.ow2.sirocco.cimi.domain.CimiData;
+import org.ow2.sirocco.cimi.domain.CimiJob;
 import org.ow2.sirocco.cimi.server.builder.CimiResourceBuilderHelper;
 import org.ow2.sirocco.cimi.server.converter.PathHelper;
-import org.ow2.sirocco.cimi.server.domain.CimiData;
-import org.ow2.sirocco.cimi.server.domain.CimiJob;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.utils.Constants;
 

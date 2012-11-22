@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.eventlog.template;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiEventLogTemplate;
+import org.ow2.sirocco.cimi.domain.CimiEventLogTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;

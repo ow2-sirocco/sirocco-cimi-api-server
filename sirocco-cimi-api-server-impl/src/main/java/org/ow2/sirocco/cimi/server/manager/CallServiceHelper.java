@@ -24,7 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager;
 
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
 import org.ow2.sirocco.cloudmanager.model.cimi.Resource;
 
 /**

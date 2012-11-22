@@ -27,7 +27,7 @@ package org.ow2.sirocco.cimi.server.converter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ow2.sirocco.cimi.server.domain.CimiEventLogCreate;
+import org.ow2.sirocco.cimi.domain.CimiEventLogCreate;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLogCreate;
 import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLogTemplate;

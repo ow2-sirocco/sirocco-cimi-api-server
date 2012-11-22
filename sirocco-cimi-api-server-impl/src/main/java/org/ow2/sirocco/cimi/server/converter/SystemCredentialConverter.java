@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiCredential;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemCredential;
+import org.ow2.sirocco.cimi.domain.CimiCredential;
+import org.ow2.sirocco.cimi.domain.CimiSystemCredential;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.CloudResource;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemCredentials;

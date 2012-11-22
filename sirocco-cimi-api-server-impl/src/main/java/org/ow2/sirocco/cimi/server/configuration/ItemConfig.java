@@ -27,7 +27,7 @@ package org.ow2.sirocco.cimi.server.configuration;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
 
 public class ItemConfig {
 

@@ -27,7 +27,7 @@ package org.ow2.sirocco.cimi.server.validator.constraints;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.ow2.sirocco.cimi.server.domain.ActionType;
+import org.ow2.sirocco.cimi.domain.ActionType;
 
 /**
  * Implementation of {@link AssertActionPath} validator.

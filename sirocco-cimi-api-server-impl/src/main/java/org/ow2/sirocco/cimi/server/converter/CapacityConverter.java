@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiCapacity;
-import org.ow2.sirocco.cimi.server.domain.CimiDiskConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiCapacity;
+import org.ow2.sirocco.cimi.domain.CimiDiskConfiguration;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.DiskTemplate;
 

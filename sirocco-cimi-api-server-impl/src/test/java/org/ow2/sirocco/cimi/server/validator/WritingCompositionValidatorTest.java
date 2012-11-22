@@ -26,8 +26,8 @@ package org.ow2.sirocco.cimi.server.validator;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.ow2.sirocco.cimi.server.domain.CimiDiskConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineDisk;
+import org.ow2.sirocco.cimi.domain.CimiDiskConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiMachineDisk;
 import org.ow2.sirocco.cimi.server.validator.CimiValidatorHelper;
 
 public class WritingCompositionValidatorTest {

@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.manager;
 
+import org.ow2.sirocco.cimi.domain.ExchangeType;
 import org.ow2.sirocco.cimi.server.configuration.ConfigurationException;
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;
 import org.ow2.sirocco.cloudmanager.core.api.IEventManager;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineImageManager;
@@ -75,7 +75,7 @@ public class CallServiceHelperImpl implements CallServiceHelper {
     /**
      * {@inheritDoc}
      * 
-     * @see org.ow2.sirocco.cimi.server.manager.CallServiceHelper#find(org.ow2.sirocco.cimi.server.domain.ExchangeType,
+     * @see org.ow2.sirocco.cimi.server.manager.CallServiceHelper#find(org.ow2.sirocco.cimi.domain.ExchangeType,
      *      java.lang.String)
      */
     @Override

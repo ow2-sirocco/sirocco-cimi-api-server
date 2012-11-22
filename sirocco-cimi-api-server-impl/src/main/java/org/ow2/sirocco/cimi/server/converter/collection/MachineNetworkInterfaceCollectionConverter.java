@@ -27,7 +27,7 @@ package org.ow2.sirocco.cimi.server.converter.collection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.collection.CimiMachineNetworkInterfaceCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiMachineNetworkInterfaceCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineNetworkInterface;
 

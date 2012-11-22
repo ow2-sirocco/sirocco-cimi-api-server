@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.volume.template;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeTemplate;
+import org.ow2.sirocco.cimi.domain.CimiVolumeTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;

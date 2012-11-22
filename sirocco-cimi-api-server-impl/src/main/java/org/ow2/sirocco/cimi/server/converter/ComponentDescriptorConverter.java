@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiComponentDescriptor;
-import org.ow2.sirocco.cimi.server.domain.CimiObjectCommon;
+import org.ow2.sirocco.cimi.domain.CimiComponentDescriptor;
+import org.ow2.sirocco.cimi.domain.CimiObjectCommon;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.CloudTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.ComponentDescriptor;

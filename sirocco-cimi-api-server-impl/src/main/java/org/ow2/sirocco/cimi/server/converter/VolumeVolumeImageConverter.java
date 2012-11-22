@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeImage;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeVolumeImage;
+import org.ow2.sirocco.cimi.domain.CimiVolumeImage;
+import org.ow2.sirocco.cimi.domain.CimiVolumeVolumeImage;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeImage;
 

@@ -26,9 +26,9 @@ package org.ow2.sirocco.cimi.server.converter;
 
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.CimiEventLog;
-import org.ow2.sirocco.cimi.server.domain.CimiVolume;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiVolumeVolumeImageCollection;
+import org.ow2.sirocco.cimi.domain.CimiEventLog;
+import org.ow2.sirocco.cimi.domain.CimiVolume;
+import org.ow2.sirocco.cimi.domain.collection.CimiVolumeVolumeImageCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.Volume;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeVolumeImage;

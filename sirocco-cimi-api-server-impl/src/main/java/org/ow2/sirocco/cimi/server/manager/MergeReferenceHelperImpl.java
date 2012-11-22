@@ -31,65 +31,65 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.ow2.sirocco.cimi.domain.CimiAddress;
+import org.ow2.sirocco.cimi.domain.CimiAddressCreate;
+import org.ow2.sirocco.cimi.domain.CimiAddressTemplate;
+import org.ow2.sirocco.cimi.domain.CimiComponentDescriptor;
+import org.ow2.sirocco.cimi.domain.CimiCredential;
+import org.ow2.sirocco.cimi.domain.CimiCredentialCreate;
+import org.ow2.sirocco.cimi.domain.CimiCredentialTemplate;
+import org.ow2.sirocco.cimi.domain.CimiDataCommon;
+import org.ow2.sirocco.cimi.domain.CimiDiskConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiEventLogCreate;
+import org.ow2.sirocco.cimi.domain.CimiEventLogTemplate;
+import org.ow2.sirocco.cimi.domain.CimiForwardingGroup;
+import org.ow2.sirocco.cimi.domain.CimiForwardingGroupCreate;
+import org.ow2.sirocco.cimi.domain.CimiForwardingGroupNetwork;
+import org.ow2.sirocco.cimi.domain.CimiForwardingGroupTemplate;
+import org.ow2.sirocco.cimi.domain.CimiMachine;
+import org.ow2.sirocco.cimi.domain.CimiMachineConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiMachineCreate;
+import org.ow2.sirocco.cimi.domain.CimiMachineDisk;
+import org.ow2.sirocco.cimi.domain.CimiMachineImage;
+import org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterface;
+import org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterfaceAddress;
+import org.ow2.sirocco.cimi.domain.CimiMachineTemplate;
+import org.ow2.sirocco.cimi.domain.CimiMachineTemplateNetworkInterface;
+import org.ow2.sirocco.cimi.domain.CimiMachineTemplateVolume;
+import org.ow2.sirocco.cimi.domain.CimiMachineTemplateVolumeTemplate;
+import org.ow2.sirocco.cimi.domain.CimiMachineVolume;
+import org.ow2.sirocco.cimi.domain.CimiNetwork;
+import org.ow2.sirocco.cimi.domain.CimiNetworkConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiNetworkCreate;
+import org.ow2.sirocco.cimi.domain.CimiNetworkNetworkPort;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPort;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPortConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPortCreate;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPortTemplate;
+import org.ow2.sirocco.cimi.domain.CimiNetworkTemplate;
+import org.ow2.sirocco.cimi.domain.CimiObjectCommon;
+import org.ow2.sirocco.cimi.domain.CimiResource;
+import org.ow2.sirocco.cimi.domain.CimiSystem;
+import org.ow2.sirocco.cimi.domain.CimiSystemAddress;
+import org.ow2.sirocco.cimi.domain.CimiSystemCreate;
+import org.ow2.sirocco.cimi.domain.CimiSystemCredential;
+import org.ow2.sirocco.cimi.domain.CimiSystemForwardingGroup;
+import org.ow2.sirocco.cimi.domain.CimiSystemMachine;
+import org.ow2.sirocco.cimi.domain.CimiSystemNetwork;
+import org.ow2.sirocco.cimi.domain.CimiSystemNetworkPort;
+import org.ow2.sirocco.cimi.domain.CimiSystemSystem;
+import org.ow2.sirocco.cimi.domain.CimiSystemTemplate;
+import org.ow2.sirocco.cimi.domain.CimiSystemVolume;
+import org.ow2.sirocco.cimi.domain.CimiVolume;
+import org.ow2.sirocco.cimi.domain.CimiVolumeConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiVolumeCreate;
+import org.ow2.sirocco.cimi.domain.CimiVolumeImage;
+import org.ow2.sirocco.cimi.domain.CimiVolumeTemplate;
+import org.ow2.sirocco.cimi.domain.CimiVolumeVolumeImage;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
+import org.ow2.sirocco.cimi.domain.collection.CimiCollection;
 import org.ow2.sirocco.cimi.server.configuration.ConfigurationException;
 import org.ow2.sirocco.cimi.server.converter.PathHelper;
-import org.ow2.sirocco.cimi.server.domain.CimiAddress;
-import org.ow2.sirocco.cimi.server.domain.CimiAddressCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiAddressTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiComponentDescriptor;
-import org.ow2.sirocco.cimi.server.domain.CimiCredential;
-import org.ow2.sirocco.cimi.server.domain.CimiCredentialCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiCredentialTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiDataCommon;
-import org.ow2.sirocco.cimi.server.domain.CimiDiskConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiEventLogCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiEventLogTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiForwardingGroup;
-import org.ow2.sirocco.cimi.server.domain.CimiForwardingGroupCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiForwardingGroupNetwork;
-import org.ow2.sirocco.cimi.server.domain.CimiForwardingGroupTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiMachine;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineDisk;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineImage;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineNetworkInterface;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineNetworkInterfaceAddress;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineTemplateNetworkInterface;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineTemplateVolume;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineTemplateVolumeTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineVolume;
-import org.ow2.sirocco.cimi.server.domain.CimiNetwork;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkNetworkPort;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPort;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPortConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPortCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPortTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiObjectCommon;
-import org.ow2.sirocco.cimi.server.domain.CimiResource;
-import org.ow2.sirocco.cimi.server.domain.CimiSystem;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemAddress;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemCredential;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemForwardingGroup;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemMachine;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemNetwork;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemNetworkPort;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemSystem;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemVolume;
-import org.ow2.sirocco.cimi.server.domain.CimiVolume;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeImage;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeVolumeImage;
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;
@@ -171,7 +171,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiMachineImage)
+     *      org.ow2.sirocco.cimi.domain.CimiMachineImage)
      */
     @Override
     public void merge(final CimiContext context, final CimiMachineImage cimi) throws Exception {
@@ -186,7 +186,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiMachineConfiguration)
+     *      org.ow2.sirocco.cimi.domain.CimiMachineConfiguration)
      */
     @Override
     public void merge(final CimiContext context, final CimiMachineConfiguration cimi) throws Exception {
@@ -203,7 +203,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiCredentialCreate)
+     *      org.ow2.sirocco.cimi.domain.CimiCredentialCreate)
      */
     @Override
     public void merge(final CimiContext context, final CimiCredentialCreate cimi) throws Exception {
@@ -214,7 +214,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiCredentialTemplate)
+     *      org.ow2.sirocco.cimi.domain.CimiCredentialTemplate)
      */
     @Override
     public void merge(final CimiContext context, final CimiCredentialTemplate cimi) throws Exception {
@@ -231,7 +231,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiCredential)
+     *      org.ow2.sirocco.cimi.domain.CimiCredential)
      */
     @Override
     public void merge(final CimiContext context, final CimiCredential cimi) throws Exception {
@@ -246,7 +246,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiMachineCreate)
+     *      org.ow2.sirocco.cimi.domain.CimiMachineCreate)
      */
     @Override
     public void merge(final CimiContext context, final CimiMachineCreate cimi) throws Exception {
@@ -257,7 +257,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiMachineDisk)
+     *      org.ow2.sirocco.cimi.domain.CimiMachineDisk)
      */
     @Override
     public void merge(final CimiContext context, final CimiMachineDisk cimi) throws Exception {
@@ -273,7 +273,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiMachineVolume)
+     *      org.ow2.sirocco.cimi.domain.CimiMachineVolume)
      */
     @Override
     public void merge(final CimiContext context, final CimiMachineVolume cimi) throws Exception {
@@ -300,7 +300,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiMachineNetworkInterface)
+     *      org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterface)
      */
     @Override
     public void merge(final CimiContext context, final CimiMachineNetworkInterface cimi) throws Exception {
@@ -317,7 +317,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiMachineNetworkInterfaceAddress)
+     *      org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterfaceAddress)
      */
     @Override
     public void merge(final CimiContext context, final CimiMachineNetworkInterfaceAddress cimi) throws Exception {
@@ -348,7 +348,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiMachineTemplate)
+     *      org.ow2.sirocco.cimi.domain.CimiMachineTemplate)
      */
     @Override
     public void merge(final CimiContext context, final CimiMachineTemplate cimi) throws Exception {
@@ -390,7 +390,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiVolumeCreate)
+     *      org.ow2.sirocco.cimi.domain.CimiVolumeCreate)
      */
     @Override
     public void merge(final CimiContext context, final CimiVolumeCreate cimi) throws Exception {
@@ -401,7 +401,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiVolumeConfiguration)
+     *      org.ow2.sirocco.cimi.domain.CimiVolumeConfiguration)
      */
     @Override
     public void merge(final CimiContext context, final CimiVolumeConfiguration cimi) throws Exception {
@@ -418,7 +418,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiVolumeImage)
+     *      org.ow2.sirocco.cimi.domain.CimiVolumeImage)
      */
     @Override
     public void merge(final CimiContext context, final CimiVolumeImage cimi) throws Exception {
@@ -433,7 +433,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiVolumeTemplate)
+     *      org.ow2.sirocco.cimi.domain.CimiVolumeTemplate)
      */
     @Override
     public void merge(final CimiContext context, final CimiVolumeTemplate cimi) throws Exception {
@@ -458,7 +458,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiVolumeVolumeImage)
+     *      org.ow2.sirocco.cimi.domain.CimiVolumeVolumeImage)
      */
     @Override
     public void merge(final CimiContext context, final CimiVolumeVolumeImage cimi) throws Exception {
@@ -475,7 +475,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemCreate)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemCreate)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemCreate cimi) throws Exception {
@@ -486,7 +486,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemTemplate)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemTemplate)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemTemplate cimi) throws Exception {
@@ -526,7 +526,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemCredential)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemCredential)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemCredential cimi) throws Exception {
@@ -543,7 +543,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemMachine)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemMachine)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemMachine cimi) throws Exception {
@@ -559,7 +559,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemSystem)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemSystem)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemSystem cimi) throws Exception {
@@ -575,7 +575,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemVolume)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemVolume)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemVolume cimi) throws Exception {
@@ -591,7 +591,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemAddress)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemAddress)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemAddress cimi) throws Exception {
@@ -608,7 +608,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemForwardingGroup)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemForwardingGroup)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemForwardingGroup cimi) throws Exception {
@@ -625,7 +625,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemNetwork)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemNetwork)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemNetwork cimi) throws Exception {
@@ -641,7 +641,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiSystemNetworkPort)
+     *      org.ow2.sirocco.cimi.domain.CimiSystemNetworkPort)
      */
     @Override
     public void merge(final CimiContext context, final CimiSystemNetworkPort cimi) throws Exception {
@@ -673,7 +673,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiNetworkNetworkPort)
+     *      org.ow2.sirocco.cimi.domain.CimiNetworkNetworkPort)
      */
     @Override
     public void merge(final CimiContext context, final CimiNetworkNetworkPort cimi) throws Exception {
@@ -690,7 +690,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiNetworkCreate)
+     *      org.ow2.sirocco.cimi.domain.CimiNetworkCreate)
      */
     @Override
     public void merge(final CimiContext context, final CimiNetworkCreate cimi) throws Exception {
@@ -701,7 +701,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiNetworkConfiguration)
+     *      org.ow2.sirocco.cimi.domain.CimiNetworkConfiguration)
      */
     @Override
     public void merge(final CimiContext context, final CimiNetworkConfiguration cimi) throws Exception {
@@ -718,7 +718,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiNetworkTemplate)
+     *      org.ow2.sirocco.cimi.domain.CimiNetworkTemplate)
      */
     @Override
     public void merge(final CimiContext context, final CimiNetworkTemplate cimi) throws Exception {
@@ -745,7 +745,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiNetworkPortCreate)
+     *      org.ow2.sirocco.cimi.domain.CimiNetworkPortCreate)
      */
     @Override
     public void merge(final CimiContext context, final CimiNetworkPortCreate cimi) throws Exception {
@@ -756,7 +756,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiNetworkPortConfiguration)
+     *      org.ow2.sirocco.cimi.domain.CimiNetworkPortConfiguration)
      */
     @Override
     public void merge(final CimiContext context, final CimiNetworkPortConfiguration cimi) throws Exception {
@@ -773,7 +773,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiNetworkPortTemplate)
+     *      org.ow2.sirocco.cimi.domain.CimiNetworkPortTemplate)
      */
     @Override
     public void merge(final CimiContext context, final CimiNetworkPortTemplate cimi) throws Exception {
@@ -800,7 +800,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiAddressCreate)
+     *      org.ow2.sirocco.cimi.domain.CimiAddressCreate)
      */
     @Override
     public void merge(final CimiContext context, final CimiAddressCreate cimi) throws Exception {
@@ -811,7 +811,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiAddressTemplate)
+     *      org.ow2.sirocco.cimi.domain.CimiAddressTemplate)
      */
     @Override
     public void merge(final CimiContext context, final CimiAddressTemplate cimi) throws Exception {
@@ -832,7 +832,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiForwardingGroupCreate)
+     *      org.ow2.sirocco.cimi.domain.CimiForwardingGroupCreate)
      */
     @Override
     public void merge(final CimiContext context, final CimiForwardingGroupCreate cimi) throws Exception {
@@ -843,7 +843,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiForwardingGroupTemplate)
+     *      org.ow2.sirocco.cimi.domain.CimiForwardingGroupTemplate)
      */
     @Override
     public void merge(final CimiContext context, final CimiForwardingGroupTemplate cimi) throws Exception {
@@ -866,7 +866,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiForwardingGroupNetwork)
+     *      org.ow2.sirocco.cimi.domain.CimiForwardingGroupNetwork)
      */
     @Override
     public void merge(final CimiContext context, final CimiForwardingGroupNetwork cimi) throws Exception {
@@ -900,7 +900,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiEventLogCreate)
+     *      org.ow2.sirocco.cimi.domain.CimiEventLogCreate)
      */
     @Override
     public void merge(final CimiContext context, final CimiEventLogCreate cimi) throws Exception {
@@ -911,7 +911,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      * {@inheritDoc}
      * 
      * @see org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper#merge(org.ow2.sirocco.cimi.server.request.CimiContext,
-     *      org.ow2.sirocco.cimi.server.domain.CimiEventLogTemplate)
+     *      org.ow2.sirocco.cimi.domain.CimiEventLogTemplate)
      */
     @Override
     public void merge(final CimiContext context, final CimiEventLogTemplate cimi) throws Exception {

@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiMachineTemplateVolumeTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeTemplate;
+import org.ow2.sirocco.cimi.domain.CimiMachineTemplateVolumeTemplate;
+import org.ow2.sirocco.cimi.domain.CimiVolumeTemplate;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineVolumeTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeTemplate;

@@ -27,8 +27,8 @@ package org.ow2.sirocco.cimi.server.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.CimiDiskConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiDiskConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiMachineConfiguration;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.DiskTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineConfiguration;

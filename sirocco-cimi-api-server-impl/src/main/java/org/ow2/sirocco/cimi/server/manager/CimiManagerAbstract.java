@@ -26,8 +26,8 @@ package org.ow2.sirocco.cimi.server.manager;
 
 import javax.ws.rs.core.Response;
 
+import org.ow2.sirocco.cimi.domain.CimiJob;
 import org.ow2.sirocco.cimi.server.converter.InvalidConversionException;
-import org.ow2.sirocco.cimi.server.domain.CimiJob;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.utils.Constants;
 import org.ow2.sirocco.cloudmanager.core.api.exception.CloudProviderException;

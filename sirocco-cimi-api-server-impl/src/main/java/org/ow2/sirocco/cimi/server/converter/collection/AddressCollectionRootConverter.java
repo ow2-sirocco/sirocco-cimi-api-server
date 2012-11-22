@@ -24,7 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.converter.collection;
 
-import org.ow2.sirocco.cimi.server.domain.collection.CimiAddressCollectionRoot;
+import org.ow2.sirocco.cimi.domain.collection.CimiAddressCollectionRoot;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 
 /**

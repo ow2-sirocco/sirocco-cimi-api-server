@@ -30,7 +30,7 @@ import java.util.Map;
 
 import javax.ws.rs.core.Response.Status;
 
-import org.ow2.sirocco.cimi.server.domain.CimiData;
+import org.ow2.sirocco.cimi.domain.CimiData;
 
 /**
  * Data container for a CIMI response.

@@ -24,10 +24,10 @@
  */
 package org.ow2.sirocco.cimi.server.resource.serialization.mock;
 
+import org.ow2.sirocco.cimi.domain.CimiData;
+import org.ow2.sirocco.cimi.domain.PathType;
 import org.ow2.sirocco.cimi.server.builder.CimiResourceBuilderHelper;
 import org.ow2.sirocco.cimi.server.converter.PathHelper;
-import org.ow2.sirocco.cimi.server.domain.CimiData;
-import org.ow2.sirocco.cimi.server.domain.PathType;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
 import org.ow2.sirocco.cimi.server.request.CimiRequest;
 import org.ow2.sirocco.cimi.server.request.IdRequest;

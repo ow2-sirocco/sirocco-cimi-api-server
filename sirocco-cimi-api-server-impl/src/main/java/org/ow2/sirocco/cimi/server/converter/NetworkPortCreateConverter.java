@@ -27,7 +27,7 @@ package org.ow2.sirocco.cimi.server.converter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPortCreate;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPortCreate;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPortCreate;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPortTemplate;

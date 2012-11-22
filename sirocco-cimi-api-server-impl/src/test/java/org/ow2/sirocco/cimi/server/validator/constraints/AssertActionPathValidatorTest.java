@@ -26,8 +26,8 @@ package org.ow2.sirocco.cimi.server.validator.constraints;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.ow2.sirocco.cimi.server.domain.ActionType;
-import org.ow2.sirocco.cimi.server.domain.CimiAction;
+import org.ow2.sirocco.cimi.domain.ActionType;
+import org.ow2.sirocco.cimi.domain.CimiAction;
 import org.ow2.sirocco.cimi.server.validator.CimiValidatorHelper;
 import org.ow2.sirocco.cimi.server.validator.GroupWrite;
 

@@ -27,19 +27,19 @@ package org.ow2.sirocco.cimi.server.converter;
 import java.util.List;
 import java.util.Set;
 
-import org.ow2.sirocco.cimi.server.domain.ActionType;
-import org.ow2.sirocco.cimi.server.domain.CimiEventLog;
-import org.ow2.sirocco.cimi.server.domain.CimiObjectCommon;
-import org.ow2.sirocco.cimi.server.domain.CimiOperation;
-import org.ow2.sirocco.cimi.server.domain.CimiSystem;
-import org.ow2.sirocco.cimi.server.domain.Operation;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemCredentialCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemForwardingGroupCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemMachineCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemNetworkCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemNetworkPortCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemSystemCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemVolumeCollection;
+import org.ow2.sirocco.cimi.domain.ActionType;
+import org.ow2.sirocco.cimi.domain.CimiEventLog;
+import org.ow2.sirocco.cimi.domain.CimiObjectCommon;
+import org.ow2.sirocco.cimi.domain.CimiOperation;
+import org.ow2.sirocco.cimi.domain.CimiSystem;
+import org.ow2.sirocco.cimi.domain.Operation;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemCredentialCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemForwardingGroupCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemMachineCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemNetworkCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemNetworkPortCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemSystemCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemVolumeCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.Identifiable;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.System;
@@ -179,7 +179,7 @@ public class SystemConverter extends ObjectCommonConverter {
      * 
      * @see org.ow2.sirocco.cimi.server.converter.ObjectCommonConverter#fillOperations(org.ow2.sirocco.cimi.server.request.CimiContext,
      *      org.ow2.sirocco.cloudmanager.model.cimi.Identifiable,
-     *      org.ow2.sirocco.cimi.server.domain.CimiObjectCommon)
+     *      org.ow2.sirocco.cimi.domain.CimiObjectCommon)
      */
     @Override
     protected void fillOperations(final CimiContext context, final Identifiable dataService, final CimiObjectCommon dataCimi) {

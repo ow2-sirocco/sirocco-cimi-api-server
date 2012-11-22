@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.eventlog;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiEventLog;
+import org.ow2.sirocco.cimi.domain.CimiEventLog;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IEventManager;

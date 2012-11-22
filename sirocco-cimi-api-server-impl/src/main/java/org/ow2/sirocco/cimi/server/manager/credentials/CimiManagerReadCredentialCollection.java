@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.credentials;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.collection.CimiCredentialCollectionRoot;
+import org.ow2.sirocco.cimi.domain.collection.CimiCredentialCollectionRoot;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;

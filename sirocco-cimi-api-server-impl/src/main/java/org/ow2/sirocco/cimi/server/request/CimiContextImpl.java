@@ -30,16 +30,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.ow2.sirocco.cimi.domain.CimiExchange;
+import org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterfaceAddress;
+import org.ow2.sirocco.cimi.domain.CimiResource;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
+import org.ow2.sirocco.cimi.domain.collection.CimiMachineNetworkInterfaceAddressCollection;
 import org.ow2.sirocco.cimi.server.configuration.AppConfig;
 import org.ow2.sirocco.cimi.server.configuration.ConfigFactory;
 import org.ow2.sirocco.cimi.server.configuration.ConfigurationException;
 import org.ow2.sirocco.cimi.server.configuration.ItemConfig;
 import org.ow2.sirocco.cimi.server.converter.CimiConverter;
-import org.ow2.sirocco.cimi.server.domain.CimiExchange;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineNetworkInterfaceAddress;
-import org.ow2.sirocco.cimi.server.domain.CimiResource;
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiMachineNetworkInterfaceAddressCollection;
 import org.ow2.sirocco.cimi.server.manager.CallServiceHelper;
 import org.ow2.sirocco.cloudmanager.model.cimi.Identifiable;
 import org.ow2.sirocco.cloudmanager.model.cimi.Resource;
@@ -281,7 +281,7 @@ public class CimiContextImpl implements CimiContext {
     /**
      * {@inheritDoc}
      * 
-     * @see org.ow2.sirocco.cimi.server.utils.CimiContext#mustBeExpanded(org.ow2.sirocco.cimi.server.domain.CimiResource)
+     * @see org.ow2.sirocco.cimi.server.utils.CimiContext#mustBeExpanded(org.ow2.sirocco.cimi.domain.CimiResource)
      */
     @Override
     public boolean mustBeExpanded(final CimiResource resource) {
@@ -536,7 +536,7 @@ public class CimiContextImpl implements CimiContext {
     /**
      * {@inheritDoc}
      * 
-     * @see org.ow2.sirocco.cimi.server.request.CimiContext#findAssociatedResourceServiceClass(org.ow2.sirocco.cimi.server.domain.ExchangeType)
+     * @see org.ow2.sirocco.cimi.server.request.CimiContext#findAssociatedResourceServiceClass(org.ow2.sirocco.cimi.domain.ExchangeType)
      */
     @SuppressWarnings("unchecked")
     @Override

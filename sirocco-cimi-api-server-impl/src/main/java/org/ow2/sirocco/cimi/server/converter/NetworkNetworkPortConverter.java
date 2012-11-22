@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkNetworkPort;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPort;
+import org.ow2.sirocco.cimi.domain.CimiNetworkNetworkPort;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPort;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkNetworkPort;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPort;

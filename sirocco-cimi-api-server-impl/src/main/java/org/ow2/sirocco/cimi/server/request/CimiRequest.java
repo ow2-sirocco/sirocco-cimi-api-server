@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.request;
 
 import java.io.Serializable;
 
-import org.ow2.sirocco.cimi.server.domain.CimiData;
+import org.ow2.sirocco.cimi.domain.CimiData;
 
 /**
  * Data container for a CIMI request.

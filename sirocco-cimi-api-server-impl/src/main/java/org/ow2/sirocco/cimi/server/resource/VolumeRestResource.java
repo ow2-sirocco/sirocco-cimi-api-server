@@ -35,9 +35,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiVolume;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeVolumeImage;
+import org.ow2.sirocco.cimi.domain.CimiVolume;
+import org.ow2.sirocco.cimi.domain.CimiVolumeCreate;
+import org.ow2.sirocco.cimi.domain.CimiVolumeVolumeImage;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;

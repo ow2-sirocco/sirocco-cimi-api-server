@@ -25,9 +25,9 @@ package org.ow2.sirocco.cimi.server.manager.resourcemetadata;
 import java.util.Arrays;
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.CimiResourceMetadata;
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
-import org.ow2.sirocco.cimi.server.domain.CimiResourceMetadata.AttributeMetadata;
+import org.ow2.sirocco.cimi.domain.CimiResourceMetadata;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
+import org.ow2.sirocco.cimi.domain.CimiResourceMetadata.AttributeMetadata;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
 import org.ow2.sirocco.cloudmanager.core.api.exception.CloudProviderException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.InvalidRequestException;

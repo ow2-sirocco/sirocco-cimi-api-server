@@ -28,7 +28,7 @@ import javax.ws.rs.core.Response.Status;
 
 import junit.framework.ComparisonFailure;
 
-import org.ow2.sirocco.cimi.server.domain.PathType;
+import org.ow2.sirocco.cimi.domain.PathType;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 
 /**

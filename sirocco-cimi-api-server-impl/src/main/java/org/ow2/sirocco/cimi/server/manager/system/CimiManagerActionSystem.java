@@ -26,9 +26,9 @@ package org.ow2.sirocco.cimi.server.manager.system;
 
 import javax.validation.groups.Default;
 
-import org.ow2.sirocco.cimi.server.domain.ActionType;
-import org.ow2.sirocco.cimi.server.domain.CimiAction;
-import org.ow2.sirocco.cimi.server.domain.CimiActionImport;
+import org.ow2.sirocco.cimi.domain.ActionType;
+import org.ow2.sirocco.cimi.domain.CimiAction;
+import org.ow2.sirocco.cimi.domain.CimiActionImport;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.validator.CimiValidatorHelper;

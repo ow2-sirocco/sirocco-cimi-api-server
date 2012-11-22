@@ -27,10 +27,10 @@ package org.ow2.sirocco.cimi.server.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.CimiAddress;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineTemplateNetworkInterface;
-import org.ow2.sirocco.cimi.server.domain.CimiNetwork;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPort;
+import org.ow2.sirocco.cimi.domain.CimiAddress;
+import org.ow2.sirocco.cimi.domain.CimiMachineTemplateNetworkInterface;
+import org.ow2.sirocco.cimi.domain.CimiNetwork;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPort;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.Address;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineTemplateNetworkInterface;

@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.network.template;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkTemplate;
+import org.ow2.sirocco.cimi.domain.CimiNetworkTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;

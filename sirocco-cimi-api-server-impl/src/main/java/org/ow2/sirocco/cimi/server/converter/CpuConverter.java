@@ -24,7 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiCpu;
+import org.ow2.sirocco.cimi.domain.CimiCpu;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 
 /**

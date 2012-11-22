@@ -35,7 +35,7 @@ import javax.validation.ValidatorContext;
 import javax.validation.ValidatorFactory;
 import javax.validation.groups.Default;
 
-import org.ow2.sirocco.cimi.server.domain.CimiResource;
+import org.ow2.sirocco.cimi.domain.CimiResource;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.utils.ReflectionHelper;
 import org.slf4j.Logger;

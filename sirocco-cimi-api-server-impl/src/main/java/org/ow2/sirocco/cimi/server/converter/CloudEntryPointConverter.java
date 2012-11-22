@@ -24,27 +24,27 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiCloudEntryPoint;
-import org.ow2.sirocco.cimi.server.domain.CimiObjectCommon;
-import org.ow2.sirocco.cimi.server.domain.CimiOperation;
-import org.ow2.sirocco.cimi.server.domain.CloudEntryPointAggregate;
-import org.ow2.sirocco.cimi.server.domain.Operation;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiAddressCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiCredentialCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiCredentialTemplateCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiJobCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiMachineCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiMachineConfigurationCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiMachineImageCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiMachineTemplateCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiNetworkCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiResourceMetadataCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemTemplateCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiVolumeCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiVolumeConfigurationCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiVolumeImageCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiVolumeTemplateCollection;
+import org.ow2.sirocco.cimi.domain.CimiCloudEntryPoint;
+import org.ow2.sirocco.cimi.domain.CimiObjectCommon;
+import org.ow2.sirocco.cimi.domain.CimiOperation;
+import org.ow2.sirocco.cimi.domain.CloudEntryPointAggregate;
+import org.ow2.sirocco.cimi.domain.Operation;
+import org.ow2.sirocco.cimi.domain.collection.CimiAddressCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiCredentialCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiCredentialTemplateCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiJobCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiMachineCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiMachineConfigurationCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiMachineImageCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiMachineTemplateCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiNetworkCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiResourceMetadataCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemTemplateCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiVolumeCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiVolumeConfigurationCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiVolumeImageCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiVolumeTemplateCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.CloudEntryPoint;
 import org.ow2.sirocco.cloudmanager.model.cimi.Identifiable;
@@ -184,7 +184,7 @@ public class CloudEntryPointConverter extends ObjectCommonConverter {
      * 
      * @see org.ow2.sirocco.cimi.server.converter.ObjectCommonConverter#fillOperations(org.ow2.sirocco.cimi.server.request.CimiContext,
      *      org.ow2.sirocco.cloudmanager.model.cimi.Identifiable,
-     *      org.ow2.sirocco.cimi.server.domain.CimiObjectCommon)
+     *      org.ow2.sirocco.cimi.domain.CimiObjectCommon)
      */
     @Override
     protected void fillOperations(final CimiContext context, final Identifiable dataService, final CimiObjectCommon dataCimi) {

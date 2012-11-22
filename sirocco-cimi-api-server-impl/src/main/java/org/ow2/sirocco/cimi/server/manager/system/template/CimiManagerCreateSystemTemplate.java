@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.system.template;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiSystemTemplate;
+import org.ow2.sirocco.cimi.domain.CimiSystemTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.utils.Constants;

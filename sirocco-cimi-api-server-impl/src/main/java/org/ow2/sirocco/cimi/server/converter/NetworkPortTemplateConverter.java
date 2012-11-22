@@ -24,10 +24,10 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiEventLogTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiNetwork;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPortConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPortTemplate;
+import org.ow2.sirocco.cimi.domain.CimiEventLogTemplate;
+import org.ow2.sirocco.cimi.domain.CimiNetwork;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPortConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPortTemplate;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.Network;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPortConfiguration;

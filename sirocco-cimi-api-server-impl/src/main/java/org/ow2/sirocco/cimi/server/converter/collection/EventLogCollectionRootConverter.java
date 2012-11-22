@@ -24,7 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.converter.collection;
 
-import org.ow2.sirocco.cimi.server.domain.collection.CimiEventLogCollectionRoot;
+import org.ow2.sirocco.cimi.domain.collection.CimiEventLogCollectionRoot;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 
 /**

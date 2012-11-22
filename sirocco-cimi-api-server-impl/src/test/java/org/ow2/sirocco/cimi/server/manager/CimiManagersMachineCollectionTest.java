@@ -34,7 +34,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiMachineCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiMachineCollection;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;

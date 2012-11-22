@@ -24,9 +24,9 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiObjectCommon;
-import org.ow2.sirocco.cimi.server.domain.CimiOperation;
-import org.ow2.sirocco.cimi.server.domain.Operation;
+import org.ow2.sirocco.cimi.domain.CimiObjectCommon;
+import org.ow2.sirocco.cimi.domain.CimiOperation;
+import org.ow2.sirocco.cimi.domain.Operation;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.Identifiable;
 import org.ow2.sirocco.cloudmanager.model.cimi.Resource;

@@ -24,9 +24,9 @@
  */
 package org.ow2.sirocco.cimi.server.manager.machine.image;
 
+import org.ow2.sirocco.cimi.domain.CimiMachine;
+import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.server.converter.PathHelper;
-import org.ow2.sirocco.cimi.server.domain.CimiMachine;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;

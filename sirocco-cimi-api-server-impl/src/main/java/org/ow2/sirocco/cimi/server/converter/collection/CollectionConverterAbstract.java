@@ -26,12 +26,12 @@ package org.ow2.sirocco.cimi.server.converter.collection;
 
 import java.util.List;
 
+import org.ow2.sirocco.cimi.domain.CimiArray;
+import org.ow2.sirocco.cimi.domain.CimiOperation;
+import org.ow2.sirocco.cimi.domain.CimiResource;
+import org.ow2.sirocco.cimi.domain.Operation;
+import org.ow2.sirocco.cimi.domain.collection.CimiCollection;
 import org.ow2.sirocco.cimi.server.converter.CimiConverter;
-import org.ow2.sirocco.cimi.server.domain.CimiArray;
-import org.ow2.sirocco.cimi.server.domain.CimiOperation;
-import org.ow2.sirocco.cimi.server.domain.CimiResource;
-import org.ow2.sirocco.cimi.server.domain.Operation;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.Resource;
 

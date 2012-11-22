@@ -24,10 +24,10 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiResource;
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
-import org.ow2.sirocco.cimi.server.domain.Operation;
-import org.ow2.sirocco.cimi.server.domain.TargetResource;
+import org.ow2.sirocco.cimi.domain.CimiResource;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
+import org.ow2.sirocco.cimi.domain.Operation;
+import org.ow2.sirocco.cimi.domain.TargetResource;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.CloudEntity;
 import org.ow2.sirocco.cloudmanager.model.cimi.CloudResource;

@@ -24,10 +24,10 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiMachineNetworkInterface;
-import org.ow2.sirocco.cimi.server.domain.CimiNetwork;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPort;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiMachineNetworkInterfaceAddressCollection;
+import org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterface;
+import org.ow2.sirocco.cimi.domain.CimiNetwork;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPort;
+import org.ow2.sirocco.cimi.domain.collection.CimiMachineNetworkInterfaceAddressCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineNetworkInterface;
 import org.ow2.sirocco.cloudmanager.model.cimi.Network;

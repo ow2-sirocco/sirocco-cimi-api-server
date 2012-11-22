@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 
 import javax.validation.ConstraintValidatorContext;
 
-import org.ow2.sirocco.cimi.server.domain.CimiResource;
+import org.ow2.sirocco.cimi.domain.CimiResource;
 import org.ow2.sirocco.cimi.server.validator.CimiContextValidatorAbstract;
 
 /**

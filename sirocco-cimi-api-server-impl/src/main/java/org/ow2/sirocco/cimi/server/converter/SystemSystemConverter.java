@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiSystem;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemSystem;
+import org.ow2.sirocco.cimi.domain.CimiSystem;
+import org.ow2.sirocco.cimi.domain.CimiSystemSystem;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.CloudResource;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemSystem;

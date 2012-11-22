@@ -24,15 +24,15 @@
  */
 package org.ow2.sirocco.cimi.server.manager.system;
 
-import org.ow2.sirocco.cimi.server.domain.CimiData;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemAddress;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemCredential;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemForwardingGroup;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemMachine;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemNetwork;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemNetworkPort;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemSystem;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemVolume;
+import org.ow2.sirocco.cimi.domain.CimiData;
+import org.ow2.sirocco.cimi.domain.CimiSystemAddress;
+import org.ow2.sirocco.cimi.domain.CimiSystemCredential;
+import org.ow2.sirocco.cimi.domain.CimiSystemForwardingGroup;
+import org.ow2.sirocco.cimi.domain.CimiSystemMachine;
+import org.ow2.sirocco.cimi.domain.CimiSystemNetwork;
+import org.ow2.sirocco.cimi.domain.CimiSystemNetworkPort;
+import org.ow2.sirocco.cimi.domain.CimiSystemSystem;
+import org.ow2.sirocco.cimi.domain.CimiSystemVolume;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;

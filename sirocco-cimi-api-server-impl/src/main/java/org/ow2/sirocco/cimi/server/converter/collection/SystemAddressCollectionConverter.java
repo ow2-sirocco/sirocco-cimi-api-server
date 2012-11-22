@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.converter.collection;
 
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemAddressCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemAddressCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 
 /**

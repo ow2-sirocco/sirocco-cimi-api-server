@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.networkport.template;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkPortTemplate;
+import org.ow2.sirocco.cimi.domain.CimiNetworkPortTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;

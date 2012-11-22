@@ -24,7 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.request;
 
-import org.ow2.sirocco.cimi.server.domain.CimiData;
+import org.ow2.sirocco.cimi.domain.CimiData;
 import org.ow2.sirocco.cimi.server.resource.RestResourceAbstract;
 
 /**

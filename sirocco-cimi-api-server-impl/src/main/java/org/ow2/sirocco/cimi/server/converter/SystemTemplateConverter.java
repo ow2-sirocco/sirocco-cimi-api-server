@@ -29,8 +29,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.ow2.sirocco.cimi.server.domain.CimiComponentDescriptor;
-import org.ow2.sirocco.cimi.server.domain.CimiSystemTemplate;
+import org.ow2.sirocco.cimi.domain.CimiComponentDescriptor;
+import org.ow2.sirocco.cimi.domain.CimiSystemTemplate;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.ComponentDescriptor;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemTemplate;

@@ -27,7 +27,7 @@ package org.ow2.sirocco.cimi.server.validator.constraints;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineImage;
+import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
 import org.ow2.sirocco.cimi.server.request.CimiRequest;

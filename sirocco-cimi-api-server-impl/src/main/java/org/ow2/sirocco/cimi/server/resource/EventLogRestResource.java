@@ -35,8 +35,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiEventLog;
-import org.ow2.sirocco.cimi.server.domain.CimiEventLogCreate;
+import org.ow2.sirocco.cimi.domain.CimiEventLog;
+import org.ow2.sirocco.cimi.domain.CimiEventLogCreate;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;

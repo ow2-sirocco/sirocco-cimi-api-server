@@ -27,9 +27,9 @@ package org.ow2.sirocco.cimi.server.converter.collection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.CimiResource;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiCollection;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiEventCollection;
+import org.ow2.sirocco.cimi.domain.CimiResource;
+import org.ow2.sirocco.cimi.domain.collection.CimiCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiEventCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.event.Event;
 
@@ -103,7 +103,7 @@ public class EventCollectionConverter extends CollectionConverterAbstract {
      * </p>
      * 
      * @see org.ow2.sirocco.cimi.server.converter.collection.CollectionConverterAbstract#addOperations(org.ow2.sirocco.cimi.server.request.CimiContext,java.lang.Object,
-     *      org.ow2.sirocco.cimi.server.domain.collection.CimiCollection)
+     *      org.ow2.sirocco.cimi.domain.collection.CimiCollection)
      */
     @Override
     protected <E extends CimiResource> void addOperations(final CimiContext context, final Object dataService,

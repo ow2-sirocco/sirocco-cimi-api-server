@@ -35,10 +35,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiAction;
-import org.ow2.sirocco.cimi.server.domain.CimiNetwork;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkCreate;
-import org.ow2.sirocco.cimi.server.domain.CimiNetworkNetworkPort;
+import org.ow2.sirocco.cimi.domain.CimiAction;
+import org.ow2.sirocco.cimi.domain.CimiNetwork;
+import org.ow2.sirocco.cimi.domain.CimiNetworkCreate;
+import org.ow2.sirocco.cimi.domain.CimiNetworkNetworkPort;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;

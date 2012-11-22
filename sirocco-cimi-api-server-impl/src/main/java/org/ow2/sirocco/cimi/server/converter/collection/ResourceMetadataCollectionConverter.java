@@ -27,8 +27,8 @@ package org.ow2.sirocco.cimi.server.converter.collection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.CimiResourceMetadata;
-import org.ow2.sirocco.cimi.server.domain.collection.CimiResourceMetadataCollection;
+import org.ow2.sirocco.cimi.domain.CimiResourceMetadata;
+import org.ow2.sirocco.cimi.domain.collection.CimiResourceMetadataCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 
 /**

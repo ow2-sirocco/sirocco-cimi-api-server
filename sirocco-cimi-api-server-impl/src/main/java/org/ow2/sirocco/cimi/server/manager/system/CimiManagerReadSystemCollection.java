@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.system;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.collection.CimiSystemCollectionRoot;
+import org.ow2.sirocco.cimi.domain.collection.CimiSystemCollectionRoot;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;

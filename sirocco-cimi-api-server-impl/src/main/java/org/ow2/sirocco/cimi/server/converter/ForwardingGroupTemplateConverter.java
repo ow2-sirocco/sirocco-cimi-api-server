@@ -27,8 +27,8 @@ package org.ow2.sirocco.cimi.server.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ow2.sirocco.cimi.server.domain.CimiForwardingGroupTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiNetwork;
+import org.ow2.sirocco.cimi.domain.CimiForwardingGroupTemplate;
+import org.ow2.sirocco.cimi.domain.CimiNetwork;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.ForwardingGroupTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.Network;

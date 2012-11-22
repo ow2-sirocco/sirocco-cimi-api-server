@@ -26,7 +26,7 @@ package org.ow2.sirocco.cimi.server.converter;
 
 import java.util.regex.Pattern;
 
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
 
 /**

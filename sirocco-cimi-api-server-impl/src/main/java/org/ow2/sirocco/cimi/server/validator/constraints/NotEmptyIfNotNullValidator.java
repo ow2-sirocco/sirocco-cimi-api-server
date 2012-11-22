@@ -32,7 +32,7 @@ import java.util.Map.Entry;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.ow2.sirocco.cimi.server.domain.collection.CimiCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiCollection;
 
 /**
  * Implementation of {@link NotEmptyIfNotNullValidator} validator.

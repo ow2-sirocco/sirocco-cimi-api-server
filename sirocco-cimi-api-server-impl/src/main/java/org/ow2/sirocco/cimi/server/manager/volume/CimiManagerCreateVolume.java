@@ -24,7 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.volume;
 
-import org.ow2.sirocco.cimi.server.domain.CimiVolumeCreate;
+import org.ow2.sirocco.cimi.domain.CimiVolumeCreate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;

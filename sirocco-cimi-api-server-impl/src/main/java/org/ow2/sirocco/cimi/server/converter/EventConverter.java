@@ -24,8 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
-import org.ow2.sirocco.cimi.server.domain.CimiEvent;
-import org.ow2.sirocco.cimi.server.domain.CimiEventType;
+import org.ow2.sirocco.cimi.domain.CimiEvent;
+import org.ow2.sirocco.cimi.domain.CimiEventType;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.event.Event;
 

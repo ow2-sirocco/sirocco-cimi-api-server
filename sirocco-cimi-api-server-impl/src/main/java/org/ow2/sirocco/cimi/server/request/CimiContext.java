@@ -28,11 +28,11 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.ow2.sirocco.cimi.domain.CimiResource;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
 import org.ow2.sirocco.cimi.server.configuration.ConfigFactory;
 import org.ow2.sirocco.cimi.server.configuration.ConfigurationException;
 import org.ow2.sirocco.cimi.server.converter.CimiConverter;
-import org.ow2.sirocco.cimi.server.domain.CimiResource;
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
 import org.ow2.sirocco.cimi.server.manager.CallServiceHelper;
 import org.ow2.sirocco.cloudmanager.model.cimi.Resource;
 

@@ -27,7 +27,7 @@ package org.ow2.sirocco.cimi.server.validator.constraints;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.ow2.sirocco.cimi.server.domain.CimiResource;
+import org.ow2.sirocco.cimi.domain.CimiResource;
 
 /**
  * Implementation of {@link AssertResourceBy} validator.

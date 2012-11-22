@@ -30,15 +30,15 @@ import java.util.Map;
 import junit.framework.Assert;
 
 import org.junit.Test;
-import org.ow2.sirocco.cimi.server.domain.CimiCredential;
-import org.ow2.sirocco.cimi.server.domain.CimiDiskConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineConfiguration;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineDisk;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineImage;
-import org.ow2.sirocco.cimi.server.domain.CimiMachineTemplate;
-import org.ow2.sirocco.cimi.server.domain.CimiObjectCommonAbstract;
-import org.ow2.sirocco.cimi.server.domain.ExchangeType;
-import org.ow2.sirocco.cimi.server.domain.ImageLocation;
+import org.ow2.sirocco.cimi.domain.CimiCredential;
+import org.ow2.sirocco.cimi.domain.CimiDiskConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiMachineConfiguration;
+import org.ow2.sirocco.cimi.domain.CimiMachineDisk;
+import org.ow2.sirocco.cimi.domain.CimiMachineImage;
+import org.ow2.sirocco.cimi.domain.CimiMachineTemplate;
+import org.ow2.sirocco.cimi.domain.CimiObjectCommonAbstract;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
+import org.ow2.sirocco.cimi.domain.ImageLocation;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl;
 
 /**
@@ -57,7 +57,7 @@ public class MergeReferenceHelperImplTest {
 
     /**
      * Test method for
-     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#mergeObjectCommon(org.ow2.sirocco.cimi.server.domain.CimiObjectCommon, org.ow2.sirocco.cimi.server.domain.CimiObjectCommon)}
+     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#mergeObjectCommon(org.ow2.sirocco.cimi.domain.CimiObjectCommon, org.ow2.sirocco.cimi.domain.CimiObjectCommon)}
      * .
      */
     @Test
@@ -155,7 +155,7 @@ public class MergeReferenceHelperImplTest {
 
     /**
      * Test method for
-     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.server.domain.CimiMachineDisk, org.ow2.sirocco.cimi.server.domain.CimiMachineDisk)}
+     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.domain.CimiMachineDisk, org.ow2.sirocco.cimi.domain.CimiMachineDisk)}
      * .
      */
     @Test
@@ -191,7 +191,7 @@ public class MergeReferenceHelperImplTest {
 
     /**
      * Test method for
-     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.server.domain.CimiCredential, org.ow2.sirocco.cimi.server.domain.CimiCredential)}
+     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.domain.CimiCredential, org.ow2.sirocco.cimi.domain.CimiCredential)}
      * .
      */
     @Test
@@ -235,7 +235,7 @@ public class MergeReferenceHelperImplTest {
 
     /**
      * Test method for
-     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.server.domain.CimiMachineImage, org.ow2.sirocco.cimi.server.domain.CimiMachineImage)}
+     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.domain.CimiMachineImage, org.ow2.sirocco.cimi.domain.CimiMachineImage)}
      * .
      */
     @Test
@@ -271,7 +271,7 @@ public class MergeReferenceHelperImplTest {
 
     /**
      * Test method for
-     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.server.domain.CimiMachineConfiguration, org.ow2.sirocco.cimi.server.domain.CimiMachineConfiguration)}
+     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.domain.CimiMachineConfiguration, org.ow2.sirocco.cimi.domain.CimiMachineConfiguration)}
      * .
      */
     @Test
@@ -353,7 +353,7 @@ public class MergeReferenceHelperImplTest {
 
     /**
      * Test method for
-     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.server.domain.CimiMachineTemplate, org.ow2.sirocco.cimi.server.domain.CimiMachineTemplate)}
+     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.domain.CimiMachineTemplate, org.ow2.sirocco.cimi.domain.CimiMachineTemplate)}
      * .
      */
     @Test

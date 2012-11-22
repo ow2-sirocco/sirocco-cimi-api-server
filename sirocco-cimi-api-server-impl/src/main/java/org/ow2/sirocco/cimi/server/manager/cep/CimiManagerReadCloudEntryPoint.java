@@ -26,8 +26,8 @@ package org.ow2.sirocco.cimi.server.manager.cep;
 
 import javax.ws.rs.core.Response;
 
-import org.ow2.sirocco.cimi.server.domain.CimiCloudEntryPoint;
-import org.ow2.sirocco.cimi.server.domain.CloudEntryPointAggregate;
+import org.ow2.sirocco.cimi.domain.CimiCloudEntryPoint;
+import org.ow2.sirocco.cimi.domain.CloudEntryPointAggregate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.manager.resourcemetadata.IResourceMetadataManager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
