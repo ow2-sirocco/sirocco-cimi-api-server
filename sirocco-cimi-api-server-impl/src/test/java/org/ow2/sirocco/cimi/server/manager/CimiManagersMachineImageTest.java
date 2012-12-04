@@ -38,7 +38,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.domain.ExchangeType;
-import org.ow2.sirocco.cimi.domain.ImageLocation;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
 import org.ow2.sirocco.cimi.server.request.CimiRequest;
@@ -129,7 +128,7 @@ public class CimiManagersMachineImageTest {
         EasyMock.replay(this.service);
 
         CimiMachineImage cimi = new CimiMachineImage();
-        cimi.setImageLocation(new ImageLocation("foo"));
+        cimi.setImageLocation("foo");
         this.request.setCimiData(cimi);
         this.managerCreate.execute(this.context);
 

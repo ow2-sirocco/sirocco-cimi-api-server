@@ -9,7 +9,7 @@
 	<property key="keyProp_2_1">valueProp_2_1</property>
 	<state>stateValue_2</state>
 	<type>typeValue_2</type>
-	<imageLocation href="hrefImageLocation_2" />
+	<imageLocation>hrefImageLocation_2</imageLocation>
 	<operation href="hrefValue_2_0" rel="relValue_2_0" />
 	<operation href="hrefValue_2_1" rel="relValue_2_1" />
 </MachineImage>

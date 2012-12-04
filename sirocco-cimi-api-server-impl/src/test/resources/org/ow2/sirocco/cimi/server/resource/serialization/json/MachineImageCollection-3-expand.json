@@ -34,9 +34,7 @@
 			},
 			"state":"stateValue_3_0",
 			"type":"typeValue_3_0",
-			"imageLocation":{
-				"href":"hrefImageLocation_3_0"
-			},
+			"imageLocation":"hrefImageLocation_3_0",
 			"operations":[
 				{
 					"rel":"relValue_3_0",
@@ -69,9 +67,7 @@
 			},
 			"state":"stateValue_3_1",
 			"type":"typeValue_3_1",
-			"imageLocation":{
-				"href":"hrefImageLocation_3_1"
-			},
+			"imageLocation":"hrefImageLocation_3_1",
 			"operations":[
 				{
 					"rel":"relValue_3_0",
@@ -104,9 +100,7 @@
 			},
 			"state":"stateValue_3_2",
 			"type":"typeValue_3_2",
-			"imageLocation":{
-				"href":"hrefImageLocation_3_2"
-			},
+			"imageLocation":"hrefImageLocation_3_2",
 			"operations":[
 				{
 					"rel":"relValue_3_0",

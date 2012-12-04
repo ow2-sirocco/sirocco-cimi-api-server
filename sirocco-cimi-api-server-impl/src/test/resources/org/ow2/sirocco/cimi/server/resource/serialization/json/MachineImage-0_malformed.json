@@ -7,8 +7,6 @@
 	"updated":"2000-01-01T00:00:00.000Z",
 	"state":"stateValue_0",
 	"type":"typeValue_0",
-	"imageLocation":{
-		"href":"hrefImageLocation_0"
-	},
+	"imageLocation":"hrefImageLocation_0",
 	"href":"hrefValue_0"
 }

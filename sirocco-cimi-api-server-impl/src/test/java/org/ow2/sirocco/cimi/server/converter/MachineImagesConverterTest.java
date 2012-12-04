@@ -33,7 +33,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.domain.ExchangeType;
-import org.ow2.sirocco.cimi.domain.ImageLocation;
 import org.ow2.sirocco.cimi.domain.collection.CimiMachineImageCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
@@ -90,7 +89,7 @@ public class MachineImagesConverterTest {
 
         // Full Cimi -> Service
         cimi = new CimiMachineImage();
-        cimi.setImageLocation(new ImageLocation("href"));
+        cimi.setImageLocation("href");
         cimi.setState("state");
         cimi.setType("type");
 
@@ -106,7 +105,7 @@ public class MachineImagesConverterTest {
         service.setType(Type.IMAGE);
 
         cimi = (CimiMachineImage) this.context.convertToCimi(service, CimiMachineImage.class);
-        Assert.assertEquals("hrefImageLocation", cimi.getImageLocation().getHref());
+        Assert.assertEquals("hrefImageLocation", cimi.getImageLocation());
         Assert.assertEquals("AVAILABLE", cimi.getState());
         Assert.assertEquals("IMAGE", cimi.getType());
     }

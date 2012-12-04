@@ -38,8 +38,6 @@ import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.domain.CimiMachineTemplate;
 import org.ow2.sirocco.cimi.domain.CimiObjectCommonAbstract;
 import org.ow2.sirocco.cimi.domain.ExchangeType;
-import org.ow2.sirocco.cimi.domain.ImageLocation;
-import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl;
 
 /**
  * Implementation test.
@@ -231,42 +229,6 @@ public class MergeReferenceHelperImplTest {
         Assert.assertEquals(new String(cimiKey), cimi.getExtensionAttribute("key"));
         Assert.assertEquals("password", cimi.getExtensionAttribute("password"));
         Assert.assertEquals("userName", cimi.getExtensionAttribute("userName"));
-    }
-
-    /**
-     * Test method for
-     * {@link org.ow2.sirocco.cimi.server.manager.MergeReferenceHelperImpl#merge(org.ow2.sirocco.cimi.domain.CimiMachineImage, org.ow2.sirocco.cimi.domain.CimiMachineImage)}
-     * .
-     */
-    @Test
-    public void testMergeCimiMachineImage() {
-        MergeReferenceHelperImpl merger = new MergeReferenceHelperImpl();
-        CimiMachineImage cimi;
-        CimiMachineImage cimiRef;
-
-        ImageLocation refImageLocation = new ImageLocation();
-        cimiRef = new CimiMachineImage();
-        cimiRef.setId("refId");
-        cimiRef.setImageLocation(refImageLocation);
-
-        // Source null
-        cimi = new CimiMachineImage();
-        merger.merge((CimiMachineImage) null, cimi);
-
-        // Destination without value
-        cimi = new CimiMachineImage();
-        merger.merge(cimiRef, cimi);
-
-        Assert.assertEquals("refId", cimi.getId());
-        Assert.assertSame(refImageLocation, cimi.getImageLocation());
-
-        // Destination with values
-        ImageLocation cimiImageLocation = new ImageLocation();
-        cimi = new CimiMachineImage();
-        cimi.setImageLocation(cimiImageLocation);
-        merger.merge(cimiRef, cimi);
-
-        Assert.assertSame(cimiImageLocation, cimi.getImageLocation());
     }
 
     /**

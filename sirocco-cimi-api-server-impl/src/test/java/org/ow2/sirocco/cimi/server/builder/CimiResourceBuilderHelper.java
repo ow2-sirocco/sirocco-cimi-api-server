@@ -50,7 +50,6 @@ import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.domain.CimiMachineTemplate;
 import org.ow2.sirocco.cimi.domain.CimiObjectCommon;
 import org.ow2.sirocco.cimi.domain.CimiOperation;
-import org.ow2.sirocco.cimi.domain.ImageLocation;
 import org.ow2.sirocco.cimi.domain.NestedJob;
 import org.ow2.sirocco.cimi.domain.ParentJob;
 import org.ow2.sirocco.cimi.domain.TargetResource;
@@ -277,7 +276,7 @@ public class CimiResourceBuilderHelper {
         CimiMachineImage cimi = new CimiMachineImage();
         CimiResourceBuilderHelper.fillCimiObjectCommon(cimi, id, index, expand);
         if ((null != expand) && (true == expand)) {
-            cimi.setImageLocation(new ImageLocation("hrefImageLocation" + postfix));
+            cimi.setImageLocation("hrefImageLocation" + postfix);
             cimi.setState("stateValue" + postfix);
             cimi.setType("typeValue" + postfix);
         }

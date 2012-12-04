@@ -13,7 +13,7 @@
 		<property key="keyProp_3_1">valueProp_3_1</property>
 		<state>stateValue_3_0</state>
 		<type>typeValue_3_0</type>
-		<imageLocation href="hrefImageLocation_3_0" />
+		<imageLocation>hrefImageLocation_3_0</imageLocation>
 		<operation href="hrefValue_3_0" rel="relValue_3_0" />
 		<operation href="hrefValue_3_1" rel="relValue_3_1" />
 		<operation href="hrefValue_3_2" rel="relValue_3_2" />
@@ -29,7 +29,7 @@
 		<property key="keyProp_3_1">valueProp_3_1</property>
 		<state>stateValue_3_1</state>
 		<type>typeValue_3_1</type>
-		<imageLocation href="hrefImageLocation_3_1" />
+		<imageLocation>hrefImageLocation_3_1</imageLocation>
 		<operation href="hrefValue_3_0" rel="relValue_3_0" />
 		<operation href="hrefValue_3_1" rel="relValue_3_1" />
 		<operation href="hrefValue_3_2" rel="relValue_3_2" />
@@ -45,7 +45,7 @@
 		<property key="keyProp_3_1">valueProp_3_1</property>
 		<state>stateValue_3_2</state>
 		<type>typeValue_3_2</type>
-		<imageLocation href="hrefImageLocation_3_2" />
+		<imageLocation>hrefImageLocation_3_2</imageLocation>
 		<operation href="hrefValue_3_0" rel="relValue_3_0" />
 		<operation href="hrefValue_3_1" rel="relValue_3_1" />
 		<operation href="hrefValue_3_2" rel="relValue_3_2" />

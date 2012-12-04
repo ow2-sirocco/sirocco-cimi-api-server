@@ -24,7 +24,6 @@
  */
 package org.ow2.sirocco.cimi.domain;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -64,9 +63,9 @@ public class CimiMachineImage extends CimiObjectCommonAbstract {
     /**
      * Field "imageLocation".
      */
-    @Valid
+    // @Valid
     @NotNull(groups = {GroupCreateByValue.class})
-    private ImageLocation imageLocation;
+    private String imageLocation;
 
     private RelatedMachineImage relatedImage;
 
@@ -91,10 +90,10 @@ public class CimiMachineImage extends CimiObjectCommonAbstract {
      * 
      * @param imageLocation The image location
      */
-    public CimiMachineImage(final ImageLocation imageLocation) {
-        super();
-        this.imageLocation = imageLocation;
-    }
+    // public CimiMachineImage(final ImageLocation imageLocation) {
+    // super();
+    // this.imageLocation = imageLocation;
+    // }
 
     /**
      * Return the value of field "state".
@@ -119,7 +118,7 @@ public class CimiMachineImage extends CimiObjectCommonAbstract {
      * 
      * @return The value
      */
-    public ImageLocation getImageLocation() {
+    public String getImageLocation() {
         return this.imageLocation;
     }
 
@@ -128,7 +127,7 @@ public class CimiMachineImage extends CimiObjectCommonAbstract {
      * 
      * @param imageLocation The value
      */
-    public void setImageLocation(final ImageLocation imageLocation) {
+    public void setImageLocation(final String imageLocation) {
         this.imageLocation = imageLocation;
     }
 

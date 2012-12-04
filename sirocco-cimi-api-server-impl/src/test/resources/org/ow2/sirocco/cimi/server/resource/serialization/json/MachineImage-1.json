@@ -10,9 +10,7 @@
 	},
 	"state":"stateValue_1",
 	"type":"typeValue_1",
-	"imageLocation":{
-		"href":"hrefImageLocation_1"
-	},
+	"imageLocation":"hrefImageLocation_1",
 	"operations":[
 		{
 			"rel":"relValue_1_0",

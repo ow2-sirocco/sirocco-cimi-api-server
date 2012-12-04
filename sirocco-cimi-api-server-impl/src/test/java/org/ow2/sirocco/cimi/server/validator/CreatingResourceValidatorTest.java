@@ -32,12 +32,10 @@ import org.ow2.sirocco.cimi.domain.CimiMachineCreate;
 import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.domain.CimiMachineTemplate;
 import org.ow2.sirocco.cimi.domain.ExchangeType;
-import org.ow2.sirocco.cimi.domain.ImageLocation;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
 import org.ow2.sirocco.cimi.server.request.CimiRequest;
 import org.ow2.sirocco.cimi.server.request.CimiResponse;
-import org.ow2.sirocco.cimi.server.validator.CimiValidatorHelper;
 
 public class CreatingResourceValidatorTest {
 
@@ -66,7 +64,7 @@ public class CreatingResourceValidatorTest {
 
         // OK by values
         cimi = new CimiMachineImage();
-        cimi.setImageLocation(new ImageLocation("foo"));
+        cimi.setImageLocation("foo");
         Assert.assertTrue(CimiValidatorHelper.getInstance().validateToCreate(this.context, cimi));
 
         // OK by reference
@@ -75,13 +73,9 @@ public class CreatingResourceValidatorTest {
 
         // OK by reference and value
         cimi = new CimiMachineImage(this.request.getBaseUri() + ExchangeType.MachineImage.getPathType().getPathname() + "/31");
-        cimi.setImageLocation(new ImageLocation("foo"));
+        cimi.setImageLocation("foo");
         Assert.assertTrue(CimiValidatorHelper.getInstance().validateToCreate(this.context, cimi));
 
-        // KO by reference and value
-        cimi = new CimiMachineImage(this.request.getBaseUri() + ExchangeType.MachineImage.getPathType().getPathname() + "/31");
-        cimi.setImageLocation(new ImageLocation());
-        Assert.assertFalse(CimiValidatorHelper.getInstance().validateToCreate(this.context, cimi));
     }
 
     @Test
@@ -241,7 +235,9 @@ public class CreatingResourceValidatorTest {
         // OK by values
         template = new CimiMachineTemplate();
         template.setMachineConfig(new CimiMachineConfiguration(11, 22));
-        template.setMachineImage(new CimiMachineImage(new ImageLocation("foo")));
+        CimiMachineImage cimiMachineImage = new CimiMachineImage();
+        cimiMachineImage.setImageLocation("foo");
+        template.setMachineImage(cimiMachineImage);
         cimi = new CimiMachineCreate();
         cimi.setMachineTemplate(template);
         Assert.assertTrue(CimiValidatorHelper.getInstance().validateToCreate(this.context, cimi));
@@ -256,7 +252,9 @@ public class CreatingResourceValidatorTest {
         template = new CimiMachineTemplate(this.request.getBaseUri() + ExchangeType.MachineTemplate.getPathType().getPathname()
             + "/7");
         template.setMachineConfig(new CimiMachineConfiguration(11, 22));
-        template.setMachineImage(new CimiMachineImage(new ImageLocation("foo")));
+        cimiMachineImage = new CimiMachineImage();
+        cimiMachineImage.setImageLocation("foo");
+        template.setMachineImage(cimiMachineImage);
         cimi = new CimiMachineCreate();
         cimi.setMachineTemplate(template);
         Assert.assertTrue(CimiValidatorHelper.getInstance().validateToCreate(this.context, cimi));
@@ -264,7 +262,9 @@ public class CreatingResourceValidatorTest {
         // KO by reference and value
         template = new CimiMachineTemplate("hrefFoo");
         template.setMachineConfig(new CimiMachineConfiguration(11, 22));
-        template.setMachineImage(new CimiMachineImage(new ImageLocation("foo")));
+        cimiMachineImage = new CimiMachineImage();
+        cimiMachineImage.setImageLocation("foo");
+        template.setMachineImage(cimiMachineImage);
         cimi = new CimiMachineCreate();
         cimi.setMachineTemplate(template);
         Assert.assertFalse(CimiValidatorHelper.getInstance().validateToCreate(this.context, cimi));
@@ -281,7 +281,9 @@ public class CreatingResourceValidatorTest {
         // OK by values
         cimi = new CimiMachineTemplate();
         cimi.setMachineConfig(new CimiMachineConfiguration(11, 22));
-        cimi.setMachineImage(new CimiMachineImage(new ImageLocation("foo")));
+        CimiMachineImage cimiMachineImage = new CimiMachineImage();
+        cimiMachineImage.setImageLocation("foo");
+        cimi.setMachineImage(cimiMachineImage);
         Assert.assertTrue(CimiValidatorHelper.getInstance().validateToCreate(this.context, cimi));
 
         // OK by reference
@@ -293,13 +295,10 @@ public class CreatingResourceValidatorTest {
         cimi = new CimiMachineTemplate(this.request.getBaseUri() + ExchangeType.MachineTemplate.getPathType().getPathname()
             + "/7");
         cimi.setMachineConfig(new CimiMachineConfiguration(11, 22));
-        cimi.setMachineImage(new CimiMachineImage(new ImageLocation("foo")));
+        cimiMachineImage = new CimiMachineImage();
+        cimiMachineImage.setImageLocation("foo");
+        cimi.setMachineImage(cimiMachineImage);
         Assert.assertTrue(CimiValidatorHelper.getInstance().validateToCreate(this.context, cimi));
 
-        // KO by reference and value
-        cimi = new CimiMachineTemplate(this.request.getBaseUri() + ExchangeType.MachineTemplate.getPathType().getPathname()
-            + "/7");
-        cimi.setMachineImage(new CimiMachineImage(new ImageLocation()));
-        Assert.assertFalse(CimiValidatorHelper.getInstance().validateToCreate(this.context, cimi));
     }
 }

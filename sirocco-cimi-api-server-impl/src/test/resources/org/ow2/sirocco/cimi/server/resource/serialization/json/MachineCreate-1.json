@@ -71,9 +71,7 @@
 			],
 			"href":"hrefValue_1",
 			"state":"stateValue_1",
-			"imageLocation":{
-				"href":"hrefImageLocation_1"
-			},
+			"imageLocation":"hrefImageLocation_1",
 			"type":"typeValue_1"
 		},
 		"credential":{

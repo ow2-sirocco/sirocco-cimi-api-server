@@ -11,9 +11,7 @@
 	},
 	"state":"stateValue_2",
 	"type":"typeValue_2",
-	"imageLocation":{
-		"href":"hrefImageLocation_2"
-	},
+	"imageLocation":"hrefImageLocation_2",
 	"operations":[
 		{
 			"rel":"relValue_2_0",

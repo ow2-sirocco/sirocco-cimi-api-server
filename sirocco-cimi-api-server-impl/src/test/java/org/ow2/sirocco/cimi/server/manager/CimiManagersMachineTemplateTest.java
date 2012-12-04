@@ -37,8 +37,6 @@ import org.ow2.sirocco.cimi.domain.CimiMachineConfiguration;
 import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.domain.CimiMachineTemplate;
 import org.ow2.sirocco.cimi.domain.ExchangeType;
-import org.ow2.sirocco.cimi.domain.ImageLocation;
-import org.ow2.sirocco.cimi.server.manager.CimiManager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
 import org.ow2.sirocco.cimi.server.request.CimiRequest;
@@ -122,7 +120,9 @@ public class CimiManagersMachineTemplateTest {
 
         CimiMachineTemplate cimi = new CimiMachineTemplate();
         cimi.setMachineConfig(new CimiMachineConfiguration(1, 2));
-        cimi.setMachineImage(new CimiMachineImage(new ImageLocation("foo")));
+        CimiMachineImage cimiMachineImage = new CimiMachineImage();
+        cimiMachineImage.setImageLocation("foo");
+        cimi.setMachineImage(cimiMachineImage);
         this.request.setCimiData(cimi);
         this.managerCreate.execute(this.context);
 
