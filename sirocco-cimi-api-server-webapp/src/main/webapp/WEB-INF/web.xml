@@ -80,6 +80,7 @@
 
 	<login-config>
 		<auth-method>BASIC</auth-method>
+		<realm-name>jdbc</realm-name>
 	</login-config>
 
 </web-app>

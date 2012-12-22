@@ -7,8 +7,6 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
-	<context:property-placeholder location="WEB-INF/ejb.properties" />
-
 	<!-- Remote example -->
 	<!-- <jee:remote-slsb id="IMachineImageManager" -->
 	<!-- business-interface="org.ow2.sirocco.cloudmanager.core.api.IRemoteMachineImageManager" -->
@@ -20,42 +18,42 @@
 	<!-- </jee:remote-slsb> -->
 
 	<jee:local-slsb id="ICredentialsManager"
-		jndi-name="org.ow2.sirocco.cloudmanager.core.impl.CredentialsManager_org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager@Local"
+		jndi-name="java:global/org.ow2.sirocco.cloudmanager.sirocco-cloudmanager-core-manager_0.5.5.SNAPSHOT/CredentialsManager!org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager"
 		business-interface="org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager"
 		lookup-home-on-startup="false">
 	</jee:local-slsb>
 	<jee:local-slsb id="IEventManager"
-		jndi-name="org.ow2.sirocco.cloudmanager.core.impl.EventManager_org.ow2.sirocco.cloudmanager.core.api.IEventManager@Local"
+		jndi-name="java:global/org.ow2.sirocco.cloudmanager.sirocco-cloudmanager-core-manager_0.5.5.SNAPSHOT/EventManager!org.ow2.sirocco.cloudmanager.core.api.IEventManager"
 		business-interface="org.ow2.sirocco.cloudmanager.core.api.IEventManager"
 		lookup-home-on-startup="false">
 	</jee:local-slsb>
 	<jee:local-slsb id="IJobManager"
-		jndi-name="org.ow2.sirocco.cloudmanager.core.impl.JobManager_org.ow2.sirocco.cloudmanager.core.api.IJobManager@Local"
+		jndi-name="java:global/org.ow2.sirocco.cloudmanager.sirocco-cloudmanager-core-manager_0.5.5.SNAPSHOT/JobManager!org.ow2.sirocco.cloudmanager.core.api.IJobManager"
 		business-interface="org.ow2.sirocco.cloudmanager.core.api.IJobManager"
 		lookup-home-on-startup="false">
 	</jee:local-slsb>
 	<jee:local-slsb id="IMachineManager"
-		jndi-name="org.ow2.sirocco.cloudmanager.core.impl.MachineManager_org.ow2.sirocco.cloudmanager.core.api.IMachineManager@Local"
+		jndi-name="java:global/org.ow2.sirocco.cloudmanager.sirocco-cloudmanager-core-manager_0.5.5.SNAPSHOT/MachineManager!org.ow2.sirocco.cloudmanager.core.api.IMachineManager"
 		business-interface="org.ow2.sirocco.cloudmanager.core.api.IMachineManager"
 		lookup-home-on-startup="false">
 	</jee:local-slsb>
 	<jee:local-slsb id="IMachineImageManager"
-		jndi-name="org.ow2.sirocco.cloudmanager.core.impl.MachineImageManager_org.ow2.sirocco.cloudmanager.core.api.IMachineImageManager@Local"
+		jndi-name="java:global/org.ow2.sirocco.cloudmanager.sirocco-cloudmanager-core-manager_0.5.5.SNAPSHOT/MachineImageManager!org.ow2.sirocco.cloudmanager.core.api.IMachineImageManager"
 		business-interface="org.ow2.sirocco.cloudmanager.core.api.IMachineImageManager"
 		lookup-home-on-startup="false">
 	</jee:local-slsb>
 	<jee:local-slsb id="INetworkManager"
-		jndi-name="org.ow2.sirocco.cloudmanager.core.impl.NetworkManager_org.ow2.sirocco.cloudmanager.core.api.INetworkManager@Local"
+		jndi-name="java:global/org.ow2.sirocco.cloudmanager.sirocco-cloudmanager-core-manager_0.5.5.SNAPSHOT/NetworkManager!org.ow2.sirocco.cloudmanager.core.api.INetworkManager"
 		business-interface="org.ow2.sirocco.cloudmanager.core.api.INetworkManager"
 		lookup-home-on-startup="false">
 	</jee:local-slsb>
 	<jee:local-slsb id="ISystemManager"
-		jndi-name="org.ow2.sirocco.cloudmanager.core.impl.SystemManager_org.ow2.sirocco.cloudmanager.core.api.ISystemManager@Local"
+		jndi-name="java:global/org.ow2.sirocco.cloudmanager.sirocco-cloudmanager-core-manager_0.5.5.SNAPSHOT/SystemManager!org.ow2.sirocco.cloudmanager.core.api.ISystemManager"
 		business-interface="org.ow2.sirocco.cloudmanager.core.api.ISystemManager"
 		lookup-home-on-startup="false">
 	</jee:local-slsb>
 	<jee:local-slsb id="IVolumeManager"
-		jndi-name="org.ow2.sirocco.cloudmanager.core.impl.VolumeManager_org.ow2.sirocco.cloudmanager.core.api.IVolumeManager@Local"
+		jndi-name="java:global/org.ow2.sirocco.cloudmanager.sirocco-cloudmanager-core-manager_0.5.5.SNAPSHOT/VolumeManager!org.ow2.sirocco.cloudmanager.core.api.IVolumeManager"
 		business-interface="org.ow2.sirocco.cloudmanager.core.api.IVolumeManager"
 		lookup-home-on-startup="false">
 	</jee:local-slsb>
