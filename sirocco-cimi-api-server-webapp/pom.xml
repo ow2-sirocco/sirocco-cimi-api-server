@@ -49,7 +49,6 @@
 
 
 	<build>
-		<finalName>sirocco-rest-cimi</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
