@@ -117,7 +117,13 @@ public class MachineTemplateNetworkInterfaceConverter extends ObjectCommonConver
             dataCimi.setListAddresses(listCimis);
         }
         dataCimi.setMtu(dataService.getMtu());
-        dataCimi.setNetwork((CimiNetwork) context.convertNextCimi(dataService.getNetwork(), CimiNetwork.class));
+        if (dataService.getSystemNetworkName() != null) {
+            CimiNetwork cimiNetwork = new CimiNetwork();
+            cimiNetwork.setHref("#" + dataService.getSystemNetworkName());
+            dataCimi.setNetwork(cimiNetwork);
+        } else {
+            dataCimi.setNetwork((CimiNetwork) context.convertNextCimi(dataService.getNetwork(), CimiNetwork.class));
+        }
         dataCimi.setNetworkPort((CimiNetworkPort) context.convertNextCimi(dataService.getNetworkPort(), CimiNetworkPort.class));
         dataCimi.setNetworkType(ConverterHelper.toString(dataService.getNetworkType()));
         dataCimi.setState(ConverterHelper.toString(dataService.getState()));
@@ -133,7 +139,13 @@ public class MachineTemplateNetworkInterfaceConverter extends ObjectCommonConver
     protected void doCopyToService(final CimiContext context, final CimiMachineTemplateNetworkInterface dataCimi,
         final MachineTemplateNetworkInterface dataService) {
         dataService.setMtu(dataCimi.getMtu());
-        dataService.setNetwork((Network) context.convertNextService(dataCimi.getNetwork()));
+        if (dataCimi.getNetwork() != null && dataCimi.getNetwork().getHref() != null
+            && dataCimi.getNetwork().getHref().startsWith("#")) {
+            dataService.setSystemNetworkName(dataCimi.getNetwork().getHref().substring(1));
+        } else {
+            dataService.setNetwork((Network) context.convertNextService(dataCimi.getNetwork(), CimiNetwork.class));
+        }
+
         dataService.setNetworkPort((NetworkPort) context.convertNextService(dataCimi.getNetworkPort(), CimiNetworkPort.class));
         dataService.setNetworkType(ConverterHelper.toNetworkType(dataCimi.getNetworkType()));
         dataService.setState(ConverterHelper.toMachineTemplateNetworkInterfaceState(dataCimi.getState()));
