@@ -37,7 +37,6 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiAction;
 import org.ow2.sirocco.cimi.domain.CimiActionImport;
-import org.ow2.sirocco.cimi.domain.CimiData;
 import org.ow2.sirocco.cimi.domain.CimiSystemTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
@@ -133,49 +132,32 @@ public class SystemTemplateRestResource extends RestResourceAbstract {
     }
 
     /**
-     * Create a system template or send action on collection.
+     * Create a system template.
      * 
      * @return The REST response
      */
     @POST
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response createOrActionOnCollection(final CimiData cimiData) {
+    public Response create(final CimiSystemTemplate cimiData) {
         CimiContext context = ContextHelper.buildContext(this.getJaxRsRequestInfos(), cimiData);
-        if (cimiData instanceof CimiActionImport) {
-            this.cimiManagerActionSystemTemplate.execute(context);
-        } else {
-            this.cimiManagerCreateSystemTemplate.execute(context);
-        }
+        this.cimiManagerCreateSystemTemplate.execute(context);
         return ResponseHelper.buildResponse(context.getResponse());
     }
 
-    // /**
-    // * Create a system template.
-    // *
-    // * @return The REST response
-    // */
-    // @POST
-    // @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    // public Response create(final CimiSystemTemplate cimiData) {
-    // CimiContext context =
-    // ContextHelper.buildContext(this.getJaxRsRequestInfos(), cimiData);
-    // this.cimiManagerCreateSystemTemplate.execute(context);
-    // return ResponseHelper.buildResponse(context.getResponse());
-    // }
-    //
-    // /**
-    // * Actions on system template collection.
-    // *
-    // * @return The REST response
-    // */
-    // @POST
-    // @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    // public Response actionCollection(final CimiActionImport cimiData) {
-    // CimiContext context =
-    // ContextHelper.buildContext(this.getJaxRsRequestInfos(), cimiData);
-    // this.cimiManagerActionSystemTemplate.execute(context);
-    // return ResponseHelper.buildResponse(context.getResponse());
-    // }
+    /**
+     * Actions on system template collection.
+     * 
+     * @return The REST response
+     */
+    @POST
+    // TODO define this path constant elsewhere
+    @Path("/import")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response actionCollection(final CimiActionImport cimiData) {
+        CimiContext context = ContextHelper.buildContext(this.getJaxRsRequestInfos(), cimiData);
+        this.cimiManagerActionSystemTemplate.execute(context);
+        return ResponseHelper.buildResponse(context.getResponse());
+    }
 
     /**
      * Actions on system template.
