@@ -125,6 +125,8 @@ public abstract class ObjectCommonConverter extends CommonConverter implements C
         this.fill(dataCimi, dataService);
         if (null != dataCimi.getId()) {
             dataService.setId(PathHelper.extractId(dataCimi.getId()));
+        } else if (null != dataCimi.getHref()) {
+            dataService.setId(PathHelper.extractId(dataCimi.getHref()));
         }
     }
 
