@@ -31,6 +31,7 @@ import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineImageManager;
+import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,8 +44,12 @@ import org.springframework.stereotype.Component;
 public class CimiManagerCreateMachineImage extends CimiManagerCreateAbstract {
 
     @Autowired
+    @Qualifier("IMachineManager")
+    private IMachineManager machineManager;
+
+    @Autowired
     @Qualifier("IMachineImageManager")
-    private IMachineImageManager manager;
+    private IMachineImageManager machineImageManager;
 
     @Autowired
     @Qualifier("MergeReferenceHelper")
@@ -71,9 +76,9 @@ public class CimiManagerCreateMachineImage extends CimiManagerCreateAbstract {
         }
         // Call services
         if (null != idMachineToCapture) {
-            out = this.manager.captureMachine((MachineImage) dataService, idMachineToCapture);
+            out = this.machineManager.captureMachine(idMachineToCapture, (MachineImage) dataService);
         } else {
-            out = this.manager.createMachineImage((MachineImage) dataService);
+            out = this.machineImageManager.createMachineImage((MachineImage) dataService);
         }
         return out;
     }
