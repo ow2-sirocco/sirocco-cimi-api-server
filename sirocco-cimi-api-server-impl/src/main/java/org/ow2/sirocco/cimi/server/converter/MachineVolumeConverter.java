@@ -101,7 +101,13 @@ public class MachineVolumeConverter extends ObjectCommonConverter {
         this.fill(context, dataService, dataCimi);
         if (true == context.mustBeExpanded(dataCimi)) {
             dataCimi.setInitialLocation(dataService.getInitialLocation());
-            dataCimi.setVolume((CimiVolume) context.convertNextCimi(dataService.getVolume(), CimiVolume.class));
+            if (dataService.getSystemVolumeName() != null) {
+                CimiVolume cimiVolume = new CimiVolume();
+                cimiVolume.setHref("#" + dataService.getSystemVolumeName());
+                dataCimi.setVolume(cimiVolume);
+            } else {
+                dataCimi.setVolume((CimiVolume) context.convertNextCimi(dataService.getVolume(), CimiVolume.class));
+            }
         }
     }
 
@@ -115,6 +121,11 @@ public class MachineVolumeConverter extends ObjectCommonConverter {
     protected void doCopyToService(final CimiContext context, final CimiMachineVolume dataCimi, final MachineVolume dataService) {
         this.fill(context, dataCimi, dataService);
         dataService.setInitialLocation(dataCimi.getInitialLocation());
-        dataService.setVolume((Volume) context.convertNextService(dataCimi.getVolume()));
+        if (dataCimi.getVolume() != null && dataCimi.getVolume().getHref() != null
+            && dataCimi.getVolume().getHref().startsWith("#")) {
+            dataService.setSystemVolumeName(dataCimi.getVolume().getHref().substring(1));
+        } else {
+            dataService.setVolume((Volume) context.convertNextService(dataCimi.getVolume()));
+        }
     }
 }

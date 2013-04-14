@@ -116,8 +116,14 @@ public class MachineTemplateConverter extends ObjectCommonConverter {
     protected void doCopyToCimi(final CimiContext context, final MachineTemplate dataService, final CimiMachineTemplate dataCimi) {
         this.fill(context, dataService, dataCimi);
         if (true == context.mustBeExpanded(dataCimi)) {
-            dataCimi
-                .setCredential((CimiCredential) context.convertNextCimi(dataService.getCredential(), CimiCredential.class));
+            if (dataService.getSystemCredentialName() != null) {
+                CimiCredential cimiCred = new CimiCredential();
+                cimiCred.setHref("#" + dataService.getSystemCredentialName());
+                dataCimi.setCredential(cimiCred);
+            } else {
+                dataCimi.setCredential((CimiCredential) context.convertNextCimi(dataService.getCredential(),
+                    CimiCredential.class));
+            }
             dataCimi.setInitialState(ConverterHelper.toString(dataService.getInitialState()));
             dataCimi.setEventLogTemplate((CimiEventLogTemplate) context.convertNextCimi(dataService.getEventLogTemplate(),
                 CimiEventLogTemplate.class));
@@ -166,7 +172,12 @@ public class MachineTemplateConverter extends ObjectCommonConverter {
     protected void doCopyToService(final CimiContext context, final CimiMachineTemplate dataCimi,
         final MachineTemplate dataService) {
         this.fill(context, dataCimi, dataService);
-        dataService.setCredential((Credentials) context.convertNextService(dataCimi.getCredential()));
+        if (dataCimi.getCredential() != null && dataCimi.getCredential().getHref() != null
+            && dataCimi.getCredential().getHref().startsWith("#")) {
+            dataService.setSystemCredentialName(dataCimi.getCredential().getHref().substring(1));
+        } else {
+            dataService.setCredential((Credentials) context.convertNextService(dataCimi.getCredential()));
+        }
         dataService.setEventLogTemplate((EventLogTemplate) context.convertNextService(dataCimi.getEventLogTemplate()));
         dataService.setInitialState(ConverterHelper.toMachineState(dataCimi.getInitialState()));
         dataService.setMachineImage((MachineImage) context.convertNextService(dataCimi.getMachineImage()));

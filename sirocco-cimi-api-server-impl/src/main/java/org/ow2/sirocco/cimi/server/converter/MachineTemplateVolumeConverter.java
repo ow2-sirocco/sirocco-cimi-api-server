@@ -99,10 +99,12 @@ public class MachineTemplateVolumeConverter extends VolumeConverter {
      */
     protected void doCopyToCimi(final CimiContext context, final MachineVolume dataService,
         final CimiMachineTemplateVolume dataCimi) {
-        this.doCopyToCimi(context, dataService.getVolume(), dataCimi);
-        if (true == context.mustBeExpanded(dataCimi)) {
-            dataCimi.setInitialLocation(dataService.getInitialLocation());
+        if (dataService.getSystemVolumeName() != null) {
+            dataCimi.setHref("#" + dataService.getSystemVolumeName());
+        } else {
+            this.doCopyToCimi(context, dataService.getVolume(), dataCimi);
         }
+        dataCimi.setInitialLocation(dataService.getInitialLocation());
     }
 
     /**
@@ -115,6 +117,10 @@ public class MachineTemplateVolumeConverter extends VolumeConverter {
     protected void doCopyToService(final CimiContext context, final CimiMachineTemplateVolume dataCimi,
         final MachineVolume dataService) {
         dataService.setInitialLocation(dataCimi.getInitialLocation());
-        dataService.setVolume((Volume) context.convertNextService(dataCimi, CimiVolume.class));
+        if (dataCimi.getHref() != null && dataCimi.getHref().startsWith("#")) {
+            dataService.setSystemVolumeName(dataCimi.getHref().substring(1));
+        } else {
+            dataService.setVolume((Volume) context.convertNextService(dataCimi, CimiVolume.class));
+        }
     }
 }
