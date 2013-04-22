@@ -36,7 +36,7 @@ public abstract class ConstantsPath {
 
     public static final String ADDRESS_TEMPLATE_PATH = "/" + ConstantsPath.ADDRESS_TEMPLATE;
 
-    public static final String CLOUDENTRYPOINT = "";
+    public static final String CLOUDENTRYPOINT = "cloudEntryPoint";
 
     public static final String CLOUDENTRYPOINT_PATH = "/" + ConstantsPath.CLOUDENTRYPOINT;
 
