@@ -157,9 +157,6 @@ public class AssertReferencePathValidatorTest {
         toTest.setHref("");
         Assert.assertFalse(CimiValidatorHelper.getInstance().validate(this.context, toTest, GroupWrite.class));
 
-        toTest.setHref(this.request.getBaseUri());
-        Assert.assertTrue(CimiValidatorHelper.getInstance().validate(this.context, toTest, GroupWrite.class));
-
         toTest.setHref(this.request.getBaseUri() + ExchangeType.Credential.getPathType().getPathname());
         Assert.assertFalse(CimiValidatorHelper.getInstance().validate(this.context, toTest, GroupWrite.class));
 
