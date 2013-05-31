@@ -46,7 +46,6 @@ import org.ow2.sirocco.cimi.server.request.CimiResponse;
 import org.ow2.sirocco.cimi.server.request.CimiSelect;
 import org.ow2.sirocco.cimi.server.request.CimiStringParams;
 import org.ow2.sirocco.cimi.server.request.RequestParams;
-import org.ow2.sirocco.cloudmanager.model.cimi.CloudEntryPoint;
 import org.ow2.sirocco.cloudmanager.model.cimi.Credentials;
 import org.ow2.sirocco.cloudmanager.model.cimi.CredentialsTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.Job;
@@ -88,7 +87,7 @@ public class CloudEntryPointConverterTest {
 
     private CloudEntryPointAggregate buildFull() {
         CloudEntryPointAggregate service;
-        service = new CloudEntryPointAggregate(new CloudEntryPoint());
+        service = new CloudEntryPointAggregate();
 
         service.setCredentials(new ArrayList<Credentials>());
         service.getCredentials().add(new Credentials());
@@ -164,7 +163,7 @@ public class CloudEntryPointConverterTest {
         CloudEntryPointAggregate service;
 
         // Empty Service -> Cimi
-        service = new CloudEntryPointAggregate(new CloudEntryPoint());
+        service = new CloudEntryPointAggregate();
         cimi = (CimiCloudEntryPoint) this.context.convertToCimi(service, CimiCloudEntryPoint.class);
         Assert.assertEquals(this.request.getBaseUri(), cimi.getBaseURI());
         Assert.assertNull(cimi.getCredentials());

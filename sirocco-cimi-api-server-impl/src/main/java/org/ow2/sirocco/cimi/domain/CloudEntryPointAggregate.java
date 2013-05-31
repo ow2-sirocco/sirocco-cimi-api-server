@@ -28,7 +28,7 @@ import java.util.List;
 
 import org.ow2.sirocco.cloudmanager.model.cimi.Address;
 import org.ow2.sirocco.cloudmanager.model.cimi.AddressTemplate;
-import org.ow2.sirocco.cloudmanager.model.cimi.CloudEntryPoint;
+import org.ow2.sirocco.cloudmanager.model.cimi.CloudEntity;
 import org.ow2.sirocco.cloudmanager.model.cimi.Credentials;
 import org.ow2.sirocco.cloudmanager.model.cimi.CredentialsTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.ForwardingGroup;
@@ -56,7 +56,7 @@ import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemTemplate;
 /**
  * Aggregation of CloudEntryPoint to add all items necessary for CIMI.
  */
-public class CloudEntryPointAggregate extends CloudEntryPoint {
+public class CloudEntryPointAggregate extends CloudEntity {
 
     /** Serial. */
     private static final long serialVersionUID = 1L;
@@ -193,16 +193,7 @@ public class CloudEntryPointAggregate extends CloudEntryPoint {
      * 
      * @param href The reference
      */
-    public CloudEntryPointAggregate(final CloudEntryPoint cloud) {
-        this.setCreated(cloud.getCreated());
-        this.setDeleted(cloud.getDeleted());
-        this.setDescription(cloud.getDescription());
-        this.setId(cloud.getId());
-        this.setName(cloud.getName());
-        this.setProperties(cloud.getProperties());
-        this.setProviderAssignedId(cloud.getProviderAssignedId());
-        this.setUpdated(cloud.getUpdated());
-        this.setUser(cloud.getUser());
+    public CloudEntryPointAggregate() {
     }
 
     /**

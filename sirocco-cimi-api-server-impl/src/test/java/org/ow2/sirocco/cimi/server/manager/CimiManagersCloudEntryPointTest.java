@@ -34,7 +34,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ow2.sirocco.cimi.domain.CimiCloudEntryPoint;
-import org.ow2.sirocco.cimi.server.manager.CimiManager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
 import org.ow2.sirocco.cimi.server.request.CimiExpand;
@@ -53,7 +52,6 @@ import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.Address;
 import org.ow2.sirocco.cloudmanager.model.cimi.AddressTemplate;
-import org.ow2.sirocco.cloudmanager.model.cimi.CloudEntryPoint;
 import org.ow2.sirocco.cloudmanager.model.cimi.Credentials;
 import org.ow2.sirocco.cloudmanager.model.cimi.CredentialsTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.ForwardingGroup;
@@ -166,8 +164,8 @@ public class CimiManagersCloudEntryPointTest {
     @Test
     // TODO Others resources : Network, ...
     public void testRead() throws Exception {
-        CloudEntryPoint cloud = new CloudEntryPoint();
-        cloud.setId(10);
+        // CloudEntryPointAggregate cloud = new CloudEntryPointAggregate();
+        // cloud.setId(10);
 
         // Credentials
         List<Credentials> credentialsCollection = new ArrayList<Credentials>();
@@ -212,7 +210,7 @@ public class CimiManagersCloudEntryPointTest {
         EasyMock.expect(this.serviceJob.getJobs()).andReturn(jobCollection);
         EasyMock.replay(this.serviceJob);
 
-        EasyMock.expect(this.serviceMachine.getCloudEntryPoint()).andReturn(cloud);
+        // EasyMock.expect(this.serviceMachine.getCloudEntryPoint()).andReturn(cloud);
         EasyMock.expect(this.serviceMachine.getMachines()).andReturn(machineCollection);
         EasyMock.expect(this.serviceMachine.getMachineTemplates()).andReturn(machineTemplateCollection);
         EasyMock.expect(this.serviceMachine.getMachineConfigurations()).andReturn(machineConfigurationCollection);

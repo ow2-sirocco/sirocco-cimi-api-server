@@ -129,7 +129,6 @@ import org.ow2.sirocco.cimi.domain.collection.CimiVolumeConfigurationCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiVolumeImageCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiVolumeTemplateCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiVolumeVolumeImageCollection;
-import org.ow2.sirocco.cimi.server.converter.CommonConverter;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
 import org.ow2.sirocco.cimi.server.request.CimiExpand;
@@ -140,7 +139,6 @@ import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cimi.server.request.RequestParams;
 import org.ow2.sirocco.cloudmanager.model.cimi.Address;
 import org.ow2.sirocco.cloudmanager.model.cimi.AddressTemplate;
-import org.ow2.sirocco.cloudmanager.model.cimi.CloudEntryPoint;
 import org.ow2.sirocco.cloudmanager.model.cimi.Credentials;
 import org.ow2.sirocco.cloudmanager.model.cimi.CredentialsTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.DiskTemplate;
@@ -401,7 +399,7 @@ public class CommonsConverterTest {
                 cimiClass = CimiAddressTemplateCollection.class;
                 break;
             case CloudEntryPoint:
-                service = new CloudEntryPointAggregate(new CloudEntryPoint());
+                service = new CloudEntryPointAggregate();
                 ((Identifiable) service).setId(11);
                 cimiClass = CimiCloudEntryPoint.class;
                 break;
