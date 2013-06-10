@@ -47,9 +47,10 @@ import org.ow2.sirocco.cimi.domain.collection.CimiSystemVolumeCollection;
 @XmlRootElement(name = "System")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "systems", "machines",
     "credentials", "volumes", "networks", "networkPorts", "addresses", "forwardingGroups", "eventLog", "operations",
-    "xmlExtensionAttributes"})
+    "providerInfo", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "systems",
-    "machines", "credentials", "volumes", "networks", "networkPorts", "addresses", "forwardingGroups", "eventLog", "operations"})
+    "machines", "credentials", "volumes", "networks", "networkPorts", "addresses", "forwardingGroups", "eventLog",
+    "operations", "providerInfo"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiSystem extends CimiObjectCommonAbstract {
 
@@ -135,6 +136,8 @@ public class CimiSystem extends CimiObjectCommonAbstract {
      * </p>
      */
     private CimiEventLog eventLog;
+
+    private ProviderInfo providerInfo;
 
     /**
      * Default constructor.
@@ -321,6 +324,14 @@ public class CimiSystem extends CimiObjectCommonAbstract {
      */
     public void setEventLog(final CimiEventLog eventLog) {
         this.eventLog = eventLog;
+    }
+
+    public ProviderInfo getProviderInfo() {
+        return this.providerInfo;
+    }
+
+    public void setProviderInfo(final ProviderInfo providerInfo) {
+        this.providerInfo = providerInfo;
     }
 
     /**

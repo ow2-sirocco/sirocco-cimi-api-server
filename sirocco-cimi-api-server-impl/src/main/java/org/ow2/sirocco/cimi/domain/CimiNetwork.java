@@ -39,9 +39,9 @@ import org.ow2.sirocco.cimi.domain.collection.CimiNetworkNetworkPortCollection;
  */
 @XmlRootElement(name = "Network")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "networkType", "mtu",
-    "classOfService", "networkPorts", "forwardingGroup", "eventLog", "operations", "xmlExtensionAttributes"})
+    "classOfService", "networkPorts", "forwardingGroup", "eventLog", "operations", "providerInfo", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "networkType",
-    "mtu", "classOfService", "networkPorts", "forwardingGroup", "eventLog", "operations"})
+    "mtu", "classOfService", "networkPorts", "forwardingGroup", "eventLog", "operations", "providerInfo"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiNetwork extends CimiObjectCommonAbstract {
 
@@ -88,6 +88,8 @@ public class CimiNetwork extends CimiObjectCommonAbstract {
      * </p>
      */
     private CimiEventLog eventLog;
+
+    private ProviderInfo providerInfo;
 
     /**
      * Default constructor.
@@ -229,6 +231,14 @@ public class CimiNetwork extends CimiObjectCommonAbstract {
      */
     public void setEventLog(final CimiEventLog eventLog) {
         this.eventLog = eventLog;
+    }
+
+    public ProviderInfo getProviderInfo() {
+        return this.providerInfo;
+    }
+
+    public void setProviderInfo(final ProviderInfo providerInfo) {
+        this.providerInfo = providerInfo;
     }
 
     /**

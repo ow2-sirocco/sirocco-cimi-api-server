@@ -32,6 +32,7 @@ import org.ow2.sirocco.cimi.domain.CimiMachine;
 import org.ow2.sirocco.cimi.domain.CimiObjectCommon;
 import org.ow2.sirocco.cimi.domain.CimiOperation;
 import org.ow2.sirocco.cimi.domain.Operation;
+import org.ow2.sirocco.cimi.domain.ProviderInfo;
 import org.ow2.sirocco.cimi.domain.collection.CimiMachineDiskCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiMachineNetworkInterfaceCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiMachineVolumeCollection;
@@ -120,6 +121,7 @@ public class MachineConverter extends ObjectCommonConverter {
             dataCimi.setState(ConverterHelper.toString(dataService.getState()));
             dataCimi.setVolumes((CimiMachineVolumeCollection) context.convertNextCimi(dataService.getVolumes(),
                 CimiMachineVolumeCollection.class));
+            dataCimi.setProviderInfo(ProviderInfo.convert(dataService.getCloudProviderAccount(), dataService.getLocation()));
         }
     }
 

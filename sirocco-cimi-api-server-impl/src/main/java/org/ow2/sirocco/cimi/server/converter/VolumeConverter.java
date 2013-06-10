@@ -28,6 +28,7 @@ import java.util.List;
 
 import org.ow2.sirocco.cimi.domain.CimiEventLog;
 import org.ow2.sirocco.cimi.domain.CimiVolume;
+import org.ow2.sirocco.cimi.domain.ProviderInfo;
 import org.ow2.sirocco.cimi.domain.collection.CimiVolumeVolumeImageCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.Volume;
@@ -111,6 +112,7 @@ public class VolumeConverter extends ObjectCommonConverter {
                 CimiVolumeVolumeImageCollection.class));
             dataCimi.setState(ConverterHelper.toString(dataService.getState()));
             dataCimi.setType(PathHelper.makeCimiURI(dataService.getType()));
+            dataCimi.setProviderInfo(ProviderInfo.convert(dataService.getCloudProviderAccount(), dataService.getLocation()));
         }
     }
 

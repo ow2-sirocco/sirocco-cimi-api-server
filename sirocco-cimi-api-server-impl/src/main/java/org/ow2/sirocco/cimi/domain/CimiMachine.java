@@ -41,9 +41,9 @@ import org.ow2.sirocco.cimi.domain.collection.CimiMachineVolumeCollection;
  */
 @XmlRootElement(name = "Machine")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "cpu", "memory", "disks",
-    "cpuArch", "volumes", "networkInterfaces", "eventLog", "operations", "xmlExtensionAttributes"})
+    "cpuArch", "volumes", "networkInterfaces", "eventLog", "operations", "providerInfo", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "cpu", "memory",
-    "disks", "cpuArch", "volumes", "networkInterfaces", "eventLog", "operations"})
+    "disks", "cpuArch", "volumes", "networkInterfaces", "eventLog", "operations", "providerInfo"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiMachine extends CimiObjectCommonAbstract {
 
@@ -107,6 +107,8 @@ public class CimiMachine extends CimiObjectCommonAbstract {
      * </p>
      */
     private CimiEventLog eventLog;
+
+    private ProviderInfo providerInfo;
 
     /**
      * Default constructor.
@@ -248,6 +250,14 @@ public class CimiMachine extends CimiObjectCommonAbstract {
      */
     public void setNetworkInterfaces(final CimiMachineNetworkInterfaceCollection networkInterfaces) {
         this.networkInterfaces = networkInterfaces;
+    }
+
+    public ProviderInfo getProviderInfo() {
+        return this.providerInfo;
+    }
+
+    public void setProviderInfo(final ProviderInfo providerInfo) {
+        this.providerInfo = providerInfo;
     }
 
     /**
