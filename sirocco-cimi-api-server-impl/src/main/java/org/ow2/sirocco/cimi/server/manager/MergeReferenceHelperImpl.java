@@ -373,6 +373,13 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
             }
             // NetworkInterface : nothing to do because none ID in
             // CimiMachineTemplateNetworkInterface
+            if (null != cimi.getNetworkInterfaces()) {
+                for (CimiMachineTemplateNetworkInterface nic : cimi.getNetworkInterfaces()) {
+                    if (nic.getNetwork() != null) {
+                        this.merge(context, nic.getNetwork());
+                    }
+                }
+            }
             if (null != cimi.getVolumes()) {
                 for (CimiMachineTemplateVolume item : cimi.getListVolumes()) {
                     this.merge(context, item);
