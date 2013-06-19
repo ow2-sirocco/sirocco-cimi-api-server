@@ -26,7 +26,12 @@ package org.ow2.sirocco.cimi.server.manager;
 
 import javax.ws.rs.core.Response;
 
+import org.ow2.sirocco.cimi.domain.CimiData;
 import org.ow2.sirocco.cimi.domain.CimiJob;
+import org.ow2.sirocco.cimi.domain.CimiMachine;
+import org.ow2.sirocco.cimi.domain.CimiNetwork;
+import org.ow2.sirocco.cimi.domain.CimiSystem;
+import org.ow2.sirocco.cimi.domain.CimiVolume;
 import org.ow2.sirocco.cimi.server.converter.InvalidConversionException;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.utils.Constants;
@@ -35,7 +40,11 @@ import org.ow2.sirocco.cloudmanager.core.api.exception.InvalidRequestException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceConflictException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceNotFoundException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.ServiceUnavailableException;
+import org.ow2.sirocco.cloudmanager.model.cimi.CloudResource;
 import org.ow2.sirocco.cloudmanager.model.cimi.Job;
+import org.ow2.sirocco.cloudmanager.model.cimi.Machine;
+import org.ow2.sirocco.cloudmanager.model.cimi.Network;
+import org.ow2.sirocco.cloudmanager.model.cimi.Volume;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -194,6 +203,22 @@ public abstract class CimiManagerAbstract implements CimiManager {
                         CimiManagerAbstract.LOGGER.error("Illegal Resource creation Job: no affected resource: " + job.getId());
                     } else {
                         context.getResponse().putHeader(Constants.HEADER_LOCATION, job.getAffectedResources()[0].getHref());
+                        Job serviceJob = (Job) dataService;
+                        CloudResource createdResource = serviceJob.getAffectedResources().get(0);
+                        Class<?> cimiClass = null;
+                        if (createdResource instanceof Machine) {
+                            cimiClass = CimiMachine.class;
+                        } else if (createdResource instanceof Volume) {
+                            cimiClass = CimiVolume.class;
+                        } else if (createdResource instanceof Network) {
+                            cimiClass = CimiNetwork.class;
+                        } else if (createdResource instanceof org.ow2.sirocco.cloudmanager.model.cimi.system.System) {
+                            cimiClass = CimiSystem.class;
+                        }
+                        if (cimiClass != null) {
+                            CimiData cimi = (CimiData) context.convertToCimi(createdResource, cimiClass);
+                            context.getResponse().setCimiData(cimi);
+                        }
                     }
                 } else {
                     context.getResponse().putHeader(Constants.HEADER_LOCATION, job.getTargetResource().getHref());
