@@ -27,7 +27,6 @@ package org.ow2.sirocco.cimi.server.converter;
 import org.ow2.sirocco.cimi.domain.CimiEventLog;
 import org.ow2.sirocco.cimi.domain.CimiForwardingGroup;
 import org.ow2.sirocco.cimi.domain.CimiNetwork;
-import org.ow2.sirocco.cimi.domain.ProviderInfo;
 import org.ow2.sirocco.cimi.domain.collection.CimiNetworkNetworkPortCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.Network;
@@ -112,7 +111,8 @@ public class NetworkConverter extends ObjectCommonConverter {
                 CimiNetworkNetworkPortCollection.class));
             dataCimi.setNetworkType(ConverterHelper.toString(dataService.getNetworkType()));
             dataCimi.setState(ConverterHelper.toString(dataService.getState()));
-            dataCimi.setProviderInfo(ProviderInfo.convert(dataService.getCloudProviderAccount(), dataService.getLocation()));
+            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService.getCloudProviderAccount(),
+                dataService.getLocation()));
         }
     }
 

@@ -33,7 +33,6 @@ import org.ow2.sirocco.cimi.domain.CimiObjectCommon;
 import org.ow2.sirocco.cimi.domain.CimiOperation;
 import org.ow2.sirocco.cimi.domain.CimiSystem;
 import org.ow2.sirocco.cimi.domain.Operation;
-import org.ow2.sirocco.cimi.domain.ProviderInfo;
 import org.ow2.sirocco.cimi.domain.collection.CimiSystemCredentialCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiSystemForwardingGroupCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiSystemMachineCollection;
@@ -143,7 +142,8 @@ public class SystemConverter extends ObjectCommonConverter {
                 CimiSystemSystemCollection.class));
             dataCimi.setVolumes((CimiSystemVolumeCollection) context.convertNextCimi(dataService.getVolumes(),
                 CimiSystemVolumeCollection.class));
-            dataCimi.setProviderInfo(ProviderInfo.convert(dataService.getCloudProviderAccount(), dataService.getLocation()));
+            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService.getCloudProviderAccount(),
+                dataService.getLocation()));
         }
     }
 

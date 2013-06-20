@@ -31,8 +31,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderAccount;
-import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderLocation;
 
 /**
  * Class ProviderInfo
@@ -73,19 +71,6 @@ public class ProviderInfo implements Serializable {
 
     public void setLocation(final String location) {
         this.location = location;
-    }
-
-    public static ProviderInfo convert(final CloudProviderAccount account, final CloudProviderLocation location) {
-        if (account == null) {
-            return null;
-        }
-        ProviderInfo providerInfo = new ProviderInfo();
-        providerInfo.setProviderAccountId(account.getId().toString());
-        providerInfo.setProviderName(account.getCloudProvider().getDescription());
-        if (location != null) {
-            providerInfo.setLocation(location.getCountryName());
-        }
-        return providerInfo;
     }
 
 }
