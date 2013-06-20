@@ -32,6 +32,7 @@ import org.ow2.sirocco.cimi.domain.CimiMachineConfiguration;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.DiskTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineConfiguration;
+import org.ow2.sirocco.cloudmanager.model.cimi.Visibility;
 
 /**
  * Convert the data of the CIMI model and the service model in both directions.
@@ -115,6 +116,7 @@ public class MachineConfigurationConverter extends ObjectCommonConverter {
                 }
                 dataCimi.setDisks(listCimis.toArray(new CimiDiskConfiguration[listCimis.size()]));
             }
+            dataCimi.setVisibility(dataService.getVisibility().toString());
         }
     }
 
@@ -137,6 +139,9 @@ public class MachineConfigurationConverter extends ObjectCommonConverter {
                 listServices.add((DiskTemplate) context.convertNextService(cimiItem));
             }
             dataService.setDisks(listServices);
+        }
+        if (dataCimi.getVisibility() != null) {
+            dataService.setVisibility(Visibility.valueOf(dataCimi.getVisibility()));
         }
     }
 

@@ -41,9 +41,9 @@ import org.ow2.sirocco.cimi.server.validator.GroupCreateByValue;
  */
 @XmlRootElement(name = "MachineImage")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "type", "imageLocation",
-    "relatedImage", "operations", "xmlExtensionAttributes"})
+    "relatedImage", "operations", "visibility", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "type",
-    "imageLocation", "relatedImage", "operations"})
+    "imageLocation", "relatedImage", "operations", "visibility"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiMachineImage extends CimiObjectCommonAbstract {
 
@@ -68,6 +68,8 @@ public class CimiMachineImage extends CimiObjectCommonAbstract {
     private String imageLocation;
 
     private RelatedMachineImage relatedImage;
+
+    private String visibility;
 
     /**
      * Default constructor.
@@ -161,6 +163,14 @@ public class CimiMachineImage extends CimiObjectCommonAbstract {
      */
     public void setType(final String type) {
         this.type = type;
+    }
+
+    public String getVisibility() {
+        return this.visibility;
+    }
+
+    public void setVisibility(final String visibility) {
+        this.visibility = visibility;
     }
 
     /**

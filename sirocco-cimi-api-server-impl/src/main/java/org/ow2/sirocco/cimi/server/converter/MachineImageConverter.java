@@ -28,6 +28,7 @@ import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.domain.RelatedMachineImage;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineImage;
+import org.ow2.sirocco.cloudmanager.model.cimi.Visibility;
 
 /**
  * Convert the data of the CIMI model and the service model in both directions.
@@ -109,6 +110,7 @@ public class MachineImageConverter extends ObjectCommonConverter {
             }
             dataCimi.setState(ConverterHelper.toString(dataService.getState()));
             dataCimi.setType(ConverterHelper.toString(dataService.getType()));
+            dataCimi.setVisibility(dataService.getVisibility().toString());
         }
     }
 
@@ -123,6 +125,9 @@ public class MachineImageConverter extends ObjectCommonConverter {
         this.fill(context, dataCimi, dataService);
         if (null != dataCimi.getImageLocation()) {
             dataService.setImageLocation(dataCimi.getImageLocation());
+        }
+        if (dataCimi.getVisibility() != null) {
+            dataService.setVisibility(Visibility.valueOf(dataCimi.getVisibility()));
         }
         // relatedImage Read only
     }

@@ -45,9 +45,9 @@ import org.ow2.sirocco.cimi.server.validator.constraints.NotEmptyIfNotNull;
  */
 @XmlRootElement(name = "MachineConfiguration")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "cpu", "memory", "disks", "cpuArch",
-    "operations", "xmlExtensionAttributes"})
+    "operations", "visibility", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"href", "resourceURI", "id", "name", "description", "created", "updated", "properties", "cpu", "memory",
-    "disks", "cpuArch", "operations"})
+    "disks", "cpuArch", "operations", "visibility"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiMachineConfiguration extends CimiObjectCommonAbstract {
 
@@ -77,6 +77,8 @@ public class CimiMachineConfiguration extends CimiObjectCommonAbstract {
     @Valid
     @NotEmptyIfNotNull(groups = {GroupWrite.class})
     private CimiDiskConfiguration[] disks;
+
+    private String visibility;
 
     /**
      * Default constructor.
@@ -178,6 +180,14 @@ public class CimiMachineConfiguration extends CimiObjectCommonAbstract {
      */
     public void setDisks(final CimiDiskConfiguration[] disks) {
         this.disks = disks;
+    }
+
+    public String getVisibility() {
+        return this.visibility;
+    }
+
+    public void setVisibility(final String visibility) {
+        this.visibility = visibility;
     }
 
     /**

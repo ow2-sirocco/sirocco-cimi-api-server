@@ -69,11 +69,21 @@ public class CimiSystemTemplate extends CimiObjectCommonAbstract {
      */
     private CimiEventLogTemplate eventLogTemplate;
 
+    private String visibility;
+
     /**
      * Default constructor.
      */
     public CimiSystemTemplate() {
         super();
+    }
+
+    public String getVisibility() {
+        return this.visibility;
+    }
+
+    public void setVisibility(final String visibility) {
+        this.visibility = visibility;
     }
 
     /**

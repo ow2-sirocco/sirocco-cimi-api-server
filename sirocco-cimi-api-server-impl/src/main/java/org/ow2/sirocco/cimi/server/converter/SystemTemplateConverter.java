@@ -32,6 +32,7 @@ import java.util.Set;
 import org.ow2.sirocco.cimi.domain.CimiComponentDescriptor;
 import org.ow2.sirocco.cimi.domain.CimiSystemTemplate;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
+import org.ow2.sirocco.cloudmanager.model.cimi.Visibility;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.ComponentDescriptor;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemTemplate;
 
@@ -115,6 +116,7 @@ public class SystemTemplateConverter extends ObjectCommonConverter {
                 }
                 dataCimi.setComponentDescriptors(listCimis.toArray(new CimiComponentDescriptor[listCimis.size()]));
             }
+            dataCimi.setVisibility(dataService.getVisibility().toString());
             // FIXME EventLogTemplate
             // dataCimi.setEventLogTemplate((CimiEventLogTemplate)
             // context.convertNextCimi(dataService.getEventLogTemplate(),
@@ -140,6 +142,9 @@ public class SystemTemplateConverter extends ObjectCommonConverter {
             }
         }
         dataService.setComponentDescriptors(listServices);
+        if (dataCimi.getVisibility() != null) {
+            dataService.setVisibility(Visibility.valueOf(dataCimi.getVisibility()));
+        }
         // FIXME EventLogTemplate
         // dataService.setEventLogTemplate((EventLogTemplate)
         // context.convertNextService(dataCimi.getEventLogTemplate()));
