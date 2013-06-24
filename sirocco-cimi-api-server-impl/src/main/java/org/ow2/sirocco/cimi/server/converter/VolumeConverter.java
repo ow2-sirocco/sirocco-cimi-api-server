@@ -24,12 +24,16 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.ow2.sirocco.cimi.domain.CimiEventLog;
+import org.ow2.sirocco.cimi.domain.CimiMachine;
 import org.ow2.sirocco.cimi.domain.CimiVolume;
+import org.ow2.sirocco.cimi.domain.CimiVolume.MachineAttachment;
 import org.ow2.sirocco.cimi.domain.collection.CimiVolumeVolumeImageCollection;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
+import org.ow2.sirocco.cloudmanager.model.cimi.MachineVolume;
 import org.ow2.sirocco.cloudmanager.model.cimi.Volume;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeVolumeImage;
 
@@ -113,6 +117,19 @@ public class VolumeConverter extends ObjectCommonConverter {
             dataCimi.setType(PathHelper.makeCimiURI(dataService.getType()));
             dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService.getCloudProviderAccount(),
                 dataService.getLocation()));
+            if (dataService.getAttachments() != null) {
+                List<MachineAttachment> attachments = new ArrayList<MachineAttachment>();
+                for (MachineVolume mv : dataService.getAttachments()) {
+                    MachineAttachment attachment = new MachineAttachment();
+                    CimiMachine cimiMachine = new CimiMachine();
+                    cimiMachine.setHref(context.makeHref(cimiMachine, mv.getOwner().getId().toString()));
+                    attachment.setMachine(cimiMachine);
+                    attachment.setState(mv.getState().toString());
+                    attachments.add(attachment);
+                }
+                dataCimi.setAttachments(attachments);
+            }
+
         }
     }
 

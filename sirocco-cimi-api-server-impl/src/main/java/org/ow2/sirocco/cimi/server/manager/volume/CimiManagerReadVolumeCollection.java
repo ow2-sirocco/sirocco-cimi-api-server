@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.manager.volume;
 
+import java.util.List;
+
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.collection.CimiVolumeCollectionRoot;
@@ -31,6 +33,7 @@ import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
+import org.ow2.sirocco.cloudmanager.model.cimi.Volume;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -55,11 +58,19 @@ public class CimiManagerReadVolumeCollection extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Object out = null;
         if (false == context.hasParamsForReadingCollection()) {
-            out = this.manager.getVolumes();
+            List<Volume> volumes = this.manager.getVolumes();
+            for (Volume vol : volumes) {
+                vol.setAttachments(this.manager.getVolumeAttachments(vol.getId().toString()));
+            }
+            out = volumes;
         } else {
-            QueryResult<?> results = this.manager.getVolumes(context.valueOfFirst(), context.valueOfLast(),
+            QueryResult<Volume> results = this.manager.getVolumes(context.valueOfFirst(), context.valueOfLast(),
                 context.valuesOfFilter(), context.valuesOfSelect());
-            out = results.getItems();
+            for (Volume vol : results.getItems()) {
+                vol.setAttachments(this.manager.getVolumeAttachments(vol.getId().toString()));
+            }
+            List<Volume> volumes = results.getItems();
+            out = volumes;
         }
         return out;
     }

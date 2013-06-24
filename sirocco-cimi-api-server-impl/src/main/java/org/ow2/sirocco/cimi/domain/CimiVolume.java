@@ -24,6 +24,9 @@
  */
 package org.ow2.sirocco.cimi.domain;
 
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
@@ -39,9 +42,9 @@ import org.ow2.sirocco.cimi.domain.collection.CimiVolumeVolumeImageCollection;
  */
 @XmlRootElement(name = "Volume")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "type", "capacity",
-    "bootable", "images", "eventLog", "operations", "providerInfo", "xmlExtensionAttributes"})
+    "bootable", "images", "eventLog", "operations", "attachments", "providerInfo", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "type",
-    "capacity", "bootable", "images", "eventLog", "operations", "providerInfo"})
+    "capacity", "bootable", "images", "eventLog", "operations", "attachments", "providerInfo"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiVolume extends CimiObjectCommonAbstract {
 
@@ -81,6 +84,11 @@ public class CimiVolume extends CimiObjectCommonAbstract {
      * </p>
      */
     private CimiVolumeVolumeImageCollection images;
+
+    /**
+     * Extended attribute: volume attachments
+     */
+    private List<MachineAttachment> attachments;
 
     /**
      * Field "eventLog".
@@ -215,6 +223,15 @@ public class CimiVolume extends CimiObjectCommonAbstract {
         this.providerInfo = providerInfo;
     }
 
+    @XmlElement(name = "MachineAttachment")
+    public List<MachineAttachment> getAttachments() {
+        return this.attachments;
+    }
+
+    public void setAttachments(final List<MachineAttachment> attachments) {
+        this.attachments = attachments;
+    }
+
     /**
      * {@inheritDoc}
      * 
@@ -243,6 +260,30 @@ public class CimiVolume extends CimiObjectCommonAbstract {
     @JsonIgnore
     public ExchangeType getExchangeType() {
         return ExchangeType.Volume;
+    }
+
+    @XmlRootElement(name = "MachineAttachment")
+    @JsonSerialize(include = Inclusion.NON_NULL)
+    public static class MachineAttachment {
+        private String state;
+
+        private CimiMachine machine;
+
+        public String getState() {
+            return this.state;
+        }
+
+        public void setState(final String state) {
+            this.state = state;
+        }
+
+        public CimiMachine getMachine() {
+            return this.machine;
+        }
+
+        public void setMachine(final CimiMachine machine) {
+            this.machine = machine;
+        }
     }
 
 }
