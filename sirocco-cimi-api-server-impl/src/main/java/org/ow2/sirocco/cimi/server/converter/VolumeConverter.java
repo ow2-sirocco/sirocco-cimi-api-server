@@ -29,6 +29,7 @@ import java.util.List;
 
 import org.ow2.sirocco.cimi.domain.CimiEventLog;
 import org.ow2.sirocco.cimi.domain.CimiMachine;
+import org.ow2.sirocco.cimi.domain.CimiMachineVolume;
 import org.ow2.sirocco.cimi.domain.CimiVolume;
 import org.ow2.sirocco.cimi.domain.CimiVolume.MachineAttachment;
 import org.ow2.sirocco.cimi.domain.collection.CimiVolumeVolumeImageCollection;
@@ -123,7 +124,11 @@ public class VolumeConverter extends ObjectCommonConverter {
                     MachineAttachment attachment = new MachineAttachment();
                     CimiMachine cimiMachine = new CimiMachine();
                     cimiMachine.setHref(context.makeHref(cimiMachine, mv.getOwner().getId().toString()));
+                    cimiMachine.setName(mv.getOwner().getName());
                     attachment.setMachine(cimiMachine);
+                    CimiMachineVolume cimiMachineVolume = new CimiMachineVolume();
+                    cimiMachineVolume.setHref(cimiMachine.getHref() + "/volumes/" + mv.getId().toString());
+                    attachment.setMachineVolume(cimiMachineVolume);
                     attachment.setState(mv.getState().toString());
                     attachments.add(attachment);
                 }

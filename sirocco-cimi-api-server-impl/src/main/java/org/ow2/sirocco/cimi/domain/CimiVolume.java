@@ -269,6 +269,8 @@ public class CimiVolume extends CimiObjectCommonAbstract {
 
         private CimiMachine machine;
 
+        private CimiMachineVolume machineVolume;
+
         public String getState() {
             return this.state;
         }
@@ -283,6 +285,14 @@ public class CimiVolume extends CimiObjectCommonAbstract {
 
         public void setMachine(final CimiMachine machine) {
             this.machine = machine;
+        }
+
+        public CimiMachineVolume getMachineVolume() {
+            return this.machineVolume;
+        }
+
+        public void setMachineVolume(final CimiMachineVolume machineVolume) {
+            this.machineVolume = machineVolume;
         }
     }
 
