@@ -26,13 +26,16 @@ package org.ow2.sirocco.cimi.server.resource.serialization;
 
 import java.io.StringReader;
 
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 
 import junit.framework.Assert;
 import net.javacrumbs.jsonunit.JsonAssert;
 
 import org.custommonkey.xmlunit.XMLAssert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.ow2.sirocco.cimi.server.resource.serialization.json.JsonLocator;
 import org.ow2.sirocco.cimi.server.resource.serialization.xml.XmlLocator;
@@ -41,8 +44,7 @@ import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.jersey.api.client.ClientResponse;
-
+@Ignore
 public class CredentialsResourceSerializationTest extends SerializationTestBase {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CredentialsResourceSerializationTest.class);
@@ -54,15 +56,15 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
      */
     @Test
     public final void testGetCredentialsJson() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // JSON : id = 0
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/0").accept(MediaType.APPLICATION_JSON_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.CREDENTIAL + "/0").request(MediaType.APPLICATION_JSON_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -74,10 +76,10 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
             new StringReader(entityResponse));
 
         // JSON : id = 1
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/1").accept(MediaType.APPLICATION_JSON_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.CREDENTIAL + "/1").request(MediaType.APPLICATION_JSON_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -90,11 +92,11 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
             new StringReader(entityResponse));
 
         // JSON : id = 2
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/2").accept(MediaType.APPLICATION_JSON_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.CREDENTIAL + "/2").request(MediaType.APPLICATION_JSON_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -113,15 +115,15 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
      */
     @Test
     public final void testGetCredentialsXml() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // XML : id = 0
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/0").accept(MediaType.APPLICATION_XML_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.CREDENTIAL + "/0").request(MediaType.APPLICATION_XML_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -133,10 +135,10 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
             new StringReader(entityResponse));
 
         // XML : id = 1
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/1").accept(MediaType.APPLICATION_XML_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.CREDENTIAL + "/1").request(MediaType.APPLICATION_XML_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -148,11 +150,11 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
             new StringReader(entityResponse));
 
         // XML : id = 2
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/2").accept(MediaType.APPLICATION_XML_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.CREDENTIAL + "/2").request(MediaType.APPLICATION_XML_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -172,19 +174,19 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
     // @Test
     // @Ignore
     // public final void testGetCredentialsCollectionJson() throws Exception {
-    // ClientResponse clientResponse = null;
+    // Response clientResponse = null;
     // String entityResponse;
     // int statusResponse;
     //
     // // JSON : id = 0
     // clientResponse =
-    // this.resource().path(ConstantsPath.CREDENTIAL).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.CREDENTIAL).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 0).get(ClientResponse.class);
+    // 0).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -202,13 +204,13 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
     //
     // // JSON : id = 1
     // clientResponse =
-    // this.resource().path(ConstantsPath.CREDENTIAL).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.CREDENTIAL).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 1).get(ClientResponse.class);
+    // 1).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -226,13 +228,13 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
     //
     // // JSON : id = 3
     // clientResponse =
-    // this.resource().path(ConstantsPath.CREDENTIAL).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.CREDENTIAL).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 3).get(ClientResponse.class);
+    // 3).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -250,14 +252,14 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
     //
     // // JSON : id = 3, expand
     // clientResponse =
-    // this.resource().path(ConstantsPath.CREDENTIAL).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.CREDENTIAL).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
     // 3).header(Constants.HEADER_SIROCCO_INFO_TEST_EXPAND, true)
-    // .get(ClientResponse.class);
+    // .get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -283,19 +285,19 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
     // @Test
     // @Ignore
     // public final void testGetCredentialsCollectionXml() throws Exception {
-    // ClientResponse clientResponse = null;
+    // Response clientResponse = null;
     // String entityResponse;
     // int statusResponse;
     //
     // // XML : id = 0
     // clientResponse =
-    // this.resource().path(ConstantsPath.CREDENTIAL).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.CREDENTIAL).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 0).get(ClientResponse.class);
+    // 0).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -313,13 +315,13 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
     //
     // // XML : id = 1
     // clientResponse =
-    // this.resource().path(ConstantsPath.CREDENTIAL).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.CREDENTIAL).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 1).get(ClientResponse.class);
+    // 1).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -337,13 +339,13 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
     //
     // // XML : id = 3
     // clientResponse =
-    // this.resource().path(ConstantsPath.CREDENTIAL).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.CREDENTIAL).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 3).get(ClientResponse.class);
+    // 3).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -361,14 +363,14 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
     //
     // // XML : id = 3, expand
     // clientResponse =
-    // this.resource().path(ConstantsPath.CREDENTIAL).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.CREDENTIAL).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
     // 3).header(Constants.HEADER_SIROCCO_INFO_TEST_EXPAND, true)
-    // .get(ClientResponse.class);
+    // .get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -392,21 +394,22 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
      */
     @Test
     public final void testPutCredentialsJson() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // JSON : id = 0
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.CREDENTIAL + "/0")
-            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Credentials-0.json"),
-                MediaType.APPLICATION_JSON_TYPE).put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Credentials-0.json"),
+                    MediaType.APPLICATION_JSON_TYPE));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -419,15 +422,16 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
 
         // JSON : id = 1
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.CREDENTIAL + "/1")
-            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Credentials-1.json"),
-                MediaType.APPLICATION_JSON_TYPE).put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Credentials-1.json"),
+                    MediaType.APPLICATION_JSON_TYPE));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -440,15 +444,16 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
 
         // JSON : id = 2
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.CREDENTIAL + "/2")
-            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Credentials-2.json"),
-                MediaType.APPLICATION_JSON_TYPE).put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Credentials-2.json"),
+                    MediaType.APPLICATION_JSON_TYPE));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -468,18 +473,22 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
      */
     @Test
     public final void testPutCredentialsXml() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // XML : id = 0
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/0").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.CREDENTIAL + "/0")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Credentials-0.xml"), MediaType.APPLICATION_XML)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Credentials-0.xml"),
+                    MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -491,13 +500,17 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
             entityResponse));
 
         // XML : id = 1
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/1").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.CREDENTIAL + "/1")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Credentials-1.xml"), MediaType.APPLICATION_XML)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Credentials-1.xml"),
+                    MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -509,13 +522,17 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
             entityResponse));
 
         // XML : id = 2
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/2").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.CREDENTIAL + "/2")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Credentials-2.xml"), MediaType.APPLICATION_XML)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Credentials-2.xml"),
+                    MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -535,22 +552,23 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
      */
     @Test
     public final void testPostCredentialsJson() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
-        MultivaluedMap<String, String> heardersResponse;
+        MultivaluedMap<String, Object> heardersResponse;
 
         // JSON : id = 1
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.CREDENTIAL)
-            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "CredentialsCreate-1.json"),
-                MediaType.APPLICATION_JSON).post(ClientResponse.class);
+            .post(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "CredentialsCreate-1.json"),
+                    MediaType.APPLICATION_JSON));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
         heardersResponse = clientResponse.getHeaders();
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
@@ -561,11 +579,11 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
         Assert.assertEquals(202, statusResponse);
 
         Assert.assertTrue(heardersResponse.containsKey(Constants.HEADER_CIMI_JOB_URI));
-        Assert.assertTrue(heardersResponse.get(Constants.HEADER_CIMI_JOB_URI).get(0).endsWith("idValue_1"));
+        Assert.assertTrue(((String) heardersResponse.get(Constants.HEADER_CIMI_JOB_URI).get(0)).endsWith("idValue_1"));
 
         Assert.assertTrue(heardersResponse.containsKey(Constants.HEADER_LOCATION));
-        Assert.assertTrue(heardersResponse.get(Constants.HEADER_LOCATION).get(0)
-            .endsWith(ConstantsPath.CREDENTIAL + "/" + "targetResourceValue_1"));
+        Assert.assertTrue(((String) heardersResponse.get(Constants.HEADER_LOCATION).get(0)).endsWith(ConstantsPath.CREDENTIAL
+            + "/" + "targetResourceValue_1"));
 
         JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class, "Job-1.json"), new StringReader(
             entityResponse));
@@ -578,22 +596,23 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
      */
     @Test
     public final void testPostCredentialsXml() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
-        MultivaluedMap<String, String> heardersResponse;
+        MultivaluedMap<String, Object> heardersResponse;
 
         // XML : id = 1
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.CREDENTIAL)
-            .accept(MediaType.APPLICATION_XML_TYPE)
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "CredentialsCreate-1.xml"),
-                MediaType.APPLICATION_XML).post(ClientResponse.class);
+            .post(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "CredentialsCreate-1.xml"),
+                    MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
         heardersResponse = clientResponse.getHeaders();
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
@@ -604,27 +623,27 @@ public class CredentialsResourceSerializationTest extends SerializationTestBase 
         Assert.assertEquals(202, statusResponse);
 
         Assert.assertTrue(heardersResponse.containsKey(Constants.HEADER_CIMI_JOB_URI));
-        Assert.assertTrue(heardersResponse.get(Constants.HEADER_CIMI_JOB_URI).get(0).endsWith("idValue_1"));
+        Assert.assertTrue(((String) heardersResponse.get(Constants.HEADER_CIMI_JOB_URI).get(0)).endsWith("idValue_1"));
 
         Assert.assertTrue(heardersResponse.containsKey(Constants.HEADER_LOCATION));
-        Assert.assertTrue(heardersResponse.get(Constants.HEADER_LOCATION).get(0)
-            .endsWith(ConstantsPath.CREDENTIAL + "/" + "targetResourceValue_1"));
+        Assert.assertTrue(((String) heardersResponse.get(Constants.HEADER_LOCATION).get(0)).endsWith(ConstantsPath.CREDENTIAL
+            + "/" + "targetResourceValue_1"));
         XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class, "Job-1.xml"), new StringReader(
             entityResponse));
     }
 
     @Test
     public final void testDeleteCredentials() {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // JSON and XML : id = 0
-        clientResponse = this.resource().path(ConstantsPath.CREDENTIAL + "/0")
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).delete(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.CREDENTIAL + "/0").request()
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).delete();
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         CredentialsResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         CredentialsResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);

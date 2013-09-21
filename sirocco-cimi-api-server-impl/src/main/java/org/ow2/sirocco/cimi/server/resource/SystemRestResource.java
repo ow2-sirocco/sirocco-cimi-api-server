@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -48,14 +50,12 @@ import org.ow2.sirocco.cimi.domain.CimiSystemNetworkPort;
 import org.ow2.sirocco.cimi.domain.CimiSystemSystem;
 import org.ow2.sirocco.cimi.domain.CimiSystemVolume;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 // TODO SystemAddress, SystemMeter
 /**
@@ -71,80 +71,81 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.SYSTEM_PATH)
 public class SystemRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystem")
+    @Inject
+    @Manager("CimiManagerReadSystem")
     private CimiManager cimiManagerReadSystem;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemCollection")
     private CimiManager cimiManagerReadSystemCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteSystem")
+    @Inject
+    @Manager("CimiManagerDeleteSystem")
     private CimiManager cimiManagerDeleteSystem;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateSystem")
+    @Inject
+    @Manager("CimiManagerUpdateSystem")
     private CimiManager cimiManagerUpdateSystem;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateSystem")
+    @Inject
+    @Manager("CimiManagerCreateSystem")
     private CimiManager cimiManagerCreateSystem;
 
-    @Autowired
-    @Qualifier("CimiManagerActionSystem")
+    @Inject
+    @Manager("CimiManagerActionSystem")
     private CimiManager cimiManagerActionSystem;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemEntity")
+    @Inject
+    @Manager("CimiManagerReadSystemEntity")
     private CimiManager cimiManagerReadSystemEntity;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateSystemEntity")
+    @Inject
+    @Manager("CimiManagerCreateSystemEntity")
     private CimiManager cimiManagerCreateSystemEntity;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteSystemEntity")
+    @Inject
+    @Manager("CimiManagerDeleteSystemEntity")
     private CimiManager cimiManagerDeleteSystemEntity;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateSystemEntity")
+    @Inject
+    @Manager("CimiManagerUpdateSystemEntity")
     private CimiManager cimiManagerUpdateSystemEntity;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemCredentialCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemCredentialCollection")
     private CimiManager cimiManagerReadSystemCredentialCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemMachineCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemMachineCollection")
     private CimiManager cimiManagerReadSystemMachineCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemSystemCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemSystemCollection")
     private CimiManager cimiManagerReadSystemSystemCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemVolumeCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemVolumeCollection")
     private CimiManager cimiManagerReadSystemVolumeCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemAddressCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemAddressCollection")
     private CimiManager cimiManagerReadSystemAddressCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemForwardingGroupCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemForwardingGroupCollection")
     private CimiManager cimiManagerReadSystemForwardingGroupCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemNetworkCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemNetworkCollection")
     private CimiManager cimiManagerReadSystemNetworkCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemNetworkPortCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemNetworkPortCollection")
     private CimiManager cimiManagerReadSystemNetworkPortCollection;
 
     /**

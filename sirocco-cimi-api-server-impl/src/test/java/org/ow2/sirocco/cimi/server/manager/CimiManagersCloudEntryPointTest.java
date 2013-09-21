@@ -27,13 +27,24 @@ package org.ow2.sirocco.cimi.server.manager;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.easymock.EasyMock;
+import org.jglue.cdiunit.AdditionalClasses;
+import org.jglue.cdiunit.CdiRunner;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ow2.sirocco.cimi.domain.CimiCloudEntryPoint;
+import org.ow2.sirocco.cimi.server.manager.cep.CimiManagerReadCloudEntryPoint;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerActionMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerCreateMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerDeleteMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerReadMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerUpdateMachine;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
 import org.ow2.sirocco.cimi.server.request.CimiExpand;
@@ -41,6 +52,7 @@ import org.ow2.sirocco.cimi.server.request.CimiRequest;
 import org.ow2.sirocco.cimi.server.request.CimiResponse;
 import org.ow2.sirocco.cimi.server.request.CimiSelect;
 import org.ow2.sirocco.cimi.server.request.RequestParams;
+import org.ow2.sirocco.cimi.server.test.util.ManagerProducers;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;
 import org.ow2.sirocco.cloudmanager.core.api.IEventManager;
@@ -75,52 +87,42 @@ import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLog;
 import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLogTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.System;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Basic tests "end to end" for managers Machine.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/context/managerContext.xml"})
+@RunWith(CdiRunner.class)
+@AdditionalClasses({ManagerProducers.class, CimiManagerActionMachine.class, CimiManagerReadMachine.class,
+    CimiManagerUpdateMachine.class, CimiManagerDeleteMachine.class, CimiManagerCreateMachine.class,
+    CimiManagerReadCloudEntryPoint.class, CallServiceHelperImpl.class, MergeReferenceHelperImpl.class})
 public class CimiManagersCloudEntryPointTest {
 
-    @Autowired
-    @Qualifier("ICredentialsManager")
+    @Inject
     private ICredentialsManager serviceCredentials;
 
-    @Autowired
-    @Qualifier("IJobManager")
+    @Inject
     private IJobManager serviceJob;
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager serviceMachine;
 
-    @Autowired
-    @Qualifier("IMachineImageManager")
+    @Inject
     private IMachineImageManager serviceMachineImage;
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager serviceSystem;
 
-    @Autowired
-    @Qualifier("IVolumeManager")
+    @Inject
     private IVolumeManager serviceVolume;
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager serviceNetwork;
 
-    @Autowired
-    @Qualifier("IEventManager")
+    @Inject
     private IEventManager serviceEvent;
 
-    @Autowired
-    @Qualifier("CimiManagerReadCloudEntryPoint")
+    @Inject
+    @Manager("CimiManagerReadCloudEntryPoint")
     private CimiManager managerRead;
 
     private CimiRequest request;

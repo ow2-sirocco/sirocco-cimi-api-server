@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.system;
 
+import javax.inject.Inject;
 import javax.validation.groups.Default;
 
 import org.ow2.sirocco.cimi.domain.ActionType;
@@ -34,18 +35,14 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.validator.CimiValidatorHelper;
 import org.ow2.sirocco.cimi.server.validator.GroupWrite;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage ACTION request of System.
  */
-@Component("CimiManagerActionSystem")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerActionSystem")
 public class CimiManagerActionSystem extends CimiManagerAbstract {
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager manager;
 
     /**

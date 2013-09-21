@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.networkport;
 
+import javax.inject.Inject;
 import javax.validation.groups.Default;
 
 import org.ow2.sirocco.cimi.domain.ActionType;
@@ -33,18 +34,14 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.validator.CimiValidatorHelper;
 import org.ow2.sirocco.cimi.server.validator.GroupWrite;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage ACTION request of NetworkPort.
  */
-@Component("CimiManagerActionNetworkPort")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerActionNetworkPort")
 public class CimiManagerActionNetworkPort extends CimiManagerAbstract {
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

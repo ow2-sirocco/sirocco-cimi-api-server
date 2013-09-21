@@ -32,13 +32,14 @@ import javax.ws.rs.core.UriInfo;
 /**
  *
  */
+@ResourceInterceptorBinding
 public class RestResourceAbstract {
 
     @Context
     private UriInfo uriInfo;
 
     @Context
-    private HttpHeaders headers;
+    protected HttpHeaders headers;
 
     @Context
     private Request request;

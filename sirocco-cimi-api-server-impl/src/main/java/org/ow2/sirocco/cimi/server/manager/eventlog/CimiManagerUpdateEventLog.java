@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.eventlog;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IEventManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLog;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of EventLog.
  */
-@Component("CimiManagerUpdateEventLog")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateEventLog")
 public class CimiManagerUpdateEventLog extends CimiManagerUpdateAbstract {
 
-    @Autowired
-    @Qualifier("IEventManager")
+    @Inject
     private IEventManager manager;
 
     /**

@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.credentials;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiCredential;
@@ -34,22 +35,17 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.utils.Constants;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.CredentialsCreate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of Credential.
  */
-@Component("CimiManagerCreateCredential")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateCredential")
 public class CimiManagerCreateCredential extends CimiManagerCreateAbstract {
 
-    @Autowired
-    @Qualifier("ICredentialsManager")
+    @Inject
     private ICredentialsManager manager;
 
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
     /**

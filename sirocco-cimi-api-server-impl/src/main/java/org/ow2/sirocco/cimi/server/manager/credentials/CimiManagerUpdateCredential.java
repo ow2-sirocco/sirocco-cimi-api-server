@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.credentials;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.Credentials;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of Credential.
  */
-@Component("CimiManagerUpdateCredential")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateCredential")
 public class CimiManagerUpdateCredential extends CimiManagerUpdateAbstract {
 
-    @Autowired
-    @Qualifier("ICredentialsManager")
+    @Inject
     private ICredentialsManager manager;
 
     /**

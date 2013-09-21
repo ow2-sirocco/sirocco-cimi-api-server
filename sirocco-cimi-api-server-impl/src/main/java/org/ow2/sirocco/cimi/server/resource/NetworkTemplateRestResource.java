@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -37,13 +39,11 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiNetworkTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Network Template REST resource.
@@ -58,28 +58,29 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.NETWORK_TEMPLATE_PATH)
 public class NetworkTemplateRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetworkTemplate")
+    @Inject
+    @Manager("CimiManagerReadNetworkTemplate")
     private CimiManager cimiManagerReadNetworkTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetworkTemplateCollection")
+    @Inject
+    @Manager("CimiManagerReadNetworkTemplateCollection")
     private CimiManager cimiManagerReadNetworkTemplateCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteNetworkTemplate")
+    @Inject
+    @Manager("CimiManagerDeleteNetworkTemplate")
     private CimiManager cimiManagerDeleteNetworkTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateNetworkTemplate")
+    @Inject
+    @Manager("CimiManagerUpdateNetworkTemplate")
     private CimiManager cimiManagerUpdateNetworkTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateNetworkTemplate")
+    @Inject
+    @Manager("CimiManagerCreateNetworkTemplate")
     private CimiManager cimiManagerCreateNetworkTemplate;
 
     /**

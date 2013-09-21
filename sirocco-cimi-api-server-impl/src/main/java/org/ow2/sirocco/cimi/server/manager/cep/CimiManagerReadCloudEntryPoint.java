@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.cep;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiCloudEntryPoint;
@@ -39,50 +40,38 @@ import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of Cloud Entry Point.
  */
-@Component("CimiManagerReadCloudEntryPoint")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadCloudEntryPoint")
 public class CimiManagerReadCloudEntryPoint extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager machineManager;
 
-    @Autowired
-    @Qualifier("ICredentialsManager")
+    @Inject
     private ICredentialsManager credentialsManager;
 
-    @Autowired
-    @Qualifier("IMachineImageManager")
+    @Inject
     private IMachineImageManager machineImageManager;
 
-    @Autowired
-    @Qualifier("IJobManager")
+    @Inject
     private IJobManager jobManager;
 
-    @Autowired
-    @Qualifier("IVolumeManager")
+    @Inject
     private IVolumeManager volumeManager;
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager systemManager;
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager networkManager;
 
-    @Autowired
-    @Qualifier("IEventManager")
+    @Inject
     private IEventManager eventManager;
 
-    @Autowired
-    @Qualifier("IResourceMetadataManager")
+    @Inject
     private IResourceMetadataManager resourceMetadataManager;
 
     /**

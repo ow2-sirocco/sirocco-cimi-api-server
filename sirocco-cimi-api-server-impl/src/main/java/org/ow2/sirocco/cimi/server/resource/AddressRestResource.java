@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -38,13 +40,11 @@ import javax.ws.rs.core.Response;
 import org.ow2.sirocco.cimi.domain.CimiAddress;
 import org.ow2.sirocco.cimi.domain.CimiAddressCreate;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Address REST resource.
@@ -59,28 +59,29 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.ADDRESS_PATH)
 public class AddressRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadAddress")
+    @Inject
+    @Manager("CimiManagerReadAddress")
     private CimiManager cimiManagerReadAddress;
 
-    @Autowired
-    @Qualifier("CimiManagerReadAddressCollection")
+    @Inject
+    @Manager("CimiManagerReadAddressCollection")
     private CimiManager cimiManagerReadAddressCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteAddress")
+    @Inject
+    @Manager("CimiManagerDeleteAddress")
     private CimiManager cimiManagerDeleteAddress;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateAddress")
+    @Inject
+    @Manager("CimiManagerUpdateAddress")
     private CimiManager cimiManagerUpdateAddress;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateAddress")
+    @Inject
+    @Manager("CimiManagerCreateAddress")
     private CimiManager cimiManagerCreateAddress;
 
     /**

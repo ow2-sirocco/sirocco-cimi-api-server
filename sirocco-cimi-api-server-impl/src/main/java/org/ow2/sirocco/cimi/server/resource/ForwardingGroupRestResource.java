@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -39,14 +41,12 @@ import org.ow2.sirocco.cimi.domain.CimiForwardingGroup;
 import org.ow2.sirocco.cimi.domain.CimiForwardingGroupCreate;
 import org.ow2.sirocco.cimi.domain.CimiForwardingGroupNetwork;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * ForwardingGroup REST resource.
@@ -61,48 +61,49 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.FORWARDING_GROUP_PATH)
 public class ForwardingGroupRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadForwardingGroup")
+    @Inject
+    @Manager("CimiManagerReadForwardingGroup")
     private CimiManager cimiManagerReadForwardingGroup;
 
-    @Autowired
-    @Qualifier("CimiManagerReadForwardingGroupCollection")
+    @Inject
+    @Manager("CimiManagerReadForwardingGroupCollection")
     private CimiManager cimiManagerReadForwardingGroupCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteForwardingGroup")
+    @Inject
+    @Manager("CimiManagerDeleteForwardingGroup")
     private CimiManager cimiManagerDeleteForwardingGroup;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateForwardingGroup")
+    @Inject
+    @Manager("CimiManagerUpdateForwardingGroup")
     private CimiManager cimiManagerUpdateForwardingGroup;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateForwardingGroup")
+    @Inject
+    @Manager("CimiManagerCreateForwardingGroup")
     private CimiManager cimiManagerCreateForwardingGroup;
 
-    @Autowired
-    @Qualifier("CimiManagerReadForwardingGroupNetwork")
+    @Inject
+    @Manager("CimiManagerReadForwardingGroupNetwork")
     private CimiManager cimiManagerReadForwardingGroupNetwork;
 
-    @Autowired
-    @Qualifier("CimiManagerReadForwardingGroupNetworkCollection")
+    @Inject
+    @Manager("CimiManagerReadForwardingGroupNetworkCollection")
     private CimiManager cimiManagerReadForwardingGroupNetworkCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateForwardingGroupNetwork")
+    @Inject
+    @Manager("CimiManagerCreateForwardingGroupNetwork")
     private CimiManager cimiManagerCreateForwardingGroupNetwork;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteForwardingGroupNetwork")
+    @Inject
+    @Manager("CimiManagerDeleteForwardingGroupNetwork")
     private CimiManager cimiManagerDeleteForwardingGroupNetwork;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateForwardingGroupNetwork")
+    @Inject
+    @Manager("CimiManagerUpdateForwardingGroupNetwork")
     private CimiManager cimiManagerUpdateForwardingGroupNetwork;
 
     /**

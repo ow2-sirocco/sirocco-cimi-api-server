@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.machine;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterfaceAddress;
@@ -34,18 +35,14 @@ import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
 import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceNotFoundException;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineNetworkInterfaceAddress;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of Address of a NetworkInterface of a Machine.
  */
-@Component("CimiManagerReadMachineNetworkInterfaceAddress")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadMachineNetworkInterfaceAddress")
 public class CimiManagerReadMachineNetworkInterfaceAddress extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager manager;
 
     /**

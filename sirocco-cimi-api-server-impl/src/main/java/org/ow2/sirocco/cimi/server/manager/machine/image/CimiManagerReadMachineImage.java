@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.machine.image;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiMachineImage;
@@ -31,18 +32,14 @@ import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineImageManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineImage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of Machine Image.
  */
-@Component("CimiManagerReadMachineImage")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadMachineImage")
 public class CimiManagerReadMachineImage extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("IMachineImageManager")
+    @Inject
     private IMachineImageManager manager;
 
     /**

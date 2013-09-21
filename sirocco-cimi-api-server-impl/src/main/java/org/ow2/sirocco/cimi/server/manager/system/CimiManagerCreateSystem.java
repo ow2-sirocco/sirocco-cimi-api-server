@@ -24,27 +24,24 @@
  */
 package org.ow2.sirocco.cimi.server.manager.system;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.domain.CimiSystemCreate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemCreate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of System.
  */
-@Component("CimiManagerCreateSystem")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateSystem")
 public class CimiManagerCreateSystem extends CimiManagerCreateAbstract {
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager manager;
 
     /**

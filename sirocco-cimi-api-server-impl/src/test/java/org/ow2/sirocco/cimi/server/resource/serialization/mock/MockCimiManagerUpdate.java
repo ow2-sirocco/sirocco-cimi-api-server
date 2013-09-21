@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.resource.serialization.mock;
 
+import javax.enterprise.inject.Alternative;
 import javax.ws.rs.core.Response.Status;
 
 import junit.framework.ComparisonFailure;
@@ -34,6 +35,7 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 /**
  * Mock CimiManagerUpdate.
  */
+@Alternative
 public class MockCimiManagerUpdate extends MockCimiManager {
 
     /**

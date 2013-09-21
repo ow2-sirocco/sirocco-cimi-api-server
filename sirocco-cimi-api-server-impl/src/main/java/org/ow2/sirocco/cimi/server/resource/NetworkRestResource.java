@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -40,14 +42,12 @@ import org.ow2.sirocco.cimi.domain.CimiNetwork;
 import org.ow2.sirocco.cimi.domain.CimiNetworkCreate;
 import org.ow2.sirocco.cimi.domain.CimiNetworkNetworkPort;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Network REST resource.
@@ -62,52 +62,53 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.NETWORK_PATH)
 public class NetworkRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetwork")
+    @Inject
+    @Manager("CimiManagerReadNetwork")
     private CimiManager cimiManagerReadNetwork;
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetworkCollection")
+    @Inject
+    @Manager("CimiManagerReadNetworkCollection")
     private CimiManager cimiManagerReadNetworkCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteNetwork")
+    @Inject
+    @Manager("CimiManagerDeleteNetwork")
     private CimiManager cimiManagerDeleteNetwork;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateNetwork")
+    @Inject
+    @Manager("CimiManagerUpdateNetwork")
     private CimiManager cimiManagerUpdateNetwork;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateNetwork")
+    @Inject
+    @Manager("CimiManagerCreateNetwork")
     private CimiManager cimiManagerCreateNetwork;
 
-    @Autowired
-    @Qualifier("CimiManagerActionNetwork")
+    @Inject
+    @Manager("CimiManagerActionNetwork")
     private CimiManager cimiManagerActionNetwork;
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetworkNetworkPort")
+    @Inject
+    @Manager("CimiManagerReadNetworkNetworkPort")
     private CimiManager cimiManagerReadNetworkNetworkPort;
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetworkNetworkPortCollection")
+    @Inject
+    @Manager("CimiManagerReadNetworkNetworkPortCollection")
     private CimiManager cimiManagerReadNetworkNetworkPortCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateNetworkNetworkPort")
+    @Inject
+    @Manager("CimiManagerCreateNetworkNetworkPort")
     private CimiManager cimiManagerCreateNetworkNetworkPort;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteNetworkNetworkPort")
+    @Inject
+    @Manager("CimiManagerDeleteNetworkNetworkPort")
     private CimiManager cimiManagerDeleteNetworkNetworkPort;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateNetworkNetworkPort")
+    @Inject
+    @Manager("CimiManagerUpdateNetworkNetworkPort")
     private CimiManager cimiManagerUpdateNetworkNetworkPort;
 
     /**

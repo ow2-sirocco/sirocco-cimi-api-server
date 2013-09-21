@@ -26,12 +26,15 @@ package org.ow2.sirocco.cimi.server.resource.serialization;
 
 import java.io.StringReader;
 
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import junit.framework.Assert;
 import net.javacrumbs.jsonunit.JsonAssert;
 
 import org.custommonkey.xmlunit.XMLAssert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.ow2.sirocco.cimi.server.resource.serialization.json.JsonLocator;
 import org.ow2.sirocco.cimi.server.resource.serialization.xml.XmlLocator;
@@ -40,8 +43,7 @@ import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.jersey.api.client.ClientResponse;
-
+@Ignore
 public class JobResourceSerializationTest extends SerializationTestBase {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JobResourceSerializationTest.class);
@@ -53,15 +55,15 @@ public class JobResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testGetJobJson() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // JSON : id = 0
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/0").accept(MediaType.APPLICATION_JSON_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.JOB + "/0").request(MediaType.APPLICATION_JSON_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -73,10 +75,10 @@ public class JobResourceSerializationTest extends SerializationTestBase {
             entityResponse));
 
         // JSON : id = 1
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/1").accept(MediaType.APPLICATION_JSON_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.JOB + "/1").request(MediaType.APPLICATION_JSON_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -88,11 +90,11 @@ public class JobResourceSerializationTest extends SerializationTestBase {
             entityResponse));
 
         // JSON : id = 2
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/2").accept(MediaType.APPLICATION_JSON_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.JOB + "/2").request(MediaType.APPLICATION_JSON_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -111,15 +113,15 @@ public class JobResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testGetJobXml() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // XML : id = 0
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/0").accept(MediaType.APPLICATION_XML_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.JOB + "/0").request(MediaType.APPLICATION_XML_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -131,10 +133,10 @@ public class JobResourceSerializationTest extends SerializationTestBase {
             entityResponse));
 
         // XML : id = 1
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/1").accept(MediaType.APPLICATION_XML_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.JOB + "/1").request(MediaType.APPLICATION_XML_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -146,11 +148,11 @@ public class JobResourceSerializationTest extends SerializationTestBase {
             entityResponse));
 
         // XML : id = 2
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/2").accept(MediaType.APPLICATION_XML_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.JOB + "/2").request(MediaType.APPLICATION_XML_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -170,19 +172,19 @@ public class JobResourceSerializationTest extends SerializationTestBase {
     // @Test
     // @Ignore
     // public final void testGetJobCollectionJson() throws Exception {
-    // ClientResponse clientResponse = null;
+    // Response clientResponse = null;
     // String entityResponse;
     // int statusResponse;
     //
     // // JSON : id = 0
     // clientResponse =
-    // this.resource().path(ConstantsPath.JOB).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.JOB).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 0).get(ClientResponse.class);
+    // 0).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -199,13 +201,13 @@ public class JobResourceSerializationTest extends SerializationTestBase {
     //
     // // JSON : id = 1
     // clientResponse =
-    // this.resource().path(ConstantsPath.JOB).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.JOB).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 1).get(ClientResponse.class);
+    // 1).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -222,13 +224,13 @@ public class JobResourceSerializationTest extends SerializationTestBase {
     //
     // // JSON : id = 3
     // clientResponse =
-    // this.resource().path(ConstantsPath.JOB).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.JOB).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 3).get(ClientResponse.class);
+    // 3).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -245,14 +247,14 @@ public class JobResourceSerializationTest extends SerializationTestBase {
     //
     // // JSON : id = 3, expand
     // clientResponse =
-    // this.resource().path(ConstantsPath.JOB).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.JOB).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
     // 3).header(Constants.HEADER_SIROCCO_INFO_TEST_EXPAND, true)
-    // .get(ClientResponse.class);
+    // .get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -276,19 +278,19 @@ public class JobResourceSerializationTest extends SerializationTestBase {
     // @Test
     // @Ignore
     // public final void testGetJobCollectionXml() throws Exception {
-    // ClientResponse clientResponse = null;
+    // Response clientResponse = null;
     // String entityResponse;
     // int statusResponse;
     //
     // // XML : id = 0
     // clientResponse =
-    // this.resource().path(ConstantsPath.JOB).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.JOB).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 0).get(ClientResponse.class);
+    // 0).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -305,13 +307,13 @@ public class JobResourceSerializationTest extends SerializationTestBase {
     //
     // // XML : id = 1
     // clientResponse =
-    // this.resource().path(ConstantsPath.JOB).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.JOB).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 1).get(ClientResponse.class);
+    // 1).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -328,13 +330,13 @@ public class JobResourceSerializationTest extends SerializationTestBase {
     //
     // // XML : id = 3
     // clientResponse =
-    // this.resource().path(ConstantsPath.JOB).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.JOB).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 3).get(ClientResponse.class);
+    // 3).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -351,14 +353,14 @@ public class JobResourceSerializationTest extends SerializationTestBase {
     //
     // // XML : id = 3, expand
     // clientResponse =
-    // this.resource().path(ConstantsPath.JOB).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.JOB).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
     // 3).header(Constants.HEADER_SIROCCO_INFO_TEST_EXPAND, true)
-    // .get(ClientResponse.class);
+    // .get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -381,18 +383,22 @@ public class JobResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testPutJobJson() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // JSON : id = 0
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/0").accept(MediaType.APPLICATION_JSON_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.JOB + "/0")
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Job-0.json"), MediaType.APPLICATION_JSON_TYPE)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Job-0.json"),
+                    MediaType.APPLICATION_JSON_TYPE));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -404,13 +410,17 @@ public class JobResourceSerializationTest extends SerializationTestBase {
             entityResponse));
 
         // JSON : id = 1
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/1").accept(MediaType.APPLICATION_JSON_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.JOB + "/1")
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Job-1.json"), MediaType.APPLICATION_JSON_TYPE)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Job-1.json"),
+                    MediaType.APPLICATION_JSON_TYPE));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -422,13 +432,17 @@ public class JobResourceSerializationTest extends SerializationTestBase {
             entityResponse));
 
         // JSON : id = 2
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/2").accept(MediaType.APPLICATION_JSON_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.JOB + "/2")
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Job-2.json"), MediaType.APPLICATION_JSON_TYPE)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Job-2.json"),
+                    MediaType.APPLICATION_JSON_TYPE));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -448,18 +462,21 @@ public class JobResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testPutJobXml() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // XML : id = 0
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/0").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.JOB + "/0")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Job-0.xml"), MediaType.APPLICATION_XML)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Job-0.xml"), MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -471,13 +488,16 @@ public class JobResourceSerializationTest extends SerializationTestBase {
             entityResponse));
 
         // XML : id = 1
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/1").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.JOB + "/1")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Job-1.xml"), MediaType.APPLICATION_XML)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Job-1.xml"), MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -489,13 +509,16 @@ public class JobResourceSerializationTest extends SerializationTestBase {
             entityResponse));
 
         // XML : id = 2
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/2").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.JOB + "/2")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Job-2.xml"), MediaType.APPLICATION_XML)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Job-2.xml"), MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -510,16 +533,16 @@ public class JobResourceSerializationTest extends SerializationTestBase {
 
     @Test
     public final void testDeleteJob() {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // JSON and XML : id = 0
-        clientResponse = this.resource().path(ConstantsPath.JOB + "/0")
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).delete(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.JOB + "/0").request()
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).delete();
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         JobResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         JobResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);

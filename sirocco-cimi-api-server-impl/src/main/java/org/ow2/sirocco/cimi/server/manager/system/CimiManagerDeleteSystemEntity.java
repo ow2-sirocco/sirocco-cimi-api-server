@@ -24,21 +24,19 @@
  */
 package org.ow2.sirocco.cimi.server.manager.system;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerDeleteAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage DELETE request of Entity of a System.
  */
-@Component("CimiManagerDeleteSystemEntity")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerDeleteSystemEntity")
 public class CimiManagerDeleteSystemEntity extends CimiManagerDeleteAbstract {
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager manager;
 
     /**

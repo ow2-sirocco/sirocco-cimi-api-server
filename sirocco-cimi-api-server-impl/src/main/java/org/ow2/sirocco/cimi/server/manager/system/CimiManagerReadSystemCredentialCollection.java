@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.system;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.collection.CimiSystemCredentialCollectionRoot;
@@ -32,18 +33,14 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemCredentials;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of Credentials collection of a System.
  */
-@Component("CimiManagerReadSystemCredentialCollection")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadSystemCredentialCollection")
 public class CimiManagerReadSystemCredentialCollection extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager manager;
 
     /**

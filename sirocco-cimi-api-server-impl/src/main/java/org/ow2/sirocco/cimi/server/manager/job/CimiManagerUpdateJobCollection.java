@@ -26,12 +26,11 @@ package org.ow2.sirocco.cimi.server.manager.job;
 
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of Job Collection.
  */
-@Component("CimiManagerUpdateJobCollection")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateJobCollection")
 @Deprecated
 // FIXME Deprecated
 public class CimiManagerUpdateJobCollection extends CimiManagerUpdateAbstract {

@@ -26,6 +26,7 @@ package org.ow2.sirocco.cimi.server.manager.volume;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.collection.CimiVolumeCollectionRoot;
@@ -34,18 +35,14 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
 import org.ow2.sirocco.cloudmanager.model.cimi.Volume;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of Volumes collection.
  */
-@Component("CimiManagerReadVolumeCollection")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadVolumeCollection")
 public class CimiManagerReadVolumeCollection extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("IVolumeManager")
+    @Inject
     private IVolumeManager manager;
 
     /**

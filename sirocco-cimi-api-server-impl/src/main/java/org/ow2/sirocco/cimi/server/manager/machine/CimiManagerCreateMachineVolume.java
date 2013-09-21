@@ -24,27 +24,24 @@
  */
 package org.ow2.sirocco.cimi.server.manager.machine;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.domain.CimiMachineVolume;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineVolume;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of Machine.
  */
-@Component("CimiManagerCreateMachineVolume")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateMachineVolume")
 public class CimiManagerCreateMachineVolume extends CimiManagerCreateAbstract {
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager manager;
 
     /**

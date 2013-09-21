@@ -26,15 +26,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.ow2.sirocco.cimi.domain.CimiResourceMetadata;
-import org.ow2.sirocco.cimi.domain.ExchangeType;
 import org.ow2.sirocco.cimi.domain.CimiResourceMetadata.AttributeMetadata;
+import org.ow2.sirocco.cimi.domain.ExchangeType;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
 import org.ow2.sirocco.cloudmanager.core.api.exception.CloudProviderException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.InvalidRequestException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceNotFoundException;
-import org.springframework.stereotype.Component;
 
-@Component("IResourceMetadataManager")
 public class ResourceMetadataManager implements IResourceMetadataManager {
     static CimiResourceMetadata credentialMetada;
 

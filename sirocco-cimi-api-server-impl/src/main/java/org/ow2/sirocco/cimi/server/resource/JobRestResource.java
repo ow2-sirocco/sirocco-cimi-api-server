@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -36,13 +38,11 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiJob;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Job REST resource.
@@ -56,24 +56,25 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.JOB_PATH)
 public class JobRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadJob")
+    @Inject
+    @Manager("CimiManagerReadJob")
     private CimiManager cimiManagerReadJob;
 
-    @Autowired
-    @Qualifier("CimiManagerReadJobCollection")
+    @Inject
+    @Manager("CimiManagerReadJobCollection")
     private CimiManager cimiManagerReadJobCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteJob")
+    @Inject
+    @Manager("CimiManagerDeleteJob")
     private CimiManager cimiManagerDeleteJob;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateJob")
+    @Inject
+    @Manager("CimiManagerUpdateJob")
     private CimiManager cimiManagerUpdateJob;
 
     /**

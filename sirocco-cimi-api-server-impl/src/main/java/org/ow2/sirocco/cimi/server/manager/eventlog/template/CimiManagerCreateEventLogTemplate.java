@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.eventlog.template;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiEventLogTemplate;
@@ -33,22 +34,17 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.utils.Constants;
 import org.ow2.sirocco.cloudmanager.core.api.IEventManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLogTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of EventLogTemplate.
  */
-@Component("CimiManagerCreateEventLogTemplate")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateEventLogTemplate")
 public class CimiManagerCreateEventLogTemplate extends CimiManagerCreateAbstract {
 
-    @Autowired
-    @Qualifier("IEventManager")
+    @Inject
     private IEventManager manager;
 
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
     /**
@@ -70,8 +66,7 @@ public class CimiManagerCreateEventLogTemplate extends CimiManagerCreateAbstract
      */
     @Override
     protected void convertToResponse(final CimiContext context, final Object dataService) throws Exception {
-        CimiEventLogTemplate cimi = (CimiEventLogTemplate) context.convertToCimi(dataService,
-            CimiEventLogTemplate.class);
+        CimiEventLogTemplate cimi = (CimiEventLogTemplate) context.convertToCimi(dataService, CimiEventLogTemplate.class);
         context.getResponse().setCimiData(cimi);
         context.getResponse().putHeader(Constants.HEADER_LOCATION, cimi.getId());
         context.getResponse().setStatus(Response.Status.CREATED);

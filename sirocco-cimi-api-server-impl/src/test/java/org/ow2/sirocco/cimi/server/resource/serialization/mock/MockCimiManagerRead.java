@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.resource.serialization.mock;
 
+import javax.enterprise.inject.Alternative;
 import javax.ws.rs.core.Response.Status;
 
 import org.ow2.sirocco.cimi.server.request.CimiContext;
@@ -31,6 +32,7 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 /**
  * Mock CimiManagerRead.
  */
+@Alternative
 public class MockCimiManagerRead extends MockCimiManager {
 
     /**
@@ -45,6 +47,7 @@ public class MockCimiManagerRead extends MockCimiManager {
             context.getResponse().setCimiData(this.buildEntity(context.getRequest()));
             context.getResponse().setStatus(Status.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             context.getResponse().setErrorMessage(e.getMessage());
             context.getResponse().setStatus(Status.SERVICE_UNAVAILABLE);
         }

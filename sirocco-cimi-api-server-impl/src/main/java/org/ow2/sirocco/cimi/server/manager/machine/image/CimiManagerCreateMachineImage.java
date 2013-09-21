@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.manager.machine.image;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.domain.CimiMachine;
 import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.server.converter.PathHelper;
@@ -33,26 +35,20 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineImageManager;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineImage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of Machine Image.
  */
-@Component("CimiManagerCreateMachineImage")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateMachineImage")
 public class CimiManagerCreateMachineImage extends CimiManagerCreateAbstract {
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager machineManager;
 
-    @Autowired
-    @Qualifier("IMachineImageManager")
+    @Inject
     private IMachineImageManager machineImageManager;
 
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
     /**

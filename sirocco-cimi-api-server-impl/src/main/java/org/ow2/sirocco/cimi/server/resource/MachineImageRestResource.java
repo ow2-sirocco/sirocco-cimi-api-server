@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -38,13 +40,11 @@ import javax.ws.rs.core.Response;
 import org.ow2.sirocco.cimi.domain.CimiMachineImage;
 import org.ow2.sirocco.cimi.domain.collection.CimiMachineImageCollection;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Machine Image REST resource.
@@ -59,31 +59,32 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.MACHINE_IMAGE_PATH)
 public class MachineImageRestResource extends RestResourceAbstract {
-    @Autowired
-    @Qualifier("CimiManagerReadMachineImage")
+    @Inject
+    @Manager("CimiManagerReadMachineImage")
     private CimiManager cimiManagerReadMachineImage;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineImageCollection")
+    @Inject
+    @Manager("CimiManagerReadMachineImageCollection")
     private CimiManager cimiManagerReadMachineImageCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteMachineImage")
+    @Inject
+    @Manager("CimiManagerDeleteMachineImage")
     private CimiManager cimiManagerDeleteMachineImage;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateMachineImage")
+    @Inject
+    @Manager("CimiManagerUpdateMachineImage")
     private CimiManager cimiManagerUpdateMachineImage;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateMachineImageCollection")
+    @Inject
+    @Manager("CimiManagerUpdateMachineImageCollection")
     private CimiManager cimiManagerUpdateMachineImageCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateMachineImage")
+    @Inject
+    @Manager("CimiManagerCreateMachineImage")
     private CimiManager cimiManagerCreateMachineImage;
 
     /**

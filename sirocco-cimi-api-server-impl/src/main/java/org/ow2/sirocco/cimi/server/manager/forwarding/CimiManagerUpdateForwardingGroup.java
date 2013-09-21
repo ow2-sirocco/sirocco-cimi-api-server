@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.forwarding;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.ForwardingGroup;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of ForwardingGroup.
  */
-@Component("CimiManagerUpdateForwardingGroup")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateForwardingGroup")
 public class CimiManagerUpdateForwardingGroup extends CimiManagerUpdateAbstract {
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

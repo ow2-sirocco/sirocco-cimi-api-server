@@ -23,6 +23,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -31,13 +33,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * ResourceMetadata REST resource.
@@ -49,16 +49,17 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.RESOURCE_METADATA_PATH)
 public class ResourceMetadataRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadResourceMetadata")
+    @Inject
+    @Manager("CimiManagerReadResourceMetadata")
     private CimiManager cimiManagerReadResourceMetadata;
 
-    @Autowired
-    @Qualifier("CimiManagerReadResourceMetadataCollection")
+    @Inject
+    @Manager("CimiManagerReadResourceMetadataCollection")
     private CimiManager cimiManagerReadResourceMetadataCollection;
 
     /**

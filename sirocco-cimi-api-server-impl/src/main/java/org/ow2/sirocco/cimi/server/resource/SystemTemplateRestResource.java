@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -39,13 +41,11 @@ import org.ow2.sirocco.cimi.domain.CimiAction;
 import org.ow2.sirocco.cimi.domain.CimiActionImport;
 import org.ow2.sirocco.cimi.domain.CimiSystemTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * System Template REST resource.
@@ -60,32 +60,33 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.SYSTEM_TEMPLATE_PATH)
 public class SystemTemplateRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemTemplate")
+    @Inject
+    @Manager("CimiManagerReadSystemTemplate")
     private CimiManager cimiManagerReadSystemTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerReadSystemTemplateCollection")
+    @Inject
+    @Manager("CimiManagerReadSystemTemplateCollection")
     private CimiManager cimiManagerReadSystemTemplateCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerActionSystemTemplate")
+    @Inject
+    @Manager("CimiManagerActionSystemTemplate")
     private CimiManager cimiManagerActionSystemTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteSystemTemplate")
+    @Inject
+    @Manager("CimiManagerDeleteSystemTemplate")
     private CimiManager cimiManagerDeleteSystemTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateSystemTemplate")
+    @Inject
+    @Manager("CimiManagerUpdateSystemTemplate")
     private CimiManager cimiManagerUpdateSystemTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateSystemTemplate")
+    @Inject
+    @Manager("CimiManagerCreateSystemTemplate")
     private CimiManager cimiManagerCreateSystemTemplate;
 
     /**

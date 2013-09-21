@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.job;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiJob;
@@ -31,18 +32,14 @@ import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IJobManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.Job;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of Job.
  */
-@Component("CimiManagerReadJob")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadJob")
 public class CimiManagerReadJob extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("IJobManager")
+    @Inject
     private IJobManager manager;
 
     /**

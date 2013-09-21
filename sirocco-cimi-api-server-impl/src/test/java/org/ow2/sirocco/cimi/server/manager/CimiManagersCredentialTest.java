@@ -27,7 +27,11 @@ package org.ow2.sirocco.cimi.server.manager;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.easymock.EasyMock;
+import org.jglue.cdiunit.AdditionalClasses;
+import org.jglue.cdiunit.CdiRunner;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -37,7 +41,22 @@ import org.ow2.sirocco.cimi.domain.CimiCredential;
 import org.ow2.sirocco.cimi.domain.CimiCredentialCreate;
 import org.ow2.sirocco.cimi.domain.CimiCredentialTemplate;
 import org.ow2.sirocco.cimi.domain.ExchangeType;
-import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.cep.CimiManagerReadCloudEntryPoint;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerCreateCredential;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerDeleteCredential;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerReadCredential;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerReadCredentialCollection;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerUpdateCredential;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerCreateCredentialTemplate;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerDeleteCredentialTemplate;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerReadCredentialTemplate;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerReadCredentialTemplateCollection;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerUpdateCredentialTemplate;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerActionMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerCreateMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerDeleteMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerReadMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerUpdateMachine;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
 import org.ow2.sirocco.cimi.server.request.CimiRequest;
@@ -45,42 +64,45 @@ import org.ow2.sirocco.cimi.server.request.CimiResponse;
 import org.ow2.sirocco.cimi.server.request.CimiSelect;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cimi.server.request.RequestParams;
+import org.ow2.sirocco.cimi.server.test.util.ManagerProducers;
 import org.ow2.sirocco.cimi.server.utils.Constants;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.Credentials;
 import org.ow2.sirocco.cloudmanager.model.cimi.CredentialsCreate;
 import org.ow2.sirocco.cloudmanager.model.cimi.CredentialsTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Basic tests "end to end" for managers Credentials.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/context/managerContext.xml"})
+@RunWith(CdiRunner.class)
+@AdditionalClasses({ManagerProducers.class, CimiManagerActionMachine.class, CimiManagerReadMachine.class,
+    CimiManagerUpdateMachine.class, CimiManagerDeleteMachine.class, CimiManagerCreateMachine.class,
+    CimiManagerReadCloudEntryPoint.class, CimiManagerReadCredentialCollection.class,
+    CimiManagerReadCredentialTemplateCollection.class, CimiManagerCreateCredentialTemplate.class,
+    CimiManagerDeleteCredentialTemplate.class, CimiManagerReadCredentialTemplate.class,
+    CimiManagerUpdateCredentialTemplate.class, CimiManagerCreateCredential.class, CimiManagerDeleteCredential.class,
+    CimiManagerReadCredential.class, CimiManagerUpdateCredential.class, CallServiceHelperImpl.class,
+    MergeReferenceHelperImpl.class})
 public class CimiManagersCredentialTest {
 
-    @Autowired
-    @Qualifier("ICredentialsManager")
+    @Inject
     private ICredentialsManager service;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateCredential")
+    @Inject
+    @Manager("CimiManagerCreateCredential")
     private CimiManager managerCreate;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteCredential")
+    @Inject
+    @Manager("CimiManagerDeleteCredential")
     private CimiManager managerDelete;
 
-    @Autowired
-    @Qualifier("CimiManagerReadCredential")
+    @Inject
+    @Manager("CimiManagerReadCredential")
     private CimiManager managerRead;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateCredential")
+    @Inject
+    @Manager("CimiManagerUpdateCredential")
     private CimiManager managerUpdate;
 
     private CimiRequest request;

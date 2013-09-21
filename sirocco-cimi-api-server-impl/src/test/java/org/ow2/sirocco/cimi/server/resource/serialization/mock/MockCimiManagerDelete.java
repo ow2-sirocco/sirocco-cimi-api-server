@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.resource.serialization.mock;
 
+import javax.enterprise.inject.Alternative;
 import javax.ws.rs.core.Response.Status;
 
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
@@ -32,6 +33,7 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 /**
  * Mock CimiManagerDeleteMachineImage.
  */
+@Alternative
 public class MockCimiManagerDelete implements CimiManager {
 
     /**

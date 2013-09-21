@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.eventlog;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiEventLog;
@@ -31,18 +32,14 @@ import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IEventManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLog;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of EventLog.
  */
-@Component("CimiManagerReadEventLog")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadEventLog")
 public class CimiManagerReadEventLog extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("IEventManager")
+    @Inject
     private IEventManager manager;
 
     /**

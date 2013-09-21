@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.network.template;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiNetworkTemplate;
@@ -33,22 +34,17 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.utils.Constants;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of NetworkTemplate.
  */
-@Component("CimiManagerCreateNetworkTemplate")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateNetworkTemplate")
 public class CimiManagerCreateNetworkTemplate extends CimiManagerCreateAbstract {
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
     /**

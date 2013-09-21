@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.system;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.CloudCollectionItem;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of Entity of a System.
  */
-@Component("CimiManagerUpdateSystemEntity")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateSystemEntity")
 public class CimiManagerUpdateSystemEntity extends CimiManagerUpdateAbstract {
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager manager;
 
     /**

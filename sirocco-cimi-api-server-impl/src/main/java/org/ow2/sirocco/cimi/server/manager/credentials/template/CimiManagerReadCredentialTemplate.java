@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.credentials.template;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiCredentialTemplate;
@@ -31,18 +32,14 @@ import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.CredentialsTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of CredentialTemplate.
  */
-@Component("CimiManagerReadCredentialTemplate")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadCredentialTemplate")
 public class CimiManagerReadCredentialTemplate extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("ICredentialsManager")
+    @Inject
     private ICredentialsManager manager;
 
     /**

@@ -27,7 +27,11 @@ package org.ow2.sirocco.cimi.server.manager;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.easymock.EasyMock;
+import org.jglue.cdiunit.AdditionalClasses;
+import org.jglue.cdiunit.CdiRunner;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -35,7 +39,29 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ow2.sirocco.cimi.domain.CimiMachineConfiguration;
 import org.ow2.sirocco.cimi.domain.ExchangeType;
-import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.cep.CimiManagerReadCloudEntryPoint;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerCreateCredential;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerDeleteCredential;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerReadCredential;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerReadCredentialCollection;
+import org.ow2.sirocco.cimi.server.manager.credentials.CimiManagerUpdateCredential;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerCreateCredentialTemplate;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerDeleteCredentialTemplate;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerReadCredentialTemplate;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerReadCredentialTemplateCollection;
+import org.ow2.sirocco.cimi.server.manager.credentials.template.CimiManagerUpdateCredentialTemplate;
+import org.ow2.sirocco.cimi.server.manager.job.CimiManagerReadJobCollection;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerActionMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerCreateMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerDeleteMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerReadMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerReadMachineCollection;
+import org.ow2.sirocco.cimi.server.manager.machine.CimiManagerUpdateMachine;
+import org.ow2.sirocco.cimi.server.manager.machine.configuration.CimiManagerCreateMachineConfiguration;
+import org.ow2.sirocco.cimi.server.manager.machine.configuration.CimiManagerDeleteMachineConfiguration;
+import org.ow2.sirocco.cimi.server.manager.machine.configuration.CimiManagerReadMachineConfiguration;
+import org.ow2.sirocco.cimi.server.manager.machine.configuration.CimiManagerReadMachineConfigurationCollection;
+import org.ow2.sirocco.cimi.server.manager.machine.configuration.CimiManagerUpdateMachineConfiguration;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.CimiContextImpl;
 import org.ow2.sirocco.cimi.server.request.CimiRequest;
@@ -43,40 +69,46 @@ import org.ow2.sirocco.cimi.server.request.CimiResponse;
 import org.ow2.sirocco.cimi.server.request.CimiSelect;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cimi.server.request.RequestParams;
+import org.ow2.sirocco.cimi.server.test.util.ManagerProducers;
 import org.ow2.sirocco.cimi.server.utils.Constants;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineConfiguration;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Basic tests "end to end" for managers MachineConfiguration.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/context/managerContext.xml"})
+@RunWith(CdiRunner.class)
+@AdditionalClasses({ManagerProducers.class, CimiManagerActionMachine.class, CimiManagerReadMachine.class,
+    CimiManagerUpdateMachine.class, CimiManagerDeleteMachine.class, CimiManagerCreateMachine.class,
+    CimiManagerReadCloudEntryPoint.class, CimiManagerReadCredentialCollection.class,
+    CimiManagerReadCredentialTemplateCollection.class, CimiManagerCreateCredentialTemplate.class,
+    CimiManagerDeleteCredentialTemplate.class, CimiManagerReadCredentialTemplate.class,
+    CimiManagerUpdateCredentialTemplate.class, CimiManagerCreateCredential.class, CimiManagerDeleteCredential.class,
+    CimiManagerReadCredential.class, CimiManagerUpdateCredential.class, CimiManagerReadJobCollection.class,
+    CimiManagerReadMachineCollection.class, CimiManagerReadMachineConfigurationCollection.class,
+    CimiManagerCreateMachineConfiguration.class, CimiManagerDeleteMachineConfiguration.class,
+    CimiManagerReadMachineConfiguration.class, CimiManagerUpdateMachineConfiguration.class, CallServiceHelperImpl.class,
+    MergeReferenceHelperImpl.class})
 public class CimiManagersMachineConfigurationTest {
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager service;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateMachineConfiguration")
+    @Inject
+    @Manager("CimiManagerCreateMachineConfiguration")
     private CimiManager managerCreate;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteMachineConfiguration")
+    @Inject
+    @Manager("CimiManagerDeleteMachineConfiguration")
     private CimiManager managerDelete;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineConfiguration")
+    @Inject
+    @Manager("CimiManagerReadMachineConfiguration")
     private CimiManager managerRead;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateMachineConfiguration")
+    @Inject
+    @Manager("CimiManagerUpdateMachineConfiguration")
     private CimiManager managerUpdate;
 
     private CimiRequest request;

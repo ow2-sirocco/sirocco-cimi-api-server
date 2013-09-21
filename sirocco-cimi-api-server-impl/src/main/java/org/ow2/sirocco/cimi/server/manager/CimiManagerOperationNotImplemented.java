@@ -25,12 +25,10 @@
 package org.ow2.sirocco.cimi.server.manager;
 
 import org.ow2.sirocco.cimi.server.request.CimiContext;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage request not implemented.
  */
-@Component("CimiManagerOperationNotImplemented")
 public class CimiManagerOperationNotImplemented extends CimiManagerAbstract {
 
     /**

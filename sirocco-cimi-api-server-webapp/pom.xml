@@ -43,7 +43,7 @@
 			<groupId>org.ow2.sirocco.cimi</groupId>
 			<artifactId>sirocco-cimi-api-server-impl</artifactId>
 			<version>${project.version}</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -61,6 +61,32 @@
 					<sourceEncoding>UTF-8</sourceEncoding>
 				</configuration>
 			</plugin>
+			<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-dependency-plugin</artifactId>
+  <executions>
+    <execution>
+      <id>unpack-lib</id>
+      <phase>process-resources</phase>
+      <goals>
+        <goal>unpack</goal>
+      </goals>
+      <configuration>
+        <artifactItems>
+          <artifactItem>
+            <groupId>org.ow2.sirocco.cimi</groupId>
+			<artifactId>sirocco-cimi-api-server-impl</artifactId>
+			<version>${project.version}</version>
+            <type>jar</type>
+            <overWrite>false</overWrite>
+          </artifactItem>
+        </artifactItems>
+        <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+        <overWriteReleases>false</overWriteReleases>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>

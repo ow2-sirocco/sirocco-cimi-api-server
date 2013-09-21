@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -37,13 +39,11 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiNetworkPortConfiguration;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * NetworkPort Configuration REST resource.
@@ -58,28 +58,29 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.NETWORK_PORT_CONFIGURATION_PATH)
 public class NetworkPortConfigurationRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetworkPortConfiguration")
+    @Inject
+    @Manager("CimiManagerReadNetworkPortConfiguration")
     private CimiManager cimiManagerReadNetworkPortConfiguration;
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetworkPortConfigurationCollection")
+    @Inject
+    @Manager("CimiManagerReadNetworkPortConfigurationCollection")
     private CimiManager cimiManagerReadNetworkPortConfigurationCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteNetworkPortConfiguration")
+    @Inject
+    @Manager("CimiManagerDeleteNetworkPortConfiguration")
     private CimiManager cimiManagerDeleteNetworkPortConfiguration;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateNetworkPortConfiguration")
+    @Inject
+    @Manager("CimiManagerUpdateNetworkPortConfiguration")
     private CimiManager cimiManagerUpdateNetworkPortConfiguration;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateNetworkPortConfiguration")
+    @Inject
+    @Manager("CimiManagerCreateNetworkPortConfiguration")
     private CimiManager cimiManagerCreateNetworkPortConfiguration;
 
     /**

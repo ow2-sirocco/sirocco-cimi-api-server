@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.manager;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.domain.ExchangeType;
 import org.ow2.sirocco.cimi.server.configuration.ConfigurationException;
 import org.ow2.sirocco.cloudmanager.core.api.ICredentialsManager;
@@ -34,42 +36,31 @@ import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Implementation of a calling EJB helper.
  */
-@Component("CallServiceHelper")
 public class CallServiceHelperImpl implements CallServiceHelper {
 
-    @Autowired
-    @Qualifier("ICredentialsManager")
+    @Inject
     private ICredentialsManager managerCredentials;
 
-    @Autowired
-    @Qualifier("IMachineImageManager")
+    @Inject
     private IMachineImageManager managerMachineImage;
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager managerMachine;
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager managerNetwork;
 
-    @Autowired
-    @Qualifier("IEventManager")
+    @Inject
     private IEventManager managerEvent;
 
-    @Autowired
-    @Qualifier("IVolumeManager")
+    @Inject
     private IVolumeManager managerVolume;
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager managerSystem;
 
     /**

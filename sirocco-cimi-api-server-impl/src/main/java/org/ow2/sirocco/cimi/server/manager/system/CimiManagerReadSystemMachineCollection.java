@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.system;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.collection.CimiSystemMachineCollectionRoot;
@@ -32,18 +33,14 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemMachine;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of Machines collection of a System.
  */
-@Component("CimiManagerReadSystemMachineCollection")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadSystemMachineCollection")
 public class CimiManagerReadSystemMachineCollection extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager manager;
 
     /**

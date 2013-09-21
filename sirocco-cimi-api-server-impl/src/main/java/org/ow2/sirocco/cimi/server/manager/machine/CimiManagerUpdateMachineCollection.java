@@ -26,12 +26,11 @@ package org.ow2.sirocco.cimi.server.manager.machine;
 
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of Machine Collection.
  */
-@Component("CimiManagerUpdateMachineCollection")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateMachineCollection")
 @Deprecated
 // FIXME Deprecated
 public class CimiManagerUpdateMachineCollection extends CimiManagerUpdateAbstract {

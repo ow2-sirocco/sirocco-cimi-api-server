@@ -7,5 +7,5 @@
 		<role-name>sirocco-user</role-name>
 		<group-name>sirocco-user</group-name>
 	</security-role-mapping>
-	<class-loader delegate="false" />
+	<class-loader delegate="true" />
 </glassfish-web-app>

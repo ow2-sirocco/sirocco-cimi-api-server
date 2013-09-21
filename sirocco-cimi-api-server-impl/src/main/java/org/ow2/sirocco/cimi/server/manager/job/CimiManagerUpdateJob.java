@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.job;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IJobManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.Job;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of Job.
  */
-@Component("CimiManagerUpdateJob")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateJob")
 public class CimiManagerUpdateJob extends CimiManagerUpdateAbstract {
 
-    @Autowired
-    @Qualifier("IJobManager")
+    @Inject
     private IJobManager manager;
 
     /**

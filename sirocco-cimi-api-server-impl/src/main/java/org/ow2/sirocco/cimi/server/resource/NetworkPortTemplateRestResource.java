@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -37,13 +39,11 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiNetworkPortTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * NetworkPort Template REST resource.
@@ -58,28 +58,29 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.NETWORK_PORT_TEMPLATE_PATH)
 public class NetworkPortTemplateRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetworkPortTemplate")
+    @Inject
+    @Manager("CimiManagerReadNetworkPortTemplate")
     private CimiManager cimiManagerReadNetworkPortTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerReadNetworkPortTemplateCollection")
+    @Inject
+    @Manager("CimiManagerReadNetworkPortTemplateCollection")
     private CimiManager cimiManagerReadNetworkPortTemplateCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteNetworkPortTemplate")
+    @Inject
+    @Manager("CimiManagerDeleteNetworkPortTemplate")
     private CimiManager cimiManagerDeleteNetworkPortTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateNetworkPortTemplate")
+    @Inject
+    @Manager("CimiManagerUpdateNetworkPortTemplate")
     private CimiManager cimiManagerUpdateNetworkPortTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateNetworkPortTemplate")
+    @Inject
+    @Manager("CimiManagerCreateNetworkPortTemplate")
     private CimiManager cimiManagerCreateNetworkPortTemplate;
 
     /**

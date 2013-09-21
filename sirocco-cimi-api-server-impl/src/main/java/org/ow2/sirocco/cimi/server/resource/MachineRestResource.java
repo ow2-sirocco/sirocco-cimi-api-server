@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -43,14 +45,12 @@ import org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterface;
 import org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterfaceAddress;
 import org.ow2.sirocco.cimi.domain.CimiMachineVolume;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Machine REST resource.
@@ -65,112 +65,113 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.MACHINE_PATH)
 public class MachineRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachine")
+    @Inject
+    @Manager("CimiManagerReadMachine")
     private CimiManager cimiManagerReadMachine;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineCollection")
+    @Inject
+    @Manager("CimiManagerReadMachineCollection")
     private CimiManager cimiManagerReadMachineCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteMachine")
+    @Inject
+    @Manager("CimiManagerDeleteMachine")
     private CimiManager cimiManagerDeleteMachine;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateMachine")
+    @Inject
+    @Manager("CimiManagerUpdateMachine")
     private CimiManager cimiManagerUpdateMachine;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateMachine")
+    @Inject
+    @Manager("CimiManagerCreateMachine")
     private CimiManager cimiManagerCreateMachine;
 
-    @Autowired
-    @Qualifier("CimiManagerActionMachine")
+    @Inject
+    @Manager("CimiManagerActionMachine")
     private CimiManager cimiManagerActionMachine;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineDisk")
+    @Inject
+    @Manager("CimiManagerReadMachineDisk")
     private CimiManager cimiManagerReadMachineDisk;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineDiskCollection")
+    @Inject
+    @Manager("CimiManagerReadMachineDiskCollection")
     private CimiManager cimiManagerReadMachineDiskCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateMachineDisk")
+    @Inject
+    @Manager("CimiManagerCreateMachineDisk")
     private CimiManager cimiManagerCreateMachineDisk;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteMachineDisk")
+    @Inject
+    @Manager("CimiManagerDeleteMachineDisk")
     private CimiManager cimiManagerDeleteMachineDisk;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateMachineDisk")
+    @Inject
+    @Manager("CimiManagerUpdateMachineDisk")
     private CimiManager cimiManagerUpdateMachineDisk;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineNetworkInterface")
+    @Inject
+    @Manager("CimiManagerReadMachineNetworkInterface")
     private CimiManager cimiManagerReadMachineNetworkInterface;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineNetworkInterfaceCollection")
+    @Inject
+    @Manager("CimiManagerReadMachineNetworkInterfaceCollection")
     private CimiManager cimiManagerReadMachineNetworkInterfaceCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateMachineNetworkInterface")
+    @Inject
+    @Manager("CimiManagerCreateMachineNetworkInterface")
     private CimiManager cimiManagerCreateMachineNetworkInterface;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteMachineNetworkInterface")
+    @Inject
+    @Manager("CimiManagerDeleteMachineNetworkInterface")
     private CimiManager cimiManagerDeleteMachineNetworkInterface;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateMachineNetworkInterface")
+    @Inject
+    @Manager("CimiManagerUpdateMachineNetworkInterface")
     private CimiManager cimiManagerUpdateMachineNetworkInterface;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineNetworkInterfaceAddress")
+    @Inject
+    @Manager("CimiManagerReadMachineNetworkInterfaceAddress")
     private CimiManager cimiManagerReadMachineNetworkInterfaceAddress;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineNetworkInterfaceAddressCollection")
+    @Inject
+    @Manager("CimiManagerReadMachineNetworkInterfaceAddressCollection")
     private CimiManager cimiManagerReadMachineNetworkInterfaceAddressCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateMachineNetworkInterfaceAddress")
+    @Inject
+    @Manager("CimiManagerCreateMachineNetworkInterfaceAddress")
     private CimiManager cimiManagerCreateMachineNetworkInterfaceAddress;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteMachineNetworkInterfaceAddress")
+    @Inject
+    @Manager("CimiManagerDeleteMachineNetworkInterfaceAddress")
     private CimiManager cimiManagerDeleteMachineNetworkInterfaceAddress;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateMachineNetworkInterfaceAddress")
+    @Inject
+    @Manager("CimiManagerUpdateMachineNetworkInterfaceAddress")
     private CimiManager cimiManagerUpdateMachineNetworkInterfaceAddress;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineVolume")
+    @Inject
+    @Manager("CimiManagerReadMachineVolume")
     private CimiManager cimiManagerReadMachineVolume;
 
-    @Autowired
-    @Qualifier("CimiManagerReadMachineVolumeCollection")
+    @Inject
+    @Manager("CimiManagerReadMachineVolumeCollection")
     private CimiManager cimiManagerReadMachineVolumeCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateMachineVolume")
+    @Inject
+    @Manager("CimiManagerCreateMachineVolume")
     private CimiManager cimiManagerCreateMachineVolume;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteMachineVolume")
+    @Inject
+    @Manager("CimiManagerDeleteMachineVolume")
     private CimiManager cimiManagerDeleteMachineVolume;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateMachineVolume")
+    @Inject
+    @Manager("CimiManagerUpdateMachineVolume")
     private CimiManager cimiManagerUpdateMachineVolume;
 
     /**

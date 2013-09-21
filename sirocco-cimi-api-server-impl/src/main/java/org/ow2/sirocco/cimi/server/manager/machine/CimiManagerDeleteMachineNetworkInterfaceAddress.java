@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.machine;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerDeleteAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage DELETE request of MachineNetworkInterfaceAddress.
  */
-@Component("CimiManagerDeleteMachineNetworkInterfaceAddress")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerDeleteMachineNetworkInterfaceAddress")
 public class CimiManagerDeleteMachineNetworkInterfaceAddress extends CimiManagerDeleteAbstract {
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager manager;
 
     /**

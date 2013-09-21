@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.machine.configuration;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiMachineConfiguration;
@@ -31,18 +32,14 @@ import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineConfiguration;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of Machine Configuration.
  */
-@Component("CimiManagerReadMachineConfiguration")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadMachineConfiguration")
 public class CimiManagerReadMachineConfiguration extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager manager;
 
     /**

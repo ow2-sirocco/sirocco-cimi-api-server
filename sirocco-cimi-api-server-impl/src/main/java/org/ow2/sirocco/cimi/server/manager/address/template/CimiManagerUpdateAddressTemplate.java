@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.address.template;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.AddressTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of AddressTemplate.
  */
-@Component("CimiManagerUpdateAddressTemplate")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateAddressTemplate")
 public class CimiManagerUpdateAddressTemplate extends CimiManagerUpdateAbstract {
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

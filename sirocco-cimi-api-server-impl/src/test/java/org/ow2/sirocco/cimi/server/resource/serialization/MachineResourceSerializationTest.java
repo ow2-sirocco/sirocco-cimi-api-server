@@ -26,13 +26,16 @@ package org.ow2.sirocco.cimi.server.resource.serialization;
 
 import java.io.StringReader;
 
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 
 import junit.framework.Assert;
 import net.javacrumbs.jsonunit.JsonAssert;
 
 import org.custommonkey.xmlunit.XMLAssert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.ow2.sirocco.cimi.server.resource.serialization.json.JsonLocator;
 import org.ow2.sirocco.cimi.server.resource.serialization.xml.XmlLocator;
@@ -41,8 +44,7 @@ import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.jersey.api.client.ClientResponse;
-
+@Ignore
 public class MachineResourceSerializationTest extends SerializationTestBase {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MachineResourceSerializationTest.class);
@@ -54,51 +56,51 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testGetMachineJson() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // JSON : id = 0
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/0").accept(MediaType.APPLICATION_JSON_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.MACHINE + "/0").request(MediaType.APPLICATION_JSON_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class, "Machine-0.json"),
             new StringReader(entityResponse));
 
         // JSON : id = 1
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/1").accept(MediaType.APPLICATION_JSON_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.MACHINE + "/1").request(MediaType.APPLICATION_JSON_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class, "Machine-1.json"),
             new StringReader(entityResponse));
 
         // JSON : id = 2
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/2").accept(MediaType.APPLICATION_JSON_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.MACHINE + "/2").request(MediaType.APPLICATION_JSON_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class, "Machine-2.json"),
@@ -112,51 +114,51 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testGetMachineXml() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // XML : id = 0
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/0").accept(MediaType.APPLICATION_XML_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.MACHINE + "/0").request(MediaType.APPLICATION_XML_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class, "Machine-0.xml"), new StringReader(
             entityResponse));
 
         // XML : id = 1
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/1").accept(MediaType.APPLICATION_XML_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.MACHINE + "/1").request(MediaType.APPLICATION_XML_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class, "Machine-1.xml"), new StringReader(
             entityResponse));
 
         // XML : id = 2
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/2").accept(MediaType.APPLICATION_XML_TYPE)
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.MACHINE + "/2").request(MediaType.APPLICATION_XML_TYPE)
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).get();
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class, "Machine-2.xml"), new StringReader(
@@ -171,19 +173,19 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // @Test
     // @Ignore
     // public final void testGetMachineCollectionJson() throws Exception {
-    // ClientResponse clientResponse = null;
+    // Response clientResponse = null;
     // String entityResponse;
     // int statusResponse;
     //
     // // JSON : id = 0
     // clientResponse =
-    // this.resource().path(ConstantsPath.MACHINE).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.MACHINE).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 0).get(ClientResponse.class);
+    // 0).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -192,7 +194,7 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}",
     // entityResponse);
     // MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}",
-    // clientResponse.getHeaders());
+    // clientResponse.getStringHeaders());
     //
     // Assert.assertEquals(200, statusResponse);
     // JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class,
@@ -201,13 +203,13 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     //
     // // JSON : id = 1
     // clientResponse =
-    // this.resource().path(ConstantsPath.MACHINE).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.MACHINE).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 1).get(ClientResponse.class);
+    // 1).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -216,7 +218,7 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}",
     // entityResponse);
     // MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}",
-    // clientResponse.getHeaders());
+    // clientResponse.getStringHeaders());
     //
     // Assert.assertEquals(200, statusResponse);
     // JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class,
@@ -225,13 +227,13 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     //
     // // JSON : id = 3
     // clientResponse =
-    // this.resource().path(ConstantsPath.MACHINE).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.MACHINE).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 3).get(ClientResponse.class);
+    // 3).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -240,7 +242,7 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}",
     // entityResponse);
     // MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}",
-    // clientResponse.getHeaders());
+    // clientResponse.getStringHeaders());
     //
     // Assert.assertEquals(200, statusResponse);
     // JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class,
@@ -249,14 +251,14 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     //
     // // JSON : id = 3, expand
     // clientResponse =
-    // this.resource().path(ConstantsPath.MACHINE).accept(MediaType.APPLICATION_JSON_TYPE)
+    // this.target().path(ConstantsPath.MACHINE).request(MediaType.APPLICATION_JSON_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
     // 3).header(Constants.HEADER_SIROCCO_INFO_TEST_EXPAND, true)
-    // .get(ClientResponse.class);
+    // .get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -265,7 +267,7 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}",
     // entityResponse);
     // MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}",
-    // clientResponse.getHeaders());
+    // clientResponse.getStringHeaders());
     //
     // Assert.assertEquals(200, statusResponse);
     // JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class,
@@ -280,19 +282,19 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // @Test
     // @Ignore
     // public final void testGetMachineCollectionXml() throws Exception {
-    // ClientResponse clientResponse = null;
+    // Response clientResponse = null;
     // String entityResponse;
     // int statusResponse;
     //
     // // XML : id = 0
     // clientResponse =
-    // this.resource().path(ConstantsPath.MACHINE).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.MACHINE).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 0).get(ClientResponse.class);
+    // 0).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -301,7 +303,7 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}",
     // entityResponse);
     // MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}",
-    // clientResponse.getHeaders());
+    // clientResponse.getStringHeaders());
     //
     // Assert.assertEquals(200, statusResponse);
     // XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class,
@@ -310,13 +312,13 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     //
     // // XML : id = 1
     // clientResponse =
-    // this.resource().path(ConstantsPath.MACHINE).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.MACHINE).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 1).get(ClientResponse.class);
+    // 1).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -325,7 +327,7 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}",
     // entityResponse);
     // MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}",
-    // clientResponse.getHeaders());
+    // clientResponse.getStringHeaders());
     //
     // Assert.assertEquals(200, statusResponse);
     // XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class,
@@ -334,13 +336,13 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     //
     // // XML : id = 3
     // clientResponse =
-    // this.resource().path(ConstantsPath.MACHINE).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.MACHINE).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
-    // 3).get(ClientResponse.class);
+    // 3).get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -349,7 +351,7 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}",
     // entityResponse);
     // MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}",
-    // clientResponse.getHeaders());
+    // clientResponse.getStringHeaders());
     //
     // Assert.assertEquals(200, statusResponse);
     // XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class,
@@ -358,14 +360,14 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     //
     // // XML : id = 3, expand
     // clientResponse =
-    // this.resource().path(ConstantsPath.MACHINE).accept(MediaType.APPLICATION_XML_TYPE)
+    // this.target().path(ConstantsPath.MACHINE).request(MediaType.APPLICATION_XML_TYPE)
     // .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
     // .header(Constants.HEADER_SIROCCO_INFO_TEST_ID,
     // 3).header(Constants.HEADER_SIROCCO_INFO_TEST_EXPAND, true)
-    // .get(ClientResponse.class);
+    // .get(Response.class);
     //
     // statusResponse = clientResponse.getStatus();
-    // entityResponse = clientResponse.getEntity(String.class);
+    // entityResponse = clientResponse.readEntity(String.class);
     //
     // MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}",
     // clientResponse);
@@ -374,7 +376,7 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
     // MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}",
     // entityResponse);
     // MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}",
-    // clientResponse.getHeaders());
+    // clientResponse.getStringHeaders());
     //
     // Assert.assertEquals(200, statusResponse);
     // XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class,
@@ -389,26 +391,27 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testPutMachineJson() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // JSON : id = 0
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.MACHINE + "/0")
-            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Machine-0.json"),
-                MediaType.APPLICATION_JSON_TYPE).put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Machine-0.json"),
+                    MediaType.APPLICATION_JSON_TYPE));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class, "Job-0.json"), new StringReader(
@@ -416,20 +419,21 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
 
         // JSON : id = 1
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.MACHINE + "/1")
-            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Machine-1.json"),
-                MediaType.APPLICATION_JSON_TYPE).put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Machine-1.json"),
+                    MediaType.APPLICATION_JSON_TYPE));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class, "Job-1.json"), new StringReader(
@@ -437,20 +441,21 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
 
         // JSON : id = 2
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.MACHINE + "/2")
-            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Machine-2.json"),
-                MediaType.APPLICATION_JSON_TYPE).put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Machine-2.json"),
+                    MediaType.APPLICATION_JSON_TYPE));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         JsonAssert.assertJsonEquals(SerializationHelper.getResourceAsReader(JsonLocator.class, "Job-2.json"), new StringReader(
@@ -465,59 +470,71 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testPutMachineXml() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // XML : id = 0
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/0").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.MACHINE + "/0")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Machine-0.xml"), MediaType.APPLICATION_XML)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Machine-0.xml"),
+                    MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class, "Job-0.xml"), new StringReader(
             entityResponse));
 
         // XML : id = 1
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/1").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.MACHINE + "/1")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Machine-1.xml"), MediaType.APPLICATION_XML)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Machine-1.xml"),
+                    MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class, "Job-1.xml"), new StringReader(
             entityResponse));
 
         // XML : id = 2
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/2").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.MACHINE + "/2")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Machine-2.xml"), MediaType.APPLICATION_XML)
-            .put(ClientResponse.class);
+            .put(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Machine-2.xml"),
+                    MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
         XMLAssert.assertXMLEqual(SerializationHelper.getResourceAsReader(XmlLocator.class, "Job-2.xml"), new StringReader(
@@ -532,23 +549,24 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testPostMachineJson() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
         MultivaluedMap<String, String> heardersResponse;
 
         // JSON : id = 1
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.MACHINE)
-            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "MachineCreate-1.json"),
-                MediaType.APPLICATION_JSON).post(ClientResponse.class);
+            .post(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "MachineCreate-1.json"),
+                    MediaType.APPLICATION_JSON));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
-        heardersResponse = clientResponse.getHeaders();
+        entityResponse = clientResponse.readEntity(String.class);
+        heardersResponse = clientResponse.getStringHeaders();
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -575,23 +593,24 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testPostMachineXml() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
         MultivaluedMap<String, String> heardersResponse;
 
         // XML : id = 1
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.MACHINE)
-            .accept(MediaType.APPLICATION_XML_TYPE)
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "MachineCreate-1.xml"), MediaType.APPLICATION_XML)
-            .post(ClientResponse.class);
+            .post(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "MachineCreate-1.xml"),
+                    MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
-        heardersResponse = clientResponse.getHeaders();
+        entityResponse = clientResponse.readEntity(String.class);
+        heardersResponse = clientResponse.getStringHeaders();
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -617,20 +636,24 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testPostActionXml() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
         MultivaluedMap<String, String> heardersResponse;
 
         // XML : id = 1
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/1").accept(MediaType.APPLICATION_XML_TYPE)
+        clientResponse = this
+            .target()
+            .path(ConstantsPath.MACHINE + "/1")
+            .request(MediaType.APPLICATION_XML_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Action-Start-1.xml"), MediaType.APPLICATION_XML)
-            .post(ClientResponse.class);
+            .post(
+                Entity.entity(SerializationHelper.getResourceAsString(XmlLocator.class, "Action-Start-1.xml"),
+                    MediaType.APPLICATION_XML));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
-        heardersResponse = clientResponse.getHeaders();
+        entityResponse = clientResponse.readEntity(String.class);
+        heardersResponse = clientResponse.getStringHeaders();
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -657,23 +680,24 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
      */
     @Test
     public final void testPostActionJson() throws Exception {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
         MultivaluedMap<String, String> heardersResponse;
 
         // JSON : id = 1
         clientResponse = this
-            .resource()
+            .target()
             .path(ConstantsPath.MACHINE + "/1")
-            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .request(MediaType.APPLICATION_JSON_TYPE)
             .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI)
-            .entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Action-Start-1.json"),
-                MediaType.APPLICATION_JSON).post(ClientResponse.class);
+            .post(
+                Entity.entity(SerializationHelper.getResourceAsString(JsonLocator.class, "Action-Start-1.json"),
+                    MediaType.APPLICATION_JSON));
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
-        heardersResponse = clientResponse.getHeaders();
+        entityResponse = clientResponse.readEntity(String.class);
+        heardersResponse = clientResponse.getStringHeaders();
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
@@ -695,21 +719,21 @@ public class MachineResourceSerializationTest extends SerializationTestBase {
 
     @Test
     public final void testDeleteMachine() {
-        ClientResponse clientResponse = null;
+        Response clientResponse = null;
         String entityResponse;
         int statusResponse;
 
         // JSON and XML : id = 0
-        clientResponse = this.resource().path(ConstantsPath.MACHINE + "/0")
-            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).delete(ClientResponse.class);
+        clientResponse = this.target().path(ConstantsPath.MACHINE + "/0").request()
+            .header(Constants.HEADER_CIMI_VERSION, Constants.VERSION_DMTF_CIMI).delete();
 
         statusResponse = clientResponse.getStatus();
-        entityResponse = clientResponse.getEntity(String.class);
+        entityResponse = clientResponse.readEntity(String.class);
 
         MachineResourceSerializationTest.LOGGER.debug("COMPLETE:\n\t{}", clientResponse);
         MachineResourceSerializationTest.LOGGER.debug("STATUS: {}", statusResponse);
         MachineResourceSerializationTest.LOGGER.debug("ENTITY:\n\t{}", entityResponse);
-        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getHeaders());
+        MachineResourceSerializationTest.LOGGER.debug("HEADER:\n\t{}", clientResponse.getStringHeaders());
 
         Assert.assertEquals(200, statusResponse);
     }

@@ -24,27 +24,25 @@
  */
 package org.ow2.sirocco.cimi.server.manager.address;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.domain.CimiAddressCreate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.AddressCreate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of Address.
  */
-@Component("CimiManagerCreateAddress")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateAddress")
 public class CimiManagerCreateAddress extends CimiManagerCreateAbstract {
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

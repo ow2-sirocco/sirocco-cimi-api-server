@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.manager.volume.image;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.domain.CimiVolume;
 import org.ow2.sirocco.cimi.domain.CimiVolumeImage;
 import org.ow2.sirocco.cimi.server.converter.PathHelper;
@@ -33,22 +35,17 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.Volume;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeImage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of Volume Image.
  */
-@Component("CimiManagerCreateVolumeImage")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateVolumeImage")
 public class CimiManagerCreateVolumeImage extends CimiManagerCreateAbstract {
 
-    @Autowired
-    @Qualifier("IVolumeManager")
+    @Inject
     private IVolumeManager manager;
 
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
     /**

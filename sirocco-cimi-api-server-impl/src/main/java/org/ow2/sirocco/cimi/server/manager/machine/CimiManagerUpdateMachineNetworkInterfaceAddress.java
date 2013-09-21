@@ -26,12 +26,11 @@ package org.ow2.sirocco.cimi.server.manager.machine;
 
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of MachineNetworkInterfaceAddress.
  */
-@Component("CimiManagerUpdateMachineNetworkInterfaceAddress")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateMachineNetworkInterfaceAddress")
 public class CimiManagerUpdateMachineNetworkInterfaceAddress extends CimiManagerUpdateAbstract {
 
     // @Autowired

@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -37,13 +39,11 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiVolumeConfiguration;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Volume Configuration REST resource.
@@ -58,28 +58,29 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.VOLUME_CONFIGURATION_PATH)
 public class VolumeConfigurationRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadVolumeConfiguration")
+    @Inject
+    @Manager("CimiManagerReadVolumeConfiguration")
     private CimiManager cimiManagerReadVolumeConfiguration;
 
-    @Autowired
-    @Qualifier("CimiManagerReadVolumeConfigurationCollection")
+    @Inject
+    @Manager("CimiManagerReadVolumeConfigurationCollection")
     private CimiManager cimiManagerReadVolumeConfigurationCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteVolumeConfiguration")
+    @Inject
+    @Manager("CimiManagerDeleteVolumeConfiguration")
     private CimiManager cimiManagerDeleteVolumeConfiguration;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateVolumeConfiguration")
+    @Inject
+    @Manager("CimiManagerUpdateVolumeConfiguration")
     private CimiManager cimiManagerUpdateVolumeConfiguration;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateVolumeConfiguration")
+    @Inject
+    @Manager("CimiManagerCreateVolumeConfiguration")
     private CimiManager cimiManagerCreateVolumeConfiguration;
 
     /**

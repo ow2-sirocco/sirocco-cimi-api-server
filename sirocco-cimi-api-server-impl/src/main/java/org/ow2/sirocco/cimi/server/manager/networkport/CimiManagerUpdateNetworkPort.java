@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.networkport;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPort;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of NetworkPort.
  */
-@Component("CimiManagerUpdateNetworkPort")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateNetworkPort")
 public class CimiManagerUpdateNetworkPort extends CimiManagerUpdateAbstract {
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

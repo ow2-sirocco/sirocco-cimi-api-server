@@ -26,12 +26,11 @@ package org.ow2.sirocco.cimi.server.manager.cep;
 
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of Cloud Entry Point.
  */
-@Component("CimiManagerUpdateCloudEntryPoint")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateCloudEntryPoint")
 public class CimiManagerUpdateCloudEntryPoint extends CimiManagerUpdateAbstract {
 
     // XXX UnsupportedOperation

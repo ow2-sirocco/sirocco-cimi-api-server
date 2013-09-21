@@ -24,21 +24,19 @@
  */
 package org.ow2.sirocco.cimi.server.manager.network.template;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerDeleteAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage DELETE request of NetworkTemplate.
  */
-@Component("CimiManagerDeleteNetworkTemplate")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerDeleteNetworkTemplate")
 public class CimiManagerDeleteNetworkTemplate extends CimiManagerDeleteAbstract {
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

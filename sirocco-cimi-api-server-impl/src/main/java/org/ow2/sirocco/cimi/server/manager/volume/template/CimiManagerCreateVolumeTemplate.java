@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.volume.template;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiVolumeTemplate;
@@ -33,22 +34,17 @@ import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.utils.Constants;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of VolumeTemplate.
  */
-@Component("CimiManagerCreateVolumeTemplate")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateVolumeTemplate")
 public class CimiManagerCreateVolumeTemplate extends CimiManagerCreateAbstract {
 
-    @Autowired
-    @Qualifier("IVolumeManager")
+    @Inject
     private IVolumeManager manager;
 
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
     /**

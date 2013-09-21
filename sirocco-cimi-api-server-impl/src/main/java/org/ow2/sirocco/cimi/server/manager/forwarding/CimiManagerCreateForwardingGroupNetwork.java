@@ -24,27 +24,24 @@
  */
 package org.ow2.sirocco.cimi.server.manager.forwarding;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.domain.CimiForwardingGroupNetwork;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.ForwardingGroupNetwork;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of ForwardingGroupNetwork.
  */
-@Component("CimiManagerCreateForwardingGroupNetwork")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateForwardingGroupNetwork")
 public class CimiManagerCreateForwardingGroupNetwork extends CimiManagerCreateAbstract {
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

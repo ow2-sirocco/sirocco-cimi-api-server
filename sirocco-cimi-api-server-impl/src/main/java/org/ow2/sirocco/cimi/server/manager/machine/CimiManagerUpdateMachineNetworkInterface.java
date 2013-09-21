@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.machine;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineNetworkInterface;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of MachineNetworkInterface.
  */
-@Component("CimiManagerUpdateMachineNetworkInterface")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateMachineNetworkInterface")
 public class CimiManagerUpdateMachineNetworkInterface extends CimiManagerUpdateAbstract {
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager manager;
 
     /**

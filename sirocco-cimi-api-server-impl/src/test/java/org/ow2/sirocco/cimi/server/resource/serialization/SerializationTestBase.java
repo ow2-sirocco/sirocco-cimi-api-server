@@ -24,32 +24,35 @@
  */
 package org.ow2.sirocco.cimi.server.resource.serialization;
 
+import javax.ws.rs.core.Application;
+
 import org.custommonkey.xmlunit.XMLUnit;
+import org.glassfish.jersey.test.JerseyTest;
 import org.junit.BeforeClass;
 import org.ow2.sirocco.cimi.server.SiroccoRestCimiApplication;
-import org.springframework.web.context.ContextLoaderListener;
-
-import com.sun.jersey.api.json.JSONConfiguration;
-import com.sun.jersey.spi.spring.container.servlet.SpringServlet;
-import com.sun.jersey.test.framework.AppDescriptor;
-import com.sun.jersey.test.framework.JerseyTest;
-import com.sun.jersey.test.framework.WebAppDescriptor;
-import com.sun.jersey.test.framework.spi.container.TestContainerException;
 
 public class SerializationTestBase extends JerseyTest {
+
+    @Override
+    protected Application configure() {
+        return new SiroccoRestCimiApplication();
+    }
 
     /**
      * {@inheritDoc}
      * 
      * @see com.sun.jersey.test.framework.JerseyTest#configure()
      */
-    @Override
-    protected AppDescriptor configure() {
-        return new WebAppDescriptor.Builder("javax.ws.rs.Application", SiroccoRestCimiApplication.class.getName())
-            .initParam(JSONConfiguration.FEATURE_POJO_MAPPING, "true").contextPath("sirocco-rest")
-            .servletClass(SpringServlet.class).contextListenerClass(ContextLoaderListener.class)
-            .contextParam("contextConfigLocation", "classpath:context/serializationResourcesContext.xml").build();
-    }
+    // @Override
+    // protected AppDescriptor configure() {
+    // return new WebAppDescriptor.Builder("javax.ws.rs.Application",
+    // SiroccoRestCimiApplication.class.getName())
+    // .initParam(JSONConfiguration.FEATURE_POJO_MAPPING,
+    // "true").contextPath("sirocco-rest")
+    // .servletClass(SpringServlet.class).contextListenerClass(ContextLoaderListener.class)
+    // .contextParam("contextConfigLocation",
+    // "classpath:context/serializationResourcesContext.xml").build();
+    // }
 
     /**
      * @throws Exception In case of error
@@ -61,17 +64,18 @@ public class SerializationTestBase extends JerseyTest {
         XMLUnit.setIgnoreAttributeOrder(true);
     }
 
-    @Override
-    protected int getPort(final int defaultPort) {
-        int port = super.getPort(defaultPort);
-        String propPort = System.getProperty("grizzly.port");
-        if (null != propPort) {
-            try {
-                port = Integer.parseInt(propPort);
-            } catch (NumberFormatException e) {
-                throw new TestContainerException("grizzly.port with a value of \"" + propPort + "\" is not a valid integer.", e);
-            }
-        }
-        return port;
-    }
+    // @Override
+    // protected int getPort() {
+    // int port = super.getPort(defaultPort);
+    // String propPort = System.getProperty("grizzly.port");
+    // if (null != propPort) {
+    // try {
+    // port = Integer.parseInt(propPort);
+    // } catch (NumberFormatException e) {
+    // throw new TestContainerException("grizzly.port with a value of \"" +
+    // propPort + "\" is not a valid integer.", e);
+    // }
+    // }
+    // return port;
+    // }
 }

@@ -24,21 +24,19 @@
  */
 package org.ow2.sirocco.cimi.server.manager.job;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerDeleteAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IJobManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage DELETE request of Job.
  */
-@Component("CimiManagerDeleteJob")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerDeleteJob")
 public class CimiManagerDeleteJob extends CimiManagerDeleteAbstract {
 
-    @Autowired
-    @Qualifier("IJobManager")
+    @Inject
     private IJobManager manager;
 
     /**

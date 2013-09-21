@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.system.template;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiSystemTemplate;
@@ -31,18 +32,14 @@ import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of SystemTemplate.
  */
-@Component("CimiManagerReadSystemTemplate")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadSystemTemplate")
 public class CimiManagerReadSystemTemplate extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager manager;
 
     /**

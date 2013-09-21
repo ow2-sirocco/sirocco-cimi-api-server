@@ -27,15 +27,12 @@ package org.ow2.sirocco.cimi.server.request;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.xml.bind.DatatypeConverter;
 
 import org.ow2.sirocco.cimi.domain.CimiData;
 import org.ow2.sirocco.cimi.server.resource.RestResourceAbstract;
 import org.ow2.sirocco.cimi.server.utils.Constants;
-import org.ow2.sirocco.cloudmanager.core.api.IdentityContext;
-import org.ow2.sirocco.cloudmanager.core.api.IdentityContextHolder;
 
 /**
  * Utility to build CIMI Request with the data of REST request.
@@ -46,7 +43,6 @@ public class RequestHelper {
 
     public static CimiRequest buildRequest(final RestResourceAbstract.JaxRsRequestInfos infos, final IdRequest ids,
         final CimiData cimiData) {
-        RequestHelper.setIdentityContext(infos.getHeaders());
         CimiRequest request = new CimiRequest();
         request.setParams(RequestHelper.buildRequestHeader(infos));
         request.setIds(ids);
@@ -55,20 +51,6 @@ public class RequestHelper {
         request.setPath(infos.getUriInfo().getPath());
         request.setMethod(infos.getRequest().getMethod());
         return request;
-    }
-
-    private static void setIdentityContext(final HttpHeaders headers) {
-        IdentityContext result = new IdentityContext();
-        List<String> values = headers.getRequestHeader("tenantId");
-        if (values != null && !values.isEmpty()) {
-            result.setTenantId(values.get(0));
-        }
-        values = headers.getRequestHeader("Authorization");
-        if (values != null && !values.isEmpty()) {
-            String userPassword[] = RequestHelper.decode(values.get(0));
-            result.setUserName(userPassword[0]);
-        }
-        IdentityContextHolder.set(result.getTenantId(), result.getUserName());
     }
 
     public static String[] decode(String auth) {

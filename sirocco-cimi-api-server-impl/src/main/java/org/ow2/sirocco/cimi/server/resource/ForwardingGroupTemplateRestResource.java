@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -37,13 +39,11 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiForwardingGroupTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * ForwardingGroup Template REST resource.
@@ -58,28 +58,29 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.FORWARDING_GROUP_TEMPLATE_PATH)
 public class ForwardingGroupTemplateRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadForwardingGroupTemplate")
+    @Inject
+    @Manager("CimiManagerReadForwardingGroupTemplate")
     private CimiManager cimiManagerReadForwardingGroupTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerReadForwardingGroupTemplateCollection")
+    @Inject
+    @Manager("CimiManagerReadForwardingGroupTemplateCollection")
     private CimiManager cimiManagerReadForwardingGroupTemplateCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteForwardingGroupTemplate")
+    @Inject
+    @Manager("CimiManagerDeleteForwardingGroupTemplate")
     private CimiManager cimiManagerDeleteForwardingGroupTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateForwardingGroupTemplate")
+    @Inject
+    @Manager("CimiManagerUpdateForwardingGroupTemplate")
     private CimiManager cimiManagerUpdateForwardingGroupTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateForwardingGroupTemplate")
+    @Inject
+    @Manager("CimiManagerCreateForwardingGroupTemplate")
     private CimiManager cimiManagerCreateForwardingGroupTemplate;
 
     /**

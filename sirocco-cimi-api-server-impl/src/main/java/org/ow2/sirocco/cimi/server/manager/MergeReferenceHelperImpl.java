@@ -31,6 +31,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.domain.CimiAddress;
 import org.ow2.sirocco.cimi.domain.CimiAddressCreate;
 import org.ow2.sirocco.cimi.domain.CimiAddressTemplate;
@@ -128,43 +130,32 @@ import org.ow2.sirocco.cloudmanager.model.cimi.VolumeTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeVolumeImage;
 import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLogTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Implementation of a helper to get complete resource passed by reference or by
  * value during its creation
  */
-@Component("MergeReferenceHelper")
 public class MergeReferenceHelperImpl implements MergeReferenceHelper {
 
-    @Autowired
-    @Qualifier("ICredentialsManager")
+    @Inject
     private ICredentialsManager managerCredentials;
 
-    @Autowired
-    @Qualifier("IMachineImageManager")
+    @Inject
     private IMachineImageManager managerMachineImage;
 
-    @Autowired
-    @Qualifier("IMachineManager")
+    @Inject
     private IMachineManager managerMachine;
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager managerNetwork;
 
-    @Autowired
-    @Qualifier("IEventManager")
+    @Inject
     private IEventManager managerEvent;
 
-    @Autowired
-    @Qualifier("IVolumeManager")
+    @Inject
     private IVolumeManager managerVolume;
 
-    @Autowired
-    @Qualifier("ISystemManager")
+    @Inject
     private ISystemManager managerSystem;
 
     /**

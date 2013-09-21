@@ -24,23 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.resourcemetadata;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiResourceMetadata;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of ResourceMetadata.
  */
-@Component("CimiManagerReadResourceMetadata")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadResourceMetadata")
 public class CimiManagerReadResourceMetadata extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("IResourceMetadataManager")
+    @Inject
     private IResourceMetadataManager manager;
 
     /**

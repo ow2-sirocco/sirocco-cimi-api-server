@@ -24,27 +24,24 @@
  */
 package org.ow2.sirocco.cimi.server.manager.networkport;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.domain.CimiNetworkPortCreate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPortCreate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage CREATE request of NetworkPort.
  */
-@Component("CimiManagerCreateNetworkPort")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerCreateNetworkPort")
 public class CimiManagerCreateNetworkPort extends CimiManagerCreateAbstract {
-    @Autowired
-    @Qualifier("MergeReferenceHelper")
+    @Inject
     private MergeReferenceHelper mergeReference;
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

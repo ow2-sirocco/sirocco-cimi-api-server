@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager.networkport.configuration;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiNetworkPortConfiguration;
@@ -31,18 +32,14 @@ import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPortConfiguration;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage READ request of NetworkPort Configuration.
  */
-@Component("CimiManagerReadNetworkPortConfiguration")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerReadNetworkPortConfiguration")
 public class CimiManagerReadNetworkPortConfiguration extends CimiManagerReadAbstract {
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

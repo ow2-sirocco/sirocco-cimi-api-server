@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -39,14 +41,12 @@ import org.ow2.sirocco.cimi.domain.CimiVolume;
 import org.ow2.sirocco.cimi.domain.CimiVolumeCreate;
 import org.ow2.sirocco.cimi.domain.CimiVolumeVolumeImage;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Volume REST resource.
@@ -61,48 +61,49 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.VOLUME_PATH)
 public class VolumeRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadVolume")
+    @Inject
+    @Manager("CimiManagerReadVolume")
     private CimiManager cimiManagerReadVolume;
 
-    @Autowired
-    @Qualifier("CimiManagerReadVolumeCollection")
+    @Inject
+    @Manager("CimiManagerReadVolumeCollection")
     private CimiManager cimiManagerReadVolumeCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteVolume")
+    @Inject
+    @Manager("CimiManagerDeleteVolume")
     private CimiManager cimiManagerDeleteVolume;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateVolume")
+    @Inject
+    @Manager("CimiManagerUpdateVolume")
     private CimiManager cimiManagerUpdateVolume;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateVolume")
+    @Inject
+    @Manager("CimiManagerCreateVolume")
     private CimiManager cimiManagerCreateVolume;
 
-    @Autowired
-    @Qualifier("CimiManagerReadVolumeVolumeImage")
+    @Inject
+    @Manager("CimiManagerReadVolumeVolumeImage")
     private CimiManager cimiManagerReadVolumeVolumeImage;
 
-    @Autowired
-    @Qualifier("CimiManagerReadVolumeVolumeImageCollection")
+    @Inject
+    @Manager("CimiManagerReadVolumeVolumeImageCollection")
     private CimiManager cimiManagerReadVolumeVolumeImageCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateVolumeVolumeImage")
+    @Inject
+    @Manager("CimiManagerCreateVolumeVolumeImage")
     private CimiManager cimiManagerCreateVolumeVolumeImage;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteVolumeVolumeImage")
+    @Inject
+    @Manager("CimiManagerDeleteVolumeVolumeImage")
     private CimiManager cimiManagerDeleteVolumeVolumeImage;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateVolumeVolumeImage")
+    @Inject
+    @Manager("CimiManagerUpdateVolumeVolumeImage")
     private CimiManager cimiManagerUpdateVolumeVolumeImage;
 
     /**

@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -37,13 +39,11 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiCredentialTemplate;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Credential Template REST resource.
@@ -58,28 +58,29 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.CREDENTIAL_TEMPLATE_PATH)
 public class CredentialTemplateRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadCredentialTemplate")
+    @Inject
+    @Manager("CimiManagerReadCredentialTemplate")
     private CimiManager cimiManagerReadCredentialTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerReadCredentialTemplateCollection")
+    @Inject
+    @Manager("CimiManagerReadCredentialTemplateCollection")
     private CimiManager cimiManagerReadCredentialTemplateCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteCredentialTemplate")
+    @Inject
+    @Manager("CimiManagerDeleteCredentialTemplate")
     private CimiManager cimiManagerDeleteCredentialTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateCredentialTemplate")
+    @Inject
+    @Manager("CimiManagerUpdateCredentialTemplate")
     private CimiManager cimiManagerUpdateCredentialTemplate;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateCredentialTemplate")
+    @Inject
+    @Manager("CimiManagerCreateCredentialTemplate")
     private CimiManager cimiManagerCreateCredentialTemplate;
 
     /**

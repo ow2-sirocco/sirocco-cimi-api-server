@@ -24,22 +24,20 @@
  */
 package org.ow2.sirocco.cimi.server.manager.volume;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.VolumeVolumeImage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage UPDATE request of VolumeVolumeImage in a Volume.
  */
-@Component("CimiManagerUpdateVolumeVolumeImage")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerUpdateVolumeVolumeImage")
 public class CimiManagerUpdateVolumeVolumeImage extends CimiManagerUpdateAbstract {
 
-    @Autowired
-    @Qualifier("IVolumeManager")
+    @Inject
     private IVolumeManager manager;
 
     /**

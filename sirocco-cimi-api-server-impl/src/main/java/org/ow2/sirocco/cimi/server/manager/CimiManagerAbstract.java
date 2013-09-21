@@ -24,6 +24,7 @@
  */
 package org.ow2.sirocco.cimi.server.manager;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiData;
@@ -47,8 +48,6 @@ import org.ow2.sirocco.cloudmanager.model.cimi.Network;
 import org.ow2.sirocco.cloudmanager.model.cimi.Volume;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  * Abstract class to manage the phases of validation, conversion and calling
@@ -56,8 +55,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 public abstract class CimiManagerAbstract implements CimiManager {
 
-    @Autowired
-    @Qualifier("CallServiceHelper")
+    @Inject
     private CallServiceHelper serviceHelper;
 
     /** Logger */

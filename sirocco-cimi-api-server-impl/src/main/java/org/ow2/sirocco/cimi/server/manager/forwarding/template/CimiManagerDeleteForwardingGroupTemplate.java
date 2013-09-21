@@ -24,21 +24,19 @@
  */
 package org.ow2.sirocco.cimi.server.manager.forwarding.template;
 
+import javax.inject.Inject;
+
 import org.ow2.sirocco.cimi.server.manager.CimiManagerDeleteAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Manage DELETE request of ForwardingGroupTemplate.
  */
-@Component("CimiManagerDeleteForwardingGroupTemplate")
+@org.ow2.sirocco.cimi.server.manager.Manager("CimiManagerDeleteForwardingGroupTemplate")
 public class CimiManagerDeleteForwardingGroupTemplate extends CimiManagerDeleteAbstract {
 
-    @Autowired
-    @Qualifier("INetworkManager")
+    @Inject
     private INetworkManager manager;
 
     /**

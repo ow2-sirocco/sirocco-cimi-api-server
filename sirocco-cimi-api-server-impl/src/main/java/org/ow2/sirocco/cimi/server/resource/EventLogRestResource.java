@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -38,14 +40,12 @@ import javax.ws.rs.core.Response;
 import org.ow2.sirocco.cimi.domain.CimiEventLog;
 import org.ow2.sirocco.cimi.domain.CimiEventLogCreate;
 import org.ow2.sirocco.cimi.server.manager.CimiManager;
+import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cimi.server.request.ContextHelper;
 import org.ow2.sirocco.cimi.server.request.IdRequest;
 import org.ow2.sirocco.cimi.server.request.ResponseHelper;
 import org.ow2.sirocco.cimi.server.utils.ConstantsPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * EventLog REST resource.
@@ -60,40 +60,41 @@ import org.springframework.stereotype.Component;
  * </ul>
  * </p>
  */
-@Component
+@ResourceInterceptorBinding
+@RequestScoped
 @Path(ConstantsPath.EVENT_LOG_PATH)
 public class EventLogRestResource extends RestResourceAbstract {
 
-    @Autowired
-    @Qualifier("CimiManagerReadEventLog")
+    @Inject
+    @Manager("CimiManagerReadEventLog")
     private CimiManager cimiManagerReadEventLog;
 
-    @Autowired
-    @Qualifier("CimiManagerReadEventLogCollection")
+    @Inject
+    @Manager("CimiManagerReadEventLogCollection")
     private CimiManager cimiManagerReadEventLogCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteEventLog")
+    @Inject
+    @Manager("CimiManagerDeleteEventLog")
     private CimiManager cimiManagerDeleteEventLog;
 
-    @Autowired
-    @Qualifier("CimiManagerUpdateEventLog")
+    @Inject
+    @Manager("CimiManagerUpdateEventLog")
     private CimiManager cimiManagerUpdateEventLog;
 
-    @Autowired
-    @Qualifier("CimiManagerCreateEventLog")
+    @Inject
+    @Manager("CimiManagerCreateEventLog")
     private CimiManager cimiManagerCreateEventLog;
 
-    @Autowired
-    @Qualifier("CimiManagerReadEventLogEvent")
+    @Inject
+    @Manager("CimiManagerReadEventLogEvent")
     private CimiManager cimiManagerReadEventLogEvent;
 
-    @Autowired
-    @Qualifier("CimiManagerReadEventLogEventCollection")
+    @Inject
+    @Manager("CimiManagerReadEventLogEventCollection")
     private CimiManager cimiManagerReadEventLogEventCollection;
 
-    @Autowired
-    @Qualifier("CimiManagerDeleteEventLogEvent")
+    @Inject
+    @Manager("CimiManagerDeleteEventLogEvent")
     private CimiManager cimiManagerDeleteEventLogEvent;
 
     /**
