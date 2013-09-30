@@ -48,37 +48,12 @@
 		<module>sirocco-cimi-api-server-webapp</module>
 	</modules>
 
-	<build>
-		<extensions>
-                        <extension>
-                                <groupId>org.apache.maven.wagon</groupId>
-                                <artifactId>wagon-ssh-external</artifactId>
-                                <version>1.0-beta-6</version>
-                        </extension>
-                </extensions>
-	</build>
-
-        <profiles>
-                <profile>
-                        <id>lab-test</id>
-                        <distributionManagement>
-                                <snapshotRepository>
-                                        <uniqueVersion>false</uniqueVersion>
-                                        <id>lab-repository</id>
-                                        <name>Lab Repository</name>
-                                        <url>scpexe://p-sirocco/opt/maven-repository</url>
-                                        <layout>default</layout>
-                                </snapshotRepository>
-                        </distributionManagement>
-                </profile>
-        </profiles>
-
 
 	<scm>
-		<connection>scm:git:git://gitorious.ow2.org/ow2-sirocco/sirocco-cimi-api-server.git</connection>
-		<developerConnection>scm:git:git@gitorious.ow2.org:ow2-sirocco/sirocco-cimi-api-server.git</developerConnection>
-		<url>http://gitorious.ow2.org/ow2-sirocco/sirocco-cimi-api-server/trees</url>
-	  <tag>HEAD</tag>
-  </scm>
+		<connection>scm:git:git://github.com/ow2-sirocco/sirocco-cimi-api-server.git</connection>
+		<developerConnection>scm:git:git@github.com:ow2-sirocco/sirocco-cimi-api-server.git</developerConnection>
+		<url>https://github.com/ow2-sirocco/sirocco-cimi-api-server</url>
+	  	<tag>HEAD</tag>
+  	</scm>
 
 </project>
