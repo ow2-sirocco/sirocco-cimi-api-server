@@ -30,6 +30,7 @@ import org.ow2.sirocco.cimi.domain.CimiOperation;
 import org.ow2.sirocco.cimi.domain.CloudEntryPointAggregate;
 import org.ow2.sirocco.cimi.domain.Operation;
 import org.ow2.sirocco.cimi.domain.collection.CimiAddressCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiAddressTemplateCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiCredentialCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiCredentialTemplateCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiJobCollection;
@@ -156,6 +157,9 @@ public class CloudEntryPointConverter extends ObjectCommonConverter {
 
             dataCimi.setAddresses((CimiAddressCollection) context.convertNextCimi(dataService.getAddresses(),
                 CimiAddressCollection.class));
+
+            dataCimi.setAddressTemplates((CimiAddressTemplateCollection) context.convertNextCimi(
+                dataService.getAddressTemplates(), CimiAddressTemplateCollection.class));
 
             dataCimi.setNetworks((CimiNetworkCollection) context.convertNextCimi(dataService.getNetworks(),
                 CimiNetworkCollection.class));
