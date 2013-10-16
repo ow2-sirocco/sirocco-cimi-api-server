@@ -194,6 +194,7 @@ public class CloudEntryPointAggregate extends CloudEntity {
      * @param href The reference
      */
     public CloudEntryPointAggregate() {
+	setName("cloudEntryPoint");
     }
 
     /**
