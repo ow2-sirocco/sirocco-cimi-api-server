@@ -32,7 +32,7 @@ import org.ow2.sirocco.cimi.domain.CimiMachineConfiguration;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.DiskTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineConfiguration;
-import org.ow2.sirocco.cloudmanager.model.cimi.Visibility;
+import org.ow2.sirocco.cloudmanager.model.cimi.extension.Visibility;
 
 /**
  * Convert the data of the CIMI model and the service model in both directions.
