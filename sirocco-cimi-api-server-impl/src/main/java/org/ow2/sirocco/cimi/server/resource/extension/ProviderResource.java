@@ -44,6 +44,7 @@ import javax.ws.rs.core.UriInfo;
 import org.ow2.sirocco.cimi.domain.extension.Location;
 import org.ow2.sirocco.cimi.domain.extension.Provider;
 import org.ow2.sirocco.cimi.domain.extension.ProviderAccount;
+import org.ow2.sirocco.cimi.domain.extension.ProviderProfile;
 import org.ow2.sirocco.cimi.server.resource.ResourceInterceptorBinding;
 import org.ow2.sirocco.cimi.server.resource.RestResourceAbstract;
 import org.ow2.sirocco.cloudmanager.core.api.ICloudProviderManager;
@@ -52,6 +53,7 @@ import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceNotFoundException
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProvider;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderAccount;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderLocation;
+import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderProfile;
 
 @ResourceInterceptorBinding
 @RequestScoped
@@ -216,6 +218,42 @@ public class ProviderResource extends RestResourceAbstract {
         }
     }
 
+    @POST
+    @Path("profiles")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response createProviderProfile(final ProviderProfile profile) {
+        CloudProviderProfile created = this.providerManager.createCloudProviderProfile(this.toCloudProviderProfile(profile));
+        return Response.status(Response.Status.CREATED).entity(this.toApiProviderProfile(created)).build();
+    }
+
+    @POST
+    @Path("profiles/{profileId}/metadata")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response addProviderProfileMetadata(@PathParam("profileId") final String profileId,
+        final ProviderProfile.AccountParameter metadata) {
+        try {
+            this.providerManager.addCloudProviderProfileMetadata(profileId, this.toProviderProfileMetadata(metadata));
+        } catch (ResourceNotFoundException e) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+    @GET
+    @Path("profiles")
+    @Produces({MediaType.APPLICATION_JSON})
+    public ProviderProfile.Collection getProviderProfiles() {
+        ProviderProfile.Collection result = new ProviderProfile.Collection();
+        List<ProviderProfile> profiles = new ArrayList<>();
+        result.setProviderProfiles(profiles);
+        for (CloudProviderProfile profile : this.providerManager.getCloudProviderProfiles()) {
+            profiles.add(this.toApiProviderProfile(profile));
+        }
+        return result;
+    }
+
     private Provider toApiProvider(final CloudProvider provider) {
         Provider p = new Provider();
         p.setId(provider.getId().toString());
@@ -275,4 +313,63 @@ public class ProviderResource extends RestResourceAbstract {
         return result;
     }
 
+    private CloudProviderProfile.AccountParameter toProviderProfileMetadata(final ProviderProfile.AccountParameter from) {
+        CloudProviderProfile.AccountParameter to = new CloudProviderProfile.AccountParameter();
+        to.setName(from.getName());
+        to.setAlias(from.getAlias());
+        to.setDescription(from.getDescription());
+        to.setRequired(from.isRequired());
+        to.setType(from.getType());
+        return to;
+    }
+
+    private CloudProviderProfile toCloudProviderProfile(final ProviderProfile profile) {
+        CloudProviderProfile result = new CloudProviderProfile();
+        if (profile.getId() != null) {
+            result.setId(Integer.parseInt(profile.getId()));
+        }
+        result.setDescription(profile.getDescription());
+        result.setConnectorClass(profile.getConnectorClass());
+        result.setType(profile.getType());
+        result.setAccountParameters(new ArrayList<CloudProviderProfile.AccountParameter>());
+        if (profile.getAccountParameters() != null) {
+            for (ProviderProfile.AccountParameter from : profile.getAccountParameters()) {
+                CloudProviderProfile.AccountParameter to = new CloudProviderProfile.AccountParameter();
+                to.setName(from.getName());
+                to.setAlias(from.getAlias());
+                to.setDescription(from.getDescription());
+                to.setRequired(from.isRequired());
+                to.setType(from.getType());
+                result.getAccountParameters().add(to);
+            }
+        }
+        return result;
+    }
+
+    private ProviderProfile.AccountParameter toApiProviderProfileMetadata(final CloudProviderProfile.AccountParameter from) {
+        ProviderProfile.AccountParameter to = new ProviderProfile.AccountParameter();
+        to.setName(from.getName());
+        to.setAlias(from.getAlias());
+        to.setDescription(from.getDescription());
+        to.setRequired(from.isRequired());
+        to.setType(from.getType());
+        return to;
+    }
+
+    private ProviderProfile toApiProviderProfile(final CloudProviderProfile profile) {
+        ProviderProfile result = new ProviderProfile();
+        if (profile.getId() != null) {
+            result.setId(profile.getId().toString());
+        }
+        result.setDescription(profile.getDescription());
+        result.setConnectorClass(profile.getConnectorClass());
+        result.setType(profile.getType());
+        result.setAccountParameters(new ArrayList<ProviderProfile.AccountParameter>());
+        if (profile.getAccountParameters() != null) {
+            for (CloudProviderProfile.AccountParameter from : profile.getAccountParameters()) {
+                result.getAccountParameters().add(this.toApiProviderProfileMetadata(from));
+            }
+        }
+        return result;
+    }
 }
