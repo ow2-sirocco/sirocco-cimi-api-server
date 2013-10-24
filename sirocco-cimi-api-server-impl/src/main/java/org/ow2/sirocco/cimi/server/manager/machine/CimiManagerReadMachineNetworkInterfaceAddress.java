@@ -55,8 +55,7 @@ public class CimiManagerReadMachineNetworkInterfaceAddress extends CimiManagerRe
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         MachineNetworkInterfaceAddress out = null;
         QueryResult<MachineNetworkInterfaceAddress> results = this.manager.getMachineNetworkInterfaceAddresses(context
-            .getRequest().getIds().getId(IdRequest.Type.RESOURCE_GRAND_PARENT), context.getRequest().getIdParent(), -1, -1,
-            null, null);
+            .getRequest().getIds().getId(IdRequest.Type.RESOURCE_GRAND_PARENT), context.getRequest().getIdParent());
         if (null != results.getItems()) {
             Integer id = Integer.valueOf(context.getRequest().getId());
             for (MachineNetworkInterfaceAddress item : results.getItems()) {

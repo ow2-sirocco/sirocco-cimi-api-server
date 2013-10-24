@@ -55,7 +55,7 @@ public class CimiManagerReadVolumeCollection extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Object out = null;
         if (false == context.hasParamsForReadingCollection()) {
-            List<Volume> volumes = this.manager.getVolumes();
+            List<Volume> volumes = this.manager.getVolumes().getItems();
             for (Volume vol : volumes) {
                 vol.setAttachments(this.manager.getVolumeAttachments(vol.getId().toString()));
             }

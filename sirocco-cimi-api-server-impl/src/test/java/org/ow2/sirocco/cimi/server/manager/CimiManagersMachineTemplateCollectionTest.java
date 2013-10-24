@@ -153,8 +153,9 @@ public class CimiManagersMachineTemplateCollectionTest {
             item.setId(i + 13);
             list.add(item);
         }
+        QueryResult<MachineTemplate> queryResult = new QueryResult<MachineTemplate>(list.size(), list);
 
-        EasyMock.expect(this.service.getMachineTemplates()).andReturn(list);
+        EasyMock.expect(this.service.getMachineTemplates()).andReturn(queryResult);
         EasyMock.replay(this.service);
 
         this.manager.execute(this.context);

@@ -29,9 +29,9 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.collection.CimiAddressCollectionRoot;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
-import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
+import org.ow2.sirocco.cloudmanager.core.api.QueryParams;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
 
 /**
@@ -53,10 +53,10 @@ public class CimiManagerReadAddressCollection extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Object out = null;
         if (false == context.hasParamsForReadingCollection()) {
-            out = this.manager.getAddresses();
+            out = this.manager.getAddresses().getItems();
         } else {
-            QueryResult<?> results = this.manager.getAddresses(context.valueOfFirst(), context.valueOfLast(),
-                context.valuesOfFilter(), context.valuesOfSelect());
+            QueryResult<?> results = this.manager.getAddresses(new QueryParams.Builder().first(context.valueOfFirst())
+                .last(context.valueOfLast()).filters(context.valuesOfFilter()).attributes(context.valuesOfSelect()).build());
             out = results.getItems();
         }
         return out;

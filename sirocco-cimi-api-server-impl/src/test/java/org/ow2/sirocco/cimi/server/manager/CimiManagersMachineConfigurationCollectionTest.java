@@ -139,8 +139,9 @@ public class CimiManagersMachineConfigurationCollectionTest {
             machine.setId(i + 13);
             list.add(machine);
         }
+        QueryResult<MachineConfiguration> queryResult = new QueryResult<MachineConfiguration>(list.size(), list);
 
-        EasyMock.expect(this.service.getMachineConfigurations()).andReturn(list);
+        EasyMock.expect(this.service.getMachineConfigurations()).andReturn(queryResult);
         EasyMock.replay(this.service);
 
         this.manager.execute(this.context);

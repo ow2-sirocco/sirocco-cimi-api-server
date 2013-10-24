@@ -315,8 +315,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
         if (true == cimi.hasReference()) {
             MachineNetworkInterfaceAddress dataService = null;
             QueryResult<MachineNetworkInterfaceAddress> results = this.managerMachine.getMachineNetworkInterfaceAddresses(
-                context.getRequest().getIds().getId(IdRequest.Type.RESOURCE_GRAND_PARENT), context.getRequest().getIdParent(),
-                -1, -1, null, null);
+                context.getRequest().getIds().getId(IdRequest.Type.RESOURCE_GRAND_PARENT), context.getRequest().getIdParent());
             if (null != results.getItems()) {
                 Integer id = Integer.valueOf(context.getRequest().getId());
                 for (MachineNetworkInterfaceAddress item : results.getItems()) {

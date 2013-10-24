@@ -35,7 +35,6 @@ import org.jglue.cdiunit.CdiRunner;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ow2.sirocco.cimi.domain.CimiCloudEntryPoint;
@@ -62,6 +61,7 @@ import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
+import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
 import org.ow2.sirocco.cloudmanager.model.cimi.Address;
 import org.ow2.sirocco.cloudmanager.model.cimi.AddressTemplate;
 import org.ow2.sirocco.cloudmanager.model.cimi.Credentials;
@@ -176,30 +176,51 @@ public class CimiManagersCloudEntryPointTest {
         List<Job> jobCollection = new ArrayList<Job>();
         // Machines
         List<Machine> machineCollection = new ArrayList<Machine>();
+        QueryResult<Machine> machineQueryResult = new QueryResult<Machine>(machineCollection.size(), machineCollection);
+
         List<MachineTemplate> machineTemplateCollection = new ArrayList<MachineTemplate>();
+        QueryResult<MachineTemplate> machineTemplateQueryResult = new QueryResult<MachineTemplate>(
+            machineTemplateCollection.size(), machineTemplateCollection);
+
         List<MachineConfiguration> machineConfigurationCollection = new ArrayList<MachineConfiguration>();
+        QueryResult<MachineConfiguration> machineConfigQueryResult = new QueryResult<MachineConfiguration>(
+            machineConfigurationCollection.size(), machineConfigurationCollection);
+
         List<MachineImage> machineImageCollection = new ArrayList<MachineImage>();
         // Systems
         List<System> systemCollection = new ArrayList<System>();
         List<SystemTemplate> systemTemplateCollection = new ArrayList<SystemTemplate>();
         // Volumes
         List<Volume> volumeCollection = new ArrayList<Volume>();
+        QueryResult<Volume> volumeQueryResult = new QueryResult<Volume>(volumeCollection.size(), volumeCollection);
         List<VolumeTemplate> volumeTemplateCollection = new ArrayList<VolumeTemplate>();
         List<VolumeConfiguration> volumeConfigurationCollection = new ArrayList<VolumeConfiguration>();
         List<VolumeImage> volumeImageCollection = new ArrayList<VolumeImage>();
+        QueryResult<VolumeImage> volumeImageQueryResult = new QueryResult<VolumeImage>(volumeImageCollection.size(),
+            volumeImageCollection);
         // Networks
         List<Network> networkCollection = new ArrayList<Network>();
+        QueryResult<Network> networkQueryResult = new QueryResult<Network>(networkCollection.size(), networkCollection);
         List<NetworkTemplate> networkTemplateCollection = new ArrayList<NetworkTemplate>();
+        QueryResult<NetworkTemplate> networkTemplateQueryResult = new QueryResult<NetworkTemplate>(
+            networkTemplateCollection.size(), networkTemplateCollection);
         List<NetworkConfiguration> networkConfigurationCollection = new ArrayList<NetworkConfiguration>();
+        QueryResult<NetworkConfiguration> networkConfigQueryResult = new QueryResult<NetworkConfiguration>(
+            networkConfigurationCollection.size(), networkConfigurationCollection);
         // NetworkPorts
         List<NetworkPort> networkPortCollection = new ArrayList<NetworkPort>();
+        QueryResult<NetworkPort> networkPortQueryResult = new QueryResult<NetworkPort>(networkPortCollection.size(),
+            networkPortCollection);
         List<NetworkPortTemplate> networkPortTemplateCollection = new ArrayList<NetworkPortTemplate>();
         List<NetworkPortConfiguration> networkPortConfigurationCollection = new ArrayList<NetworkPortConfiguration>();
         // Addresss
         List<Address> addressCollection = new ArrayList<Address>();
+        QueryResult<Address> addressQueryResult = new QueryResult<Address>(addressCollection.size(), addressCollection);
         List<AddressTemplate> addressTemplateCollection = new ArrayList<AddressTemplate>();
         // ForwardingGroups
         List<ForwardingGroup> forwardingGroupCollection = new ArrayList<ForwardingGroup>();
+        QueryResult<ForwardingGroup> forwardingGroupQueryResult = new QueryResult<ForwardingGroup>(
+            forwardingGroupCollection.size(), forwardingGroupCollection);
         List<ForwardingGroupTemplate> forwardingGroupTemplateCollection = new ArrayList<ForwardingGroupTemplate>();
         // EventLogs
         List<EventLog> eventLogCollection = new ArrayList<EventLog>();
@@ -213,9 +234,9 @@ public class CimiManagersCloudEntryPointTest {
         EasyMock.replay(this.serviceJob);
 
         // EasyMock.expect(this.serviceMachine.getCloudEntryPoint()).andReturn(cloud);
-        EasyMock.expect(this.serviceMachine.getMachines()).andReturn(machineCollection);
-        EasyMock.expect(this.serviceMachine.getMachineTemplates()).andReturn(machineTemplateCollection);
-        EasyMock.expect(this.serviceMachine.getMachineConfigurations()).andReturn(machineConfigurationCollection);
+        EasyMock.expect(this.serviceMachine.getMachines()).andReturn(machineQueryResult);
+        EasyMock.expect(this.serviceMachine.getMachineTemplates()).andReturn(machineTemplateQueryResult);
+        EasyMock.expect(this.serviceMachine.getMachineConfigurations()).andReturn(machineConfigQueryResult);
         EasyMock.replay(this.serviceMachine);
 
         EasyMock.expect(this.serviceMachineImage.getMachineImages()).andReturn(machineImageCollection);
@@ -225,21 +246,21 @@ public class CimiManagersCloudEntryPointTest {
         EasyMock.expect(this.serviceSystem.getSystemTemplates()).andReturn(systemTemplateCollection);
         EasyMock.replay(this.serviceSystem);
 
-        EasyMock.expect(this.serviceVolume.getVolumes()).andReturn(volumeCollection);
+        EasyMock.expect(this.serviceVolume.getVolumes()).andReturn(volumeQueryResult);
         EasyMock.expect(this.serviceVolume.getVolumeTemplates()).andReturn(volumeTemplateCollection);
         EasyMock.expect(this.serviceVolume.getVolumeConfigurations()).andReturn(volumeConfigurationCollection);
-        EasyMock.expect(this.serviceVolume.getVolumeImages()).andReturn(volumeImageCollection);
+        EasyMock.expect(this.serviceVolume.getVolumeImages()).andReturn(volumeImageQueryResult);
         EasyMock.replay(this.serviceVolume);
 
-        EasyMock.expect(this.serviceNetwork.getNetworks()).andReturn(networkCollection);
-        EasyMock.expect(this.serviceNetwork.getNetworkTemplates()).andReturn(networkTemplateCollection);
-        EasyMock.expect(this.serviceNetwork.getNetworkConfigurations()).andReturn(networkConfigurationCollection);
-        EasyMock.expect(this.serviceNetwork.getNetworkPorts()).andReturn(networkPortCollection);
+        EasyMock.expect(this.serviceNetwork.getNetworks()).andReturn(networkQueryResult);
+        EasyMock.expect(this.serviceNetwork.getNetworkTemplates()).andReturn(networkTemplateQueryResult);
+        EasyMock.expect(this.serviceNetwork.getNetworkConfigurations()).andReturn(networkConfigQueryResult);
+        EasyMock.expect(this.serviceNetwork.getNetworkPorts()).andReturn(networkPortQueryResult);
         EasyMock.expect(this.serviceNetwork.getNetworkPortTemplates()).andReturn(networkPortTemplateCollection);
         EasyMock.expect(this.serviceNetwork.getNetworkPortConfigurations()).andReturn(networkPortConfigurationCollection);
-        EasyMock.expect(this.serviceNetwork.getAddresses()).andReturn(addressCollection);
+        EasyMock.expect(this.serviceNetwork.getAddresses()).andReturn(addressQueryResult);
         EasyMock.expect(this.serviceNetwork.getAddressTemplates()).andReturn(addressTemplateCollection);
-        EasyMock.expect(this.serviceNetwork.getForwardingGroups()).andReturn(forwardingGroupCollection);
+        EasyMock.expect(this.serviceNetwork.getForwardingGroups()).andReturn(forwardingGroupQueryResult);
         EasyMock.expect(this.serviceNetwork.getForwardingGroupTemplates()).andReturn(forwardingGroupTemplateCollection);
         EasyMock.replay(this.serviceNetwork);
 

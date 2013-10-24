@@ -52,7 +52,7 @@ public class CimiManagerReadMachineConfigurationCollection extends CimiManagerRe
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Object out = null;
         if (false == context.hasParamsForReadingCollection()) {
-            out = this.manager.getMachineConfigurations();
+            out = this.manager.getMachineConfigurations().getItems();
         } else {
             QueryResult<?> results = this.manager.getMachineConfigurations(context.valueOfFirst(), context.valueOfLast(),
                 context.valuesOfFilter(), context.valuesOfSelect());

@@ -90,31 +90,31 @@ public class CimiManagerReadCloudEntryPoint extends CimiManagerReadAbstract {
 
         out.setJobs(this.jobManager.getJobs());
 
-        out.setMachineConfigs(this.machineManager.getMachineConfigurations());
+        out.setMachineConfigs(this.machineManager.getMachineConfigurations().getItems());
         out.setMachineImages(this.machineImageManager.getMachineImages());
-        out.setMachines(this.machineManager.getMachines());
-        out.setMachineTemplates(this.machineManager.getMachineTemplates());
+        out.setMachines(this.machineManager.getMachines().getItems());
+        out.setMachineTemplates(this.machineManager.getMachineTemplates().getItems());
 
         out.setSystems(this.systemManager.getSystems());
         out.setSystemTemplates(this.systemManager.getSystemTemplates());
 
         out.setVolumeConfigurations(this.volumeManager.getVolumeConfigurations());
-        out.setVolumeImages(this.volumeManager.getVolumeImages());
-        out.setVolumes(this.volumeManager.getVolumes());
+        out.setVolumeImages(this.volumeManager.getVolumeImages().getItems());
+        out.setVolumes(this.volumeManager.getVolumes().getItems());
         out.setVolumeTemplates(this.volumeManager.getVolumeTemplates());
 
-        out.setNetworkConfigurations(this.networkManager.getNetworkConfigurations());
-        out.setNetworks(this.networkManager.getNetworks());
-        out.setNetworkTemplates(this.networkManager.getNetworkTemplates());
+        out.setNetworkConfigurations(this.networkManager.getNetworkConfigurations().getItems());
+        out.setNetworks(this.networkManager.getNetworks().getItems());
+        out.setNetworkTemplates(this.networkManager.getNetworkTemplates().getItems());
 
         out.setNetworkPortConfigurations(this.networkManager.getNetworkPortConfigurations());
-        out.setNetworkPorts(this.networkManager.getNetworkPorts());
+        out.setNetworkPorts(this.networkManager.getNetworkPorts().getItems());
         out.setNetworkPortTemplates(this.networkManager.getNetworkPortTemplates());
 
-        out.setAddresses(this.networkManager.getAddresses());
+        out.setAddresses(this.networkManager.getAddresses().getItems());
         out.setAddressTemplates(this.networkManager.getAddressTemplates());
 
-        out.setForwardingGroups(this.networkManager.getForwardingGroups());
+        out.setForwardingGroups(this.networkManager.getForwardingGroups().getItems());
         out.setForwardingGroupTemplates(this.networkManager.getForwardingGroupTemplates());
 
         out.setEventLogs(this.eventManager.getEventLog());

@@ -31,6 +31,7 @@ import org.ow2.sirocco.cimi.domain.collection.CimiMachineVolumeCollectionRoot;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
+import org.ow2.sirocco.cloudmanager.core.api.QueryParams;
 import org.ow2.sirocco.cloudmanager.core.api.QueryResult;
 
 /**
@@ -50,15 +51,16 @@ public class CimiManagerReadMachineVolumeCollection extends CimiManagerReadAbstr
      */
     @Override
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
-        Object out = null;
+        QueryResult<?> result;
         if (false == context.hasParamsForReadingCollection()) {
-            out = this.manager.getMachineVolumes(context.getRequest().getIdParent());
+            result = this.manager.getMachineVolumes(context.getRequest().getIdParent());
         } else {
-            QueryResult<?> results = this.manager.getMachineVolumes(context.getRequest().getIdParent(), context.valueOfFirst(),
-                context.valueOfLast(), context.valuesOfFilter(), context.valuesOfSelect());
-            out = results.getItems();
+            result = this.manager.getMachineVolumes(
+                context.getRequest().getIdParent(),
+                new QueryParams.Builder().first(context.valueOfFirst()).last(context.valueOfLast())
+                    .filters(context.valuesOfFilter()).attributes(context.valuesOfSelect()).build());
         }
-        return out;
+        return result.getItems();
     }
 
     /**
