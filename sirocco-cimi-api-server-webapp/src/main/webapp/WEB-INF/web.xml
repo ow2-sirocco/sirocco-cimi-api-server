@@ -33,14 +33,14 @@
 	<servlet>
 		<servlet-name>SiroccoRestCimiServlet</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-		<!-- <init-param>
+		<init-param>
             <param-name>javax.ws.rs.Application</param-name>
-            <param-value>org.ow2.sirocco.cimi.server.SiroccoRestCimiApplication</param-value>
-        </init-param> -->
-        <init-param>
+            <param-value>org.ow2.sirocco.cimi.server.Application</param-value>
+        </init-param>
+        <!-- <init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>org.ow2.sirocco.cimi.server.resource org.ow2.sirocco.cimi.server.resource.extension</param-value>
-		</init-param>
+			<param-value>org.ow2.sirocco.cimi.server.resource org.ow2.sirocco.cimi.server.resource.extension org.ow2.sirocco.cimi.server.provider</param-value>
+		</init-param> -->
 		<init-param>
 			<param-name>jersey.config.server.provider.classnames</param-name>
 			<param-value>org.codehaus.jackson.jaxrs.JacksonJsonProvider</param-value>

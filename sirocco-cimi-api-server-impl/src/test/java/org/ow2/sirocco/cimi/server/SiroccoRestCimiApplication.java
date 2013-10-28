@@ -54,6 +54,7 @@ import java.util.Set;
 
 import javax.ws.rs.core.Application;
 
+import org.ow2.sirocco.cimi.server.provider.JacksonConfigurator;
 import org.ow2.sirocco.cimi.server.resource.AddressRestResource;
 import org.ow2.sirocco.cimi.server.resource.AddressTemplateRestResource;
 import org.ow2.sirocco.cimi.server.resource.CloudEntryPointRestResource;

@@ -22,7 +22,7 @@
  * $Id$
  *
  */
-package org.ow2.sirocco.cimi.server;
+package org.ow2.sirocco.cimi.server.provider;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
