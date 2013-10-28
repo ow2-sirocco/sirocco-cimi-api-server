@@ -74,7 +74,7 @@ public class RequestHelper {
         requestHeader.setCimiExpand(new CimiExpand(RequestHelper.transformQueryParamToList(Constants.PARAM_CIMI_EXPAND, infos
             .getUriInfo().getQueryParameters())));
         requestHeader.setCimiFilter(new CimiFilter(RequestHelper.transformQueryParamToList(Constants.PARAM_CIMI_FILTER, infos
-            .getUriInfo().getQueryParameters())));
+            .getUriInfo().getQueryParameters(true))));
         requestHeader.setCimiFirst(new CimiIntegerParam(RequestHelper.transformQueryParamToString(Constants.PARAM_CIMI_FIRST,
             infos.getUriInfo().getQueryParameters())));
         requestHeader.setCimiLast(new CimiIntegerParam(RequestHelper.transformQueryParamToString(Constants.PARAM_CIMI_LAST,
