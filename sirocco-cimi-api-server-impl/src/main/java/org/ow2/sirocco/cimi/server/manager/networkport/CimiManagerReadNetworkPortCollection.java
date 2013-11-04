@@ -52,7 +52,7 @@ public class CimiManagerReadNetworkPortCollection extends CimiManagerReadAbstrac
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Object out = null;
         if (false == context.hasParamsForReadingCollection()) {
-            out = this.manager.getNetworkPorts();
+            out = this.manager.getNetworkPorts().getItems();
         } else {
             QueryResult<?> results = this.manager.getNetworkPorts(context.valueOfFirst(), context.valueOfLast(),
                 context.valuesOfFilter(), context.valuesOfSelect());
