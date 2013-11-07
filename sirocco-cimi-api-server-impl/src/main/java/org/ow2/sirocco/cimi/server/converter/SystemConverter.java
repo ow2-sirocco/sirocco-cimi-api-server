@@ -142,8 +142,7 @@ public class SystemConverter extends ObjectCommonConverter {
                 CimiSystemSystemCollection.class));
             dataCimi.setVolumes((CimiSystemVolumeCollection) context.convertNextCimi(dataService.getVolumes(),
                 CimiSystemVolumeCollection.class));
-            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService.getCloudProviderAccount(),
-                dataService.getLocation()));
+            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService));
         }
     }
 

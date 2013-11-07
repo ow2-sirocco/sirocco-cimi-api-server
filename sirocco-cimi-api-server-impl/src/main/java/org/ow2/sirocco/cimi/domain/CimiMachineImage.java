@@ -25,11 +25,13 @@
 package org.ow2.sirocco.cimi.domain;
 
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
@@ -41,9 +43,9 @@ import org.ow2.sirocco.cimi.server.validator.GroupCreateByValue;
  */
 @XmlRootElement(name = "MachineImage")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "state", "type", "imageLocation",
-    "relatedImage", "operations", "visibility", "xmlExtensionAttributes"})
+    "relatedImage", "operations", "visibility", "providerInfos", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "state", "type",
-    "imageLocation", "relatedImage", "operations", "visibility"})
+    "imageLocation", "relatedImage", "operations", "visibility", "providerInfos"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiMachineImage extends CimiObjectCommonAbstract {
 
@@ -70,6 +72,9 @@ public class CimiMachineImage extends CimiObjectCommonAbstract {
     private RelatedMachineImage relatedImage;
 
     private String visibility;
+
+    @JsonProperty
+    private ProviderInfo[] providerInfos;
 
     /**
      * Default constructor.
@@ -171,6 +176,16 @@ public class CimiMachineImage extends CimiObjectCommonAbstract {
 
     public void setVisibility(final String visibility) {
         this.visibility = visibility;
+    }
+
+    @XmlElement(name = "providerInfo")
+    @JsonIgnore
+    public ProviderInfo[] getProviderInfos() {
+        return this.providerInfos;
+    }
+
+    public void setProviderInfos(final ProviderInfo[] providerInfos) {
+        this.providerInfos = providerInfos;
     }
 
     /**

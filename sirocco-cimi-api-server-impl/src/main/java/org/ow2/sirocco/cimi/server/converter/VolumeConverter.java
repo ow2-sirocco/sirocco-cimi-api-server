@@ -116,8 +116,7 @@ public class VolumeConverter extends ObjectCommonConverter {
                 CimiVolumeVolumeImageCollection.class));
             dataCimi.setState(ConverterHelper.toString(dataService.getState()));
             dataCimi.setType(PathHelper.makeCimiURI(dataService.getType()));
-            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService.getCloudProviderAccount(),
-                dataService.getLocation()));
+            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService));
             if (dataService.getAttachments() != null) {
                 List<MachineAttachment> attachments = new ArrayList<MachineAttachment>();
                 for (MachineVolume mv : dataService.getAttachments()) {

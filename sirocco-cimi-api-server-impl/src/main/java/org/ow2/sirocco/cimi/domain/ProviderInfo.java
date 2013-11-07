@@ -36,7 +36,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * Class ProviderInfo
  */
 @XmlRootElement(name = "ProviderInfo")
-@XmlType(propOrder = {"providerAccountId", "providerName", "location"})
+@XmlType(propOrder = {"providerAccountId", "providerName", "providerAssignedId", "location"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class ProviderInfo implements Serializable {
 
@@ -44,6 +44,8 @@ public class ProviderInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String providerAccountId;
+
+    private String providerAssignedId;
 
     private String providerName;
 
@@ -55,6 +57,14 @@ public class ProviderInfo implements Serializable {
 
     public void setProviderAccountId(final String providerAccountId) {
         this.providerAccountId = providerAccountId;
+    }
+
+    public String getProviderAssignedId() {
+        return this.providerAssignedId;
+    }
+
+    public void setProviderAssignedId(final String providerAssignedId) {
+        this.providerAssignedId = providerAssignedId;
     }
 
     public String getProviderName() {

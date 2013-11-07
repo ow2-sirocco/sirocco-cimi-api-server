@@ -24,20 +24,42 @@
 package org.ow2.sirocco.cimi.server.converter;
 
 import org.ow2.sirocco.cimi.domain.ProviderInfo;
-import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderAccount;
-import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderLocation;
+import org.ow2.sirocco.cloudmanager.model.cimi.extension.ICloudProviderResource;
+import org.ow2.sirocco.cloudmanager.model.cimi.extension.IMultiCloudResource;
+import org.ow2.sirocco.cloudmanager.model.cimi.extension.ProviderMapping;
 
 public class ProviderInfoConverter {
-    public static ProviderInfo convert(final CloudProviderAccount account, final CloudProviderLocation location) {
-        if (account == null) {
+    public static ProviderInfo convert(final ICloudProviderResource providerResource) {
+        if (providerResource.getCloudProviderAccount() == null) {
             return null;
         }
         ProviderInfo providerInfo = new ProviderInfo();
-        providerInfo.setProviderAccountId(account.getId().toString());
-        providerInfo.setProviderName(account.getCloudProvider().getDescription());
-        if (location != null) {
-            providerInfo.setLocation(location.getCountryName());
+        providerInfo.setProviderAccountId(providerResource.getCloudProviderAccount().getId().toString());
+        providerInfo.setProviderName(providerResource.getCloudProviderAccount().getCloudProvider().getDescription());
+        if (providerResource.getLocation() != null) {
+            providerInfo.setLocation(providerResource.getLocation().getCountryName());
         }
+        providerInfo.setProviderAssignedId(providerResource.getProviderAssignedId());
         return providerInfo;
     }
+
+    public static ProviderInfo[] convert(final IMultiCloudResource providerResource) {
+        if (providerResource.getProviderMappings() == null) {
+            return null;
+        }
+        ProviderInfo[] result = new ProviderInfo[providerResource.getProviderMappings().size()];
+        int i = 0;
+        for (ProviderMapping mapping : providerResource.getProviderMappings()) {
+            ProviderInfo info = new ProviderInfo();
+            info.setProviderAccountId(mapping.getProviderAccount().getId().toString());
+            if (mapping.getProviderLocation() != null) {
+                info.setLocation(mapping.getProviderLocation().getCountryName());
+            }
+            info.setProviderName(mapping.getProviderAccount().getCloudProvider().getDescription());
+            info.setProviderAssignedId(mapping.getProviderAssignedId());
+            result[i++] = info;
+        }
+        return result;
+    }
+
 }

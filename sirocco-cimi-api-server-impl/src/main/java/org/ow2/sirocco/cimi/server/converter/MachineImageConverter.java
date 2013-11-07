@@ -111,6 +111,7 @@ public class MachineImageConverter extends ObjectCommonConverter {
             dataCimi.setState(ConverterHelper.toString(dataService.getState()));
             dataCimi.setType(ConverterHelper.toString(dataService.getType()));
             dataCimi.setVisibility(dataService.getVisibility().toString());
+            dataCimi.setProviderInfos(ProviderInfoConverter.convert(dataService));
         }
     }
 

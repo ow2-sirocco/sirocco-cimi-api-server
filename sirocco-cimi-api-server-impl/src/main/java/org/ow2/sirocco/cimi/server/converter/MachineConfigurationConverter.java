@@ -117,6 +117,7 @@ public class MachineConfigurationConverter extends ObjectCommonConverter {
                 dataCimi.setDisks(listCimis.toArray(new CimiDiskConfiguration[listCimis.size()]));
             }
             dataCimi.setVisibility(dataService.getVisibility().toString());
+            dataCimi.setProviderInfos(ProviderInfoConverter.convert(dataService));
         }
     }
 

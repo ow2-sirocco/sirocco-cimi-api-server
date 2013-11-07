@@ -111,8 +111,7 @@ public class NetworkConverter extends ObjectCommonConverter {
                 CimiNetworkNetworkPortCollection.class));
             dataCimi.setNetworkType(ConverterHelper.toString(dataService.getNetworkType()));
             dataCimi.setState(ConverterHelper.toString(dataService.getState()));
-            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService.getCloudProviderAccount(),
-                dataService.getLocation()));
+            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService));
         }
     }
 

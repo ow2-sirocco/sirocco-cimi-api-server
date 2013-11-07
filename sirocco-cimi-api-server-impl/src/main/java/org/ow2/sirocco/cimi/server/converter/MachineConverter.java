@@ -120,8 +120,7 @@ public class MachineConverter extends ObjectCommonConverter {
             dataCimi.setState(ConverterHelper.toString(dataService.getState()));
             dataCimi.setVolumes((CimiMachineVolumeCollection) context.convertNextCimi(dataService.getVolumes(),
                 CimiMachineVolumeCollection.class));
-            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService.getCloudProviderAccount(),
-                dataService.getLocation()));
+            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService));
         }
     }
 
