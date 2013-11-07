@@ -28,6 +28,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -48,6 +49,7 @@ import org.ow2.sirocco.cimi.domain.extension.ProviderProfile;
 import org.ow2.sirocco.cimi.server.resource.ResourceInterceptorBinding;
 import org.ow2.sirocco.cimi.server.resource.RestResourceAbstract;
 import org.ow2.sirocco.cloudmanager.core.api.ICloudProviderManager;
+import org.ow2.sirocco.cloudmanager.core.api.IdentityContext;
 import org.ow2.sirocco.cloudmanager.core.api.exception.CloudProviderException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceNotFoundException;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProvider;
@@ -64,6 +66,9 @@ public class ProviderResource extends RestResourceAbstract {
 
     @Context
     UriInfo uri;
+
+    @Inject
+    IdentityContext identityContext;
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
@@ -156,14 +161,15 @@ public class ProviderResource extends RestResourceAbstract {
     }
 
     @GET
-    @Path("{providerId}/accounts")
+    @Path("accounts")
     @Produces({MediaType.APPLICATION_JSON})
-    public ProviderAccount.Collection getProviderAccounts(@PathParam("providerId") final String providerId) {
+    public ProviderAccount.Collection getProviderAccounts() {
         ProviderAccount.Collection result = new ProviderAccount.Collection();
         List<ProviderAccount> accounts = new ArrayList<ProviderAccount>();
         result.setProviderAccounts(accounts);
         try {
-            for (CloudProviderAccount account : this.providerManager.getCloudProviderAccountsByProvider(providerId)) {
+            for (CloudProviderAccount account : this.providerManager.getCloudProviderAccountsByTenant(this.identityContext
+                .getTenantId())) {
                 accounts.add(this.toApiProviderAccount(account));
             }
         } catch (CloudProviderException e) {
@@ -173,10 +179,9 @@ public class ProviderResource extends RestResourceAbstract {
     }
 
     @GET
-    @Path("{providerId}/accounts/{accountId}")
+    @Path("accounts/{accountId}")
     @Produces({MediaType.APPLICATION_JSON})
-    public ProviderAccount getProviderAccount(@PathParam("providerId") final String providerId,
-        @PathParam("accountId") final String accountId) {
+    public ProviderAccount getProviderAccount(@PathParam("accountId") final String accountId) {
         try {
             CloudProviderAccount account = this.providerManager.getCloudProviderAccountById(accountId);
             if (account == null) {
@@ -194,7 +199,7 @@ public class ProviderResource extends RestResourceAbstract {
     @Path("{providerId}/accounts")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public Response createAccount(@PathParam("providerId") final String providerId, final ProviderAccount apiAccount) {
+    public Response createProviderAccount(@PathParam("providerId") final String providerId, final ProviderAccount apiAccount) {
         try {
             CloudProviderAccount account = this.toProviderAccount(apiAccount);
             this.providerManager.createCloudProviderAccount(providerId, account);
@@ -207,7 +212,7 @@ public class ProviderResource extends RestResourceAbstract {
     }
 
     @DELETE
-    @Path("{providerId}/accounts/{accountId}")
+    @Path("accounts/{accountId}")
     public void deleteProviderAccount(@PathParam("id") final String providerId, @PathParam("accountId") final String accountId) {
         try {
             this.providerManager.deleteCloudProviderAccount(accountId);
@@ -277,8 +282,9 @@ public class ProviderResource extends RestResourceAbstract {
     private ProviderAccount toApiProviderAccount(final CloudProviderAccount account) {
         ProviderAccount a = new ProviderAccount();
         a.setId(account.getId().toString());
-        a.setClientId(account.getLogin());
-        a.setClientSecret(account.getPassword());
+        a.setProviderId(account.getCloudProvider().getId().toString());
+        a.setIdentity(account.getLogin());
+        a.setCredential(account.getPassword());
         a.setProperties(account.getProperties());
         a.setHref(this.uri.getBaseUri() + "providers/" + account.getCloudProvider().getId().toString() + "/accounts/"
             + a.getId());
@@ -287,8 +293,8 @@ public class ProviderResource extends RestResourceAbstract {
 
     private CloudProviderAccount toProviderAccount(final ProviderAccount apiAccount) {
         CloudProviderAccount account = new CloudProviderAccount();
-        account.setLogin(apiAccount.getClientId());
-        account.setPassword(apiAccount.getClientSecret());
+        account.setLogin(apiAccount.getIdentity());
+        account.setPassword(apiAccount.getCredential());
         account.setProperties(apiAccount.getProperties());
         return account;
     }
