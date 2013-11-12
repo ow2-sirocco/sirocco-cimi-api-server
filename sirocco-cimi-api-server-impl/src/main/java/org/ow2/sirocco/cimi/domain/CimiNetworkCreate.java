@@ -40,8 +40,9 @@ import org.ow2.sirocco.cimi.server.validator.ValidChild;
  * Class Network Create.
  */
 @XmlRootElement(name = "NetworkCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "networkTemplate", "xmlExtensionAttributes"})
-@JsonPropertyOrder({"resourceURI", "name", "description", "propertyArray", "networkTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "networkTemplate", "providerAccountId", "location",
+    "xmlExtensionAttributes"})
+@JsonPropertyOrder({"resourceURI", "name", "description", "propertyArray", "networkTemplate", "providerAccountId", "location"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiNetworkCreate extends CimiCommonResourceUriAbstract {
 
@@ -54,6 +55,10 @@ public class CimiNetworkCreate extends CimiCommonResourceUriAbstract {
     @ValidChild
     @NotNull(groups = {GroupCreateByValue.class})
     private CimiNetworkTemplate networkTemplate;
+
+    private String providerAccountId;
+
+    private String location;
 
     /**
      * Return the value of field "networkTemplate".
@@ -71,6 +76,22 @@ public class CimiNetworkCreate extends CimiCommonResourceUriAbstract {
      */
     public void setNetworkTemplate(final CimiNetworkTemplate networkTemplate) {
         this.networkTemplate = networkTemplate;
+    }
+
+    public String getProviderAccountId() {
+        return this.providerAccountId;
+    }
+
+    public void setProviderAccountId(final String providerAccountId) {
+        this.providerAccountId = providerAccountId;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public void setLocation(final String location) {
+        this.location = location;
     }
 
     /**

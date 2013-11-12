@@ -40,8 +40,9 @@ import org.ow2.sirocco.cimi.server.validator.ValidChild;
  * Class Volume Create.
  */
 @XmlRootElement(name = "VolumeCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "volumeTemplate", "xmlExtensionAttributes"})
-@JsonPropertyOrder({"resourceURI", "name", "description", "propertyArray", "volumeTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "volumeTemplate", "providerAccountId", "location",
+    "xmlExtensionAttributes"})
+@JsonPropertyOrder({"resourceURI", "name", "description", "propertyArray", "volumeTemplate", "providerAccountId", "location"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiVolumeCreate extends CimiCommonResourceUriAbstract {
 
@@ -54,6 +55,10 @@ public class CimiVolumeCreate extends CimiCommonResourceUriAbstract {
     @ValidChild
     @NotNull(groups = {GroupCreateByValue.class})
     private CimiVolumeTemplate volumeTemplate;
+
+    private String providerAccountId;
+
+    private String location;
 
     /**
      * Return the value of field "volumeTemplate".
@@ -71,6 +76,22 @@ public class CimiVolumeCreate extends CimiCommonResourceUriAbstract {
      */
     public void setVolumeTemplate(final CimiVolumeTemplate volumeTemplate) {
         this.volumeTemplate = volumeTemplate;
+    }
+
+    public String getProviderAccountId() {
+        return this.providerAccountId;
+    }
+
+    public void setProviderAccountId(final String providerAccountId) {
+        this.providerAccountId = providerAccountId;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public void setLocation(final String location) {
+        this.location = location;
     }
 
     /**

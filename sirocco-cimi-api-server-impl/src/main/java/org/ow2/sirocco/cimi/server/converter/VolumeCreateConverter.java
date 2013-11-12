@@ -106,6 +106,8 @@ public class VolumeCreateConverter implements CimiConverter {
             dataService.setProperties(props);
             props.putAll(dataCimi.getProperties());
         }
+        dataService.setProviderAccountId(dataCimi.getProviderAccountId());
+        dataService.setLocation(dataCimi.getLocation());
     }
 
     /**
