@@ -287,7 +287,9 @@ public class CimiManagersMachineTest {
         EasyMock.expect(this.serviceCredentials.getCredentialsById("345")).andReturn(refCredentials);
         EasyMock.replay(this.serviceCredentials);
         EasyMock.expect(this.serviceImage.getMachineImageById("234")).andReturn(refImage);
+        EasyMock.expect(this.serviceImage.getMachineImageById("234")).andReturn(refImage);
         EasyMock.replay(this.serviceImage);
+        EasyMock.expect(this.service.getMachineConfigurationById("123")).andReturn(refConf);
         EasyMock.expect(this.service.getMachineConfigurationById("123")).andReturn(refConf);
         EasyMock.expect(this.service.createMachine(EasyMock.anyObject(MachineCreate.class))).andReturn(job);
         EasyMock.replay(this.service);

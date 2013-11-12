@@ -30,8 +30,14 @@ import org.ow2.sirocco.cimi.domain.CimiMachineCreate;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerCreateAbstract;
 import org.ow2.sirocco.cimi.server.manager.MergeReferenceHelper;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
+import org.ow2.sirocco.cloudmanager.core.api.IMachineImageManager;
 import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
+import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
+import org.ow2.sirocco.cloudmanager.model.cimi.MachineConfiguration;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineCreate;
+import org.ow2.sirocco.cloudmanager.model.cimi.MachineImage;
+import org.ow2.sirocco.cloudmanager.model.cimi.MachineTemplateNetworkInterface;
+import org.ow2.sirocco.cloudmanager.model.cimi.Network;
 
 /**
  * Manage CREATE request of Machine.
@@ -44,6 +50,12 @@ public class CimiManagerCreateMachine extends CimiManagerCreateAbstract {
     @Inject
     private IMachineManager manager;
 
+    @Inject
+    private IMachineImageManager imageManager;
+
+    @Inject
+    private INetworkManager networkManager;
+
     /**
      * {@inheritDoc}
      * 
@@ -52,7 +64,29 @@ public class CimiManagerCreateMachine extends CimiManagerCreateAbstract {
      */
     @Override
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
-        return this.manager.createMachine((MachineCreate) dataService);
+        MachineCreate create = (MachineCreate) dataService;
+        if (create.getMachineTemplate().getMachineImage() != null
+            && create.getMachineTemplate().getMachineImage().getId() != null) {
+            MachineImage image = this.imageManager.getMachineImageById(create.getMachineTemplate().getMachineImage().getId()
+                .toString());
+            create.getMachineTemplate().getMachineImage().setProviderMappings(image.getProviderMappings());
+        }
+        if (create.getMachineTemplate().getMachineConfig() != null
+            && create.getMachineTemplate().getMachineConfig().getId() != null) {
+            MachineConfiguration config = this.manager.getMachineConfigurationById(create.getMachineTemplate()
+                .getMachineConfig().getId().toString());
+            create.getMachineTemplate().getMachineConfig().setProviderMappings(config.getProviderMappings());
+        }
+        if (create.getMachineTemplate().getNetworkInterfaces() != null) {
+            for (MachineTemplateNetworkInterface nic : create.getMachineTemplate().getNetworkInterfaces()) {
+                if (nic.getNetwork() != null) {
+                    Network net = this.networkManager.getNetworkById(nic.getNetwork().getId().toString());
+                    nic.setNetwork(net);
+                }
+            }
+        }
+
+        return this.manager.createMachine(create);
     }
 
     /**
