@@ -52,7 +52,7 @@ public class CimiManagerReadJobCollection extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Object out = null;
         if (false == context.hasParamsForReadingCollection()) {
-            out = this.manager.getJobs();
+            out = this.manager.getJobs().getItems();
         } else {
             QueryResult<?> results = this.manager.getJobs(context.valueOfFirst(), context.valueOfLast(),
                 context.valuesOfFilter(), context.valuesOfSelect());

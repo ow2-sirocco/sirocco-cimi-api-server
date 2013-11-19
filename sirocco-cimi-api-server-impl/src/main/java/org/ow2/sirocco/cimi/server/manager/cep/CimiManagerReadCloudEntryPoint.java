@@ -88,7 +88,7 @@ public class CimiManagerReadCloudEntryPoint extends CimiManagerReadAbstract {
         out.setCredentials(this.credentialsManager.getCredentials());
         out.setCredentialsTemplates(this.credentialsManager.getCredentialsTemplates());
 
-        out.setJobs(this.jobManager.getJobs());
+        out.setJobs(this.jobManager.getJobs().getItems());
 
         out.setMachineConfigs(this.machineManager.getMachineConfigurations().getItems());
         out.setMachineImages(this.machineImageManager.getMachineImages());

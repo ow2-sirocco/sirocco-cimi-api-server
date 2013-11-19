@@ -174,6 +174,7 @@ public class CimiManagersCloudEntryPointTest {
         List<CredentialsTemplate> credentialsTemplateCollection = new ArrayList<CredentialsTemplate>();
         // Jobs
         List<Job> jobCollection = new ArrayList<Job>();
+        QueryResult<Job> jobQueryResult = new QueryResult<Job>(jobCollection.size(), jobCollection);
         // Machines
         List<Machine> machineCollection = new ArrayList<Machine>();
         QueryResult<Machine> machineQueryResult = new QueryResult<Machine>(machineCollection.size(), machineCollection);
@@ -230,7 +231,7 @@ public class CimiManagersCloudEntryPointTest {
         EasyMock.expect(this.serviceCredentials.getCredentialsTemplates()).andReturn(credentialsTemplateCollection);
         EasyMock.replay(this.serviceCredentials);
 
-        EasyMock.expect(this.serviceJob.getJobs()).andReturn(jobCollection);
+        EasyMock.expect(this.serviceJob.getJobs()).andReturn(jobQueryResult);
         EasyMock.replay(this.serviceJob);
 
         // EasyMock.expect(this.serviceMachine.getCloudEntryPoint()).andReturn(cloud);

@@ -136,8 +136,8 @@ public class CimiManagersJobCollectionTest {
             item.setId(i + 13);
             list.add(item);
         }
-
-        EasyMock.expect(this.service.getJobs()).andReturn(list);
+        QueryResult<Job> jobQueryResult = new QueryResult<Job>(list.size(), list);
+        EasyMock.expect(this.service.getJobs()).andReturn(jobQueryResult);
         EasyMock.replay(this.service);
 
         this.manager.execute(this.context);
