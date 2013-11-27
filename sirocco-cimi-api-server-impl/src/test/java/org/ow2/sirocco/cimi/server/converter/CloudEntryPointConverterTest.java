@@ -91,67 +91,67 @@ public class CloudEntryPointConverterTest {
 
         service.setCredentials(new ArrayList<Credentials>());
         service.getCredentials().add(new Credentials());
-        service.getCredentials().get(0).setId(100);
+        service.getCredentials().get(0).setUuid("100");
         service.getCredentials().get(0).setName("Credential_Name_100");
 
         service.setCredentialsTemplates(new ArrayList<CredentialsTemplate>());
         service.getCredentialsTemplates().add(new CredentialsTemplate());
-        service.getCredentialsTemplates().get(0).setId(101);
+        service.getCredentialsTemplates().get(0).setUuid("101");
         service.getCredentialsTemplates().get(0).setName("CredentialTemplate_Name_101");
 
         service.setJobs(new ArrayList<Job>());
         service.getJobs().add(new Job());
-        service.getJobs().get(0).setId(110);
+        service.getJobs().get(0).setUuid("110");
         service.getJobs().get(0).setName("Job_Name_110");
 
         service.setMachineConfigs(new ArrayList<MachineConfiguration>());
         service.getMachineConfigs().add(new MachineConfiguration());
-        service.getMachineConfigs().get(0).setId(200);
+        service.getMachineConfigs().get(0).setUuid("200");
         service.getMachineConfigs().get(0).setName("MachineConfiguration_Name_200");
 
         service.setMachineImages(new ArrayList<MachineImage>());
         service.getMachineImages().add(new MachineImage());
-        service.getMachineImages().get(0).setId(120);
+        service.getMachineImages().get(0).setUuid("120");
         service.getMachineImages().get(0).setName("MachineImage_Name_120");
 
         service.setMachines(new ArrayList<Machine>());
         service.getMachines().add(new Machine());
-        service.getMachines().get(0).setId(150);
+        service.getMachines().get(0).setUuid("150");
         service.getMachines().get(0).setName("Machine_Name_150");
 
         service.setMachineTemplates(new ArrayList<MachineTemplate>());
         service.getMachineTemplates().add(new MachineTemplate());
-        service.getMachineTemplates().get(0).setId(160);
+        service.getMachineTemplates().get(0).setUuid("160");
         service.getMachineTemplates().get(0).setName("MachineTemplate_Name_160");
 
         service.setSystems(new ArrayList<System>());
         service.getSystems().add(new System());
-        service.getSystems().get(0).setId(200);
+        service.getSystems().get(0).setUuid("200");
         service.getSystems().get(0).setName("System_Name_200");
 
         service.setSystemTemplates(new ArrayList<SystemTemplate>());
         service.getSystemTemplates().add(new SystemTemplate());
-        service.getSystemTemplates().get(0).setId(210);
+        service.getSystemTemplates().get(0).setUuid("210");
         service.getSystemTemplates().get(0).setName("SystemTemplate_Name_210");
 
         service.setVolumeConfigurations(new ArrayList<VolumeConfiguration>());
         service.getVolumeConfigurations().add(new VolumeConfiguration());
-        service.getVolumeConfigurations().get(0).setId(300);
+        service.getVolumeConfigurations().get(0).setUuid("300");
         service.getVolumeConfigurations().get(0).setName("VolumeConfiguration_Name_300");
 
         service.setVolumeImages(new ArrayList<VolumeImage>());
         service.getVolumeImages().add(new VolumeImage());
-        service.getVolumeImages().get(0).setId(310);
+        service.getVolumeImages().get(0).setUuid("310");
         service.getVolumeImages().get(0).setName("VolumeImage_Name_310");
 
         service.setVolumes(new ArrayList<Volume>());
         service.getVolumes().add(new Volume());
-        service.getVolumes().get(0).setId(320);
+        service.getVolumes().get(0).setUuid("320");
         service.getVolumes().get(0).setName("Volume_Name_320");
 
         service.setVolumeTemplates(new ArrayList<VolumeTemplate>());
         service.getVolumeTemplates().add(new VolumeTemplate());
-        service.getVolumeTemplates().get(0).setId(102);
+        service.getVolumeTemplates().get(0).setUuid("102");
         service.getVolumeTemplates().get(0).setName("VolumeTemplate_Name_330");
 
         return service;

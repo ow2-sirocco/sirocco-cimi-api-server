@@ -29,7 +29,6 @@ import javax.inject.Inject;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerUpdateAbstract;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.IJobManager;
-import org.ow2.sirocco.cloudmanager.model.cimi.Job;
 
 /**
  * Manage UPDATE request of Job.
@@ -48,12 +47,7 @@ public class CimiManagerUpdateJob extends CimiManagerUpdateAbstract {
      */
     @Override
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
-        if (false == context.hasParamSelect()) {
-            this.manager.updateJob((Job) dataService);
-        } else {
-            this.manager.updateJobAttributes(context.getRequest().getId(), context.copyBeanAttributesOfSelect(dataService));
-        }
-        return null;
+        throw new UnsupportedOperationException();
     }
 
 }

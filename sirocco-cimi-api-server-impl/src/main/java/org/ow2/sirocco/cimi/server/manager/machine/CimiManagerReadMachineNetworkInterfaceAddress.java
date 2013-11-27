@@ -57,9 +57,9 @@ public class CimiManagerReadMachineNetworkInterfaceAddress extends CimiManagerRe
         QueryResult<MachineNetworkInterfaceAddress> results = this.manager.getMachineNetworkInterfaceAddresses(context
             .getRequest().getIds().getId(IdRequest.Type.RESOURCE_GRAND_PARENT), context.getRequest().getIdParent());
         if (null != results.getItems()) {
-            Integer id = Integer.valueOf(context.getRequest().getId());
+            String id = context.getRequest().getId();
             for (MachineNetworkInterfaceAddress item : results.getItems()) {
-                if (id == item.getId()) {
+                if (id.equals(item.getUuid())) {
                     out = item;
                     break;
                 }

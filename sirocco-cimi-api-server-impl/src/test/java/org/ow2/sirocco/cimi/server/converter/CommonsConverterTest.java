@@ -303,7 +303,7 @@ public class CommonsConverterTest {
 
         // Empty
         service = (MachineImage) this.context.convertToService(new CimiMachineImage());
-        Assert.assertNull(service.getId());
+        Assert.assertNull(service.getUuid());
         Assert.assertNull(service.getCreated());
         Assert.assertNull(service.getUpdated());
 
@@ -323,13 +323,13 @@ public class CommonsConverterTest {
         service = new MachineImage();
 
         service = (MachineImage) this.context.convertToService(cimi);
-        Assert.assertEquals(13, service.getId().intValue());
+        Assert.assertEquals("13", service.getUuid());
         Assert.assertNull(service.getCreated());
         Assert.assertNull(service.getUpdated());
 
         cimi = new CimiMachineImage();
         service = new MachineImage();
-        service.setId(29);
+        service.setUuid("29");
         Date created = new Date();
         service.setCreated(created);
         Date updated = new Date();
@@ -377,7 +377,7 @@ public class CommonsConverterTest {
                 break;
             case Address:
                 service = new Address();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiAddress.class;
                 break;
             case AddressCollection:
@@ -389,7 +389,7 @@ public class CommonsConverterTest {
                 break;
             case AddressTemplate:
                 service = new AddressTemplate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiAddressTemplate.class;
                 break;
             case AddressTemplateCollection:
@@ -398,12 +398,12 @@ public class CommonsConverterTest {
                 break;
             case CloudEntryPoint:
                 service = new CloudEntryPointAggregate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiCloudEntryPoint.class;
                 break;
             case Credential:
                 service = new Credentials();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiCredential.class;
                 break;
             case CredentialCollection:
@@ -415,7 +415,7 @@ public class CommonsConverterTest {
                 break;
             case CredentialTemplate:
                 service = new CredentialsTemplate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiCredentialTemplate.class;
                 break;
             case CredentialTemplateCollection:
@@ -424,7 +424,7 @@ public class CommonsConverterTest {
                 break;
             case Disk:
                 service = new MachineDisk();
-                ((MachineDisk) service).setId(111);
+                ((MachineDisk) service).setUuid("111");
                 cimiClass = CimiMachineDisk.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -437,7 +437,7 @@ public class CommonsConverterTest {
                 break;
             case Event:
                 service = new Event();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiEvent.class;
                 break;
             case EventCollection:
@@ -448,7 +448,7 @@ public class CommonsConverterTest {
                 break;
             case EventLog:
                 service = new EventLog();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiEventLog.class;
                 break;
             case EventLogCollection:
@@ -462,7 +462,7 @@ public class CommonsConverterTest {
                 break;
             case EventLogTemplate:
                 service = new EventLogTemplate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiEventLogTemplate.class;
                 break;
             case EventLogTemplateCollection:
@@ -473,7 +473,7 @@ public class CommonsConverterTest {
                 break;
             case ForwardingGroup:
                 service = new ForwardingGroup();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiForwardingGroup.class;
                 break;
             case ForwardingGroupCollection:
@@ -487,7 +487,7 @@ public class CommonsConverterTest {
                 break;
             case ForwardingGroupNetwork:
                 service = new ForwardingGroupNetwork();
-                ((ForwardingGroupNetwork) service).setId(111);
+                ((ForwardingGroupNetwork) service).setUuid("111");
                 cimiClass = CimiForwardingGroupNetwork.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -500,7 +500,7 @@ public class CommonsConverterTest {
                 break;
             case ForwardingGroupTemplate:
                 service = new ForwardingGroupTemplate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiForwardingGroupTemplate.class;
                 break;
             case ForwardingGroupTemplateCollection:
@@ -511,7 +511,7 @@ public class CommonsConverterTest {
                 break;
             case Job:
                 service = new Job();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 cimiClass = CimiJob.class;
                 break;
             case JobCollection:
@@ -520,7 +520,7 @@ public class CommonsConverterTest {
                 break;
             case Machine:
                 service = new Machine();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
                 ((Machine) service).setState(Machine.State.STARTED);
                 cimiClass = CimiMachine.class;
                 break;
@@ -530,7 +530,8 @@ public class CommonsConverterTest {
                 break;
             case MachineConfiguration:
                 service = new MachineConfiguration();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiMachineConfiguration.class;
                 break;
             case MachineConfigurationCollection:
@@ -542,7 +543,8 @@ public class CommonsConverterTest {
                 break;
             case MachineImage:
                 service = new MachineImage();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiMachineImage.class;
                 break;
             case MachineImageCollection:
@@ -551,7 +553,7 @@ public class CommonsConverterTest {
                 break;
             case MachineNetworkInterface:
                 service = new MachineNetworkInterface();
-                ((MachineNetworkInterface) service).setId(111);
+                ((MachineNetworkInterface) service).setUuid("111");
                 cimiClass = CimiMachineNetworkInterface.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -564,7 +566,7 @@ public class CommonsConverterTest {
                 break;
             case MachineNetworkInterfaceAddress:
                 service = new MachineNetworkInterfaceAddress();
-                ((MachineNetworkInterfaceAddress) service).setId(111);
+                ((MachineNetworkInterfaceAddress) service).setUuid("111");
                 cimiClass = CimiMachineNetworkInterfaceAddress.class;
                 // Add id grandparent and parent in request
                 this.request.setIds(new IdRequest(null, "999", "7777"));
@@ -577,7 +579,8 @@ public class CommonsConverterTest {
                 break;
             case MachineTemplate:
                 service = new MachineTemplate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiMachineTemplate.class;
                 break;
             case MachineTemplateCollection:
@@ -587,18 +590,20 @@ public class CommonsConverterTest {
             case MachineTemplateVolume:
                 service = new MachineVolume();
                 ((MachineVolume) service).setVolume(new Volume());
-                ((MachineVolume) service).getVolume().setId(11);
+                ((MachineVolume) service).getVolume().setUuid("11");
+                ;
                 cimiClass = CimiMachineTemplateVolume.class;
                 break;
             case MachineTemplateVolumeTemplate:
                 service = new MachineVolumeTemplate();
                 ((MachineVolumeTemplate) service).setVolumeTemplate(new VolumeTemplate());
-                ((MachineVolumeTemplate) service).getVolumeTemplate().setId(11);
+                ((MachineVolumeTemplate) service).getVolumeTemplate().setUuid("11");
+                ;
                 cimiClass = CimiMachineTemplateVolumeTemplate.class;
                 break;
             case MachineVolume:
                 service = new MachineVolume();
-                ((MachineVolume) service).setId(111);
+                ((MachineVolume) service).setUuid("111");
                 cimiClass = CimiMachineVolume.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -611,7 +616,8 @@ public class CommonsConverterTest {
                 break;
             case Network:
                 service = new Network();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiNetwork.class;
                 break;
             case NetworkCollection:
@@ -620,7 +626,8 @@ public class CommonsConverterTest {
                 break;
             case NetworkConfiguration:
                 service = new NetworkConfiguration();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiNetworkConfiguration.class;
                 break;
             case NetworkConfigurationCollection:
@@ -632,7 +639,7 @@ public class CommonsConverterTest {
                 break;
             case NetworkNetworkPort:
                 service = new NetworkNetworkPort();
-                ((Identifiable) service).setId(111);
+                ((Identifiable) service).setUuid("111");
                 cimiClass = CimiNetworkNetworkPort.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -645,7 +652,8 @@ public class CommonsConverterTest {
                 break;
             case NetworkTemplate:
                 service = new NetworkTemplate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiNetworkTemplate.class;
                 break;
             case NetworkTemplateCollection:
@@ -654,7 +662,8 @@ public class CommonsConverterTest {
                 break;
             case NetworkPort:
                 service = new NetworkPort();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiNetworkPort.class;
                 break;
             case NetworkPortCollection:
@@ -663,7 +672,8 @@ public class CommonsConverterTest {
                 break;
             case NetworkPortConfiguration:
                 service = new NetworkPortConfiguration();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiNetworkPortConfiguration.class;
                 break;
             case NetworkPortConfigurationCollection:
@@ -675,7 +685,8 @@ public class CommonsConverterTest {
                 break;
             case NetworkPortTemplate:
                 service = new NetworkPortTemplate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiNetworkPortTemplate.class;
                 break;
             case NetworkPortTemplateCollection:
@@ -684,7 +695,8 @@ public class CommonsConverterTest {
                 break;
             case Volume:
                 service = new Volume();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiVolume.class;
                 break;
             case VolumeCollection:
@@ -693,7 +705,8 @@ public class CommonsConverterTest {
                 break;
             case VolumeConfiguration:
                 service = new VolumeConfiguration();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiVolumeConfiguration.class;
                 break;
             case VolumeConfigurationCollection:
@@ -705,7 +718,8 @@ public class CommonsConverterTest {
                 break;
             case VolumeImage:
                 service = new VolumeImage();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiVolumeImage.class;
                 break;
             case VolumeImageCollection:
@@ -714,7 +728,8 @@ public class CommonsConverterTest {
                 break;
             case VolumeTemplate:
                 service = new VolumeTemplate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiVolumeTemplate.class;
                 break;
             case VolumeTemplateCollection:
@@ -723,7 +738,7 @@ public class CommonsConverterTest {
                 break;
             case VolumeVolumeImage:
                 service = new VolumeImage();
-                ((Identifiable) service).setId(111);
+                ((Identifiable) service).setUuid("111");
                 cimiClass = CimiVolumeVolumeImage.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -736,7 +751,8 @@ public class CommonsConverterTest {
                 break;
             case System:
                 service = new System();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 ((System) service).setState(System.State.STARTED);
                 cimiClass = CimiSystem.class;
                 break;
@@ -749,7 +765,7 @@ public class CommonsConverterTest {
                 break;
             case SystemCredential:
                 service = new SystemCredentials();
-                ((Identifiable) service).setId(111);
+                ((Identifiable) service).setUuid("111");
                 cimiClass = CimiSystemCredential.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -762,7 +778,7 @@ public class CommonsConverterTest {
                 break;
             case SystemMachine:
                 service = new SystemMachine();
-                ((Identifiable) service).setId(111);
+                ((Identifiable) service).setUuid("111");
                 cimiClass = CimiSystemMachine.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -775,7 +791,7 @@ public class CommonsConverterTest {
                 break;
             case SystemSystem:
                 service = new SystemSystem();
-                ((Identifiable) service).setId(111);
+                ((Identifiable) service).setUuid("111");
                 cimiClass = CimiSystemSystem.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -788,7 +804,8 @@ public class CommonsConverterTest {
                 break;
             case SystemTemplate:
                 service = new SystemTemplate();
-                ((Identifiable) service).setId(11);
+                ((Identifiable) service).setUuid("11");
+                ;
                 cimiClass = CimiSystemTemplate.class;
                 break;
             case SystemTemplateCollection:
@@ -797,7 +814,7 @@ public class CommonsConverterTest {
                 break;
             case SystemVolume:
                 service = new SystemVolume();
-                ((Identifiable) service).setId(111);
+                ((Identifiable) service).setUuid("111");
                 cimiClass = CimiSystemVolume.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -812,7 +829,7 @@ public class CommonsConverterTest {
                 // FIXME SystemAddress
                 service = null;
                 // service = new SystemAddress();
-                // ((Identifiable) service).setId(111);
+                // ((Identifiable) service).setUuid("111");
                 // cimiClass = CimiSystemAddress.class;
                 // // Add idParent in request
                 // this.request.setIds(new IdRequest(null, "999"));
@@ -827,7 +844,7 @@ public class CommonsConverterTest {
                 break;
             case SystemForwardingGroup:
                 service = new SystemForwardingGroup();
-                ((Identifiable) service).setId(111);
+                ((Identifiable) service).setUuid("111");
                 cimiClass = CimiSystemForwardingGroup.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -840,7 +857,7 @@ public class CommonsConverterTest {
                 break;
             case SystemNetwork:
                 service = new SystemNetwork();
-                ((Identifiable) service).setId(111);
+                ((Identifiable) service).setUuid("111");
                 cimiClass = CimiSystemNetwork.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -853,7 +870,7 @@ public class CommonsConverterTest {
                 break;
             case SystemNetworkPort:
                 service = new SystemNetworkPort();
-                ((Identifiable) service).setId(111);
+                ((Identifiable) service).setUuid("111");
                 cimiClass = CimiSystemNetworkPort.class;
                 // Add idParent in request
                 this.request.setIds(new IdRequest(null, "999"));
@@ -925,29 +942,29 @@ public class CommonsConverterTest {
 
         // Builds resources for a machine
         Machine sMachine = new Machine();
-        sMachine.setId(9999);
+        sMachine.setUuid("9999");
         sMachine.setState(Machine.State.STARTED);
         sMachine.setDisks(new ArrayList<MachineDisk>());
         sMachine.getDisks().add(new MachineDisk());
-        sMachine.getDisks().get(0).setId(111);
+        sMachine.getDisks().get(0).setUuid("111");
         sMachine.getDisks().add(new MachineDisk());
-        sMachine.getDisks().get(1).setId(222);
+        sMachine.getDisks().get(1).setUuid("222");
         sMachine.getDisks().add(new MachineDisk());
-        sMachine.getDisks().get(2).setId(333);
+        sMachine.getDisks().get(2).setUuid("333");
 
         sMachine.setNetworkInterfaces(new ArrayList<MachineNetworkInterface>());
         sMachine.getNetworkInterfaces().add(new MachineNetworkInterface());
-        sMachine.getNetworkInterfaces().get(0).setId(7111);
+        sMachine.getNetworkInterfaces().get(0).setUuid("7111");
 
         sMachine.getNetworkInterfaces().get(0).setAddresses(new ArrayList<MachineNetworkInterfaceAddress>());
         sMachine.getNetworkInterfaces().get(0).getAddresses().add(new MachineNetworkInterfaceAddress());
-        sMachine.getNetworkInterfaces().get(0).getAddresses().get(0).setId(711191);
+        sMachine.getNetworkInterfaces().get(0).getAddresses().get(0).setUuid("711191");
         sMachine.getNetworkInterfaces().get(0).getAddresses().get(0).setAddress(new Address());
-        sMachine.getNetworkInterfaces().get(0).getAddresses().get(0).getAddress().setId(7111911);
+        sMachine.getNetworkInterfaces().get(0).getAddresses().get(0).getAddress().setUuid("7111911");
         sMachine.getNetworkInterfaces().get(0).getAddresses().add(new MachineNetworkInterfaceAddress());
-        sMachine.getNetworkInterfaces().get(0).getAddresses().get(1).setId(711192);
+        sMachine.getNetworkInterfaces().get(0).getAddresses().get(1).setUuid("711192");
         sMachine.getNetworkInterfaces().get(0).getAddresses().get(1).setAddress(new Address());
-        sMachine.getNetworkInterfaces().get(0).getAddresses().get(1).getAddress().setId(7111921);
+        sMachine.getNetworkInterfaces().get(0).getAddresses().get(1).getAddress().setUuid("7111921");
 
         // Convert
         cimi = (CimiMachine) this.context.convertToCimi(sMachine, CimiMachine.class);

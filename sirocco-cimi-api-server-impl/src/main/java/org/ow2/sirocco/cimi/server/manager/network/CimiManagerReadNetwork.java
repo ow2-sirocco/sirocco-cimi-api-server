@@ -52,7 +52,7 @@ public class CimiManagerReadNetwork extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Network out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getNetworkById(context.getRequest().getId());
+            out = this.manager.getNetworkByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getNetworkAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

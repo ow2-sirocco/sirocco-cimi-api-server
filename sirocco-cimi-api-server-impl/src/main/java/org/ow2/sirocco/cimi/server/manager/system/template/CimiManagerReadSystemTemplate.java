@@ -52,7 +52,7 @@ public class CimiManagerReadSystemTemplate extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         SystemTemplate out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getSystemTemplateById(context.getRequest().getId());
+            out = this.manager.getSystemTemplateByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getSystemTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

@@ -142,7 +142,7 @@ public class CimiManagersMachineImageCollectionTest {
         List<MachineImage> list = new ArrayList<MachineImage>();
         for (int i = 0; i < 3; i++) {
             machine = new MachineImage();
-            machine.setId(i + 13);
+            machine.setUuid(new Integer(i + 13).toString());
             list.add(machine);
         }
 

@@ -103,8 +103,8 @@ public class PathHelper {
      * @param href The HREF
      * @return The ID service
      */
-    public static Integer extractId(final String href) {
-        return Integer.valueOf(PathHelper.extractIdString(href));
+    public static String extractId(final String href) {
+        return PathHelper.extractIdString(href);
     }
 
     /**

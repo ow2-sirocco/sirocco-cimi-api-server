@@ -91,7 +91,7 @@ public class ProviderResource extends RestResourceAbstract {
     @Produces({MediaType.APPLICATION_JSON})
     public Provider getProvider(@PathParam("id") final String providerId) {
         try {
-            CloudProvider provider = this.providerManager.getCloudProviderById(providerId);
+            CloudProvider provider = this.providerManager.getCloudProviderByUuid(providerId);
             return this.toApiProvider(provider);
         } catch (ResourceNotFoundException e) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
@@ -107,7 +107,7 @@ public class ProviderResource extends RestResourceAbstract {
         try {
             CloudProvider provider = this.toProvider(apiProvider);
             this.providerManager.createCloudProvider(provider);
-            apiProvider.setId(provider.getId().toString());
+            apiProvider.setId(provider.getUuid());
             apiProvider.setHref(this.uri.getBaseUri() + "providers/" + apiProvider.getId());
         } catch (CloudProviderException e) {
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
@@ -135,7 +135,7 @@ public class ProviderResource extends RestResourceAbstract {
         List<Location> locations = new ArrayList<Location>();
         result.setLocations(locations);
         try {
-            CloudProvider provider = this.providerManager.getCloudProviderById(providerId);
+            CloudProvider provider = this.providerManager.getCloudProviderByUuid(providerId);
             for (CloudProviderLocation loc : provider.getCloudProviderLocations()) {
                 locations.add(ProviderResource.toLocation(loc));
             }
@@ -183,7 +183,7 @@ public class ProviderResource extends RestResourceAbstract {
     @Produces({MediaType.APPLICATION_JSON})
     public ProviderAccount getProviderAccount(@PathParam("accountId") final String accountId) {
         try {
-            CloudProviderAccount account = this.providerManager.getCloudProviderAccountById(accountId);
+            CloudProviderAccount account = this.providerManager.getCloudProviderAccountByUuid(accountId);
             if (account == null) {
                 throw new WebApplicationException(Response.Status.NOT_FOUND);
             }
@@ -203,7 +203,7 @@ public class ProviderResource extends RestResourceAbstract {
         try {
             CloudProviderAccount account = this.toProviderAccount(apiAccount);
             this.providerManager.createCloudProviderAccount(providerId, account);
-            apiAccount.setId(account.getId().toString());
+            apiAccount.setId(account.getUuid());
             apiAccount.setHref(this.uri.getBaseUri() + "providers/" + apiAccount.getId());
         } catch (CloudProviderException e) {
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
@@ -261,7 +261,7 @@ public class ProviderResource extends RestResourceAbstract {
 
     private Provider toApiProvider(final CloudProvider provider) {
         Provider p = new Provider();
-        p.setId(provider.getId().toString());
+        p.setId(provider.getUuid());
         p.setEndpoint(provider.getEndpoint());
         p.setApi(provider.getCloudProviderType());
         p.setDescription(provider.getDescription());
@@ -281,13 +281,12 @@ public class ProviderResource extends RestResourceAbstract {
 
     private ProviderAccount toApiProviderAccount(final CloudProviderAccount account) {
         ProviderAccount a = new ProviderAccount();
-        a.setId(account.getId().toString());
-        a.setProviderId(account.getCloudProvider().getId().toString());
+        a.setId(account.getUuid());
+        a.setProviderId(account.getCloudProvider().getUuid());
         a.setIdentity(account.getLogin());
         a.setCredential(account.getPassword());
         a.setProperties(account.getProperties());
-        a.setHref(this.uri.getBaseUri() + "providers/" + account.getCloudProvider().getId().toString() + "/accounts/"
-            + a.getId());
+        a.setHref(this.uri.getBaseUri() + "providers/" + account.getCloudProvider().getUuid() + "/accounts/" + a.getId());
         return a;
     }
 
@@ -331,9 +330,7 @@ public class ProviderResource extends RestResourceAbstract {
 
     private CloudProviderProfile toCloudProviderProfile(final ProviderProfile profile) {
         CloudProviderProfile result = new CloudProviderProfile();
-        if (profile.getId() != null) {
-            result.setId(Integer.parseInt(profile.getId()));
-        }
+        result.setUuid(profile.getId());
         result.setDescription(profile.getDescription());
         result.setConnectorClass(profile.getConnectorClass());
         result.setType(profile.getType());
@@ -364,8 +361,8 @@ public class ProviderResource extends RestResourceAbstract {
 
     private ProviderProfile toApiProviderProfile(final CloudProviderProfile profile) {
         ProviderProfile result = new ProviderProfile();
-        if (profile.getId() != null) {
-            result.setId(profile.getId().toString());
+        if (profile.getUuid() != null) {
+            result.setId(profile.getUuid());
         }
         result.setDescription(profile.getDescription());
         result.setConnectorClass(profile.getConnectorClass());

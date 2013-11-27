@@ -69,7 +69,7 @@ public class CimiManagerCreateVolumeImage extends CimiManagerCreateAbstract {
         }
         // Call services
         if (null != idVolumeSnapshot) {
-            Volume volume = this.manager.getVolumeById(idVolumeSnapshot);
+            Volume volume = this.manager.getVolumeByUuid(idVolumeSnapshot);
             out = this.manager.createVolumeSnapshot(volume, (VolumeImage) dataService);
         } else {
             out = this.manager.createVolumeImage((VolumeImage) dataService);

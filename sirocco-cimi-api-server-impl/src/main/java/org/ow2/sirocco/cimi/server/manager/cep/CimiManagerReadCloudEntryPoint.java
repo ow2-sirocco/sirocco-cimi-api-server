@@ -83,7 +83,7 @@ public class CimiManagerReadCloudEntryPoint extends CimiManagerReadAbstract {
     @Override
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         CloudEntryPointAggregate out = new CloudEntryPointAggregate();
-        out.setId(10);
+        out.setUuid("dummy");
 
         out.setCredentials(this.credentialsManager.getCredentials());
         out.setCredentialsTemplates(this.credentialsManager.getCredentialsTemplates());

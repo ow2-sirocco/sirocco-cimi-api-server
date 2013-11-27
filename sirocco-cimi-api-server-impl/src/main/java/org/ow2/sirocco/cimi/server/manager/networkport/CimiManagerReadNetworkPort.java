@@ -52,7 +52,7 @@ public class CimiManagerReadNetworkPort extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         NetworkPort out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getNetworkPortById(context.getRequest().getId());
+            out = this.manager.getNetworkPortByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getNetworkPortAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

@@ -122,11 +122,11 @@ public class VolumeConverter extends ObjectCommonConverter {
                 for (MachineVolume mv : dataService.getAttachments()) {
                     MachineAttachment attachment = new MachineAttachment();
                     CimiMachine cimiMachine = new CimiMachine();
-                    cimiMachine.setHref(context.makeHref(cimiMachine, mv.getOwner().getId().toString()));
+                    cimiMachine.setHref(context.makeHref(cimiMachine, mv.getOwner().getUuid()));
                     cimiMachine.setName(mv.getOwner().getName());
                     attachment.setMachine(cimiMachine);
                     CimiMachineVolume cimiMachineVolume = new CimiMachineVolume();
-                    cimiMachineVolume.setHref(cimiMachine.getHref() + "/volumes/" + mv.getId().toString());
+                    cimiMachineVolume.setHref(cimiMachine.getHref() + "/volumes/" + mv.getUuid());
                     attachment.setMachineVolume(cimiMachineVolume);
                     attachment.setState(mv.getState().toString());
                     attachments.add(attachment);

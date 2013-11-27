@@ -52,7 +52,7 @@ public class CimiManagerReadAddressTemplate extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         AddressTemplate out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getAddressTemplateById(context.getRequest().getId());
+            out = this.manager.getAddressTemplateByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getAddressTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

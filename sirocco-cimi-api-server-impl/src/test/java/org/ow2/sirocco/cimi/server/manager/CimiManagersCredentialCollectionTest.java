@@ -118,7 +118,7 @@ public class CimiManagersCredentialCollectionTest {
         List<Credentials> list = new ArrayList<Credentials>();
         for (int i = 0; i < 3; i++) {
             item = new Credentials();
-            item.setId(i + 13);
+            item.setUuid(new Integer(i + 13).toString());
             list.add(item);
         }
 

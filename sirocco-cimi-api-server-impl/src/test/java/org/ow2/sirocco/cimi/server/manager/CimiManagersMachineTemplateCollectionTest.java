@@ -150,7 +150,7 @@ public class CimiManagersMachineTemplateCollectionTest {
         List<MachineTemplate> list = new ArrayList<MachineTemplate>();
         for (int i = 0; i < 3; i++) {
             item = new MachineTemplate();
-            item.setId(i + 13);
+            item.setUuid(new Integer(i + 13).toString());
             list.add(item);
         }
         QueryResult<MachineTemplate> queryResult = new QueryResult<MachineTemplate>(list.size(), list);

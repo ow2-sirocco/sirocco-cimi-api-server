@@ -119,11 +119,11 @@ public class MachineTemplatesConverterTest {
         // Full Service -> Cimi : without arrays
         service = new MachineTemplate();
         service.setCredential(new Credentials());
-        service.getCredential().setId(10);
+        service.getCredential().setUuid("10");
         service.setMachineConfig(new MachineConfiguration());
-        service.getMachineConfig().setId(11);
+        service.getMachineConfig().setUuid("11");
         service.setMachineImage(new MachineImage());
-        service.getMachineImage().setId(12);
+        service.getMachineImage().setUuid("12");
 
         cimi = (CimiMachineTemplate) this.context.convertToCimi(service, CimiMachineTemplate.class);
         Assert.assertEquals(CimiCredential.class, cimi.getCredential().getClass());
@@ -150,20 +150,20 @@ public class MachineTemplatesConverterTest {
 
         // Full Service -> Cimi : with MachineVolume
         service = new MachineTemplate();
-        service.setId(10);
+        service.setUuid("10");
         service.setVolumes(new ArrayList<MachineVolume>());
         MachineVolume mv1 = new MachineVolume();
-        mv1.setId(11);
+        mv1.setUuid("11");
         mv1.setInitialLocation("initialLocation_1");
         mv1.setVolume(new Volume());
-        mv1.getVolume().setId(111);
+        mv1.getVolume().setUuid("111");
         mv1.getVolume().setName("name_1");
         service.getVolumes().add(mv1);
         MachineVolume mv2 = new MachineVolume();
-        mv2.setId(12);
+        mv2.setUuid("12");
         mv2.setInitialLocation("initialLocation_2");
         mv2.setVolume(new Volume());
-        mv2.getVolume().setId(121);
+        mv2.getVolume().setUuid("121");
         mv2.getVolume().setName("name_2");
         service.getVolumes().add(mv2);
 
@@ -180,7 +180,7 @@ public class MachineTemplatesConverterTest {
 
         // Full Cimi -> Service : with MachineVolumeTemplate
         cimi = new CimiMachineTemplate();
-        service.setId(10);
+        service.setUuid("10");
         CimiMachineTemplateVolumeTemplate cimiMTVT_1 = new CimiMachineTemplateVolumeTemplate();
         cimiMTVT_1.setInitialLocation("initialLocation_1");
         cimiMTVT_1.setName("name_1");
@@ -199,18 +199,18 @@ public class MachineTemplatesConverterTest {
 
         // Full Service -> Cimi : with MachineVolumeTemplate
         service = new MachineTemplate();
-        service.setId(10);
+        service.setUuid("10");
         service.setVolumeTemplates(new ArrayList<MachineVolumeTemplate>());
         MachineVolumeTemplate mvt1 = new MachineVolumeTemplate();
         mvt1.setInitialLocation("initialLocation_1");
         mvt1.setVolumeTemplate(new VolumeTemplate());
-        mvt1.getVolumeTemplate().setId(111);
+        mvt1.getVolumeTemplate().setUuid("111");
         mvt1.getVolumeTemplate().setName("name_1");
         service.getVolumeTemplates().add(mvt1);
         MachineVolumeTemplate mvt2 = new MachineVolumeTemplate();
         mvt2.setInitialLocation("initialLocation_2");
         mvt2.setVolumeTemplate(new VolumeTemplate());
-        mvt2.getVolumeTemplate().setId(121);
+        mvt2.getVolumeTemplate().setUuid("121");
         mvt2.getVolumeTemplate().setName("name_2");
         service.getVolumeTemplates().add(mvt2);
 
@@ -238,47 +238,47 @@ public class MachineTemplatesConverterTest {
 
         // Prepare service
         service = new MachineTemplate();
-        service.setId(10);
+        service.setUuid("10");
 
         service.setCredential(new Credentials());
-        service.getCredential().setId(100);
+        service.getCredential().setUuid("100");
         service.getCredential().setName("Credential_Name_100");
         service.getCredential().setUserName("Credential_UserName_100");
 
         service.setMachineConfig(new MachineConfiguration());
-        service.getMachineConfig().setId(101);
+        service.getMachineConfig().setUuid("101");
         service.getMachineConfig().setName("MachineConfiguration_Name_101");
         service.getMachineConfig().setCpu(101);
 
         service.setMachineImage(new MachineImage());
-        service.getMachineImage().setId(102);
+        service.getMachineImage().setUuid("102");
         service.getMachineImage().setName("MachineImage_Name_102");
         service.getMachineImage().setImageLocation("MachineImage_ImageLocation_102");
 
         service.setVolumes(new ArrayList<MachineVolume>());
         service.getVolumes().add(new MachineVolume());
-        service.getVolumes().get(0).setId(11);
+        service.getVolumes().get(0).setUuid("11");
         service.getVolumes().get(0).setInitialLocation("initialLocation_1");
         service.getVolumes().get(0).setVolume(new Volume());
-        service.getVolumes().get(0).getVolume().setId(111);
+        service.getVolumes().get(0).getVolume().setUuid("111");
         service.getVolumes().get(0).getVolume().setName("name_1");
         service.getVolumes().add(new MachineVolume());
-        service.getVolumes().get(1).setId(12);
+        service.getVolumes().get(1).setUuid("12");
         service.getVolumes().get(1).setInitialLocation("initialLocation_2");
         service.getVolumes().get(1).setVolume(new Volume());
-        service.getVolumes().get(1).getVolume().setId(121);
+        service.getVolumes().get(1).getVolume().setUuid("121");
         service.getVolumes().get(1).getVolume().setName("name_2");
 
         service.setVolumeTemplates(new ArrayList<MachineVolumeTemplate>());
         service.getVolumeTemplates().add(new MachineVolumeTemplate());
         service.getVolumeTemplates().get(0).setInitialLocation("initialLocation_1");
         service.getVolumeTemplates().get(0).setVolumeTemplate(new VolumeTemplate());
-        service.getVolumeTemplates().get(0).getVolumeTemplate().setId(111);
+        service.getVolumeTemplates().get(0).getVolumeTemplate().setUuid("111");
         service.getVolumeTemplates().get(0).getVolumeTemplate().setName("name_1");
         service.getVolumeTemplates().add(new MachineVolumeTemplate());
         service.getVolumeTemplates().get(1).setInitialLocation("initialLocation_2");
         service.getVolumeTemplates().get(1).setVolumeTemplate(new VolumeTemplate());
-        service.getVolumeTemplates().get(1).getVolumeTemplate().setId(121);
+        service.getVolumeTemplates().get(1).getVolumeTemplate().setUuid("121");
         service.getVolumeTemplates().get(1).getVolumeTemplate().setName("name_2");
 
         // ---------------------------------
@@ -341,13 +341,13 @@ public class MachineTemplatesConverterTest {
 
         // Full Service -> Cimi
         MachineTemplate MachineTemplate1 = new MachineTemplate();
-        MachineTemplate1.setId(1);
+        MachineTemplate1.setUuid("1");
         MachineTemplate1.setName("nameOne");
         MachineTemplate MachineTemplate2 = new MachineTemplate();
-        MachineTemplate2.setId(2);
+        MachineTemplate2.setUuid("2");
         MachineTemplate2.setName("nameTwo");
         MachineTemplate MachineTemplate3 = new MachineTemplate();
-        MachineTemplate3.setId(3);
+        MachineTemplate3.setUuid("3");
         MachineTemplate3.setName("nameThree");
 
         service = new ArrayList<MachineTemplate>();

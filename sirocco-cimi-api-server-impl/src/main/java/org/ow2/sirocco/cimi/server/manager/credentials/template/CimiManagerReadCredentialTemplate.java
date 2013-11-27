@@ -52,7 +52,7 @@ public class CimiManagerReadCredentialTemplate extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         CredentialsTemplate out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getCredentialsTemplateById(context.getRequest().getId());
+            out = this.manager.getCredentialsTemplateByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getCredentialsTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

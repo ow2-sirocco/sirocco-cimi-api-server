@@ -52,7 +52,7 @@ public class CimiManagerReadVolumeConfiguration extends CimiManagerReadAbstract 
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         VolumeConfiguration out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getVolumeConfigurationById(context.getRequest().getId());
+            out = this.manager.getVolumeConfigurationByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getVolumeConfigurationAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

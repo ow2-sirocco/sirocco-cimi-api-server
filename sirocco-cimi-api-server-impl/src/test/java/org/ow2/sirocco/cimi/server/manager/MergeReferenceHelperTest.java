@@ -164,7 +164,7 @@ public class MergeReferenceHelperTest {
 
         Credentials reference;
         reference = new Credentials();
-        reference.setId(456);
+        reference.setUuid("456");
         reference.setName("refName");
 
         // Only by value
@@ -178,7 +178,7 @@ public class MergeReferenceHelperTest {
         EasyMock.reset(this.serviceCredentials);
 
         // Only by reference
-        EasyMock.expect(this.serviceCredentials.getCredentialsById("456")).andReturn(reference);
+        EasyMock.expect(this.serviceCredentials.getCredentialsByUuid("456")).andReturn(reference);
         EasyMock.replay(this.serviceCredentials);
 
         cimi = new CimiCredential(this.request.getBaseUri() + ExchangeType.Credential.getPathType().getPathname() + "/456");
@@ -190,7 +190,7 @@ public class MergeReferenceHelperTest {
         EasyMock.reset(this.serviceCredentials);
 
         // By reference and by value
-        EasyMock.expect(this.serviceCredentials.getCredentialsById("456")).andReturn(reference);
+        EasyMock.expect(this.serviceCredentials.getCredentialsByUuid("456")).andReturn(reference);
         EasyMock.replay(this.serviceCredentials);
 
         cimi = new CimiCredential(this.request.getBaseUri() + ExchangeType.Credential.getPathType().getPathname() + "/456");
@@ -233,7 +233,7 @@ public class MergeReferenceHelperTest {
 
         CredentialsTemplate reference;
         reference = new CredentialsTemplate();
-        reference.setId(456);
+        reference.setUuid("456");
         reference.setName("refName");
         reference.setDescription("refDescription");
 
@@ -251,7 +251,7 @@ public class MergeReferenceHelperTest {
         EasyMock.reset(this.serviceCredentials);
 
         // Only by reference
-        EasyMock.expect(this.serviceCredentials.getCredentialsTemplateById("456")).andReturn(reference);
+        EasyMock.expect(this.serviceCredentials.getCredentialsTemplateByUuid("456")).andReturn(reference);
         EasyMock.replay(this.serviceCredentials);
 
         cimi = new CimiCredentialTemplate(this.request.getBaseUri()
@@ -265,7 +265,7 @@ public class MergeReferenceHelperTest {
         EasyMock.reset(this.serviceCredentials);
 
         // By reference and by value
-        EasyMock.expect(this.serviceCredentials.getCredentialsTemplateById("456")).andReturn(reference);
+        EasyMock.expect(this.serviceCredentials.getCredentialsTemplateByUuid("456")).andReturn(reference);
         EasyMock.replay(this.serviceCredentials);
 
         cimi = new CimiCredentialTemplate(this.request.getBaseUri()
@@ -286,7 +286,7 @@ public class MergeReferenceHelperTest {
 
         MachineImage reference;
         reference = new MachineImage();
-        reference.setId(456);
+        reference.setUuid("456");
         reference.setName("refName");
 
         // Only by value
@@ -300,7 +300,7 @@ public class MergeReferenceHelperTest {
         EasyMock.reset(this.serviceMachineImage);
 
         // Only by reference
-        EasyMock.expect(this.serviceMachineImage.getMachineImageById("456")).andReturn(reference);
+        EasyMock.expect(this.serviceMachineImage.getMachineImageByUuid("456")).andReturn(reference);
         EasyMock.replay(this.serviceMachineImage);
 
         cimi = new CimiMachineImage(this.request.getBaseUri() + ExchangeType.MachineImage.getPathType().getPathname() + "/456");
@@ -312,7 +312,7 @@ public class MergeReferenceHelperTest {
         EasyMock.reset(this.serviceMachineImage);
 
         // By reference and by value
-        EasyMock.expect(this.serviceMachineImage.getMachineImageById("456")).andReturn(reference);
+        EasyMock.expect(this.serviceMachineImage.getMachineImageByUuid("456")).andReturn(reference);
         EasyMock.replay(this.serviceMachineImage);
 
         cimi = new CimiMachineImage(this.request.getBaseUri() + ExchangeType.MachineImage.getPathType().getPathname() + "/456");
@@ -331,7 +331,7 @@ public class MergeReferenceHelperTest {
 
         MachineConfiguration reference;
         reference = new MachineConfiguration();
-        reference.setId(456);
+        reference.setUuid("456");
         reference.setName("refName");
 
         // Only by value
@@ -345,7 +345,7 @@ public class MergeReferenceHelperTest {
         EasyMock.reset(this.serviceMachine);
 
         // Only by reference
-        EasyMock.expect(this.serviceMachine.getMachineConfigurationById("456")).andReturn(reference);
+        EasyMock.expect(this.serviceMachine.getMachineConfigurationByUuid("456")).andReturn(reference);
         EasyMock.replay(this.serviceMachine);
 
         cimi = new CimiMachineConfiguration(this.request.getBaseUri()
@@ -358,7 +358,7 @@ public class MergeReferenceHelperTest {
         EasyMock.reset(this.serviceMachine);
 
         // By reference and by value
-        EasyMock.expect(this.serviceMachine.getMachineConfigurationById("456")).andReturn(reference);
+        EasyMock.expect(this.serviceMachine.getMachineConfigurationByUuid("456")).andReturn(reference);
         EasyMock.replay(this.serviceMachine);
 
         cimi = new CimiMachineConfiguration(this.request.getBaseUri()
@@ -382,25 +382,25 @@ public class MergeReferenceHelperTest {
 
         MachineTemplate reference;
         reference = new MachineTemplate();
-        reference.setId(123);
+        reference.setUuid("123");
         reference.setName("refName");
         reference.setDescription("refDescription");
 
         Credentials referenceCredentials;
         referenceCredentials = new Credentials();
-        referenceCredentials.setId(234);
+        referenceCredentials.setUuid("234");
         referenceCredentials.setName("refNameCredentials");
         referenceCredentials.setDescription("refDescriptionCredentials");
 
         MachineImage referenceImage;
         referenceImage = new MachineImage();
-        referenceImage.setId(345);
+        referenceImage.setUuid("345");
         referenceImage.setName("refNameImage");
         referenceImage.setDescription("refDescriptionImage");
 
         MachineConfiguration referenceConfiguration;
         referenceConfiguration = new MachineConfiguration();
-        referenceConfiguration.setId(456);
+        referenceConfiguration.setUuid("456");
         referenceConfiguration.setName("refNameConfiguration");
         referenceConfiguration.setDescription("refDescriptionConfiguration");
 
@@ -428,7 +428,7 @@ public class MergeReferenceHelperTest {
         // ---------------------------------------------------
         // Only by reference : template
         EasyMock.replay(this.serviceCredentials);
-        EasyMock.expect(this.serviceMachine.getMachineTemplateById("123")).andReturn(reference);
+        EasyMock.expect(this.serviceMachine.getMachineTemplateByUuid("123")).andReturn(reference);
         EasyMock.replay(this.serviceMachine);
         EasyMock.replay(this.serviceMachineImage);
 
@@ -449,7 +449,7 @@ public class MergeReferenceHelperTest {
         // ---------------------------------------------------
         // By reference and by value : template
         EasyMock.replay(this.serviceCredentials);
-        EasyMock.expect(this.serviceMachine.getMachineTemplateById("123")).andReturn(reference);
+        EasyMock.expect(this.serviceMachine.getMachineTemplateByUuid("123")).andReturn(reference);
         EasyMock.replay(this.serviceMachine);
         EasyMock.replay(this.serviceMachineImage);
 
@@ -502,11 +502,11 @@ public class MergeReferenceHelperTest {
 
         // ---------------------------------------------------
         // Template by value, internal entities only by reference
-        EasyMock.expect(this.serviceCredentials.getCredentialsById("234")).andReturn(referenceCredentials);
+        EasyMock.expect(this.serviceCredentials.getCredentialsByUuid("234")).andReturn(referenceCredentials);
         EasyMock.replay(this.serviceCredentials);
-        EasyMock.expect(this.serviceMachine.getMachineConfigurationById("345")).andReturn(referenceConfiguration);
+        EasyMock.expect(this.serviceMachine.getMachineConfigurationByUuid("345")).andReturn(referenceConfiguration);
         EasyMock.replay(this.serviceMachine);
-        EasyMock.expect(this.serviceMachineImage.getMachineImageById("456")).andReturn(referenceImage);
+        EasyMock.expect(this.serviceMachineImage.getMachineImageByUuid("456")).andReturn(referenceImage);
         EasyMock.replay(this.serviceMachineImage);
 
         cimi = new CimiMachineTemplate();
@@ -534,11 +534,11 @@ public class MergeReferenceHelperTest {
 
         // ---------------------------------------------------
         // Template by value, internal entities by reference and by value
-        EasyMock.expect(this.serviceCredentials.getCredentialsById("234")).andReturn(referenceCredentials);
+        EasyMock.expect(this.serviceCredentials.getCredentialsByUuid("234")).andReturn(referenceCredentials);
         EasyMock.replay(this.serviceCredentials);
-        EasyMock.expect(this.serviceMachine.getMachineConfigurationById("345")).andReturn(referenceConfiguration);
+        EasyMock.expect(this.serviceMachine.getMachineConfigurationByUuid("345")).andReturn(referenceConfiguration);
         EasyMock.replay(this.serviceMachine);
-        EasyMock.expect(this.serviceMachineImage.getMachineImageById("456")).andReturn(referenceImage);
+        EasyMock.expect(this.serviceMachineImage.getMachineImageByUuid("456")).andReturn(referenceImage);
         EasyMock.replay(this.serviceMachineImage);
 
         cimi = new CimiMachineTemplate();

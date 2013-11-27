@@ -143,13 +143,13 @@ public class CredentialsConverterTest {
 
         // Full Service -> Cimi
         Credentials Credentials1 = new Credentials();
-        Credentials1.setId(1);
+        Credentials1.setUuid("1");
         Credentials1.setName("nameOne");
         Credentials Credentials2 = new Credentials();
-        Credentials2.setId(2);
+        Credentials2.setUuid("2");
         Credentials2.setName("nameTwo");
         Credentials Credentials3 = new Credentials();
-        Credentials3.setId(3);
+        Credentials3.setUuid("3");
         Credentials3.setName("nameThree");
 
         service = new ArrayList<Credentials>();
@@ -245,13 +245,13 @@ public class CredentialsConverterTest {
 
         // Full Service -> Cimi
         CredentialsTemplate credentialTemplate1 = new CredentialsTemplate();
-        credentialTemplate1.setId(1);
+        credentialTemplate1.setUuid("1");
         credentialTemplate1.setName("nameOne");
         CredentialsTemplate credentialTemplate2 = new CredentialsTemplate();
-        credentialTemplate2.setId(2);
+        credentialTemplate2.setUuid("2");
         credentialTemplate2.setName("nameTwo");
         CredentialsTemplate credentialTemplate3 = new CredentialsTemplate();
-        credentialTemplate3.setId(3);
+        credentialTemplate3.setUuid("3");
         credentialTemplate3.setName("nameThree");
 
         service = new ArrayList<CredentialsTemplate>();

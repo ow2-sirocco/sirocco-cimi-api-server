@@ -52,7 +52,7 @@ public class CimiManagerReadMachineConfiguration extends CimiManagerReadAbstract
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         MachineConfiguration out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getMachineConfigurationById(context.getRequest().getId());
+            out = this.manager.getMachineConfigurationByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getMachineConfigurationAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

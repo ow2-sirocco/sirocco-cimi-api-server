@@ -167,7 +167,8 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiMachineImage cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            MachineImage dataService = this.managerMachineImage.getMachineImageById(PathHelper.extractIdString(cimi.getHref()));
+            MachineImage dataService = this.managerMachineImage
+                .getMachineImageByUuid(PathHelper.extractIdString(cimi.getHref()));
             CimiMachineImage cimiRef = (CimiMachineImage) context.convertToFullCimi(dataService, CimiMachineImage.class);
             this.merge(cimiRef, cimi);
         }
@@ -182,8 +183,8 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiMachineConfiguration cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            MachineConfiguration dataService = this.managerMachine.getMachineConfigurationById(PathHelper.extractIdString(cimi
-                .getHref()));
+            MachineConfiguration dataService = this.managerMachine.getMachineConfigurationByUuid(PathHelper
+                .extractIdString(cimi.getHref()));
             CimiMachineConfiguration cimiRef = (CimiMachineConfiguration) context.convertToFullCimi(dataService,
                 CimiMachineConfiguration.class);
             this.merge(cimiRef, cimi);
@@ -210,7 +211,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiCredentialTemplate cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            CredentialsTemplate dataService = this.managerCredentials.getCredentialsTemplateById(PathHelper
+            CredentialsTemplate dataService = this.managerCredentials.getCredentialsTemplateByUuid(PathHelper
                 .extractIdString(cimi.getHref()));
             CimiCredentialTemplate cimiRef = (CimiCredentialTemplate) context.convertToFullCimi(dataService,
                 CimiCredentialTemplate.class);
@@ -227,7 +228,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiCredential cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            Credentials dataService = this.managerCredentials.getCredentialsById(PathHelper.extractIdString(cimi.getHref()));
+            Credentials dataService = this.managerCredentials.getCredentialsByUuid(PathHelper.extractIdString(cimi.getHref()));
             CimiCredential cimiRef = (CimiCredential) context.convertToFullCimi(dataService, CimiCredential.class);
             this.merge(cimiRef, cimi);
         }
@@ -281,7 +282,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiVolume cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            Volume dataService = this.managerVolume.getVolumeById(PathHelper.extractIdString(cimi.getHref()));
+            Volume dataService = this.managerVolume.getVolumeByUuid(PathHelper.extractIdString(cimi.getHref()));
             CimiVolume cimiRef = (CimiVolume) context.convertToFullCimi(dataService, CimiVolume.class);
             this.merge(cimiRef, cimi);
         }
@@ -317,9 +318,9 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
             QueryResult<MachineNetworkInterfaceAddress> results = this.managerMachine.getMachineNetworkInterfaceAddresses(
                 context.getRequest().getIds().getId(IdRequest.Type.RESOURCE_GRAND_PARENT), context.getRequest().getIdParent());
             if (null != results.getItems()) {
-                Integer id = Integer.valueOf(context.getRequest().getId());
+                String id = context.getRequest().getId();
                 for (MachineNetworkInterfaceAddress item : results.getItems()) {
-                    if (id == item.getId()) {
+                    if (id.equals(item.getUuid())) {
                         dataService = item;
                         break;
                     }
@@ -343,8 +344,8 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiMachineTemplate cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            MachineTemplate dataService = this.managerMachine
-                .getMachineTemplateById(PathHelper.extractIdString(cimi.getHref()));
+            MachineTemplate dataService = this.managerMachine.getMachineTemplateByUuid(PathHelper.extractIdString(cimi
+                .getHref()));
             CimiMachineTemplate cimiRef = (CimiMachineTemplate) context.convertToFullCimi(dataService,
                 CimiMachineTemplate.class);
             this.merge(cimiRef, cimi);
@@ -403,7 +404,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiVolumeConfiguration cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            VolumeConfiguration dataService = this.managerVolume.getVolumeConfigurationById(PathHelper.extractIdString(cimi
+            VolumeConfiguration dataService = this.managerVolume.getVolumeConfigurationByUuid(PathHelper.extractIdString(cimi
                 .getHref()));
             CimiVolumeConfiguration cimiRef = (CimiVolumeConfiguration) context.convertToFullCimi(dataService,
                 CimiVolumeConfiguration.class);
@@ -420,7 +421,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiVolumeImage cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            VolumeImage dataService = this.managerVolume.getVolumeImageById(PathHelper.extractIdString(cimi.getHref()));
+            VolumeImage dataService = this.managerVolume.getVolumeImageByUuid(PathHelper.extractIdString(cimi.getHref()));
             CimiVolumeImage cimiRef = (CimiVolumeImage) context.convertToFullCimi(dataService, CimiVolumeImage.class);
             this.merge(cimiRef, cimi);
         }
@@ -435,7 +436,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiVolumeTemplate cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            VolumeTemplate dataService = this.managerVolume.getVolumeTemplateById(PathHelper.extractIdString(cimi.getHref()));
+            VolumeTemplate dataService = this.managerVolume.getVolumeTemplateByUuid(PathHelper.extractIdString(cimi.getHref()));
             CimiVolumeTemplate cimiRef = (CimiVolumeTemplate) context.convertToFullCimi(dataService, CimiVolumeTemplate.class);
             this.merge(cimiRef, cimi);
         } else {
@@ -488,7 +489,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiSystemTemplate cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            SystemTemplate dataService = this.managerSystem.getSystemTemplateById(PathHelper.extractIdString(cimi.getHref()));
+            SystemTemplate dataService = this.managerSystem.getSystemTemplateByUuid(PathHelper.extractIdString(cimi.getHref()));
             CimiSystemTemplate cimiRef = (CimiSystemTemplate) context.convertToFullCimi(dataService, CimiSystemTemplate.class);
             this.merge(cimiRef, cimi);
         } else {
@@ -660,7 +661,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      */
     protected void merge(final CimiContext context, final CimiNetwork cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            Network dataService = this.managerNetwork.getNetworkById(PathHelper.extractIdString(cimi.getHref()));
+            Network dataService = this.managerNetwork.getNetworkByUuid(PathHelper.extractIdString(cimi.getHref()));
             CimiNetwork cimiRef = (CimiNetwork) context.convertToFullCimi(dataService, CimiNetwork.class);
             this.merge(cimiRef, cimi);
         }
@@ -703,8 +704,8 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiNetworkConfiguration cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            NetworkConfiguration dataService = this.managerNetwork.getNetworkConfigurationById(PathHelper.extractIdString(cimi
-                .getHref()));
+            NetworkConfiguration dataService = this.managerNetwork.getNetworkConfigurationByUuid(PathHelper
+                .extractIdString(cimi.getHref()));
             CimiNetworkConfiguration cimiRef = (CimiNetworkConfiguration) context.convertToFullCimi(dataService,
                 CimiNetworkConfiguration.class);
             this.merge(cimiRef, cimi);
@@ -720,8 +721,8 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiNetworkTemplate cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            NetworkTemplate dataService = this.managerNetwork
-                .getNetworkTemplateById(PathHelper.extractIdString(cimi.getHref()));
+            NetworkTemplate dataService = this.managerNetwork.getNetworkTemplateByUuid(PathHelper.extractIdString(cimi
+                .getHref()));
             CimiNetworkTemplate cimiRef = (CimiNetworkTemplate) context.convertToFullCimi(dataService,
                 CimiNetworkTemplate.class);
             this.merge(cimiRef, cimi);
@@ -758,7 +759,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiNetworkPortConfiguration cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            NetworkPortConfiguration dataService = this.managerNetwork.getNetworkPortConfigurationById(PathHelper
+            NetworkPortConfiguration dataService = this.managerNetwork.getNetworkPortConfigurationByUuid(PathHelper
                 .extractIdString(cimi.getHref()));
             CimiNetworkPortConfiguration cimiRef = (CimiNetworkPortConfiguration) context.convertToFullCimi(dataService,
                 CimiNetworkPortConfiguration.class);
@@ -775,7 +776,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiNetworkPortTemplate cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            NetworkPortTemplate dataService = this.managerNetwork.getNetworkPortTemplateById(PathHelper.extractIdString(cimi
+            NetworkPortTemplate dataService = this.managerNetwork.getNetworkPortTemplateByUuid(PathHelper.extractIdString(cimi
                 .getHref()));
             CimiNetworkPortTemplate cimiRef = (CimiNetworkPortTemplate) context.convertToFullCimi(dataService,
                 CimiNetworkPortTemplate.class);
@@ -813,8 +814,8 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiAddressTemplate cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            AddressTemplate dataService = this.managerNetwork
-                .getAddressTemplateById(PathHelper.extractIdString(cimi.getHref()));
+            AddressTemplate dataService = this.managerNetwork.getAddressTemplateByUuid(PathHelper.extractIdString(cimi
+                .getHref()));
             CimiAddressTemplate cimiRef = (CimiAddressTemplate) context.convertToFullCimi(dataService,
                 CimiAddressTemplate.class);
             this.merge(cimiRef, cimi);
@@ -845,7 +846,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
     @Override
     public void merge(final CimiContext context, final CimiForwardingGroupTemplate cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            ForwardingGroupTemplate dataService = this.managerNetwork.getForwardingGroupTemplateById(PathHelper
+            ForwardingGroupTemplate dataService = this.managerNetwork.getForwardingGroupTemplateByUuid(PathHelper
                 .extractIdString(cimi.getHref()));
             CimiForwardingGroupTemplate cimiRef = (CimiForwardingGroupTemplate) context.convertToFullCimi(dataService,
                 CimiForwardingGroupTemplate.class);
@@ -885,8 +886,8 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      */
     protected void merge(final CimiContext context, final CimiForwardingGroup cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            ForwardingGroup dataService = this.managerNetwork
-                .getForwardingGroupById(PathHelper.extractIdString(cimi.getHref()));
+            ForwardingGroup dataService = this.managerNetwork.getForwardingGroupByUuid(PathHelper.extractIdString(cimi
+                .getHref()));
             CimiForwardingGroup cimiRef = (CimiForwardingGroup) context.convertToFullCimi(dataService,
                 CimiForwardingGroup.class);
             this.merge(cimiRef, cimi);
@@ -1062,7 +1063,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      */
     protected void merge(final CimiContext context, final CimiMachineTemplateVolume cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            Volume dataService = this.managerVolume.getVolumeById(PathHelper.extractIdString(cimi.getHref()));
+            Volume dataService = this.managerVolume.getVolumeByUuid(PathHelper.extractIdString(cimi.getHref()));
             CimiVolume cimiRef = (CimiVolume) context.convertToFullCimi(dataService, CimiVolume.class);
             this.merge(cimiRef, cimi);
         }
@@ -1077,7 +1078,7 @@ public class MergeReferenceHelperImpl implements MergeReferenceHelper {
      */
     protected void merge(final CimiContext context, final CimiMachineTemplateVolumeTemplate cimi) throws Exception {
         if (true == cimi.hasReference()) {
-            VolumeTemplate dataService = this.managerVolume.getVolumeTemplateById(PathHelper.extractIdString(cimi.getHref()));
+            VolumeTemplate dataService = this.managerVolume.getVolumeTemplateByUuid(PathHelper.extractIdString(cimi.getHref()));
             CimiVolumeTemplate cimiRef = (CimiVolumeTemplate) context.convertToFullCimi(dataService, CimiVolumeTemplate.class);
             this.merge(cimiRef, cimi);
         }

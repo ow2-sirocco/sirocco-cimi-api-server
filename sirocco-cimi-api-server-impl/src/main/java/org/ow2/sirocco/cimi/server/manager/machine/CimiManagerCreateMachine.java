@@ -66,21 +66,21 @@ public class CimiManagerCreateMachine extends CimiManagerCreateAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         MachineCreate create = (MachineCreate) dataService;
         if (create.getMachineTemplate().getMachineImage() != null
-            && create.getMachineTemplate().getMachineImage().getId() != null) {
-            MachineImage image = this.imageManager.getMachineImageById(create.getMachineTemplate().getMachineImage().getId()
-                .toString());
+            && create.getMachineTemplate().getMachineImage().getUuid() != null) {
+            MachineImage image = this.imageManager.getMachineImageByUuid(create.getMachineTemplate().getMachineImage()
+                .getUuid());
             create.getMachineTemplate().getMachineImage().setProviderMappings(image.getProviderMappings());
         }
         if (create.getMachineTemplate().getMachineConfig() != null
-            && create.getMachineTemplate().getMachineConfig().getId() != null) {
-            MachineConfiguration config = this.manager.getMachineConfigurationById(create.getMachineTemplate()
-                .getMachineConfig().getId().toString());
+            && create.getMachineTemplate().getMachineConfig().getUuid() != null) {
+            MachineConfiguration config = this.manager.getMachineConfigurationByUuid(create.getMachineTemplate()
+                .getMachineConfig().getUuid());
             create.getMachineTemplate().getMachineConfig().setProviderMappings(config.getProviderMappings());
         }
         if (create.getMachineTemplate().getNetworkInterfaces() != null) {
             for (MachineTemplateNetworkInterface nic : create.getMachineTemplate().getNetworkInterfaces()) {
                 if (nic.getNetwork() != null) {
-                    Network net = this.networkManager.getNetworkById(nic.getNetwork().getId().toString());
+                    Network net = this.networkManager.getNetworkByUuid(nic.getNetwork().getUuid());
                     nic.setNetwork(net);
                 }
             }

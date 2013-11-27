@@ -183,7 +183,7 @@ public class SystemConverter extends ObjectCommonConverter {
      */
     @Override
     protected void fillOperations(final CimiContext context, final Identifiable dataService, final CimiObjectCommon dataCimi) {
-        String href = context.makeHref(dataCimi, dataService.getId().toString());
+        String href = context.makeHref(dataCimi, dataService.getUuid());
         dataCimi.add(new CimiOperation(Operation.EDIT.getRel(), href));
 
         Set<String> serviceActions = ((System) dataService).getOperations();

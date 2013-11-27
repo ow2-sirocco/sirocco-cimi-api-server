@@ -52,7 +52,7 @@ public class CimiManagerReadForwardingGroup extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         ForwardingGroup out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getForwardingGroupById(context.getRequest().getId());
+            out = this.manager.getForwardingGroupByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getForwardingGroupAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

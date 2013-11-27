@@ -52,7 +52,7 @@ public class CimiManagerReadMachineTemplate extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         MachineTemplate out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getMachineTemplateById(context.getRequest().getId());
+            out = this.manager.getMachineTemplateByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getMachineTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

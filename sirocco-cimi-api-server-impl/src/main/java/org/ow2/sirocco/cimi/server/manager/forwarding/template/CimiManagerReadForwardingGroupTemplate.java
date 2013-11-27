@@ -52,7 +52,7 @@ public class CimiManagerReadForwardingGroupTemplate extends CimiManagerReadAbstr
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         ForwardingGroupTemplate out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getForwardingGroupTemplateById(context.getRequest().getId());
+            out = this.manager.getForwardingGroupTemplateByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getForwardingGroupTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

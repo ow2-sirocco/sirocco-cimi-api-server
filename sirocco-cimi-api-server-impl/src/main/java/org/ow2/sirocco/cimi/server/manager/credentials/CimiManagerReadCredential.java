@@ -52,7 +52,7 @@ public class CimiManagerReadCredential extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Credentials out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getCredentialsById(context.getRequest().getId());
+            out = this.manager.getCredentialsByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getCredentialsAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

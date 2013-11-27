@@ -52,7 +52,7 @@ public class CimiManagerReadNetworkPortTemplate extends CimiManagerReadAbstract 
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         NetworkPortTemplate out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getNetworkPortTemplateById(context.getRequest().getId());
+            out = this.manager.getNetworkPortTemplateByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getNetworkPortTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

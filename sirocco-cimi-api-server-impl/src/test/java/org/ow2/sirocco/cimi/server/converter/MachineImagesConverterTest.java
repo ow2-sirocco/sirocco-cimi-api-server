@@ -135,13 +135,13 @@ public class MachineImagesConverterTest {
 
         // Full Service -> Cimi
         MachineImage machineImage1 = new MachineImage();
-        machineImage1.setId(1);
+        machineImage1.setUuid("1");
         machineImage1.setName("nameOne");
         MachineImage machineImage2 = new MachineImage();
-        machineImage2.setId(2);
+        machineImage2.setUuid("2");
         machineImage2.setName("nameTwo");
         MachineImage machineImage3 = new MachineImage();
-        machineImage3.setId(3);
+        machineImage3.setUuid("3");
         machineImage3.setName("nameThree");
 
         service = new ArrayList<MachineImage>();

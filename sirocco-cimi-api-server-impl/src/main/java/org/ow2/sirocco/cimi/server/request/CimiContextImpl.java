@@ -68,7 +68,7 @@ public class CimiContextImpl implements CimiContext {
     private LinkedList<Class<?>> stackConvertedCimiClass;
 
     /** The stack of resources IDs of service classes used during conversion */
-    private LinkedList<Integer> stackConvertedIdService;
+    private LinkedList<String> stackConvertedIdService;
 
     /**
      * The helper to call EJB service directly by a converter.
@@ -86,7 +86,7 @@ public class CimiContextImpl implements CimiContext {
         this.request = request;
         this.response = response;
         this.stackConvertedCimiClass = new LinkedList<Class<?>>();
-        this.stackConvertedIdService = new LinkedList<Integer>();
+        this.stackConvertedIdService = new LinkedList<String>();
         this.convertedWriteOnly = false;
         this.convertedExpand = false;
     }
@@ -205,7 +205,7 @@ public class CimiContextImpl implements CimiContext {
             this.stackConvertedCimiClass.push(cimiAssociate);
             if (service instanceof Identifiable) {
                 Identifiable idService = (Identifiable) service;
-                this.stackConvertedIdService.push(idService.getId());
+                this.stackConvertedIdService.push(idService.getUuid());
             } else {
                 this.stackConvertedIdService.push(null);
             }
@@ -442,13 +442,13 @@ public class CimiContextImpl implements CimiContext {
 
             } else {
                 // Adds all IDs parent of the service if exists
-                List<Integer> idsParent = this.findAllServiceIdParent();
+                List<String> idsParent = this.findAllServiceIdParent();
                 if (idsParent.size() > 0) {
                     // Reverse order : oldest to youngest
                     Collections.reverse(idsParent);
                     List<String> idsString = new ArrayList<String>();
-                    for (Integer serviceId : idsParent) {
-                        idsString.add(serviceId.toString());
+                    for (String serviceId : idsParent) {
+                        idsString.add(serviceId);
                     }
                     // Add id
                     if (null != id) {
@@ -662,9 +662,9 @@ public class CimiContextImpl implements CimiContext {
      * @return A list of all IdParents, the list is empty if none idParent is
      *         found
      */
-    protected List<Integer> findAllServiceIdParent() {
-        List<Integer> idsParent = new ArrayList<Integer>();
-        Integer idParent = null;
+    protected List<String> findAllServiceIdParent() {
+        List<String> idsParent = new ArrayList<String>();
+        String idParent = null;
         for (int i = 1; i < this.stackConvertedIdService.size(); i++) {
             idParent = this.stackConvertedIdService.get(i);
             if (null != idParent) {

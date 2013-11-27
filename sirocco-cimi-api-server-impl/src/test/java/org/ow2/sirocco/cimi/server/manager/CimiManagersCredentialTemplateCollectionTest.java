@@ -120,7 +120,7 @@ public class CimiManagersCredentialTemplateCollectionTest {
         List<CredentialsTemplate> list = new ArrayList<CredentialsTemplate>();
         for (int i = 0; i < 3; i++) {
             item = new CredentialsTemplate();
-            item.setId(i + 13);
+            item.setUuid(new Integer(i + 13).toString());
             list.add(item);
         }
 

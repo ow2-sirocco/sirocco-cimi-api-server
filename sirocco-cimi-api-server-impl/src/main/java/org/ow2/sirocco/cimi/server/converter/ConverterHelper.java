@@ -29,8 +29,6 @@ import org.ow2.sirocco.cimi.domain.ExchangeType;
 import org.ow2.sirocco.cimi.domain.Operation;
 import org.ow2.sirocco.cimi.domain.TargetResource;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
-import org.ow2.sirocco.cloudmanager.model.cimi.CloudEntity;
-import org.ow2.sirocco.cloudmanager.model.cimi.CloudResource;
 import org.ow2.sirocco.cloudmanager.model.cimi.Job;
 import org.ow2.sirocco.cloudmanager.model.cimi.Machine;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineImage;
@@ -358,25 +356,9 @@ public class ConverterHelper {
         String href = null;
         if (null != targetDataService) {
             Class<? extends CimiResource> targetType = context.findAssociate(targetDataService.getClass());
-            href = context.makeHref(targetType, ConverterHelper.getTargetId(targetDataService).toString());
+            href = context.makeHref(targetType, targetDataService.getUuid());
         }
         return href;
-    }
-
-    /**
-     * Get ID of an unknown service resource.
-     * 
-     * @param targetDataService The service resource
-     * @return Th service resource ID
-     */
-    protected static Integer getTargetId(final Resource targetDataService) {
-        Integer id = null;
-        if (true == CloudResource.class.isAssignableFrom(targetDataService.getClass())) {
-            id = ((CloudResource) targetDataService).getId();
-        } else {
-            id = ((CloudEntity) targetDataService).getId();
-        }
-        return id;
     }
 
     /**

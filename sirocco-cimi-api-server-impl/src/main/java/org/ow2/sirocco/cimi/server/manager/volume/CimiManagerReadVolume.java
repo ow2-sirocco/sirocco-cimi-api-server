@@ -52,8 +52,8 @@ public class CimiManagerReadVolume extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Volume out = null;
         if (false == context.hasParamSelect()) {
-            Volume vol = this.manager.getVolumeById(context.getRequest().getId());
-            vol.setAttachments(this.manager.getVolumeAttachments(vol.getId().toString()));
+            Volume vol = this.manager.getVolumeByUuid(context.getRequest().getId());
+            vol.setAttachments(this.manager.getVolumeAttachments(vol.getUuid()));
             out = vol;
         } else {
             out = this.manager.getVolumeAttributes(context.getRequest().getId(), context.valuesOfSelect());

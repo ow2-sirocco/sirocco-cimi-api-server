@@ -133,7 +133,7 @@ public class CimiManagersJobCollectionTest {
         List<Job> list = new ArrayList<Job>();
         for (int i = 0; i < 3; i++) {
             item = new Job();
-            item.setId(i + 13);
+            item.setUuid(new Integer(i + 13).toString());
             list.add(item);
         }
         QueryResult<Job> jobQueryResult = new QueryResult<Job>(list.size(), list);

@@ -29,7 +29,6 @@ import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.domain.CimiAddress;
 import org.ow2.sirocco.cimi.server.manager.CimiManagerReadAbstract;
-import org.ow2.sirocco.cimi.server.manager.Manager;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.model.cimi.Address;
@@ -53,7 +52,7 @@ public class CimiManagerReadAddress extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Address out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getAddressById(context.getRequest().getId());
+            out = this.manager.getAddressByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getAddressAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

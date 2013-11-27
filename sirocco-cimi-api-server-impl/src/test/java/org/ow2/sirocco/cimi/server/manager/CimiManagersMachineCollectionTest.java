@@ -133,7 +133,7 @@ public class CimiManagersMachineCollectionTest {
         List<Machine> list = new ArrayList<Machine>();
         for (int i = 0; i < 3; i++) {
             item = new Machine();
-            item.setId(i + 13);
+            item.setUuid(new Integer(i + 13).toString());
             item.setState(Machine.State.STARTED);
             list.add(item);
         }

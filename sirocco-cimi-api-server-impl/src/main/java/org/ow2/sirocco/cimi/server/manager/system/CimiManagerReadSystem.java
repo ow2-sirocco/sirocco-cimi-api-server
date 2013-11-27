@@ -51,7 +51,7 @@ public class CimiManagerReadSystem extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Object out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getSystemById(context.getRequest().getId());
+            out = this.manager.getSystemByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getSystemAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

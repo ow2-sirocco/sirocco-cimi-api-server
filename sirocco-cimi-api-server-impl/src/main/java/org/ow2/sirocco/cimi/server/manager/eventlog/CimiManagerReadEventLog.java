@@ -52,7 +52,7 @@ public class CimiManagerReadEventLog extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         EventLog out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getEventLogById(context.getRequest().getId());
+            out = this.manager.getEventLogByUuid(context.getRequest().getId());
         } else {
             // FIXME UnsupportedOperation
             throw new UnsupportedOperationException();

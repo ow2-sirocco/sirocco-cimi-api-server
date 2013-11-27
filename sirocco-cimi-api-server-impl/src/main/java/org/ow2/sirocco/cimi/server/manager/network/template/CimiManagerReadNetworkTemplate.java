@@ -52,7 +52,7 @@ public class CimiManagerReadNetworkTemplate extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         NetworkTemplate out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getNetworkTemplateById(context.getRequest().getId());
+            out = this.manager.getNetworkTemplateByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getNetworkTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

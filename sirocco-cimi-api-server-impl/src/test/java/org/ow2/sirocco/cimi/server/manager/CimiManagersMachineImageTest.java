@@ -156,10 +156,10 @@ public class CimiManagersMachineImageTest {
     @Test
     public void testCreate() throws Exception {
         MachineImage target = new MachineImage();
-        target.setId(654);
+        target.setUuid("654");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAffectedResources(Collections.<CloudResource> singletonList(target));
         job.setAction("add");
@@ -182,20 +182,20 @@ public class CimiManagersMachineImageTest {
     public void testCreateWithRef() throws Exception {
 
         MachineImage reference = new MachineImage();
-        reference.setId(13);
+        reference.setUuid("13");
         reference.setName("nameValue");
         reference.setImageLocation("imageLocationValue");
 
         MachineImage target = new MachineImage();
-        target.setId(654);
+        target.setUuid("654");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAffectedResources(Collections.<CloudResource> singletonList(target));
         job.setAction("add");
 
-        EasyMock.expect(this.service.getMachineImageById("13")).andReturn(reference);
+        EasyMock.expect(this.service.getMachineImageByUuid("13")).andReturn(reference);
         EasyMock.expect(this.service.createMachineImage(EasyMock.anyObject(MachineImage.class))).andReturn(job);
         EasyMock.replay(this.service);
 
@@ -214,8 +214,8 @@ public class CimiManagersMachineImageTest {
     public void testRead() throws Exception {
 
         MachineImage machine = new MachineImage();
-        machine.setId(1);
-        EasyMock.expect(this.service.getMachineImageById("1")).andReturn(machine);
+        machine.setUuid("1");
+        EasyMock.expect(this.service.getMachineImageByUuid("1")).andReturn(machine);
         EasyMock.replay(this.service);
 
         this.request.setIds(new IdRequest("1"));
@@ -231,7 +231,7 @@ public class CimiManagersMachineImageTest {
 
         List<String> list = Arrays.asList(new String[] {"name", "description"});
         MachineImage machine = new MachineImage();
-        machine.setId(1);
+        machine.setUuid("1");
         EasyMock.expect(this.service.getMachineImageAttributes(EasyMock.eq("1"), EasyMock.eq(list))).andReturn(machine);
         EasyMock.replay(this.service);
 

@@ -57,14 +57,14 @@ public class CimiManagerReadVolumeCollection extends CimiManagerReadAbstract {
         if (false == context.hasParamsForReadingCollection()) {
             List<Volume> volumes = this.manager.getVolumes().getItems();
             for (Volume vol : volumes) {
-                vol.setAttachments(this.manager.getVolumeAttachments(vol.getId().toString()));
+                vol.setAttachments(this.manager.getVolumeAttachments(vol.getUuid()));
             }
             out = volumes;
         } else {
             QueryResult<Volume> results = this.manager.getVolumes(context.valueOfFirst(), context.valueOfLast(),
                 context.valuesOfFilter(), context.valuesOfSelect());
             for (Volume vol : results.getItems()) {
-                vol.setAttachments(this.manager.getVolumeAttachments(vol.getId().toString()));
+                vol.setAttachments(this.manager.getVolumeAttachments(vol.getUuid()));
             }
             List<Volume> volumes = results.getItems();
             out = volumes;

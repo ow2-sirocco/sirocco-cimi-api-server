@@ -52,7 +52,7 @@ public class CimiManagerReadJob extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Job out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getJobById(context.getRequest().getId());
+            out = this.manager.getJobByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getJobAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

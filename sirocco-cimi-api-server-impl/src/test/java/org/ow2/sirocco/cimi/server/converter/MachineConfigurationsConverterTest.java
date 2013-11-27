@@ -172,13 +172,13 @@ public class MachineConfigurationsConverterTest {
 
         // Full Service -> Cimi
         MachineConfiguration machineConfiguration1 = new MachineConfiguration();
-        machineConfiguration1.setId(1);
+        machineConfiguration1.setUuid("1");
         machineConfiguration1.setName("nameOne");
         MachineConfiguration machineConfiguration2 = new MachineConfiguration();
-        machineConfiguration2.setId(2);
+        machineConfiguration2.setUuid("2");
         machineConfiguration2.setName("nameTwo");
         MachineConfiguration machineConfiguration3 = new MachineConfiguration();
-        machineConfiguration3.setId(3);
+        machineConfiguration3.setUuid("3");
         machineConfiguration3.setName("nameThree");
 
         service = new ArrayList<MachineConfiguration>();
@@ -230,13 +230,13 @@ public class MachineConfigurationsConverterTest {
 
         // Prepare Service
         MachineConfiguration machineConfiguration1 = new MachineConfiguration();
-        machineConfiguration1.setId(1);
+        machineConfiguration1.setUuid("1");
         machineConfiguration1.setName("nameOne");
         MachineConfiguration machineConfiguration2 = new MachineConfiguration();
-        machineConfiguration2.setId(2);
+        machineConfiguration2.setUuid("2");
         machineConfiguration2.setName("nameTwo");
         MachineConfiguration machineConfiguration3 = new MachineConfiguration();
-        machineConfiguration3.setId(3);
+        machineConfiguration3.setUuid("3");
         machineConfiguration3.setName("nameThree");
 
         service = new ArrayList<MachineConfiguration>();

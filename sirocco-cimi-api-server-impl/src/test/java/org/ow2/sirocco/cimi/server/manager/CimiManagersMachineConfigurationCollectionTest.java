@@ -136,7 +136,7 @@ public class CimiManagersMachineConfigurationCollectionTest {
         List<MachineConfiguration> list = new ArrayList<MachineConfiguration>();
         for (int i = 0; i < 3; i++) {
             machine = new MachineConfiguration();
-            machine.setId(i + 13);
+            machine.setUuid(new Integer(i + 13).toString());
             list.add(machine);
         }
         QueryResult<MachineConfiguration> queryResult = new QueryResult<MachineConfiguration>(list.size(), list);

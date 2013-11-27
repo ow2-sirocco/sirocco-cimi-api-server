@@ -144,7 +144,7 @@ public class CimiManagersMachineConfigurationTest {
     @Test
     public void testCreate() throws Exception {
         MachineConfiguration create = new MachineConfiguration();
-        create.setId(456);
+        create.setUuid("456");
 
         EasyMock.expect(this.service.createMachineConfiguration(EasyMock.anyObject(MachineConfiguration.class))).andReturn(
             create);
@@ -170,13 +170,13 @@ public class CimiManagersMachineConfigurationTest {
     public void testCreateWithRef() throws Exception {
 
         MachineConfiguration ref = new MachineConfiguration();
-        ref.setId(13);
+        ref.setUuid("13");
         ref.setName("nameValue");
 
         MachineConfiguration create = new MachineConfiguration();
-        create.setId(456);
+        create.setUuid("456");
 
-        EasyMock.expect(this.service.getMachineConfigurationById("13")).andReturn(ref);
+        EasyMock.expect(this.service.getMachineConfigurationByUuid("13")).andReturn(ref);
         EasyMock.expect(this.service.createMachineConfiguration(EasyMock.anyObject(MachineConfiguration.class))).andReturn(
             create);
         EasyMock.replay(this.service);
@@ -199,8 +199,8 @@ public class CimiManagersMachineConfigurationTest {
     public void testRead() throws Exception {
 
         MachineConfiguration machine = new MachineConfiguration();
-        machine.setId(1);
-        EasyMock.expect(this.service.getMachineConfigurationById("1")).andReturn(machine);
+        machine.setUuid("1");
+        EasyMock.expect(this.service.getMachineConfigurationByUuid("1")).andReturn(machine);
         EasyMock.replay(this.service);
 
         this.request.setIds(new IdRequest("1"));

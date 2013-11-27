@@ -52,7 +52,7 @@ public class CimiManagerReadVolumeImage extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         VolumeImage out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getVolumeImageById(context.getRequest().getId());
+            out = this.manager.getVolumeImageByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getVolumeImageAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

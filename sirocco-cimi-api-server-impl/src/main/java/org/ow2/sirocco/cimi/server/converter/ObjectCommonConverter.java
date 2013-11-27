@@ -53,13 +53,13 @@ public abstract class ObjectCommonConverter extends CommonConverter implements C
     protected void fill(final CimiContext context, final Identifiable dataService, final CimiObjectCommon dataCimi) {
         if (true == context.mustBeExpanded(dataCimi)) {
             dataCimi.setResourceURI(dataCimi.getExchangeType().getResourceURI());
-            if (null != dataService.getId()) {
-                dataCimi.setId(context.makeHref(dataCimi, dataService.getId().toString()));
+            if (null != dataService.getUuid()) {
+                dataCimi.setId(context.makeHref(dataCimi, dataService.getUuid()));
                 this.fillOperations(context, dataService, dataCimi);
             }
         }
         if (true == context.mustBeReferenced(dataCimi)) {
-            dataCimi.setHref(context.makeHref(dataCimi, dataService.getId().toString()));
+            dataCimi.setHref(context.makeHref(dataCimi, dataService.getUuid()));
         }
     }
 
@@ -71,7 +71,7 @@ public abstract class ObjectCommonConverter extends CommonConverter implements C
      * @param dataCimi Destination CIMI object
      */
     protected void fillOperations(final CimiContext context, final Identifiable dataService, final CimiObjectCommon dataCimi) {
-        String href = context.makeHref(dataCimi, dataService.getId().toString());
+        String href = context.makeHref(dataCimi, dataService.getUuid());
         dataCimi.add(new CimiOperation(Operation.EDIT.getRel(), href));
         dataCimi.add(new CimiOperation(Operation.DELETE.getRel(), href));
     }
@@ -85,7 +85,7 @@ public abstract class ObjectCommonConverter extends CommonConverter implements C
      */
     protected void fill(final CimiContext context, final CimiObjectCommon dataCimi, final Identifiable dataService) {
         if (null != dataCimi.getId()) {
-            dataService.setId(PathHelper.extractId(dataCimi.getId()));
+            dataService.setUuid(PathHelper.extractId(dataCimi.getId()).toString());
         }
     }
 
@@ -102,15 +102,15 @@ public abstract class ObjectCommonConverter extends CommonConverter implements C
             dataCimi.setResourceURI(dataCimi.getExchangeType().getResourceURI());
             dataCimi.setCreated(dataService.getCreated());
             dataCimi.setUpdated(dataService.getUpdated());
-            if (null != dataService.getId()) {
-                dataCimi.setId(context.makeHref(dataCimi, dataService.getId().toString()));
+            if (null != dataService.getUuid()) {
+                dataCimi.setId(context.makeHref(dataCimi, dataService.getUuid()));
                 if (context.getObjectDepth() == 3) {
-                    dataCimi.setHref(context.makeHref(dataCimi, dataService.getId().toString()));
+                    dataCimi.setHref(context.makeHref(dataCimi, dataService.getUuid()));
                 }
                 this.fillOperations(context, dataService, dataCimi);
             }
         } else if (true == context.mustBeReferenced(dataCimi)) {
-            dataCimi.setHref(context.makeHref(dataCimi, dataService.getId().toString()));
+            dataCimi.setHref(context.makeHref(dataCimi, dataService.getUuid()));
         }
     }
 
@@ -124,9 +124,9 @@ public abstract class ObjectCommonConverter extends CommonConverter implements C
     protected void fill(final CimiContext context, final CimiObjectCommon dataCimi, final Resource dataService) {
         this.fill(dataCimi, dataService);
         if (null != dataCimi.getId()) {
-            dataService.setId(PathHelper.extractId(dataCimi.getId()));
+            dataService.setUuid(PathHelper.extractId(dataCimi.getId()));
         } else if (null != dataCimi.getHref()) {
-            dataService.setId(PathHelper.extractId(dataCimi.getHref()));
+            dataService.setUuid(PathHelper.extractId(dataCimi.getHref()));
         }
     }
 

@@ -151,10 +151,10 @@ public class CimiManagersMachineTest {
     @Test
     public void testActionStart() throws Exception {
         Machine target = new Machine();
-        target.setId(1789);
+        target.setUuid("1789");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAction("start");
 
@@ -176,10 +176,10 @@ public class CimiManagersMachineTest {
     @Test
     public void testActionStop() throws Exception {
         Machine target = new Machine();
-        target.setId(7);
+        target.setUuid("7");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAction("stop");
 
@@ -202,10 +202,10 @@ public class CimiManagersMachineTest {
     @Test
     public void testCreate() throws Exception {
         Machine target = new Machine();
-        target.setId(789);
+        target.setUuid("789");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAffectedResources(Collections.<CloudResource> singletonList(target));
         job.setAction("add");
@@ -233,19 +233,19 @@ public class CimiManagersMachineTest {
     @Test
     public void testCreateWithRef() throws Exception {
         Machine target = new Machine();
-        target.setId(654);
+        target.setUuid("654");
 
         MachineTemplate reference = new MachineTemplate();
-        reference.setId(13);
+        reference.setUuid("13");
         reference.setName("nameValue");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAffectedResources(Collections.<CloudResource> singletonList(target));
         job.setAction("add");
 
-        EasyMock.expect(this.service.getMachineTemplateById("13")).andReturn(reference);
+        EasyMock.expect(this.service.getMachineTemplateByUuid("13")).andReturn(reference);
         EasyMock.expect(this.service.createMachine(EasyMock.anyObject(MachineCreate.class))).andReturn(job);
         EasyMock.replay(this.service);
 
@@ -266,31 +266,31 @@ public class CimiManagersMachineTest {
     @Test
     public void testCreateWithTemplateByValueAndOtherByReference() throws Exception {
         MachineConfiguration refConf = new MachineConfiguration();
-        refConf.setId(123);
+        refConf.setUuid("123");
         refConf.setName("machineConfiguration");
         MachineImage refImage = new MachineImage();
-        refImage.setId(234);
+        refImage.setUuid("234");
         refImage.setName("machineImage");
         Credentials refCredentials = new Credentials();
-        refCredentials.setId(345);
+        refCredentials.setUuid("345");
         refCredentials.setName("credentials");
 
         Machine target = new Machine();
-        target.setId(654);
+        target.setUuid("654");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAffectedResources(Collections.<CloudResource> singletonList(target));
         job.setAction("add");
 
-        EasyMock.expect(this.serviceCredentials.getCredentialsById("345")).andReturn(refCredentials);
+        EasyMock.expect(this.serviceCredentials.getCredentialsByUuid("345")).andReturn(refCredentials);
         EasyMock.replay(this.serviceCredentials);
-        EasyMock.expect(this.serviceImage.getMachineImageById("234")).andReturn(refImage);
-        EasyMock.expect(this.serviceImage.getMachineImageById("234")).andReturn(refImage);
+        EasyMock.expect(this.serviceImage.getMachineImageByUuid("234")).andReturn(refImage);
+        EasyMock.expect(this.serviceImage.getMachineImageByUuid("234")).andReturn(refImage);
         EasyMock.replay(this.serviceImage);
-        EasyMock.expect(this.service.getMachineConfigurationById("123")).andReturn(refConf);
-        EasyMock.expect(this.service.getMachineConfigurationById("123")).andReturn(refConf);
+        EasyMock.expect(this.service.getMachineConfigurationByUuid("123")).andReturn(refConf);
+        EasyMock.expect(this.service.getMachineConfigurationByUuid("123")).andReturn(refConf);
         EasyMock.expect(this.service.createMachine(EasyMock.anyObject(MachineCreate.class))).andReturn(job);
         EasyMock.replay(this.service);
 
@@ -316,10 +316,10 @@ public class CimiManagersMachineTest {
     @Test
     public void testRead() throws Exception {
         Machine machine = new Machine();
-        machine.setId(1);
+        machine.setUuid("1");
         machine.setState(Machine.State.STARTED);
 
-        EasyMock.expect(this.service.getMachineById("1")).andReturn(machine);
+        EasyMock.expect(this.service.getMachineByUuid("1")).andReturn(machine);
         EasyMock.replay(this.service);
 
         this.request.setIds(new IdRequest("1"));
@@ -334,7 +334,7 @@ public class CimiManagersMachineTest {
     public void testReadWithCimiSelect() throws Exception {
         List<String> list = Arrays.asList(new String[] {"name", "description"});
         Machine machine = new Machine();
-        machine.setId(1);
+        machine.setUuid("1");
         machine.setState(Machine.State.STARTED);
 
         EasyMock.expect(this.service.getMachineAttributes(EasyMock.eq("1"), EasyMock.eq(list))).andReturn(machine);
@@ -352,10 +352,10 @@ public class CimiManagersMachineTest {
     @Test
     public void testDelete() throws Exception {
         Machine target = new Machine();
-        target.setId(1789);
+        target.setUuid("1789");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAction("delete");
 
@@ -374,10 +374,10 @@ public class CimiManagersMachineTest {
     @Test
     public void testUpdate() throws Exception {
         Machine target = new Machine();
-        target.setId(789);
+        target.setUuid("789");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAction("edit");
 
@@ -404,10 +404,10 @@ public class CimiManagersMachineTest {
         map.put("description", "fooDescription");
 
         Machine target = new Machine();
-        target.setId(654);
+        target.setUuid("654");
 
         Job job = new Job();
-        job.setId(123);
+        job.setUuid("123");
         job.setTargetResource(target);
         job.setAction("edit");
 

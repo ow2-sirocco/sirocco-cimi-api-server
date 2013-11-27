@@ -146,20 +146,20 @@ public class MachinesConverterTest {
 
         // Full Service -> Cimi : with MachineDisks
         service = new Machine();
-        service.setId(7);
+        service.setUuid("7");
         service.setDisks(new ArrayList<MachineDisk>());
         machineDisk = new MachineDisk();
-        machineDisk.setId(111);
+        machineDisk.setUuid("111");
         machineDisk.setCapacity(111);
         machineDisk.setName("Disk111");
         service.getDisks().add(machineDisk);
         machineDisk = new MachineDisk();
-        machineDisk.setId(222);
+        machineDisk.setUuid("222");
         machineDisk.setCapacity(222);
         machineDisk.setName("Disk222");
         service.getDisks().add(machineDisk);
         machineDisk = new MachineDisk();
-        machineDisk.setId(333);
+        machineDisk.setUuid("333");
         machineDisk.setCapacity(333);
         machineDisk.setName("Disk333");
         service.getDisks().add(machineDisk);
@@ -182,34 +182,34 @@ public class MachinesConverterTest {
 
         // Build Service Machine
         service = new Machine();
-        service.setId(7);
+        service.setUuid("7");
         service.setState(Machine.State.STOPPED);
 
         service.setDisks(new ArrayList<MachineDisk>());
         machineDisk = new MachineDisk();
-        machineDisk.setId(111);
+        machineDisk.setUuid("111");
         machineDisk.setCapacity(111);
         machineDisk.setName("Disk111");
         service.getDisks().add(machineDisk);
         machineDisk = new MachineDisk();
-        machineDisk.setId(222);
+        machineDisk.setUuid("222");
         machineDisk.setCapacity(222);
         machineDisk.setName("Disk222");
         service.getDisks().add(machineDisk);
         machineDisk = new MachineDisk();
-        machineDisk.setId(333);
+        machineDisk.setUuid("333");
         machineDisk.setCapacity(333);
         machineDisk.setName("Disk333");
         service.getDisks().add(machineDisk);
 
         service.setVolumes(new ArrayList<MachineVolume>());
         machineVolume = new MachineVolume();
-        machineVolume.setId(1119);
+        machineVolume.setUuid("1119");
         machineVolume.setInitialLocation("InitialLoc1119");
         machineVolume.setName("Volume1119");
         service.getVolumes().add(machineVolume);
         machineVolume = new MachineVolume();
-        machineVolume.setId(2229);
+        machineVolume.setUuid("2229");
         machineVolume.setInitialLocation("InitialLoc2229");
         machineVolume.setName("Volume2229");
         service.getVolumes().add(machineVolume);
@@ -323,15 +323,15 @@ public class MachinesConverterTest {
 
         // Full Service -> Cimi
         Machine Machine1 = new Machine();
-        Machine1.setId(1);
+        Machine1.setUuid("1");
         Machine1.setName("nameOne");
         Machine1.setState(Machine.State.STOPPED);
         Machine Machine2 = new Machine();
-        Machine2.setId(2);
+        Machine2.setUuid("2");
         Machine2.setName("nameTwo");
         Machine2.setState(Machine.State.STARTED);
         Machine Machine3 = new Machine();
-        Machine3.setId(3);
+        Machine3.setUuid("3");
         Machine3.setName("nameThree");
         Machine3.setState(Machine.State.STOPPING);
 
@@ -388,15 +388,15 @@ public class MachinesConverterTest {
 
         // Full Service -> Cimi
         Machine Machine1 = new Machine();
-        Machine1.setId(1);
+        Machine1.setUuid("1");
         Machine1.setName("nameOne");
         Machine1.setState(Machine.State.STOPPED);
         Machine Machine2 = new Machine();
-        Machine2.setId(2);
+        Machine2.setUuid("2");
         Machine2.setName("nameTwo");
         Machine2.setState(Machine.State.STARTED);
         Machine Machine3 = new Machine();
-        Machine3.setId(3);
+        Machine3.setUuid("3");
         Machine3.setName("nameThree");
         Machine3.setState(Machine.State.STOPPING);
 
@@ -442,15 +442,15 @@ public class MachinesConverterTest {
 
         // Full Service -> Cimi
         Machine Machine1 = new Machine();
-        Machine1.setId(1);
+        Machine1.setUuid("1");
         Machine1.setName("nameOne");
         Machine1.setState(Machine.State.STOPPED);
         Machine Machine2 = new Machine();
-        Machine2.setId(2);
+        Machine2.setUuid("2");
         Machine2.setName("nameTwo");
         Machine2.setState(Machine.State.STARTED);
         Machine Machine3 = new Machine();
-        Machine3.setId(3);
+        Machine3.setUuid("3");
         Machine3.setName("nameThree");
         Machine3.setState(Machine.State.STOPPING);
 

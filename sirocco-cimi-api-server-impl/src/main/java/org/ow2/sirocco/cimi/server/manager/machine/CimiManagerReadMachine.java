@@ -52,7 +52,7 @@ public class CimiManagerReadMachine extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Machine out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getMachineById(context.getRequest().getId());
+            out = this.manager.getMachineByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getMachineAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

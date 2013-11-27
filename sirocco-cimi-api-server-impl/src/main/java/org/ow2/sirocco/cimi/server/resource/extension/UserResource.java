@@ -80,7 +80,7 @@ public class UserResource extends RestResourceAbstract {
     @Produces({MediaType.APPLICATION_JSON})
     public MultiCloudUser getUser(@PathParam("id") final String userId) {
         try {
-            User user = this.userManager.getUserById(userId);
+            User user = this.userManager.getUserByUuid(userId);
             return this.toMultiCloudUser(user);
         } catch (ResourceNotFoundException e) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
@@ -96,7 +96,7 @@ public class UserResource extends RestResourceAbstract {
         try {
             User user = this.toUser(apiUser);
             this.userManager.createUser(user);
-            apiUser.setId(user.getId().toString());
+            apiUser.setId(user.getUuid());
             apiUser.setHref(this.uri.getBaseUri() + "users/" + apiUser.getId());
         } catch (CloudProviderException e) {
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
@@ -118,7 +118,7 @@ public class UserResource extends RestResourceAbstract {
 
     private MultiCloudUser toMultiCloudUser(final User user) {
         MultiCloudUser result = new MultiCloudUser();
-        result.setId(user.getId().toString());
+        result.setId(user.getUuid());
         result.setHref(this.uri.getBaseUri() + "users/" + result.getId());
         result.setCreated(user.getCreated());
         result.setEmail(user.getEmail());

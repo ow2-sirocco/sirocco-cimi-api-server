@@ -114,10 +114,10 @@ public class MonitoringConverterTest {
 
         // Full Service -> Cimi
         targetResource = new Machine();
-        targetResource.setId(321);
+        targetResource.setUuid("321");
         Date timeOfStatusChange = new Date();
         Job parentJob = new Job();
-        parentJob.setId(789);
+        parentJob.setUuid("789");
 
         service = new Job();
         service.setAction("action");
@@ -152,7 +152,7 @@ public class MonitoringConverterTest {
         List<Job> listJob = new ArrayList<Job>();
         for (int i = 0; i < 3; i++) {
             Job job = new Job();
-            job.setId(i + 100);
+            job.setUuid(new Integer(i + 100).toString());
             listJob.add(job);
         }
         service = new Job();
@@ -175,10 +175,10 @@ public class MonitoringConverterTest {
         // Full Service -> Cimi : AffectedResources full
         List<CloudResource> listResource = new ArrayList<CloudResource>();
         targetResource = new Machine();
-        targetResource.setId(321);
+        targetResource.setUuid("321");
         listResource.add(targetResource);
         targetResource = new MachineImage();
-        targetResource.setId(654);
+        targetResource.setUuid("654");
         listResource.add(targetResource);
 
         service = new Job();
@@ -217,13 +217,13 @@ public class MonitoringConverterTest {
 
         // Full Service -> Cimi
         Job Job1 = new Job();
-        Job1.setId(1);
+        Job1.setUuid("1");
         Job1.setName("nameOne");
         Job Job2 = new Job();
-        Job2.setId(2);
+        Job2.setUuid("2");
         Job2.setName("nameTwo");
         Job Job3 = new Job();
-        Job3.setId(3);
+        Job3.setUuid("3");
         Job3.setName("nameThree");
 
         service = new ArrayList<Job>();
@@ -267,13 +267,13 @@ public class MonitoringConverterTest {
 
         // Full Service -> Cimi
         Job Job1 = new Job();
-        Job1.setId(1);
+        Job1.setUuid("1");
         Job1.setName("nameOne");
         Job Job2 = new Job();
-        Job2.setId(2);
+        Job2.setUuid("2");
         Job2.setName("nameTwo");
         Job Job3 = new Job();
-        Job3.setId(3);
+        Job3.setUuid("3");
         Job3.setName("nameThree");
 
         service = new ArrayList<Job>();
@@ -400,7 +400,7 @@ public class MonitoringConverterTest {
         // Prepare Service
         timeStamp = new Date();
         targetResource = new Machine();
-        targetResource.setId(321);
+        targetResource.setUuid("321");
         serviceEventType = new AccessEventType();
         ((AccessEventType) serviceEventType).setDetail("EventType_Detail");
         ((AccessEventType) serviceEventType).setResName("EventType_ResName");
@@ -410,7 +410,7 @@ public class MonitoringConverterTest {
 
         service = new Event();
         service.setContact("Event_Contact");
-        service.setId(1);
+        service.setUuid("1");
         service.setName("Event_Name");
         service.setOutcome(Outcome.SUCCESS);
         service.setSeverity(Severity.MEDIUM);
@@ -461,7 +461,7 @@ public class MonitoringConverterTest {
         // Prepare Service
         timeStamp = new Date();
         targetResource = new Machine();
-        targetResource.setId(321);
+        targetResource.setUuid("321");
         serviceEventType = new AlarmEventType();
         ((AlarmEventType) serviceEventType).setDetail("EventType_Detail");
         ((AlarmEventType) serviceEventType).setResName("EventType_ResName");
@@ -470,7 +470,7 @@ public class MonitoringConverterTest {
 
         service = new Event();
         service.setContact("Event_Contact");
-        service.setId(1);
+        service.setUuid("1");
         service.setName("Event_Name");
         service.setOutcome(Outcome.SUCCESS);
         service.setSeverity(Severity.MEDIUM);
@@ -520,7 +520,7 @@ public class MonitoringConverterTest {
         // Prepare Service
         timeStamp = new Date();
         targetResource = new Machine();
-        targetResource.setId(321);
+        targetResource.setUuid("321");
         serviceEventType = new ModelEventType();
         ((ModelEventType) serviceEventType).setDetail("EventType_Detail");
         ((ModelEventType) serviceEventType).setResName("EventType_ResName");
@@ -529,7 +529,7 @@ public class MonitoringConverterTest {
 
         service = new Event();
         service.setContact("Event_Contact");
-        service.setId(1);
+        service.setUuid("1");
         service.setName("Event_Name");
         service.setOutcome(Outcome.SUCCESS);
         service.setSeverity(Severity.MEDIUM);
@@ -579,7 +579,7 @@ public class MonitoringConverterTest {
         // Prepare Service
         timeStamp = new Date();
         targetResource = new Machine();
-        targetResource.setId(321);
+        targetResource.setUuid("321");
         serviceEventType = new StateEventType();
         ((StateEventType) serviceEventType).setDetail("EventType_Detail");
         ((StateEventType) serviceEventType).setResName("EventType_ResName");
@@ -589,7 +589,7 @@ public class MonitoringConverterTest {
 
         service = new Event();
         service.setContact("Event_Contact");
-        service.setId(1);
+        service.setUuid("1");
         service.setName("Event_Name");
         service.setOutcome(Outcome.SUCCESS);
         service.setSeverity(Severity.MEDIUM);

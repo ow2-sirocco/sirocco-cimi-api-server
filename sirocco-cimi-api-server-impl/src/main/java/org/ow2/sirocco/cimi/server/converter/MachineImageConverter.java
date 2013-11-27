@@ -106,7 +106,7 @@ public class MachineImageConverter extends ObjectCommonConverter {
             }
             if (null != dataService.getRelatedImage()) {
                 dataCimi.setRelatedImage(new RelatedMachineImage(context.makeHref(dataCimi, dataService.getRelatedImage()
-                    .getId().toString())));
+                    .getUuid())));
             }
             dataCimi.setState(ConverterHelper.toString(dataService.getState()));
             dataCimi.setType(ConverterHelper.toString(dataService.getType()));

@@ -74,49 +74,49 @@ public class CallServiceHelperImpl implements CallServiceHelper {
         Resource found = null;
         switch (type) {
         case Address:
-            found = this.managerNetwork.getAddressById(idToFind);
+            found = this.managerNetwork.getAddressByUuid(idToFind);
             break;
         case Credential:
-            found = this.managerCredentials.getCredentialsById(idToFind);
+            found = this.managerCredentials.getCredentialsByUuid(idToFind);
             break;
         case EventLog:
-            found = this.managerEvent.getEventLogById(idToFind);
+            found = this.managerEvent.getEventLogByUuid(idToFind);
             break;
         case ForwardingGroup:
-            found = this.managerNetwork.getForwardingGroupById(idToFind);
+            found = this.managerNetwork.getForwardingGroupByUuid(idToFind);
             break;
         case Machine:
-            found = this.managerMachine.getMachineById(idToFind);
+            found = this.managerMachine.getMachineByUuid(idToFind);
             break;
         case MachineConfiguration:
-            found = this.managerMachine.getMachineConfigurationById(idToFind);
+            found = this.managerMachine.getMachineConfigurationByUuid(idToFind);
             break;
         case MachineImage:
-            found = this.managerMachineImage.getMachineImageById(idToFind);
+            found = this.managerMachineImage.getMachineImageByUuid(idToFind);
             break;
         case Network:
-            found = this.managerNetwork.getNetworkById(idToFind);
+            found = this.managerNetwork.getNetworkByUuid(idToFind);
             break;
         case NetworkPort:
-            found = this.managerNetwork.getNetworkPortById(idToFind);
+            found = this.managerNetwork.getNetworkPortByUuid(idToFind);
             break;
         case NetworkConfiguration:
-            found = this.managerNetwork.getNetworkConfigurationById(idToFind);
+            found = this.managerNetwork.getNetworkConfigurationByUuid(idToFind);
             break;
         case NetworkPortConfiguration:
-            found = this.managerNetwork.getNetworkPortConfigurationById(idToFind);
+            found = this.managerNetwork.getNetworkPortConfigurationByUuid(idToFind);
             break;
         case System:
-            found = this.managerSystem.getSystemById(idToFind);
+            found = this.managerSystem.getSystemByUuid(idToFind);
             break;
         case Volume:
-            found = this.managerVolume.getVolumeById(idToFind);
+            found = this.managerVolume.getVolumeByUuid(idToFind);
             break;
         case VolumeConfiguration:
-            found = this.managerVolume.getVolumeConfigurationById(idToFind);
+            found = this.managerVolume.getVolumeConfigurationByUuid(idToFind);
             break;
         case VolumeImage:
-            found = this.managerVolume.getVolumeImageById(idToFind);
+            found = this.managerVolume.getVolumeImageByUuid(idToFind);
             break;
         default:
             throw new ConfigurationException("Impossible calling service with this type :" + type);

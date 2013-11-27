@@ -128,7 +128,7 @@ public class CimiManagersCredentialTemplateTest {
     @Test
     public void testCreate() throws Exception {
         CredentialsTemplate create = new CredentialsTemplate();
-        create.setId(789);
+        create.setUuid("789");
 
         EasyMock.expect(this.service.createCredentialsTemplate(EasyMock.anyObject(CredentialsTemplate.class)))
             .andReturn(create);
@@ -153,14 +153,14 @@ public class CimiManagersCredentialTemplateTest {
     @Test
     public void testCreateWithRef() throws Exception {
         CredentialsTemplate reference = new CredentialsTemplate();
-        reference.setId(13);
+        reference.setUuid("13");
         reference.setName("nameValue");
         reference.setPassword("passwordValue");
 
         CredentialsTemplate create = new CredentialsTemplate();
-        create.setId(789);
+        create.setUuid("789");
 
-        EasyMock.expect(this.service.getCredentialsTemplateById("13")).andReturn(reference);
+        EasyMock.expect(this.service.getCredentialsTemplateByUuid("13")).andReturn(reference);
         EasyMock.expect(this.service.createCredentialsTemplate(EasyMock.anyObject(CredentialsTemplate.class)))
             .andReturn(create);
         EasyMock.replay(this.service);
@@ -182,9 +182,9 @@ public class CimiManagersCredentialTemplateTest {
     @Test
     public void testRead() throws Exception {
         CredentialsTemplate machine = new CredentialsTemplate();
-        machine.setId(1);
+        machine.setUuid("1");
 
-        EasyMock.expect(this.service.getCredentialsTemplateById("1")).andReturn(machine);
+        EasyMock.expect(this.service.getCredentialsTemplateByUuid("1")).andReturn(machine);
         EasyMock.replay(this.service);
 
         this.request.setIds(new IdRequest("1"));

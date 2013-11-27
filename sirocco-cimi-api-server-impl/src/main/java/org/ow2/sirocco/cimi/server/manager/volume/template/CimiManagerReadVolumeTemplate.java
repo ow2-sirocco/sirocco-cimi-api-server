@@ -52,7 +52,7 @@ public class CimiManagerReadVolumeTemplate extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         VolumeTemplate out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getVolumeTemplateById(context.getRequest().getId());
+            out = this.manager.getVolumeTemplateByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getVolumeTemplateAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

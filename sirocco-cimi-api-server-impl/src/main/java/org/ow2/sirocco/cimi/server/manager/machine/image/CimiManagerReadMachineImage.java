@@ -52,7 +52,7 @@ public class CimiManagerReadMachineImage extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         MachineImage out = null;
         if (false == context.hasParamSelect()) {
-            out = this.manager.getMachineImageById(context.getRequest().getId());
+            out = this.manager.getMachineImageByUuid(context.getRequest().getId());
         } else {
             out = this.manager.getMachineImageAttributes(context.getRequest().getId(), context.valuesOfSelect());
         }

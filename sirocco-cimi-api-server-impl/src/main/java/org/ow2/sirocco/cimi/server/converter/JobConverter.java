@@ -124,12 +124,12 @@ public class JobConverter extends ObjectCommonConverter {
                 dataCimi.setAffectedResources(list.toArray(new TargetResource[list.size()]));
             }
             if (null != dataService.getParentJob()) {
-                dataCimi.setParentJob(new ParentJob(context.makeHref(dataCimi, dataService.getParentJob().getId().toString())));
+                dataCimi.setParentJob(new ParentJob(context.makeHref(dataCimi, dataService.getParentJob().getUuid())));
             }
             if ((null != dataService.getNestedJobs()) && (dataService.getNestedJobs().size() > 0)) {
                 List<NestedJob> list = new ArrayList<NestedJob>();
                 for (Job job : dataService.getNestedJobs()) {
-                    list.add(new NestedJob(context.makeHref(dataCimi, job.getId().toString())));
+                    list.add(new NestedJob(context.makeHref(dataCimi, job.getUuid())));
                 }
                 dataCimi.setNestedJobs(list.toArray(new NestedJob[list.size()]));
             }

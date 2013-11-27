@@ -68,11 +68,11 @@ public class ResourceMetadataConverter extends ObjectCommonConverter {
         if (true == context.mustBeExpanded(dataCimi)) {
             dataCimi.setResourceURI(dataCimi.getExchangeType().getResourceURI());
             if (null != dataService.getId()) {
-                dataCimi.setId(context.makeHref(dataCimi, dataService.getId().toString()));
+                dataCimi.setId(context.makeHref(dataCimi, dataService.getId()));
             }
         }
         if (true == context.mustBeReferenced(dataCimi)) {
-            dataCimi.setHref(context.makeHref(dataCimi, dataService.getId().toString()));
+            dataCimi.setHref(context.makeHref(dataCimi, dataService.getId()));
         }
         if (true == context.mustBeExpanded(dataCimi)) {
             dataCimi.setName(dataService.getName());
