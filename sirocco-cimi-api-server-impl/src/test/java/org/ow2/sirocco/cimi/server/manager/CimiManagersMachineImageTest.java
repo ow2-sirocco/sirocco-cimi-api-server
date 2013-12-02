@@ -246,8 +246,11 @@ public class CimiManagersMachineImageTest {
 
     @Test
     public void testDelete() throws Exception {
+        Job job = new Job();
+        job.setUuid("123");
+        job.setAction("delete");
 
-        this.service.deleteMachineImage("1");
+        EasyMock.expect(this.service.deleteMachineImage("1")).andReturn(job);
         EasyMock.replay(this.service);
 
         this.request.setIds(new IdRequest("1"));
