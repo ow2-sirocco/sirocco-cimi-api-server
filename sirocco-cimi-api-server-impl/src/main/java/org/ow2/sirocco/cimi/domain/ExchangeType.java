@@ -288,7 +288,7 @@ public enum ExchangeType {
             }
             sb.append(paths.get(i));
             if ((i < (paths.size() - 1)) || (true == this.hasIdInReference())) {
-                sb.append('/').append("([0-9]+){1}");
+                sb.append('/').append("([a-f0-9-]+){1}");
             }
         }
         sb.append('$');
