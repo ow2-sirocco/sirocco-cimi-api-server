@@ -51,6 +51,7 @@ import org.ow2.sirocco.cimi.server.resource.RestResourceAbstract;
 import org.ow2.sirocco.cloudmanager.core.api.ICloudProviderManager;
 import org.ow2.sirocco.cloudmanager.core.api.IdentityContext;
 import org.ow2.sirocco.cloudmanager.core.api.exception.CloudProviderException;
+import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceConflictException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceNotFoundException;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProvider;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderAccount;
@@ -168,12 +169,15 @@ public class ProviderResource extends RestResourceAbstract {
         List<ProviderAccount> accounts = new ArrayList<ProviderAccount>();
         result.setProviderAccounts(accounts);
         try {
-            for (CloudProviderAccount account : this.providerManager.getCloudProviderAccountsByTenant(this.identityContext
-                .getTenantId())) {
+            for (CloudProviderAccount account : this.providerManager.getCloudProviderAccountsByTenant()) {
                 accounts.add(this.toApiProviderAccount(account));
             }
+        } catch (ResourceNotFoundException e) {
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND).entity(e.getMessage())
+                .type(MediaType.TEXT_PLAIN).build());
         } catch (CloudProviderException e) {
-            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+            throw new WebApplicationException(Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage())
+                .type(MediaType.TEXT_PLAIN).build());
         }
         return result;
     }
@@ -228,8 +232,15 @@ public class ProviderResource extends RestResourceAbstract {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     public Response createProviderProfile(final ProviderProfile profile) {
-        CloudProviderProfile created = this.providerManager.createCloudProviderProfile(this.toCloudProviderProfile(profile));
-        return Response.status(Response.Status.CREATED).entity(this.toApiProviderProfile(created)).build();
+        try {
+            CloudProviderProfile created = this.providerManager
+                .createCloudProviderProfile(this.toCloudProviderProfile(profile));
+            return Response.status(Response.Status.CREATED).entity(this.toApiProviderProfile(created)).build();
+        } catch (ResourceConflictException e) {
+            throw new WebApplicationException(Response.Status.CONFLICT);
+        } catch (CloudProviderException e) {
+            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @POST
