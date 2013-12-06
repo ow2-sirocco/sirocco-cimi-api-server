@@ -29,6 +29,10 @@ public class IdentityInterceptor implements Serializable {
             if (values != null && !values.isEmpty()) {
                 this.identityContext.setTenantId(values.get(0));
             }
+            values = headers.getRequestHeader("tenantName");
+            if (values != null && !values.isEmpty()) {
+                this.identityContext.setTenantName(values.get(0));
+            }
             values = headers.getRequestHeader("Authorization");
             if (values != null && !values.isEmpty()) {
                 String userPassword[] = RequestHelper.decode(values.get(0));
