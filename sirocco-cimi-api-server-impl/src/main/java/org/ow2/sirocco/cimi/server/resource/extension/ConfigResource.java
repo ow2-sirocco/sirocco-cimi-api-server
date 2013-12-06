@@ -25,14 +25,18 @@ package org.ow2.sirocco.cimi.server.resource.extension;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.ow2.sirocco.cimi.server.resource.ResourceInterceptorBinding;
 import org.ow2.sirocco.cimi.server.resource.RestResourceAbstract;
 import org.ow2.sirocco.cloudmanager.core.api.IConfigManager;
+import org.ow2.sirocco.cloudmanager.core.api.exception.InvalidRequestException;
 
 @ResourceInterceptorBinding
 @RequestScoped
@@ -43,8 +47,22 @@ public class ConfigResource extends RestResourceAbstract {
 
     @PUT
     public Response setConfigParameter(@QueryParam("key") final String key, @QueryParam("value") final String value) {
-        this.configManager.setConfigParameter(key, value);
-        return Response.status(Response.Status.ACCEPTED).build();
+        try {
+            this.configManager.setConfigParameter(key, value);
+            return Response.status(Response.Status.ACCEPTED).build();
+        } catch (InvalidRequestException e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
+    }
+
+    @GET
+    public String getConfigParameter(@QueryParam("key") final String key) {
+        try {
+            return this.configManager.getConfigParameter(key);
+        } catch (InvalidRequestException e) {
+            throw new WebApplicationException(Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage())
+                .type(MediaType.TEXT_PLAIN).build());
+        }
     }
 
 }
