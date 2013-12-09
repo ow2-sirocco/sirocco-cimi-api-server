@@ -284,7 +284,8 @@ public class CimiManagersMachineImageTest {
         map.put("name", "fooName");
         map.put("description", "fooDescription");
 
-        this.service.updateMachineImageAttributes(EasyMock.eq("1"), EasyMock.eq(map));
+        MachineImage image = new MachineImage();
+        EasyMock.expect(this.service.updateMachineImageAttributes(EasyMock.eq("1"), EasyMock.eq(map))).andReturn(image);
         EasyMock.replay(this.service);
 
         CimiMachineImage cimi = new CimiMachineImage();
