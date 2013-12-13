@@ -37,7 +37,7 @@ public class ProviderInfoConverter {
         providerInfo.setProviderAccountId(providerResource.getCloudProviderAccount().getUuid());
         providerInfo.setProviderName(providerResource.getCloudProviderAccount().getCloudProvider().getDescription());
         if (providerResource.getLocation() != null) {
-            providerInfo.setLocation(providerResource.getLocation().getCountryName());
+            providerInfo.setLocation(providerResource.getLocation().toShortString());
         }
         providerInfo.setProviderAssignedId(providerResource.getProviderAssignedId());
         return providerInfo;
@@ -53,7 +53,7 @@ public class ProviderInfoConverter {
             ProviderInfo info = new ProviderInfo();
             info.setProviderAccountId(mapping.getProviderAccount().getUuid());
             if (mapping.getProviderLocation() != null) {
-                info.setLocation(mapping.getProviderLocation().getCountryName());
+                info.setLocation(mapping.getProviderLocation().toShortString());
             }
             info.setProviderName(mapping.getProviderAccount().getCloudProvider().getDescription());
             info.setProviderAssignedId(mapping.getProviderAssignedId());
