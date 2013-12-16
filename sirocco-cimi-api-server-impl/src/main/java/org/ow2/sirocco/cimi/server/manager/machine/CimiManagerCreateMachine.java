@@ -69,13 +69,13 @@ public class CimiManagerCreateMachine extends CimiManagerCreateAbstract {
             && create.getMachineTemplate().getMachineImage().getUuid() != null) {
             MachineImage image = this.imageManager.getMachineImageByUuid(create.getMachineTemplate().getMachineImage()
                 .getUuid());
-            create.getMachineTemplate().getMachineImage().setProviderMappings(image.getProviderMappings());
+            create.getMachineTemplate().setMachineImage(image);
         }
         if (create.getMachineTemplate().getMachineConfig() != null
             && create.getMachineTemplate().getMachineConfig().getUuid() != null) {
             MachineConfiguration config = this.manager.getMachineConfigurationByUuid(create.getMachineTemplate()
                 .getMachineConfig().getUuid());
-            create.getMachineTemplate().getMachineConfig().setProviderMappings(config.getProviderMappings());
+            create.getMachineTemplate().setMachineConfig(config);
         }
         if (create.getMachineTemplate().getNetworkInterfaces() != null) {
             for (MachineTemplateNetworkInterface nic : create.getMachineTemplate().getNetworkInterfaces()) {
