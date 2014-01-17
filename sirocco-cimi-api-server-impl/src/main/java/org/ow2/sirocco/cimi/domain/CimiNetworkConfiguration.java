@@ -56,6 +56,8 @@ public class CimiNetworkConfiguration extends CimiObjectCommonAbstract {
     /** Field "classOfService". */
     private String classOfService;
 
+    private String cidr;
+
     /**
      * Default constructor.
      */
@@ -124,6 +126,14 @@ public class CimiNetworkConfiguration extends CimiObjectCommonAbstract {
      */
     public void setClassOfService(final String classOfService) {
         this.classOfService = classOfService;
+    }
+
+    public String getCidr() {
+        return this.cidr;
+    }
+
+    public void setCidr(final String cidr) {
+        this.cidr = cidr;
     }
 
     /**

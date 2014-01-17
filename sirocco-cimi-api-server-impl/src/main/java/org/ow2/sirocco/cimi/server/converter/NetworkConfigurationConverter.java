@@ -24,9 +24,12 @@
  */
 package org.ow2.sirocco.cimi.server.converter;
 
+import java.util.Collections;
+
 import org.ow2.sirocco.cimi.domain.CimiNetworkConfiguration;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
 import org.ow2.sirocco.cloudmanager.model.cimi.NetworkConfiguration;
+import org.ow2.sirocco.cloudmanager.model.cimi.Subnet;
 
 /**
  * Convert the data of the CIMI model and the service model in both directions.
@@ -119,5 +122,11 @@ public class NetworkConfigurationConverter extends ObjectCommonConverter {
         dataService.setClassOfService(dataCimi.getClassOfService());
         dataService.setMtu(dataCimi.getMtu());
         dataService.setNetworkType(ConverterHelper.toNetworkType(dataCimi.getNetworkType()));
+        if (dataCimi.getCidr() != null) {
+            Subnet subnet = new Subnet();
+            subnet.setCidr(dataCimi.getCidr());
+            subnet.setName("subnet");
+            dataService.setSubnets(Collections.singletonList(subnet));
+        }
     }
 }
