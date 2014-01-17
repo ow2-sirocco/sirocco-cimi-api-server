@@ -55,6 +55,8 @@ public class CimiForwardingGroup extends CimiObjectCommonAbstract {
      */
     private CimiForwardingGroupNetworkCollection networks;
 
+    private ProviderInfo providerInfo;
+
     /**
      * Default constructor.
      */
@@ -112,6 +114,14 @@ public class CimiForwardingGroup extends CimiObjectCommonAbstract {
     @JsonIgnore
     public ExchangeType getExchangeType() {
         return ExchangeType.ForwardingGroup;
+    }
+
+    public ProviderInfo getProviderInfo() {
+        return this.providerInfo;
+    }
+
+    public void setProviderInfo(final ProviderInfo providerInfo) {
+        this.providerInfo = providerInfo;
     }
 
 }

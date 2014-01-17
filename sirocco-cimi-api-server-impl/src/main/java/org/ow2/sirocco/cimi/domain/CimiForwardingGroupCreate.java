@@ -55,6 +55,10 @@ public class CimiForwardingGroupCreate extends CimiCommonResourceUriAbstract {
     @NotNull(groups = {GroupCreateByValue.class})
     private CimiForwardingGroupTemplate forwardingGroupTemplate;
 
+    private String providerAccountId;
+
+    private String location;
+
     /**
      * Return the value of field "forwardingGroupTemplate".
      * 
@@ -83,5 +87,21 @@ public class CimiForwardingGroupCreate extends CimiCommonResourceUriAbstract {
     @JsonIgnore
     public ExchangeType getExchangeType() {
         return ExchangeType.ForwardingGroupCreate;
+    }
+
+    public String getProviderAccountId() {
+        return this.providerAccountId;
+    }
+
+    public void setProviderAccountId(final String providerAccountId) {
+        this.providerAccountId = providerAccountId;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public void setLocation(final String location) {
+        this.location = location;
     }
 }

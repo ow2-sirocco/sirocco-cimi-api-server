@@ -33,6 +33,7 @@ import org.ow2.sirocco.cimi.domain.collection.CimiAddressCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiAddressTemplateCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiCredentialCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiCredentialTemplateCollection;
+import org.ow2.sirocco.cimi.domain.collection.CimiForwardingGroupCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiJobCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiMachineCollection;
 import org.ow2.sirocco.cimi.domain.collection.CimiMachineConfigurationCollection;
@@ -172,6 +173,9 @@ public class CloudEntryPointConverter extends ObjectCommonConverter {
 
             dataCimi.setResourceMetadata((CimiResourceMetadataCollection) context.convertNextCimi(
                 dataService.getResourceMetadata(), CimiResourceMetadataCollection.class));
+
+            dataCimi.setForwardingGroups((CimiForwardingGroupCollection) context.convertNextCimi(
+                dataService.getForwardingGroups(), CimiForwardingGroupCollection.class));
 
         }
     }

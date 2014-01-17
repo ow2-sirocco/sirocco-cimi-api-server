@@ -102,6 +102,7 @@ public class ForwardingGroupConverter extends ObjectCommonConverter {
         if (true == context.mustBeExpanded(dataCimi)) {
             dataCimi.setNetworks((CimiForwardingGroupNetworkCollection) context.convertNextCimi(dataService.getNetworks(),
                 CimiForwardingGroupNetworkCollection.class));
+            dataCimi.setProviderInfo(ProviderInfoConverter.convert(dataService));
         }
     }
 
