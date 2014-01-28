@@ -38,9 +38,9 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  */
 @XmlRootElement(name = "NetworkConfiguration")
 @XmlType(propOrder = {"id", "name", "description", "created", "updated", "propertyArray", "networkType", "mtu",
-    "classOfService", "operations", "xmlExtensionAttributes"})
+    "classOfService", "operations", "cidr", "xmlExtensionAttributes"})
 @JsonPropertyOrder({"resourceURI", "id", "name", "description", "created", "updated", "properties", "networkType", "mtu",
-    "classOfService", "operations"})
+    "classOfService", "operations", "cidr"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiNetworkConfiguration extends CimiObjectCommonAbstract {
 
