@@ -106,6 +106,9 @@ public class NetworkConfigurationConverter extends ObjectCommonConverter {
             dataCimi.setClassOfService(dataService.getClassOfService());
             dataCimi.setMtu(dataService.getMtu());
             dataCimi.setNetworkType(ConverterHelper.toString(dataService.getNetworkType()));
+            if (dataService.getSubnets() != null && !dataService.getSubnets().isEmpty()) {
+                dataCimi.setCidr(dataService.getSubnets().get(0).getCidr());
+            }
         }
     }
 
