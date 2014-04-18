@@ -57,6 +57,7 @@ import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProvider;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderAccount;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderLocation;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderProfile;
+import org.ow2.sirocco.cloudmanager.model.cimi.extension.Quota;
 
 @ResourceInterceptorBinding
 @RequestScoped
@@ -197,6 +198,34 @@ public class ProviderResource extends RestResourceAbstract {
         } catch (CloudProviderException e) {
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GET
+    @Path("accounts/{accountId}/quota")
+    @Produces({MediaType.APPLICATION_JSON})
+    public org.ow2.sirocco.cimi.domain.extension.Quota getProviderAccountQuota(@PathParam("accountId") final String accountId) {
+        try {
+            Quota quota = this.providerManager.getQuota(accountId, null);
+            return this.toApiQuotat(quota);
+        } catch (ResourceNotFoundException e) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        } catch (CloudProviderException e) {
+            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private org.ow2.sirocco.cimi.domain.extension.Quota toApiQuotat(final Quota quota) {
+        org.ow2.sirocco.cimi.domain.extension.Quota result = new org.ow2.sirocco.cimi.domain.extension.Quota();
+        result.setResources(new ArrayList<org.ow2.sirocco.cimi.domain.extension.Quota.Resource>());
+        for (Quota.Resource from : quota.getResources()) {
+            org.ow2.sirocco.cimi.domain.extension.Quota.Resource to = new org.ow2.sirocco.cimi.domain.extension.Quota.Resource();
+            to.setLimit(from.getLimit());
+            to.setType(from.getType().toString());
+            to.setUsed(from.getUsed());
+            to.setUnit(from.getUnit().getSymbol());
+            result.getResources().add(to);
+        }
+        return result;
     }
 
     @POST
