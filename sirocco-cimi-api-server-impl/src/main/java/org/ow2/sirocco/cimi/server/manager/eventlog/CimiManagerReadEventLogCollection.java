@@ -52,9 +52,9 @@ public class CimiManagerReadEventLogCollection extends CimiManagerReadAbstract {
     protected Object callService(final CimiContext context, final Object dataService) throws Exception {
         Object out = null;
         if (false == context.hasParamsForReadingCollection()) {
-            out = this.manager.getEventLog();
+            out = this.manager.getEventLogs();
         } else {
-            QueryResult<?> results = this.manager.getEventLog(context.valueOfFirst(), context.valueOfLast(),
+            QueryResult<?> results = this.manager.getEventLogs(context.valueOfFirst(), context.valueOfLast(),
                 context.valuesOfFilter(), context.valuesOfSelect());
             out = results.getItems();
         }
