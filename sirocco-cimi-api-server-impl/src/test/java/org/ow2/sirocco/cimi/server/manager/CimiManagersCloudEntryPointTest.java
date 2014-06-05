@@ -265,7 +265,7 @@ public class CimiManagersCloudEntryPointTest {
         EasyMock.expect(this.serviceNetwork.getForwardingGroupTemplates()).andReturn(forwardingGroupTemplateCollection);
         EasyMock.replay(this.serviceNetwork);
 
-        EasyMock.expect(this.serviceEvent.getEventLog()).andReturn(eventLogCollection);
+        EasyMock.expect(this.serviceEvent.getEventLogs()).andReturn(eventLogCollection);
         EasyMock.expect(this.serviceEvent.getEventLogTemplates()).andReturn(eventLogTemplateCollection);
         EasyMock.replay(this.serviceEvent);
 

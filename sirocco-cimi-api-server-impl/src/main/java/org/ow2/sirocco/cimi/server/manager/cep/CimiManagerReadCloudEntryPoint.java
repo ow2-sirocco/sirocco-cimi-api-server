@@ -24,6 +24,8 @@
  */
 package org.ow2.sirocco.cimi.server.manager.cep;
 
+import java.util.Collections;
+
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
@@ -40,6 +42,30 @@ import org.ow2.sirocco.cloudmanager.core.api.IMachineManager;
 import org.ow2.sirocco.cloudmanager.core.api.INetworkManager;
 import org.ow2.sirocco.cloudmanager.core.api.ISystemManager;
 import org.ow2.sirocco.cloudmanager.core.api.IVolumeManager;
+import org.ow2.sirocco.cloudmanager.model.cimi.Address;
+import org.ow2.sirocco.cloudmanager.model.cimi.AddressTemplate;
+import org.ow2.sirocco.cloudmanager.model.cimi.Credentials;
+import org.ow2.sirocco.cloudmanager.model.cimi.CredentialsTemplate;
+import org.ow2.sirocco.cloudmanager.model.cimi.ForwardingGroup;
+import org.ow2.sirocco.cloudmanager.model.cimi.ForwardingGroupTemplate;
+import org.ow2.sirocco.cloudmanager.model.cimi.Job;
+import org.ow2.sirocco.cloudmanager.model.cimi.Machine;
+import org.ow2.sirocco.cloudmanager.model.cimi.MachineConfiguration;
+import org.ow2.sirocco.cloudmanager.model.cimi.MachineImage;
+import org.ow2.sirocco.cloudmanager.model.cimi.MachineTemplate;
+import org.ow2.sirocco.cloudmanager.model.cimi.Network;
+import org.ow2.sirocco.cloudmanager.model.cimi.NetworkConfiguration;
+import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPort;
+import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPortConfiguration;
+import org.ow2.sirocco.cloudmanager.model.cimi.NetworkPortTemplate;
+import org.ow2.sirocco.cloudmanager.model.cimi.NetworkTemplate;
+import org.ow2.sirocco.cloudmanager.model.cimi.Volume;
+import org.ow2.sirocco.cloudmanager.model.cimi.VolumeConfiguration;
+import org.ow2.sirocco.cloudmanager.model.cimi.VolumeImage;
+import org.ow2.sirocco.cloudmanager.model.cimi.VolumeTemplate;
+import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLog;
+import org.ow2.sirocco.cloudmanager.model.cimi.event.EventLogTemplate;
+import org.ow2.sirocco.cloudmanager.model.cimi.system.SystemTemplate;
 
 /**
  * Manage READ request of Cloud Entry Point.
@@ -85,40 +111,40 @@ public class CimiManagerReadCloudEntryPoint extends CimiManagerReadAbstract {
         CloudEntryPointAggregate out = new CloudEntryPointAggregate();
         out.setUuid("dummy");
 
-        out.setCredentials(this.credentialsManager.getCredentials());
-        out.setCredentialsTemplates(this.credentialsManager.getCredentialsTemplates());
+        out.setCredentials(Collections.<Credentials> emptyList());
+        out.setCredentialsTemplates(Collections.<CredentialsTemplate> emptyList());
 
-        out.setJobs(this.jobManager.getJobs().getItems());
+        out.setJobs(Collections.<Job> emptyList());
 
-        out.setMachineConfigs(this.machineManager.getMachineConfigurations().getItems());
-        out.setMachineImages(this.machineImageManager.getMachineImages());
-        out.setMachines(this.machineManager.getMachines().getItems());
-        out.setMachineTemplates(this.machineManager.getMachineTemplates().getItems());
+        out.setMachineConfigs(Collections.<MachineConfiguration> emptyList());
+        out.setMachineImages(Collections.<MachineImage> emptyList());
+        out.setMachines(Collections.<Machine> emptyList());
+        out.setMachineTemplates(Collections.<MachineTemplate> emptyList());
 
-        out.setSystems(this.systemManager.getSystems());
-        out.setSystemTemplates(this.systemManager.getSystemTemplates());
+        out.setSystems(Collections.<org.ow2.sirocco.cloudmanager.model.cimi.system.System> emptyList());
+        out.setSystemTemplates(Collections.<SystemTemplate> emptyList());
 
-        out.setVolumeConfigurations(this.volumeManager.getVolumeConfigurations());
-        out.setVolumeImages(this.volumeManager.getVolumeImages().getItems());
-        out.setVolumes(this.volumeManager.getVolumes().getItems());
-        out.setVolumeTemplates(this.volumeManager.getVolumeTemplates());
+        out.setVolumeConfigurations(Collections.<VolumeConfiguration> emptyList());
+        out.setVolumeImages(Collections.<VolumeImage> emptyList());
+        out.setVolumes(Collections.<Volume> emptyList());
+        out.setVolumeTemplates(Collections.<VolumeTemplate> emptyList());
 
-        out.setNetworkConfigurations(this.networkManager.getNetworkConfigurations().getItems());
-        out.setNetworks(this.networkManager.getNetworks().getItems());
-        out.setNetworkTemplates(this.networkManager.getNetworkTemplates().getItems());
+        out.setNetworkConfigurations(Collections.<NetworkConfiguration> emptyList());
+        out.setNetworks(Collections.<Network> emptyList());
+        out.setNetworkTemplates(Collections.<NetworkTemplate> emptyList());
 
-        out.setNetworkPortConfigurations(this.networkManager.getNetworkPortConfigurations());
-        out.setNetworkPorts(this.networkManager.getNetworkPorts().getItems());
-        out.setNetworkPortTemplates(this.networkManager.getNetworkPortTemplates());
+        out.setNetworkPortConfigurations(Collections.<NetworkPortConfiguration> emptyList());
+        out.setNetworkPorts(Collections.<NetworkPort> emptyList());
+        out.setNetworkPortTemplates(Collections.<NetworkPortTemplate> emptyList());
 
-        out.setAddresses(this.networkManager.getAddresses().getItems());
-        out.setAddressTemplates(this.networkManager.getAddressTemplates());
+        out.setAddresses(Collections.<Address> emptyList());
+        out.setAddressTemplates(Collections.<AddressTemplate> emptyList());
 
-        out.setForwardingGroups(this.networkManager.getForwardingGroups().getItems());
-        out.setForwardingGroupTemplates(this.networkManager.getForwardingGroupTemplates());
+        out.setForwardingGroups(Collections.<ForwardingGroup> emptyList());
+        out.setForwardingGroupTemplates(Collections.<ForwardingGroupTemplate> emptyList());
 
-        out.setEventLogs(this.eventManager.getEventLog());
-        out.setEventLogTemplates(this.eventManager.getEventLogTemplates());
+        out.setEventLogs(Collections.<EventLog> emptyList());
+        out.setEventLogTemplates(Collections.<EventLogTemplate> emptyList());
 
         out.setResourceMetadata(this.resourceMetadataManager.getResourceMetadata());
 
