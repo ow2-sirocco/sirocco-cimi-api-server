@@ -27,6 +27,7 @@ package org.ow2.sirocco.cimi.server.converter;
 import org.ow2.sirocco.cimi.domain.CimiAddress;
 import org.ow2.sirocco.cimi.domain.CimiMachineNetworkInterfaceAddress;
 import org.ow2.sirocco.cimi.server.request.CimiContext;
+import org.ow2.sirocco.cloudmanager.model.cimi.Address;
 import org.ow2.sirocco.cloudmanager.model.cimi.MachineNetworkInterfaceAddress;
 
 /**
@@ -86,7 +87,8 @@ public class MachineNetworkInterfaceAddressConverter extends ObjectCommonConvert
      */
     @Override
     public void copyToService(final CimiContext context, final Object dataCimi, final Object dataService) {
-        // Nothing to do : MachineNetworkInterfaceAddress is read-only
+        this.doCopyToService(context, (CimiMachineNetworkInterfaceAddress) dataCimi,
+            (MachineNetworkInterfaceAddress) dataService);
     }
 
     /**
@@ -113,6 +115,7 @@ public class MachineNetworkInterfaceAddressConverter extends ObjectCommonConvert
      */
     protected void doCopyToService(final CimiContext context, final CimiMachineNetworkInterfaceAddress dataCimi,
         final MachineNetworkInterfaceAddress dataService) {
-        // Nothing to do : MachineNetworkInterfaceAddress is read-only
+        this.fill(context, dataService, dataCimi);
+        dataService.setAddress((Address) context.convertNextService(dataCimi.getAddress()));
     }
 }
