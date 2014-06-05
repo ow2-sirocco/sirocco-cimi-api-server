@@ -24,7 +24,6 @@
  */
 package org.ow2.sirocco.cimi.domain;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
@@ -33,8 +32,6 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-import org.ow2.sirocco.cimi.server.validator.GroupCreateByValue;
-import org.ow2.sirocco.cimi.server.validator.ValidChild;
 
 /**
  * Class AddressTemplate.
@@ -72,8 +69,8 @@ public class CimiAddressTemplate extends CimiObjectCommonAbstract {
     private String mask;
 
     /** Field "network". */
-    @ValidChild
-    @NotNull(groups = GroupCreateByValue.class)
+    // @ValidChild
+    // @NotNull(groups = GroupCreateByValue.class)
     private CimiNetwork network;
 
     /**

@@ -40,8 +40,9 @@ import org.ow2.sirocco.cimi.server.validator.ValidChild;
  * Class Address Create.
  */
 @XmlRootElement(name = "AddressCreate")
-@XmlType(propOrder = {"name", "description", "propertyArray", "addressTemplate", "xmlExtensionAttributes"})
-@JsonPropertyOrder({"resourceURI", "name", "description", "properties", "addressTemplate"})
+@XmlType(propOrder = {"name", "description", "propertyArray", "addressTemplate", "providerAccountId", "location",
+    "xmlExtensionAttributes"})
+@JsonPropertyOrder({"resourceURI", "name", "description", "properties", "addressTemplate", "providerAccountId", "location"})
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CimiAddressCreate extends CimiCommonResourceUriAbstract {
 
@@ -54,6 +55,10 @@ public class CimiAddressCreate extends CimiCommonResourceUriAbstract {
     @ValidChild
     @NotNull(groups = {GroupCreateByValue.class})
     private CimiAddressTemplate addressTemplate;
+
+    private String providerAccountId;
+
+    private String location;
 
     /**
      * Return the value of field "addressTemplate".
@@ -71,6 +76,22 @@ public class CimiAddressCreate extends CimiCommonResourceUriAbstract {
      */
     public void setAddressTemplate(final CimiAddressTemplate addressTemplate) {
         this.addressTemplate = addressTemplate;
+    }
+
+    public String getProviderAccountId() {
+        return this.providerAccountId;
+    }
+
+    public void setProviderAccountId(final String providerAccountId) {
+        this.providerAccountId = providerAccountId;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public void setLocation(final String location) {
+        this.location = location;
     }
 
     /**
