@@ -45,12 +45,16 @@ import javax.ws.rs.core.UriInfo;
 import org.ow2.sirocco.cimi.domain.extension.Location;
 import org.ow2.sirocco.cimi.domain.extension.Provider;
 import org.ow2.sirocco.cimi.domain.extension.ProviderAccount;
+import org.ow2.sirocco.cimi.domain.extension.ProviderAccountCreate;
 import org.ow2.sirocco.cimi.domain.extension.ProviderProfile;
 import org.ow2.sirocco.cimi.server.resource.ResourceInterceptorBinding;
 import org.ow2.sirocco.cimi.server.resource.RestResourceAbstract;
 import org.ow2.sirocco.cloudmanager.core.api.ICloudProviderManager;
+import org.ow2.sirocco.cloudmanager.core.api.ICloudProviderManager.CreateCloudProviderAccountOptions;
+import org.ow2.sirocco.cloudmanager.core.api.ITenantManager;
 import org.ow2.sirocco.cloudmanager.core.api.IdentityContext;
 import org.ow2.sirocco.cloudmanager.core.api.exception.CloudProviderException;
+import org.ow2.sirocco.cloudmanager.core.api.exception.OperationFailureException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceConflictException;
 import org.ow2.sirocco.cloudmanager.core.api.exception.ResourceNotFoundException;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProvider;
@@ -58,6 +62,7 @@ import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderAccount;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderLocation;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.CloudProviderProfile;
 import org.ow2.sirocco.cloudmanager.model.cimi.extension.Quota;
+import org.ow2.sirocco.cloudmanager.model.cimi.extension.Tenant;
 
 @ResourceInterceptorBinding
 @RequestScoped
@@ -65,6 +70,9 @@ import org.ow2.sirocco.cloudmanager.model.cimi.extension.Quota;
 public class ProviderResource extends RestResourceAbstract {
     @EJB
     private ICloudProviderManager providerManager;
+
+    @EJB
+    private ITenantManager tenantManager;
 
     @Context
     UriInfo uri;
@@ -242,6 +250,48 @@ public class ProviderResource extends RestResourceAbstract {
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
         return Response.status(Response.Status.CREATED).entity(apiAccount).build();
+    }
+
+    @POST
+    @Path("accounts")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response createProviderAccount(final ProviderAccountCreate providerAccountCreate) {
+        try {
+            CloudProvider provider = new CloudProvider();
+            CloudProviderAccount account = new CloudProviderAccount();
+            CloudProviderLocation location = this.toCloudProviderLocation(providerAccountCreate.getLocation());
+            CreateCloudProviderAccountOptions options = new CreateCloudProviderAccountOptions();
+
+            provider.setCloudProviderType(providerAccountCreate.getType());
+            provider.setEndpoint(providerAccountCreate.getEndpoint());
+            provider.setDescription(providerAccountCreate.getDescription());
+            account.setLogin(providerAccountCreate.getIdentity());
+            account.setPassword(providerAccountCreate.getCredential());
+            account.setProperties(providerAccountCreate.getProperties());
+
+            options.importMachineConfigs(true);
+            options.importMachineImages(true);
+            options.importOnlyOwnerMachineImages(false);
+            options.importNetworks(true);
+
+            account = this.providerManager.createCloudProviderAccount(provider, location, account, options);
+
+            String tenantUuid = this.identityContext.getTenantId();
+            if (tenantUuid == null) {
+                Tenant tenant = this.tenantManager.getTenantByName(this.identityContext.getTenantName());
+                tenantUuid = tenant.getUuid();
+            }
+
+            this.providerManager.addCloudProviderAccountToTenant(tenantUuid, account.getUuid());
+            ProviderAccount apiAccount = this.toApiProviderAccount(account);
+
+            return Response.status(Response.Status.CREATED).entity(apiAccount).build();
+        } catch (OperationFailureException e) {
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        } catch (CloudProviderException e) {
+            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DELETE
