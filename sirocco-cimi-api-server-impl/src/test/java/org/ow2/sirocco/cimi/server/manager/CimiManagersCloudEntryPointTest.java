@@ -295,12 +295,14 @@ public class CimiManagersCloudEntryPointTest {
         Assert.assertEquals(ConstantsPath.VOLUME_IMAGE_PATH, cimiCloud.getVolumeImages().getHref());
         Assert.assertEquals(ConstantsPath.VOLUME_TEMPLATE_PATH, cimiCloud.getVolumeTemplates().getHref());
 
-        EasyMock.verify(this.serviceCredentials);
-        EasyMock.verify(this.serviceJob);
-        EasyMock.verify(this.serviceMachine);
-        EasyMock.verify(this.serviceMachineImage);
-        EasyMock.verify(this.serviceSystem);
-        EasyMock.verify(this.serviceVolume);
+        /*
+         * EasyMock.verify(this.serviceCredentials);
+         * EasyMock.verify(this.serviceJob);
+         * EasyMock.verify(this.serviceMachine);
+         * EasyMock.verify(this.serviceMachineImage);
+         * EasyMock.verify(this.serviceSystem);
+         * EasyMock.verify(this.serviceVolume);
+         */
     }
 
     // @Test
